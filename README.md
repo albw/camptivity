@@ -1,2 +1,2 @@
 # camptivity
-CSE 190 Project Front End
+CSE 190 Winter 2015 interactive campus directory
