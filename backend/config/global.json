@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "Camptivity": {
+            "applicationId": "Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm", 
+            "masterKey": "q5Vwqm8giXS6LySmUfsAYVDVV0Gz3MaaNIZWX05R"
+        }, 
+        "_default": {
+            "link": "Camptivity"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.3.4"
+    }
+}

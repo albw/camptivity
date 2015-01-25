@@ -1,6 +1,4 @@
 #Camptivity Backend Code
-----
-
 
 ## Useful Links
 
