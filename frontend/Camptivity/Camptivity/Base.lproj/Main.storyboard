@@ -24,7 +24,7 @@
             </objects>
             <point key="canvasLocation" x="22" y="-335"/>
         </scene>
-        <!--Item 2-->
+        <!--What's nearby?-->
         <scene sceneID="eDV-Le-HQ1">
             <objects>
                 <viewController id="AOz-sD-iC2" sceneMemberID="viewController">
@@ -37,13 +37,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="deQ-FB-TcH"/>
+                    <tabBarItem key="tabBarItem" title="What's nearby?" id="deQ-FB-TcH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QBK-Er-poP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="22" y="1083"/>
         </scene>
-        <!--Item 1-->
+        <!--Social Feed-->
         <scene sceneID="42g-Wl-gkq">
             <objects>
                 <viewController id="Y05-eE-kku" sceneMemberID="viewController">
@@ -56,7 +56,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="6Ji-fr-QGy"/>
+                    <tabBarItem key="tabBarItem" title="Social Feed" id="6Ji-fr-QGy"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="okH-gT-6m6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
