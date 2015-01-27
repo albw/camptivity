@@ -43,24 +43,52 @@
             </objects>
             <point key="canvasLocation" x="22" y="1083"/>
         </scene>
-        <!--Social Feed-->
-        <scene sceneID="42g-Wl-gkq">
+        <!--Root View Controller-->
+        <scene sceneID="WCj-og-LVb">
             <objects>
-                <viewController id="Y05-eE-kku" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="MSG-0U-vMR"/>
-                        <viewControllerLayoutGuide type="bottom" id="wj0-Ro-6WL"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="uGQ-TJ-3Wm">
+                <tableViewController id="iiy-qm-Kv1" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="el7-Kq-ZYs">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Social Feed" image="group-25.png" id="6Ji-fr-QGy"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="okH-gT-6m6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ddq-0h-sl9">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ddq-0h-sl9" id="pgS-eP-Y7Z">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="iiy-qm-Kv1" id="ebv-Ea-Kfz"/>
+                            <outlet property="delegate" destination="iiy-qm-Kv1" id="48u-Se-Bdy"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="bbF-Dx-pBy">
+                        <barButtonItem key="rightBarButtonItem" title="Login" id="lC0-Xa-jik"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="79v-ZT-LhJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="22" y="370"/>
+            <point key="canvasLocation" x="876" y="407"/>
+        </scene>
+        <!--Social Feed-->
+        <scene sceneID="Yp5-sd-raZ">
+            <objects>
+                <navigationController id="yCc-6g-2DQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Social Feed" image="group-25.png" id="o9N-Sz-8CC"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fQk-MI-TIZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="iiy-qm-Kv1" kind="relationship" relationship="rootViewController" id="dOw-I2-fsB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZCo-M0-b6a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="22" y="407"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hVD-3h-n0f">
@@ -74,7 +102,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="t5g-6i-GFT"/>
-                        <segue destination="Y05-eE-kku" kind="relationship" relationship="viewControllers" id="7AO-OI-4W5"/>
+                        <segue destination="yCc-6g-2DQ" kind="relationship" relationship="viewControllers" id="7Q2-Tm-m33"/>
                         <segue destination="AOz-sD-iC2" kind="relationship" relationship="viewControllers" id="Qi3-vh-M8V"/>
                     </connections>
                 </tabBarController>
