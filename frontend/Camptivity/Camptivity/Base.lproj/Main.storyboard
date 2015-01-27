@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Campus Map" id="Aph-Mi-tp1"/>
+                    <tabBarItem key="tabBarItem" title="Campus Map" image="map-25.png" id="Aph-Mi-tp1"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -37,7 +37,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="What's nearby?" id="deQ-FB-TcH"/>
+                    <tabBarItem key="tabBarItem" title="What's nearby?" image="location-25.png" id="deQ-FB-TcH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QBK-Er-poP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -56,7 +56,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Social Feed" id="6Ji-fr-QGy"/>
+                    <tabBarItem key="tabBarItem" title="Social Feed" image="group-25.png" id="6Ji-fr-QGy"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="okH-gT-6m6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -83,4 +83,9 @@
             <point key="canvasLocation" x="-796" y="678"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="group-25.png" width="25" height="25"/>
+        <image name="location-25.png" width="25" height="25"/>
+        <image name="map-25.png" width="25" height="25"/>
+    </resources>
 </document>

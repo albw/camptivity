@@ -13,6 +13,9 @@
 		8A3499661A75871E001B5A28 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A3499651A75871E001B5A28 /* Images.xcassets */; };
 		8A3499691A75871E001B5A28 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A3499671A75871E001B5A28 /* LaunchScreen.xib */; };
 		8A3499751A75871E001B5A28 /* CamptivityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3499741A75871E001B5A28 /* CamptivityTests.swift */; };
+		8A3499811A782048001B5A28 /* map-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A3499801A782048001B5A28 /* map-25.png */; };
+		8A3499831A7820A7001B5A28 /* group-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A3499821A7820A7001B5A28 /* group-25.png */; };
+		8A3499851A782269001B5A28 /* location-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A3499841A782269001B5A28 /* location-25.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 		8A34996E1A75871E001B5A28 /* CamptivityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CamptivityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A3499731A75871E001B5A28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A3499741A75871E001B5A28 /* CamptivityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamptivityTests.swift; sourceTree = "<group>"; };
+		8A3499801A782048001B5A28 /* map-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-25.png"; sourceTree = "<group>"; };
+		8A3499821A7820A7001B5A28 /* group-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "group-25.png"; sourceTree = "<group>"; };
+		8A3499841A782269001B5A28 /* location-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location-25.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +96,9 @@
 		8A34995C1A75871E001B5A28 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8A3499841A782269001B5A28 /* location-25.png */,
+				8A3499821A7820A7001B5A28 /* group-25.png */,
+				8A3499801A782048001B5A28 /* map-25.png */,
 				8A34995D1A75871E001B5A28 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -193,8 +202,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A3499641A75871E001B5A28 /* Main.storyboard in Resources */,
+				8A3499851A782269001B5A28 /* location-25.png in Resources */,
 				8A3499691A75871E001B5A28 /* LaunchScreen.xib in Resources */,
 				8A3499661A75871E001B5A28 /* Images.xcassets in Resources */,
+				8A3499831A7820A7001B5A28 /* group-25.png in Resources */,
+				8A3499811A782048001B5A28 /* map-25.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +419,7 @@
 				8A34997A1A75871E001B5A28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8A34997B1A75871E001B5A28 /* Build configuration list for PBXNativeTarget "CamptivityTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +428,7 @@
 				8A34997D1A75871E001B5A28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
