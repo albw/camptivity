@@ -3,13 +3,12 @@
 //  Camptivity
 //
 //  Created by Khoa Nguyen on 1/31/15.
-//  Copyright (c) 2015 Shayan Mahdavi. All rights reserved.
+//  Copyright (c) 2015 Campativity INC All rights reserved.
 //
 
 #ifndef Camptivity_Camptivity_Bridgin_Header_h
 #define Camptivity_Camptivity_Bridgin_Header_h
 
-#import <Bolts/Bolts.h>
 #import <Parse/Parse.h>
 #import <GoogleMaps/GoogleMaps.h>
 

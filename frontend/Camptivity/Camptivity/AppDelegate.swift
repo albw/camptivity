@@ -7,16 +7,17 @@
 //
 
 import UIKit
-import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let googleMapsApiKey = "AIzaSyBBEyxz0IIJTiB9a6cyqMXdY_zIBiYUQcM"
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Enable storing and querying data from Local Datastore.
         // Remove this line if you don't want to use Local Datastore features or want to use cachePolicy.
+/*
         Parse.enableLocalDatastore()
 
         // ****************************************************************************
@@ -24,8 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // ParseCrashReporting.enable()
         //
         // Uncomment and fill in with your Parse credentials:
-        Parse.setApplicationId("Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm",
-            clientKey: "7JFUVHol8UfsNfLGxCzLoGHElKqp4KwLGski7o0N")
+       // Parse.setApplicationId("Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm",
+         //   clientKey: "7JFUVHol8UfsNfLGxCzLoGHElKqp4KwLGski7o0N")
         //
         // If you are using Facebook, uncomment and add your FacebookAppID to your bundle's plist as
         // described here: https://developers.facebook.com/docs/getting-started/facebook-sdk-for-ios/
@@ -66,16 +67,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let types = UIRemoteNotificationType.Badge | UIRemoteNotificationType.Alert | UIRemoteNotificationType.Sound
             application.registerForRemoteNotificationTypes(types)
         }
-        
-        
-        
-        //Test Parse Insert
-//        var object = PFObject(className: "TestClass")
-//        object.addObject("Banana", forKey: "favoriteFood")
-//        object.addObject("Chocolate", forKey: "favoriteIceCream")
-//        object.saveInBackground()
 
-
+*/
+        GMSServices.provideAPIKey(googleMapsApiKey)
         return true
     }
 
