@@ -23,7 +23,7 @@
 		6EA4A6921A7AC4B400B625ED /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA4A6911A7AC4B400B625ED /* FacebookSDK.framework */; };
 		6EA4A6A61A7DB61F00B625ED /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA4A6A41A7DB61F00B625ED /* ParseCrashReporting.framework */; };
 		6EA4A6A71A7DB61F00B625ED /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA4A6A51A7DB61F00B625ED /* ParseFacebookUtils.framework */; };
-		6EA4A6A91A8152E800B625ED /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA4A6A81A8152E800B625ED /* GoogleMaps.framework */; };
+		6EA4A6AB1A81548E00B625ED /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA4A6AA1A81548E00B625ED /* GoogleMaps.framework */; };
 		8A34995F1A75871E001B5A28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A34995E1A75871E001B5A28 /* AppDelegate.swift */; };
 		8A3499611A75871E001B5A28 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3499601A75871E001B5A28 /* ViewController.swift */; };
 		8A3499641A75871E001B5A28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A3499621A75871E001B5A28 /* Main.storyboard */; };
@@ -83,7 +83,7 @@
 		6EA4A6A31A7DAD2400B625ED /* Camptivity-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Camptivity-Bridging-Header.h"; sourceTree = "<group>"; };
 		6EA4A6A41A7DB61F00B625ED /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
 		6EA4A6A51A7DB61F00B625ED /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
-		6EA4A6A81A8152E800B625ED /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		6EA4A6AA1A81548E00B625ED /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = "../../../../Downloads/GoogleMaps-iOS-1.9.1/GoogleMaps.framework"; sourceTree = "<group>"; };
 		8A3499591A75871E001B5A28 /* Camptivity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Camptivity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A34995D1A75871E001B5A28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A34995E1A75871E001B5A28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EA4A6AB1A81548E00B625ED /* GoogleMaps.framework in Frameworks */,
 				6EA4A68E1A7ABFB600B625ED /* libsqlite3.dylib in Frameworks */,
 				6EA4A6A61A7DB61F00B625ED /* ParseCrashReporting.framework in Frameworks */,
 				6EA4A68C1A7ABFAD00B625ED /* libz.dylib in Frameworks */,
@@ -159,7 +160,6 @@
 				6EA4A67A1A7ABF2E00B625ED /* AudioToolbox.framework in Frameworks */,
 				6EA4A6781A7ABEDA00B625ED /* Parse.framework in Frameworks */,
 				6EA4A6771A7ABEDA00B625ED /* Bolts.framework in Frameworks */,
-				6EA4A6A91A8152E800B625ED /* GoogleMaps.framework in Frameworks */,
 				6EA4A6A71A7DB61F00B625ED /* ParseFacebookUtils.framework in Frameworks */,
 				6EA4A6921A7AC4B400B625ED /* FacebookSDK.framework in Frameworks */,
 			);
@@ -178,7 +178,7 @@
 		6EA4A5311A78254400B625ED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6EA4A6A81A8152E800B625ED /* GoogleMaps.framework */,
+				6EA4A6AA1A81548E00B625ED /* GoogleMaps.framework */,
 				6EA4A6A41A7DB61F00B625ED /* ParseCrashReporting.framework */,
 				6EA4A6A51A7DB61F00B625ED /* ParseFacebookUtils.framework */,
 				6EA4A6911A7AC4B400B625ED /* FacebookSDK.framework */,
@@ -564,6 +564,7 @@
 					/Users/khoanguyen/Documents/FacebookSDK,
 					"$(PROJECT_DIR)",
 					"/Users/khoanguyen/Documents/parse-library-1",
+					"/Users/khoanguyen/Downloads/GoogleMaps-iOS-1.9.1",
 				);
 				INFOPLIST_FILE = Camptivity/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -581,6 +582,7 @@
 					/Users/khoanguyen/Documents/FacebookSDK,
 					"$(PROJECT_DIR)",
 					"/Users/khoanguyen/Documents/parse-library-1",
+					"/Users/khoanguyen/Downloads/GoogleMaps-iOS-1.9.1",
 				);
 				INFOPLIST_FILE = Camptivity/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
