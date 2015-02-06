@@ -1,0 +1,23 @@
+
+
+
+h3,h1{
+
+text-align:center;
+}
+
+
+table{
+	margin: 0 auto;
+}
+
+p {
+	text-align:center;
+	margin-right: 150px;
+	margin-left:150px;
+}
+
+h3,h1,p {
+	font-family: Trebuchet MS;
+
+}
