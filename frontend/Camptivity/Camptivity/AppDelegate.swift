@@ -12,7 +12,6 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let googleMapsApiKey = "AIzaSyBBEyxz0IIJTiB9a6cyqMXdY_zIBiYUQcM"
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Enable storing and querying data from Local Datastore.
@@ -69,7 +68,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
 */
-        GMSServices.provideAPIKey(googleMapsApiKey)
+        Parse.setApplicationId("Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm", clientKey:"7JFUVHol8UfsNfLGxCzLoGHElKqp4KwLGski7o0N")
+
+        GMSServices.provideAPIKey("AIzaSyBBEyxz0IIJTiB9a6cyqMXdY_zIBiYUQcM")
         return true
     }
 

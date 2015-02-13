@@ -10,7 +10,6 @@
 		13636FE11A816B8100CF1613 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13636FE01A816B8100CF1613 /* Social.framework */; };
 		13636FE31A816B8600CF1613 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13636FE21A816B8600CF1613 /* Accounts.framework */; };
 		136439011A816DF9005AE6F0 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 136439001A816DF9005AE6F0 /* libstdc++.6.dylib */; };
-		13CE1DCC1A81567300957EB9 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13CE1DCB1A81567300957EB9 /* GoogleMaps.framework */; };
 		13CE1DD01A81576B00957EB9 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13CE1DCE1A81576B00957EB9 /* Parse.framework */; };
 		13CE1DD21A81577800957EB9 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 13CE1DD11A81577800957EB9 /* GoogleMaps.bundle */; };
 		13CE1DD41A81581700957EB9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13CE1DD31A81581700957EB9 /* OpenGLES.framework */; };
@@ -21,15 +20,15 @@
 		13CE1DDE1A815A0A00957EB9 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13CE1DDD1A815A0A00957EB9 /* CoreText.framework */; };
 		13CE1DE01A815A2100957EB9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13CE1DDF1A815A2100957EB9 /* CoreData.framework */; };
 		13CE1DE21A815A2900957EB9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13CE1DE11A815A2900957EB9 /* AVFoundation.framework */; };
-		13CE1DE81A815ACE00957EB9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CE1DE61A815ACE00957EB9 /* MapViewController.swift */; };
-		13CE1DE91A815ACE00957EB9 /* TypesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CE1DE71A815ACE00957EB9 /* TypesTableViewController.swift */; };
 		13CE1DED1A815B0400957EB9 /* MarkerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CE1DEA1A815B0400957EB9 /* MarkerInfoView.swift */; };
 		13CE1DEE1A815B0400957EB9 /* MarkerInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13CE1DEB1A815B0400957EB9 /* MarkerInfoView.xib */; };
 		13CE1DEF1A815B0400957EB9 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CE1DEC1A815B0400957EB9 /* UIViewExtension.swift */; };
-		13CE1DF21A815B0C00957EB9 /* GoogleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CE1DF01A815B0C00957EB9 /* GoogleDataProvider.swift */; };
-		13CE1DF31A815B0C00957EB9 /* GooglePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CE1DF11A815B0C00957EB9 /* GooglePlace.swift */; };
-		13CE1DF51A815B1B00957EB9 /* PlaceMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CE1DF41A815B1B00957EB9 /* PlaceMarker.swift */; };
 		13CE1DF71A815DD200957EB9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13CE1DF61A815DD200957EB9 /* Images.xcassets */; };
+		13CFE2B71A8DD11700F64DDC /* ParseDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFE2B61A8DD11700F64DDC /* ParseDataProvider.swift */; };
+		13CFE2BA1A8DD12C00F64DDC /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFE2B81A8DD12C00F64DDC /* MapViewController.swift */; };
+		13CFE2BB1A8DD12C00F64DDC /* TypesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFE2B91A8DD12C00F64DDC /* TypesTableViewController.swift */; };
+		13CFE2BD1A8DD17F00F64DDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFE2BC1A8DD17F00F64DDC /* AppDelegate.swift */; };
+		13CFE2BF1A8DD27700F64DDC /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13CFE2BE1A8DD27700F64DDC /* GoogleMaps.framework */; };
 		6EA4A67A1A7ABF2E00B625ED /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA4A6791A7ABF2E00B625ED /* AudioToolbox.framework */; };
 		6EA4A67C1A7ABF4D00B625ED /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA4A67B1A7ABF4D00B625ED /* CFNetwork.framework */; };
 		6EA4A67E1A7ABF6700B625ED /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA4A67D1A7ABF6700B625ED /* CoreGraphics.framework */; };
@@ -44,7 +43,6 @@
 		6EA4A6921A7AC4B400B625ED /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA4A6911A7AC4B400B625ED /* FacebookSDK.framework */; };
 		6EA4A6A61A7DB61F00B625ED /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA4A6A41A7DB61F00B625ED /* ParseCrashReporting.framework */; };
 		6EA4A6A71A7DB61F00B625ED /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA4A6A51A7DB61F00B625ED /* ParseFacebookUtils.framework */; };
-		8A34995F1A75871E001B5A28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A34995E1A75871E001B5A28 /* AppDelegate.swift */; };
 		8A3499611A75871E001B5A28 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3499601A75871E001B5A28 /* ViewController.swift */; };
 		8A3499641A75871E001B5A28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A3499621A75871E001B5A28 /* Main.storyboard */; };
 		8A3499691A75871E001B5A28 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A3499671A75871E001B5A28 /* LaunchScreen.xib */; };
@@ -68,7 +66,6 @@
 		13636FE01A816B8100CF1613 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		13636FE21A816B8600CF1613 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		136439001A816DF9005AE6F0 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
-		13CE1DCB1A81567300957EB9 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		13CE1DCE1A81576B00957EB9 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		13CE1DD11A81577800957EB9 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		13CE1DD31A81581700957EB9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -79,15 +76,15 @@
 		13CE1DDD1A815A0A00957EB9 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		13CE1DDF1A815A2100957EB9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		13CE1DE11A815A2900957EB9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		13CE1DE61A815ACE00957EB9 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		13CE1DE71A815ACE00957EB9 /* TypesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypesTableViewController.swift; sourceTree = "<group>"; };
 		13CE1DEA1A815B0400957EB9 /* MarkerInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerInfoView.swift; sourceTree = "<group>"; };
 		13CE1DEB1A815B0400957EB9 /* MarkerInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarkerInfoView.xib; sourceTree = "<group>"; };
 		13CE1DEC1A815B0400957EB9 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
-		13CE1DF01A815B0C00957EB9 /* GoogleDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleDataProvider.swift; sourceTree = "<group>"; };
-		13CE1DF11A815B0C00957EB9 /* GooglePlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlace.swift; sourceTree = "<group>"; };
-		13CE1DF41A815B1B00957EB9 /* PlaceMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceMarker.swift; sourceTree = "<group>"; };
 		13CE1DF61A815DD200957EB9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		13CFE2B61A8DD11700F64DDC /* ParseDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseDataProvider.swift; sourceTree = "<group>"; };
+		13CFE2B81A8DD12C00F64DDC /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		13CFE2B91A8DD12C00F64DDC /* TypesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypesTableViewController.swift; sourceTree = "<group>"; };
+		13CFE2BC1A8DD17F00F64DDC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		13CFE2BE1A8DD27700F64DDC /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		6EA4A6791A7ABF2E00B625ED /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		6EA4A67B1A7ABF4D00B625ED /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		6EA4A67D1A7ABF6700B625ED /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -105,7 +102,6 @@
 		6EA4A6A51A7DB61F00B625ED /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		8A3499591A75871E001B5A28 /* Camptivity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Camptivity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A34995D1A75871E001B5A28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8A34995E1A75871E001B5A28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A3499601A75871E001B5A28 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8A3499631A75871E001B5A28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8A3499681A75871E001B5A28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -137,6 +133,7 @@
 				13CE1DD41A81581700957EB9 /* OpenGLES.framework in Frameworks */,
 				6EA4A68E1A7ABFB600B625ED /* libsqlite3.dylib in Frameworks */,
 				6EA4A6A61A7DB61F00B625ED /* ParseCrashReporting.framework in Frameworks */,
+				13CFE2BF1A8DD27700F64DDC /* GoogleMaps.framework in Frameworks */,
 				6EA4A68A1A7ABFA600B625ED /* SystemConfiguration.framework in Frameworks */,
 				6EA4A6881A7ABF9D00B625ED /* StoreKit.framework in Frameworks */,
 				6EA4A6861A7ABF9400B625ED /* Security.framework in Frameworks */,
@@ -146,7 +143,6 @@
 				6EA4A67E1A7ABF6700B625ED /* CoreGraphics.framework in Frameworks */,
 				6EA4A67C1A7ABF4D00B625ED /* CFNetwork.framework in Frameworks */,
 				6EA4A67A1A7ABF2E00B625ED /* AudioToolbox.framework in Frameworks */,
-				13CE1DCC1A81567300957EB9 /* GoogleMaps.framework in Frameworks */,
 				6EA4A6A71A7DB61F00B625ED /* ParseFacebookUtils.framework in Frameworks */,
 				6EA4A6921A7AC4B400B625ED /* FacebookSDK.framework in Frameworks */,
 			);
@@ -165,8 +161,8 @@
 		13CE1DE31A815A5300957EB9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				13CE1DE61A815ACE00957EB9 /* MapViewController.swift */,
-				13CE1DE71A815ACE00957EB9 /* TypesTableViewController.swift */,
+				13CFE2B81A8DD12C00F64DDC /* MapViewController.swift */,
+				13CFE2B91A8DD12C00F64DDC /* TypesTableViewController.swift */,
 				8A3499601A75871E001B5A28 /* ViewController.swift */,
 			);
 			name = Controller;
@@ -175,7 +171,6 @@
 		13CE1DE41A815A6200957EB9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				13CE1DF41A815B1B00957EB9 /* PlaceMarker.swift */,
 				13CE1DEA1A815B0400957EB9 /* MarkerInfoView.swift */,
 				13CE1DEB1A815B0400957EB9 /* MarkerInfoView.xib */,
 				13CE1DEC1A815B0400957EB9 /* UIViewExtension.swift */,
@@ -186,8 +181,7 @@
 		13CE1DE51A815A6800957EB9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				13CE1DF01A815B0C00957EB9 /* GoogleDataProvider.swift */,
-				13CE1DF11A815B0C00957EB9 /* GooglePlace.swift */,
+				13CFE2B61A8DD11700F64DDC /* ParseDataProvider.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -195,6 +189,7 @@
 		6EA4A5311A78254400B625ED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				13CFE2BE1A8DD27700F64DDC /* GoogleMaps.framework */,
 				136439001A816DF9005AE6F0 /* libstdc++.6.dylib */,
 				13636FE21A816B8600CF1613 /* Accounts.framework */,
 				13636FE01A816B8100CF1613 /* Social.framework */,
@@ -208,7 +203,6 @@
 				13CE1DD31A81581700957EB9 /* OpenGLES.framework */,
 				13CE1DD11A81577800957EB9 /* GoogleMaps.bundle */,
 				13CE1DCE1A81576B00957EB9 /* Parse.framework */,
-				13CE1DCB1A81567300957EB9 /* GoogleMaps.framework */,
 				6EA4A6A41A7DB61F00B625ED /* ParseCrashReporting.framework */,
 				6EA4A6A51A7DB61F00B625ED /* ParseFacebookUtils.framework */,
 				6EA4A6911A7AC4B400B625ED /* FacebookSDK.framework */,
@@ -252,7 +246,7 @@
 				13CE1DE51A815A6800957EB9 /* Model */,
 				13CE1DE41A815A6200957EB9 /* View */,
 				13CE1DE31A815A5300957EB9 /* Controller */,
-				8A34995E1A75871E001B5A28 /* AppDelegate.swift */,
+				13CFE2BC1A8DD17F00F64DDC /* AppDelegate.swift */,
 				8A3499621A75871E001B5A28 /* Main.storyboard */,
 				13CE1DF61A815DD200957EB9 /* Images.xcassets */,
 				8A3499671A75871E001B5A28 /* LaunchScreen.xib */,
@@ -397,14 +391,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A3499611A75871E001B5A28 /* ViewController.swift in Sources */,
-				13CE1DE91A815ACE00957EB9 /* TypesTableViewController.swift in Sources */,
-				13CE1DF31A815B0C00957EB9 /* GooglePlace.swift in Sources */,
-				8A34995F1A75871E001B5A28 /* AppDelegate.swift in Sources */,
-				13CE1DE81A815ACE00957EB9 /* MapViewController.swift in Sources */,
-				13CE1DF51A815B1B00957EB9 /* PlaceMarker.swift in Sources */,
+				13CFE2BA1A8DD12C00F64DDC /* MapViewController.swift in Sources */,
 				13CE1DED1A815B0400957EB9 /* MarkerInfoView.swift in Sources */,
-				13CE1DF21A815B0C00957EB9 /* GoogleDataProvider.swift in Sources */,
 				13CE1DEF1A815B0400957EB9 /* UIViewExtension.swift in Sources */,
+				13CFE2BD1A8DD17F00F64DDC /* AppDelegate.swift in Sources */,
+				13CFE2BB1A8DD12C00F64DDC /* TypesTableViewController.swift in Sources */,
+				13CFE2B71A8DD11700F64DDC /* ParseDataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,7 +521,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/**",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Camptivity/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
@@ -542,7 +537,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/**",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Camptivity/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
