@@ -64,22 +64,18 @@ Parse.Cloud.afterSave("LocationRank", function(request) {
  /* /////////////////////////////////// JOBS /////////////////////////////////////// */
  /* //////////////////////////////////////////////////////////////////////////////// */
 
-
 /**
  * Internal job that goes through Events table and deletes all expired events.
  */
  Parse.Cloud.job("nukeDeadEvents", function(request, status) {
  	Parse.Cloud.useMasterKey();
  	new Parse.Query(Parse.Object.extend("Events")).lessThan("expires", new Date()).find({
- 		success: function(results)
- 		{
- 			Parse.Object.destroyAll(results).then(function(meh)
- 			{
+ 		success: function(results) {
+ 			Parse.Object.destroyAll(results).then(function(meh) {
  				status.success("Job completed: " + results.length + " old event(s) pruned");
  			});
  		},
- 		error: function(error)
- 		{
+ 		error: function(error) {
  			status.error("Failed to nuke old events: " + error.message);	
  		}
  	});
@@ -90,10 +86,41 @@ Parse.Cloud.afterSave("LocationRank", function(request) {
  /* /////////////////////////// CLOUD FUNCTIONS //////////////////////////////////// */
  /* //////////////////////////////////////////////////////////////////////////////// */
 
+/**
+ * Runs a query to determine if an email has been registered (usually indicative that the user trying to signup already has an account).
+ * Returns true if the email has been registered, and false otherwise.
+ * Takes one param, email, in the following format: '{"email":"fastily@yahoo.com"}'
+ */
+Parse.Cloud.define("emailRegistered", function(request, response) {
+
+	new Parse.Query("_User").equalTo("email", request.params.email).first({
+		success: function(result) {
+			if(!result) //will return undefined or null if not found.
+				response.success(false)
+			else
+				response.success(true);
+		},
+		error: function(meh) {
+			console.log("Error testing emailRegistered: " + JSON.stringify(meh, null, 4));
+			response.success(false);
+		}
+	});
+});
+
 
 /**
- * Test function.  Returns a String
+ * Attempts to send a password reset email.  Takes one param, the email to send the password reset.
+ * Takes one param, email, in the following format: '{"email":"fastily@yahoo.com"}'
  */
- Parse.Cloud.define("hello", function(request, response) {
- 	response.success("Hello, world!");
- });
+Parse.Cloud.define("resetPasswordRequest", function(request, response) {
+	Parse.User.requestPasswordReset(request.params.email, {
+		success: function(meh){
+			console.log("Sent password reset to " + request.params.email);
+			response.success();
+		},
+		error: function(err){
+			console.log("Error sending password reset to " + request.params.email);
+			response.error();
+		}
+	});
+});
