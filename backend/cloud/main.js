@@ -12,7 +12,7 @@ Parse.Cloud.afterSave("_User", function(request) {
 	else if(!request.object.existed()) {
 		var Score = Parse.Object.extend("Score");
 		var sc = new Score();
-		sc.save({userID: request.object, likesGiven: 0, likesReceived: 0, eventComments: 0, locationReviews: 0}).then(function(meh) {
+		sc.save({userID: request.object, likesGiven: 0, likesReceived: 0, eventComments: 0, locationTags: 0}).then(function(meh) {
 			console.log("Set-up score row for a new user!");
 		});
 	} 
@@ -34,7 +34,7 @@ Parse.Cloud.afterSave("Locations", function(request) {
 /**
  * Performs following functions: 
  * 1) Re-computes the average for the Locations object referenced by this LocationRank. 
- * 2) Increment user's locationReviews in Score table by one.
+ * 2) Increment user's locationTags in Score table by one.
  */ 
 Parse.Cloud.afterSave("LocationRank", function(request) {
 	if(request.object && !request.object.existed())
@@ -46,7 +46,7 @@ Parse.Cloud.afterSave("LocationRank", function(request) {
 					console.log("Updated average of " + meh.get("name"));
 
 					new Parse.Query("Score").equalTo("userID", meh.get("userID")).first().then(function(obj) {
-							obj.increment("locationReviews");
+							obj.increment("locationsTagged");
 							obj.save().then(function(asdf) {
 								console.log("Incremented location review score for " + asdf.get("userID").id);
 							});
@@ -58,6 +58,7 @@ Parse.Cloud.afterSave("LocationRank", function(request) {
 			}
 		});
  });
+
 
 
  /* //////////////////////////////////////////////////////////////////////////////// */
@@ -86,6 +87,30 @@ Parse.Cloud.afterSave("LocationRank", function(request) {
  /* /////////////////////////// CLOUD FUNCTIONS //////////////////////////////////// */
  /* //////////////////////////////////////////////////////////////////////////////// */
 
+
+/**
+ * Attempts to register a new user.  This method shall be applied in the use case where the user does not wish to link
+ * his/her facebook profile. 
+ * Takes the following four String parameters: user, pass, email, name.
+ * Example: {"user":"Foo", "pass":"pw", "email":"thisisalecwu@gmail.com", "name":"ALEC"}
+ */
+ Parse.Cloud.define("newUserSignup", function(request, response) {
+ 	Parse.Query.or(new Parse.Query("_User").equalTo("username", request.params.user), 
+ 		new Parse.Query("_User").equalTo("email", request.params.email)).first().then(function(result) {
+ 			if(!result) 
+ 				Parse.User.signUp(request.params.user, request.params.pass, {email: request.params.email, name: request.params.name}, {
+ 					success: function(ux) {
+ 						response.success("Signed up a new user: " + ux.get("username"));
+ 					},
+ 					error: function(meh) {
+ 						response.error("Failed to run newUserSignup job: " + JSON.stringify(meh, null, 4));
+ 					}
+ 				});
+ 			else
+ 				response.error("Username/Email has already been taken!")
+ 		});
+ 	});
+
 /**
  * Runs a query to determine if an email has been registered (usually indicative that the user trying to signup already has an account).
  * Returns true if the email has been registered, and false otherwise.
@@ -102,7 +127,27 @@ Parse.Cloud.define("emailRegistered", function(request, response) {
 		},
 		error: function(meh) {
 			console.log("Error testing emailRegistered: " + JSON.stringify(meh, null, 4));
-			response.success(false);
+			response.error(meh);
+		}
+	});
+});
+
+
+/**
+ * 
+ */
+Parse.Cloud.define("usernameTaken", function(request, response) {
+	new Parse.Query("_User").equalTo("username", request.params.username).first({
+		success: function(result){
+			if(!result)
+				response.success(false);
+			else
+				response.success(true);
+
+		},
+		error: function(meh){
+			console.log("Error testing emailRegistered: " + JSON.stringify(meh, null, 4));
+			response.error(meh);
 		}
 	});
 });
@@ -122,5 +167,25 @@ Parse.Cloud.define("resetPasswordRequest", function(request, response) {
 			console.log("Error sending password reset to " + request.params.email);
 			response.error();
 		}
+	});
+});
+
+
+/**
+ * Identifies locations near a GeoPoint in a specific category. Restricted by radius (miles). 
+ * Takes params: category, lat, long, radius.  Example:
+ * {"category":"restroom", "lat":30, "lon:"30, "radius":40}
+ */
+Parse.Cloud.define("locationsNearMe", function(request, response) {
+	new Parse.Query("Locations").withinMiles("location", 
+		new Parse.GeoPoint(request.params.lat, request.params.lon), request.params.radius).equalTo("category", request.params.category).find({
+		success: function(result) {
+			response.success(result);
+		},
+		error: function(meh){
+			console.log("Error in locationsNearMe: " + JSON.stringify(meh, null, 4));
+			response.error(meh);
+		}
+
 	});
 });

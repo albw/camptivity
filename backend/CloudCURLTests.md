@@ -1,6 +1,3 @@
-Sample cURL code to test Cloud Modules
-------
-
 ## Standby Routines
 ##### afterSave (LocationRank)
 
@@ -44,15 +41,28 @@ curl -X POST \
 https://api.parse.com/1/functions/resetPasswordRequest
 ```
 
+##### locationsNearMe
 
-## OTHER
-##### Create a new test user in the users table.
+Gets a list of locations of a specific category near a lat/long.
 
 ```bash
 curl -X POST \
 -H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
 -H "X-Parse-REST-API-Key: 8DzbViZ3uzuZVp9bZ9rztDQEKG0Tx9fP1HLPsx5U" \
 -H "Content-Type: application/json" \
--d '{"username":"TESTUSER1","password":"password","email":"thisisalecwu@gmail.com"}' \
-https://api.parse.com/1/classes/_User
+-d '{"category":"restroom", "lat":32.88293263160078, "lon":-117.2109485336882, "radius":40}' \
+https://api.parse.com/1/functions/locationsNearMe
+```
+
+##### newUserSignup
+
+Attempts to register a new user.  Emulates use case where user wants to make an account without linking fb.
+
+```bash
+curl -X POST \
+-H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
+-H "X-Parse-REST-API-Key: 8DzbViZ3uzuZVp9bZ9rztDQEKG0Tx9fP1HLPsx5U" \
+-H "Content-Type: application/json" \
+-d '{"user":"Foo", "pass":"pw", "email":"thisisalecwu@gmail.com", "name":"ALEC"}' \
+https://api.parse.com/1/functions/newUserSignup
 ```
