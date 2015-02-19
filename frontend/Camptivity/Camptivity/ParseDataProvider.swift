@@ -22,6 +22,8 @@ class ParseDataProvider {
                 NSLog("%@", error)
             }
             completion(result:results)
+
+
         }
     }
     
@@ -54,36 +56,75 @@ class ParseDataProvider {
             }
         }
     }
-    
-    func fetchLocationsNearMe(completion: (returnValue: [AnyObject])->Void) {
-        PFCloud.callFunctionInBackground("locationsNearMe", withParameters: ["category":"restroom","lat":32.88293263160078,"lon":-117.2109485336882,"radius":40]) {
+
+    func newUserSignup()-> String {
+        var s = String()
+        PFCloud.callFunctionInBackground("newUserSignup", withParameters: ["user":"Username", "pass":"password", "email":"Username@gmail.com", "name":"fullname"]) {
             (objects: AnyObject!, error: NSError!) -> Void in
             var results = []
             if (error != nil) {
                 // Your error handling here
             }
             else {
-                results = objects as NSArray
-                completion(returnValue:results)
-                /*
-                //NSLog("Result: \(result) ")
-                println("===================")
 
-                for (var i=0; i<result.count; i++)
-                {
-                    println(result[i]["avgRank"] as Int)
-                    println(result[i]["category"] as String)
-                    println(result[i]["description"] as String)
-                    println(result[i]["location"] as PFGeoPoint)
-                    println(result[i]["name"] as String)
-                    println(result[i]["numRankings"] as Int)
-                    println(result[i]["userID"] as PFUser)
-                }
-                */
+                s = objects as String
 
             }
         }
-
+        return s
     }
 
+    func emailRegistered()-> Bool {
+        var s = Bool()
+        PFCloud.callFunctionInBackground("emailRegistered", withParameters: ["email":"fastily@yahoo.com"]) {
+            (objects: AnyObject!, error: NSError!) -> Void in
+            var results = []
+            if (error != nil) {
+                // Your error handling here
+            }
+            else {
+                
+                s = objects as Bool
+                
+            }
+        }
+        return s
+    }
+
+
+    func usernameTaken()-> Bool {
+        var s = Bool()
+        PFCloud.callFunctionInBackground("usernameTaken", withParameters: ["username":"Admin"]) {
+            (objects: AnyObject!, error: NSError!) -> Void in
+            var results = []
+            if (error != nil) {
+                // Your error handling here
+            }
+            else {
+                
+                s = objects as Bool
+                
+            }
+        }
+        return s
+    }
+
+    func resetPasswordRequest()-> String {
+        var s = String()
+        PFCloud.callFunctionInBackground("resetPasswordRequest", withParameters: ["email":"fastily@yahoo.com"]) {
+            (objects: AnyObject!, error: NSError!) -> Void in
+            var results = []
+            if (error != nil) {
+                // Your error handling here
+            }
+            else {
+                
+                s = objects as String
+                
+            }
+        }
+        return s
+    }
+
+    
 }
