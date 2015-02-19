@@ -14,19 +14,26 @@ curl -X POST \
 https://api.parse.com/1/classes/LocationRank
 ```
 
-## Clound Functions
-##### emailRegistered
 
-Queries the email 'fastily@yahoo.com' against the Users table.  Returns true if this email exists in database.
+
+##### afterSave (EventVotes)
+
+Adds a new EventVote row.  This will trigger the following events:
+* Increment number of votesGiven for user who voted.
+* Increment number of votesRecieved for user who recieved the vote.
 
 ```bash
 curl -X POST \
 -H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
 -H "X-Parse-REST-API-Key: 8DzbViZ3uzuZVp9bZ9rztDQEKG0Tx9fP1HLPsx5U" \
 -H "Content-Type: application/json" \
--d '{"email":"fastily@yahoo.com"}' \
-https://api.parse.com/1/functions/emailRegistered
+-d '{"target":{"__type": "Pointer", "className": "Events", "objectId": "CWwv1FzgPh"}, "userID":{"__type": "Pointer", "className": "_User", "objectId": "DQioyBlFOJ"}}' \
+https://api.parse.com/1/classes/EventVotes
 ```
+
+
+
+## Clound Functions
 
 ##### resetPasswordRequest
 

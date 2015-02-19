@@ -12,7 +12,7 @@ Parse.Cloud.afterSave("_User", function(request) {
 	else if(!request.object.existed()) {
 		var Score = Parse.Object.extend("Score");
 		var sc = new Score();
-		sc.save({userID: request.object, likesGiven: 0, likesReceived: 0, eventComments: 0, locationTags: 0}).then(function(meh) {
+		sc.save({userID: request.object, votesGiven: 0, votesReceived: 0, eventComments: 0, locationTags: 0}).then(function(meh) {
 			console.log("Set-up score row for a new user!");
 		});
 	} 
@@ -32,32 +32,66 @@ Parse.Cloud.afterSave("Locations", function(request) {
 
 
 /**
+ * Increments a field in the Score table for a given user.
+ * Takes two params - userId: pointer to the user's whos entry we'll be incrementing
+ * 				      item: a string naming the column to increment.
+ */
+function incScoreField(userId, item) {
+	return new Parse.Query("Score").equalTo("userID", userId).first().then(function(obj) {
+		obj.increment(item);
+		return obj.save();
+	});
+}
+
+
+/**
  * Performs following functions: 
  * 1) Re-computes the average for the Locations object referenced by this LocationRank. 
  * 2) Increment user's locationTags in Score table by one.
  */ 
-Parse.Cloud.afterSave("LocationRank", function(request) {
-	if(request.object && !request.object.existed())
-		new Parse.Query("Locations").get(request.object.get("target").id, {
-			success: function(meh) {
-				meh.set("avgRank", (meh.get("numRankings") * meh.get("avgRank") + request.object.get("rating"))/(meh.get("numRankings") + 1));
-				meh.increment("numRankings");
-				meh.save().then(function(blah) {
-					console.log("Updated average of " + meh.get("name"));
+ Parse.Cloud.afterSave("LocationRank", function(request) {
+ 	if(request.object && !request.object.existed())
+ 		new Parse.Query("Locations").get(request.object.get("target").id, {
+ 			success: function(meh) {
+ 				meh.set("avgRank", (meh.get("numRankings") * meh.get("avgRank") + request.object.get("rating"))/(meh.get("numRankings") + 1));
+ 				meh.increment("numRankings");
+ 				meh.save().then(function(blah) {
+ 					console.log("Updated average of " + meh.get("name"));
 
-					new Parse.Query("Score").equalTo("userID", meh.get("userID")).first().then(function(obj) {
-							obj.increment("locationsTagged");
-							obj.save().then(function(asdf) {
-								console.log("Incremented location review score for " + asdf.get("userID").id);
-							});
-					});
-				});
-			},
-			error: function(ex) {
-				console.log("OH NO: " + JSON.stringify(ex, null, 4 ));
-			}
-		});
+ 					incScoreField(meh.get("userID"), "locationTags").then(function(asdf) {
+ 						console.log("Incremented location review score for " + asdf.get("userID").id);
+ 					});
+ 				});
+ 			},
+ 			error: function(ex) {
+ 				console.log("Error running afterSave on LocationRank: " + JSON.stringify(ex, null, 4 ));
+ 			}
+ 		});
  });
+
+
+/**
+ * When an EventVotes is cast:
+ * 1) Increment the likesReceived score for user who created the event.
+ * 2) Increment the likesGiven score for the user who voted.
+ */
+Parse.Cloud.afterSave("EventVotes", function(request) {
+	if(request.object && !request.object.existed())
+		incScoreField(request.object.get("userID"), "votesGiven").then(function(asdf){
+			console.log("Incremented votesGiven score for " + asdf.get("userID").id);
+
+			new Parse.Query("Events").get(request.object.get("target").id, {
+				success: function(obj) {
+					incScoreField(obj.get("userID"), "votesReceived").then(function(meh) {
+						console.log("Incremented votesReceived score for " + obj.get("userID").id);
+					});
+				},
+				error: function(err) {
+ 				console.log("Error running afterSave on EventVotes: " + JSON.stringify(ex, null, 4 ));
+				}
+			});
+		});
+});
 
 
 
@@ -112,48 +146,6 @@ Parse.Cloud.afterSave("LocationRank", function(request) {
  	});
 
 /**
- * Runs a query to determine if an email has been registered (usually indicative that the user trying to signup already has an account).
- * Returns true if the email has been registered, and false otherwise.
- * Takes one param, email, in the following format: '{"email":"fastily@yahoo.com"}'
- */
-Parse.Cloud.define("emailRegistered", function(request, response) {
-
-	new Parse.Query("_User").equalTo("email", request.params.email).first({
-		success: function(result) {
-			if(!result) //will return undefined or null if not found.
-				response.success(false)
-			else
-				response.success(true);
-		},
-		error: function(meh) {
-			console.log("Error testing emailRegistered: " + JSON.stringify(meh, null, 4));
-			response.error(meh);
-		}
-	});
-});
-
-
-/**
- * 
- */
-Parse.Cloud.define("usernameTaken", function(request, response) {
-	new Parse.Query("_User").equalTo("username", request.params.username).first({
-		success: function(result){
-			if(!result)
-				response.success(false);
-			else
-				response.success(true);
-
-		},
-		error: function(meh){
-			console.log("Error testing emailRegistered: " + JSON.stringify(meh, null, 4));
-			response.error(meh);
-		}
-	});
-});
-
-
-/**
  * Attempts to send a password reset email.  Takes one param, the email to send the password reset.
  * Takes one param, email, in the following format: '{"email":"fastily@yahoo.com"}'
  */
@@ -186,6 +178,5 @@ Parse.Cloud.define("locationsNearMe", function(request, response) {
 			console.log("Error in locationsNearMe: " + JSON.stringify(meh, null, 4));
 			response.error(meh);
 		}
-
 	});
 });
