@@ -8,6 +8,10 @@
 
 
 class ParseDataProvider {
+    let apiKey = "AIzaSyCNjX-9jxGqB9BcMeCx6tPJR1l0WU58LSA"
+    var session: NSURLSession {
+        return NSURLSession.sharedSession()
+    }
     
     func fetchLocationsBaseOnCategories(categories:[String], completion: (result: [AnyObject])->Void) {
         var results = []
@@ -26,6 +30,33 @@ class ParseDataProvider {
 
         }
     }
+    
+    func fetchDirectionsFrom(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D, completion: ((String?) -> Void)) -> ()
+    {
+        let urlString = "https://maps.googleapis.com/maps/api/directions/json?key=\(apiKey)&origin=\(from.latitude),\(from.longitude)&destination=\(to.latitude),\(to.longitude)&mode=walking"
+        
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        session.dataTaskWithURL(NSURL(string: urlString)!) {data, response, error in
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            var encodedRoute: String?
+            if let json = NSJSONSerialization.JSONObjectWithData(data, options:nil, error:nil) as? [String:AnyObject] {
+                if let routes = json["routes"] as AnyObject? as? [AnyObject] {
+                    if let route = routes.first as? [String : AnyObject] {
+                        if let polyline = route["overview_polyline"] as AnyObject? as? [String : String] {
+                            if let points = polyline["points"] as AnyObject? as? String {
+                                encodedRoute = points
+                            }
+                        }
+                    }
+                }
+            }
+            dispatch_async(dispatch_get_main_queue()) {
+                completion(encodedRoute)
+            }
+            }.resume()
+    }
+    
+
     
     func fetchLocationsNearMe(completion: (returnValue: [AnyObject])->Void) {
         PFCloud.callFunctionInBackground("locationsNearMe", withParameters: ["category":"restroom","lat":32.88293263160078,"lon":-117.2109485336882,"radius":40]) {

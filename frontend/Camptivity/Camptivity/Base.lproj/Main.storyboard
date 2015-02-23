@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Xuu-BD-s0u">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Xuu-BD-s0u">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
@@ -26,6 +26,20 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZm-d0-eAP">
+                                <rect key="frame" x="0.0" y="64" width="600" height="21"/>
+                                <color key="backgroundColor" red="0.65774544869999996" green="0.73582115690000005" blue="0.79393818429999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="vs1-pf-EKh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Stop Navigation">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Yh-Cv-cKH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -33,9 +47,12 @@
                             <constraint firstItem="5PA-LK-lb9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="1hE-B7-pAT"/>
                             <constraint firstItem="bFQ-N7-Wv0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="57u-XS-Wdq"/>
                             <constraint firstAttribute="bottom" secondItem="bFQ-N7-Wv0" secondAttribute="bottom" id="7rC-to-7fy"/>
+                            <constraint firstItem="TZm-d0-eAP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Owa-aH-BJE"/>
                             <constraint firstAttribute="trailing" secondItem="bFQ-N7-Wv0" secondAttribute="trailing" id="V0Y-33-vUa"/>
+                            <constraint firstItem="TZm-d0-eAP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="h2O-x2-qBP"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5PA-LK-lb9" secondAttribute="bottom" id="pc7-qI-Obi"/>
                             <constraint firstItem="bFQ-N7-Wv0" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="pmO-xa-pO0"/>
+                            <constraint firstAttribute="trailing" secondItem="TZm-d0-eAP" secondAttribute="trailing" id="sSj-Do-nR5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MVL-Xh-Wdw">
@@ -67,6 +84,7 @@
                     <connections>
                         <outlet property="addressLabel" destination="5PA-LK-lb9" id="21a-VT-kdD"/>
                         <outlet property="mapView" destination="bFQ-N7-Wv0" id="ycZ-Ab-yb5"/>
+                        <outlet property="stopNavigationButton" destination="TZm-d0-eAP" id="gDa-1E-0vf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
