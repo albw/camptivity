@@ -10,35 +10,47 @@ import UIKit
 
 class FeedTableViewController: UITableViewController {
     
-    /* TODO:
-     * Currently not in use, working on issues with calling Segue requests
-     * via a UIAlertAction */
+    //Reference to alertviewcontroller
+    var alertController: UIAlertController!
     
-    let alertController = UIAlertController(title: "Default Style", message: "A standard alert.", preferredStyle: .Alert)
-    
-    let cancel_action = UIAlertAction(title: "Cancel", style: .Cancel) {
-        (action) in
-        // ...
-    }
-    
-    
-    let fb_login_action = UIAlertAction(title: "FB Login", style: .Default) {
-        (action) in
-        // ...
-    }
-    
-    let email_login_action = UIAlertAction(title: "Email Login", style: .Default){
-        (action) in
-        // ...
-    }
-    
-    let signup_action = UIAlertAction(title: "Sign Up", style: .Default){
-        UIAlertAction in
-    }
+    //Reference to alertviewcontroller actions
+    var cancel_action: UIAlertAction!
+    var fb_login_action: UIAlertAction!
+    var email_login_action: UIAlertAction!
+    var signup_action: UIAlertAction!
+    var input_action: UIAlertAction!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Initialize AlertController
+        alertController = UIAlertController(title: "Default Style", message: "A standard alert.", preferredStyle: .Alert)
+        
+        //Closure function for cancel_button action on alert view
+        cancel_action = UIAlertAction(title: "Cancel", style: .Cancel) {
+            action in
+            // ...
+        }
+        
+        //Closure function for facebook login action on alert view
+        fb_login_action = UIAlertAction(title: "FB Login", style: .Default) {
+            action in
+            // ...
+        }
+        
+        //Closure function for email login action on alert view
+        email_login_action = UIAlertAction(title: "Email Login", style: .Default){
+            action in
+            // ...
+        }
+        
+        //Closure function for sign up login action on alert view
+        signup_action = UIAlertAction(title: "Sign Up", style: .Default){
+            action in
+            self.performSegueWithIdentifier("login_segue", sender: nil)
+        }
+        
+        //Add all actions to the alertviewcontroller
         alertController.addAction(cancel_action)
         alertController.addAction(fb_login_action)
         alertController.addAction(email_login_action)
@@ -70,17 +82,12 @@ class FeedTableViewController: UITableViewController {
         return 0
     }
     
-    /* TODO:
-     * Currently unlinked action for bringing up login alert view
-     */
+    /*
+    * Login button is clicked, will present the uialertviewcontroller
+    */
     @IBAction func triggerUserLogin(sender: AnyObject) {
-        /*let signin_alertview : UIAlertView = UIAlertView(title: "Signin", message: "Login", delegate: nil, cancelButtonTitle: "Login", otherButtonTitles: "Login2")
         
-        signin_alertview.show()*/
-        
-        self.presentViewController(alertController, animated: true) {
-            // ...
-        }
+        self.presentViewController(alertController, animated: true) {}
         
     }
 
