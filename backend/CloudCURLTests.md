@@ -73,3 +73,16 @@ curl -X POST \
 -d '{"user":"Foo", "pass":"pw", "email":"thisisalecwu@gmail.com", "name":"ALEC"}' \
 https://api.parse.com/1/functions/newUserSignup
 ```
+
+##### fbSignup
+
+Attempts to register a new user via the locally authenticated Facebook route. 
+
+```bash
+curl -X POST \
+-H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
+-H "X-Parse-REST-API-Key: 8DzbViZ3uzuZVp9bZ9rztDQEKG0Tx9fP1HLPsx5U" \
+-H "Content-Type: application/json" \
+-d '{"fbID":"392874928", "email":"fastily@yahoo.com", "name":"Fastily"}' \
+https://api.parse.com/1/functions/fbSignup
+```

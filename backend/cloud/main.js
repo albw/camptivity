@@ -5,7 +5,7 @@
 /**
  * Performs initialization tasks for a new user:
  * 1) Create a blank score row for user
- */
+*/
 Parse.Cloud.afterSave("_User", function(request) {
 	if(!request.object)
 		console.log("Looks like we had an issue: " + JSON.stringify(request, null, 4));
@@ -21,14 +21,14 @@ Parse.Cloud.afterSave("_User", function(request) {
 /**
  * Auto-sets numRankings and avgRank to 0 when new Locations object is created.
  */
-Parse.Cloud.afterSave("Locations", function(request) {
-	if(!request.object)
-		console.log("Looks like we had an issue: " + JSON.stringify(request, null, 4));
-	else if(!request.object.existed())
-		request.object.save({numRankings: 0, avgRank: 0}).then(function(meh) {
-			console.log("Logged creation of new location object: " + request.object.get("name"));
-		});
-});
+ Parse.Cloud.afterSave("Locations", function(request) {
+ 	if(!request.object)
+ 		console.log("Looks like we had an issue: " + JSON.stringify(request, null, 4));
+ 	else if(!request.object.existed())
+ 		request.object.save({numRankings: 0, avgRank: 0}).then(function(meh) {
+ 			console.log("Logged creation of new location object: " + request.object.get("name"));
+ 		});
+ });
 
 
 /**
@@ -36,45 +36,45 @@ Parse.Cloud.afterSave("Locations", function(request) {
  * Takes two params - userId: pointer to the user's whos entry we'll be incrementing
  * 				      item: a string naming the column to increment.
  */
-function incScoreField(userId, item) {
-	return new Parse.Query("Score").equalTo("userID", userId).first().then(function(obj) {
-		obj.increment(item);
-		return obj.save();
-	});
-}
+ function incScoreField(userId, item) {
+ 	return new Parse.Query("Score").equalTo("userID", userId).first().then(function(obj) {
+ 		obj.increment(item);
+ 		return obj.save();
+ 	});
+ }
 
 
 /**
  * Performs following functions: 
  * 1) Re-computes the average for the Locations object referenced by this LocationRank. 
  * 2) Increment user's locationTags in Score table by one.
- */ 
- Parse.Cloud.afterSave("LocationRank", function(request) {
- 	if(request.object && !request.object.existed())
- 		new Parse.Query("Locations").get(request.object.get("target").id, {
- 			success: function(meh) {
- 				meh.set("avgRank", (meh.get("numRankings") * meh.get("avgRank") + request.object.get("rating"))/(meh.get("numRankings") + 1));
- 				meh.increment("numRankings");
- 				meh.save().then(function(blah) {
- 					console.log("Updated average of " + meh.get("name"));
+*/ 
+Parse.Cloud.afterSave("LocationRank", function(request) {
+	if(request.object && !request.object.existed())
+		new Parse.Query("Locations").get(request.object.get("target").id, {
+			success: function(meh) {
+				meh.set("avgRank", (meh.get("numRankings") * meh.get("avgRank") + request.object.get("rating"))/(meh.get("numRankings") + 1));
+				meh.increment("numRankings");
+				meh.save().then(function(blah) {
+					console.log("Updated average of " + meh.get("name"));
 
- 					incScoreField(meh.get("userID"), "locationTags").then(function(asdf) {
- 						console.log("Incremented location review score for " + asdf.get("userID").id);
- 					});
- 				});
- 			},
- 			error: function(ex) {
- 				console.log("Error running afterSave on LocationRank: " + JSON.stringify(ex, null, 4 ));
- 			}
- 		});
- });
+					incScoreField(meh.get("userID"), "locationTags").then(function(asdf) {
+						console.log("Incremented location review score for " + asdf.get("userID").id);
+					});
+				});
+			},
+			error: function(ex) {
+				console.log("Error running afterSave on LocationRank: " + JSON.stringify(ex, null, 4 ));
+			}
+		});
+});
 
 
 /**
  * When an EventVotes is cast:
  * 1) Increment the likesReceived score for user who created the event.
  * 2) Increment the likesGiven score for the user who voted.
- */
+*/
 Parse.Cloud.afterSave("EventVotes", function(request) {
 	if(request.object && !request.object.existed())
 		incScoreField(request.object.get("userID"), "votesGiven").then(function(asdf){
@@ -87,17 +87,27 @@ Parse.Cloud.afterSave("EventVotes", function(request) {
 					});
 				},
 				error: function(err) {
- 				console.log("Error running afterSave on EventVotes: " + JSON.stringify(ex, null, 4 ));
+					console.log("Error running afterSave on EventVotes: " + JSON.stringify(ex, null, 4 ));
 				}
 			});
 		});
 });
 
 
+/**
+ * Increments the event comment score for a user when they create a comment.
+ */
+Parse.Cloud.afterSave("EventCmt", function(request) {
+	if(request.object && !request.object.existed())
+ 		incScoreField(request.object.get("userID"), "eventComments").then(function(asdf){
+ 			console.log("Incremented event comment score for: " + asdf.get("userID").id);
+ 		});
+});
 
- /* //////////////////////////////////////////////////////////////////////////////// */
- /* /////////////////////////////////// JOBS /////////////////////////////////////// */
- /* //////////////////////////////////////////////////////////////////////////////// */
+
+/* //////////////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////// JOBS /////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////////// */
 
 /**
  * Internal job that goes through Events table and deletes all expired events.
@@ -137,7 +147,7 @@ Parse.Cloud.afterSave("EventVotes", function(request) {
  						response.success("Signed up a new user: " + ux.get("username"));
  					},
  					error: function(meh) {
- 						response.error("Failed to run newUserSignup job: " + JSON.stringify(meh, null, 4));
+ 						response.error("Failed to run newUserSignup task: " + JSON.stringify(meh, null, 4));
  					}
  				});
  			else
@@ -145,22 +155,45 @@ Parse.Cloud.afterSave("EventVotes", function(request) {
  		});
  	});
 
+
+/**
+ * Attempts to register a new user via Facebook.  The user shall login in the app, which will then pass the results of a successful login.
+ * Takes the following 3 params: fbID, email, and name.
+ * Example: {"fbID":"392874928", "email":"fastily@yahoo.com", "name":"Fastily"}
+ */
+Parse.Cloud.define("fbSignup", function(request, response) {
+	new Parse.Query("_User").equalTo("fbID", request.params.fbID).first().then(function(result){
+		if(!result)
+			Parse.User.signUp(request.params.email, "" + Math.random(), {email: request.params.email, name: request.params.name, fbID: request.params.fbID}, {
+				success: function(ux) {
+					response.success("Registered a new user via FB: " + ux.get("name") + " @ " + ux.get("fbID"));
+				},
+				error: function(meh) {
+ 					response.error("Failed to run fbSignup task: " + JSON.stringify(meh, null, 4));
+				}
+			});
+		else
+			response.error("FB user has already been signed up!");
+	});
+});
+
+
 /**
  * Attempts to send a password reset email.  Takes one param, the email to send the password reset.
  * Takes one param, email, in the following format: '{"email":"fastily@yahoo.com"}'
  */
-Parse.Cloud.define("resetPasswordRequest", function(request, response) {
-	Parse.User.requestPasswordReset(request.params.email, {
-		success: function(meh){
-			console.log("Sent password reset to " + request.params.email);
-			response.success();
-		},
-		error: function(err){
-			console.log("Error sending password reset to " + request.params.email);
-			response.error();
-		}
-	});
-});
+ Parse.Cloud.define("resetPasswordRequest", function(request, response) {
+ 	Parse.User.requestPasswordReset(request.params.email, {
+ 		success: function(meh){
+ 			console.log("Sent password reset to " + request.params.email);
+ 			response.success();
+ 		},
+ 		error: function(err){
+ 			console.log("Error sending password reset to " + request.params.email);
+ 			response.error();
+ 		}
+ 	});
+ });
 
 
 /**
@@ -168,15 +201,15 @@ Parse.Cloud.define("resetPasswordRequest", function(request, response) {
  * Takes params: category, lat, long, radius.  Example:
  * {"category":"restroom", "lat":30, "lon:"30, "radius":40}
  */
-Parse.Cloud.define("locationsNearMe", function(request, response) {
-	new Parse.Query("Locations").withinMiles("location", 
-		new Parse.GeoPoint(request.params.lat, request.params.lon), request.params.radius).equalTo("category", request.params.category).find({
-		success: function(result) {
-			response.success(result);
-		},
-		error: function(meh){
-			console.log("Error in locationsNearMe: " + JSON.stringify(meh, null, 4));
-			response.error(meh);
-		}
-	});
-});
+ Parse.Cloud.define("locationsNearMe", function(request, response) {
+ 	new Parse.Query("Locations").withinMiles("location", 
+ 		new Parse.GeoPoint(request.params.lat, request.params.lon), request.params.radius).equalTo("category", request.params.category).find({
+ 			success: function(result) {
+ 				response.success(result);
+ 			},
+ 			error: function(meh){
+ 				console.log("Error in locationsNearMe: " + JSON.stringify(meh, null, 4));
+ 				response.error(meh);
+ 			}
+ 		});
+ 	});
