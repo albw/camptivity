@@ -12,6 +12,11 @@ import Parse
 class FacebookLoginViewController: UIViewController, FBLoginViewDelegate {
     
     @IBOutlet var fbLoginView : FBLoginView!
+    var firstName: String!
+    var lastName: String!
+    var email: String!
+    var userID : String!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,9 +30,19 @@ class FacebookLoginViewController: UIViewController, FBLoginViewDelegate {
         println("This is where you perform a segue.")
     }
     
-    func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser){
-        println("User Name: \(user.name)")
+    func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser) {
+        self.firstName = user.first_name
+        self.lastName = user.last_name
+        self.userID =  user.objectID
+        FBRequestConnection.startForMeWithCompletionHandler { (connection, user, error) -> Void in
+            if (error == nil)
+            {
+                self.email = user.objectForKey("email") as String
+                self.performSegueWithIdentifier("showView", sender: self)
+            }
+        }
     }
+    
     
     func loginViewShowingLoggedOutUser(loginView : FBLoginView!) {
         println("User Logged Out")
@@ -42,6 +57,17 @@ class FacebookLoginViewController: UIViewController, FBLoginViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        
+//        if (segue.identifier == "showView"){
+//            var vc: AfterLoggedInFB = segue.destinationViewController as AfterLoggedInFB
+//            vc.firstName = self.firstName
+//            vc.lastName = self.lastName
+//            vc.userID = self.userID
+//            vc.email = self.email
+//        }
+//        
+//    }
     
     
 }

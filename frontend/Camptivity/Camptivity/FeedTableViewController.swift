@@ -35,6 +35,7 @@ class FeedTableViewController: UITableViewController {
         //Closure function for facebook login action on alert view
         fb_login_action = UIAlertAction(title: "FB Login", style: .Default) {
             action in
+            self.performSegueWithIdentifier("FB_Login", sender: nil)
             // ...
         }
         
