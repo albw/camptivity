@@ -86,3 +86,71 @@ curl -X POST \
 -d '{"fbID":"392874928", "email":"fastily@yahoo.com", "name":"Fastily"}' \
 https://api.parse.com/1/functions/fbSignup
 ```
+
+##### getUserScore
+
+Get a user's score using their username
+
+```bash
+curl -X POST \
+-H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
+-H "X-Parse-REST-API-Key: 8DzbViZ3uzuZVp9bZ9rztDQEKG0Tx9fP1HLPsx5U" \
+-H "Content-Type: application/json" \
+-d '{"user":"Admin"}' \
+https://api.parse.com/1/functions/getUserScore
+```
+
+
+##### getLocationRanks
+
+Get LocationRanks for a Locations object.
+
+```bash
+curl -X POST \
+-H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
+-H "X-Parse-REST-API-Key: 8DzbViZ3uzuZVp9bZ9rztDQEKG0Tx9fP1HLPsx5U" \
+-H "Content-Type: application/json" \
+-d '{"objid":"d70IYXni4G"}' \
+https://api.parse.com/1/functions/getLocationRanks
+```
+
+
+##### getEvents
+
+Get the (up to 1000 at once) per query most recent events.
+
+```bash
+curl -X POST \
+-H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
+-H "X-Parse-REST-API-Key: 8DzbViZ3uzuZVp9bZ9rztDQEKG0Tx9fP1HLPsx5U" \
+-H "Content-Type: application/json" \
+-d '{"limit":3, "skip":1}' \
+https://api.parse.com/1/functions/getEvents
+```
+
+
+##### countEventVotes
+
+Count up the number of event votes for a given event
+
+```bash
+curl -X POST \
+-H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
+-H "X-Parse-REST-API-Key: 8DzbViZ3uzuZVp9bZ9rztDQEKG0Tx9fP1HLPsx5U" \
+-H "Content-Type: application/json" \
+-d '{"obj":"CWwv1FzgPh"}' \
+https://api.parse.com/1/functions/countEventVotes
+```
+
+##### getEventComments
+
+Get the comments for an event
+
+```bash
+curl -X POST \
+-H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
+-H "X-Parse-REST-API-Key: 8DzbViZ3uzuZVp9bZ9rztDQEKG0Tx9fP1HLPsx5U" \
+-H "Content-Type: application/json" \
+-d '{"obj":"CWwv1FzgPh", "limit":1, "skip":1}' \
+https://api.parse.com/1/functions/getEventComments
+```

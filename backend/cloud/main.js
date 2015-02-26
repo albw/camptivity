@@ -213,3 +213,130 @@ Parse.Cloud.define("fbSignup", function(request, response) {
  			}
  		});
  	});
+
+
+
+/**
+ * Grabs first row of a table where a given column is equal to a specific value.
+ * Takes 3 params:
+ * 		table - String - the table to query
+ *		col - String - the column to search
+ *		value - Object - the object to look for.
+ */
+function entryWhere(table, col, value)
+{
+	return new Parse.Query(table).equalTo(col, value).first().then(function(obj) {
+		return obj;
+	});
+}
+
+
+/**
+ * Gets a user's Score entry.
+ * Takes one param: user
+ * Example: {"user":"Admin"}
+ */
+ Parse.Cloud.define("getUserScore", function(request, response) {
+ 	entryWhere("_User", "username", request.params.user).then(function(obj){
+ 		new Parse.Query("Score").equalTo("userID", obj).first().then(function(entry){
+ 			response.success(entry);
+ 		}, function(err){
+ 			response.error(err);
+ 		});
+ 	});
+ });
+
+/**
+ *  Creates a pointer for the specified table and objectid
+ *  Takes 2 params:
+ * 		table - String - The table object
+ *		objid - String - the objectId of the object to get.
+ */
+function makePointer(table, objid)
+{
+	return {__type: "Pointer", className: table, objectId: objid};
+}
+
+
+/**
+ * Gets LocationRanks for the specified Locations object.
+ * Takes one param: objid
+ * Example: {"objid":"d70IYXni4G"}
+ */
+ Parse.Cloud.define("getLocationRanks", function(request, response){
+ 	new Parse.Query("LocationRank").equalTo("target", makePointer("Locations", request.params.objid)).find({
+ 		success:function(asdf) {
+ 			response.success(asdf);
+ 		},
+ 		error:function(err) {
+ 			response.error(err);
+ 		}
+ 	});
+ });
+
+
+/**
+ * Get the number of event votes for a given event.
+ * Takes one param:
+ * 		obj - The unique objectId of the Event object we're trying to get votes for.
+ * Example: {"obj":"CWwv1FzgPh"}
+ */
+Parse.Cloud.define("countEventVotes", function(request, response) {
+	new Parse.Query("EventVotes").equalTo("target", makePointer("Events", request.params.obj)).limit(1000).count({
+		success: function(asdf) {
+			response.success(asdf);
+		},
+		error: function(err){
+			response.error(err);
+		}
+	});
+});
+
+
+/**
+ * Gets Events in descending (most recent first).  
+ * Takes 2 OPTIONAL params: 
+ * 		limit - limit the maximum number of items returned
+ *		skip - Skip this many items before returning items.  Useful for pagination.
+ * Example: {"limit":3, "skip":1}
+ */
+Parse.Cloud.define("getEvents", function(request, response){
+	var q = new Parse.Query("Events").descending("start");
+	if(request.params.limit)
+		q.limit(request.params.limit);
+	if(request.params.skip)
+		q.skip(request.params.skip);
+
+	q.find({
+		success:function(obj) {
+			response.success(obj);
+		},
+		error: function(err) {
+			response.error(err)
+		}
+	});
+});
+
+/**
+ * Get event comments for an event.
+ * Takes 3 params: 
+ * 		limit (OPTIONAL) - limit the maximum number of items returned
+ *		skip (OPTIONAL) - Skip this many items before returning items.  Useful for pagination.
+ * Example: {"limit":3, "skip":1, "obj":"CWwv1FzgPh"}
+ */
+Parse.Cloud.define("getEventComments", function(request, response){
+	var q = new Parse.Query("EventCmt").equalTo("target", makePointer("Events", request.params.obj));
+	if(request.params.limit)
+		q.limit(request.params.limit);
+	if(request.params.skip)
+		q.skip(request.params.skip);
+
+	q.find({
+		success:function(obj) {
+			response.success(obj);
+		},
+		error: function(err) {
+			response.error(err)
+		}
+	});
+});
