@@ -3,6 +3,7 @@
 //  Camptivity
 //
 //  Created by SI  on 2/12/15.
+//  Update by Phuong Mai on 2/17/2015
 //  Copyright (c) 2015 Camptivity INC. All rights reserved.
 //
 
@@ -155,6 +156,74 @@ class ParseDataProvider {
             }
         }
         return s
+    }
+    
+    // need #import <Bolts/Bolts.h> in Bridging Header
+    func saveIcon()-> Void {
+        
+        // the code upload picture/icon to Parse
+        var query = PFQuery(className:"EventCmt")
+        query.getObjectInBackgroundWithId("TuyyHRLHDm") {
+            (obj: PFObject!, error: NSError!) -> Void in
+            if error != nil {
+                NSLog("%@", error)
+            } else {
+                
+                // Recipe image
+                var imageData = NSData()
+                //imageData = UIImageJPEGRepresentation(self.imgView.image, 0.8)
+                
+                var imageFile = PFFile(data:imageData)
+                obj["photo"] = imageFile
+                
+                //obj.saveInBackground()
+            }
+        }
+    }
+    
+    func saveImageToPictureProfile()-> Void {
+        
+        // the code upload picture/icon to Parse
+        PFUser.logInWithUsernameInBackground("phuong", password: "phuong") {
+            (user: PFUser!, error: NSError!) -> Void in
+            if user != nil {
+                // Yes, User Exists
+                // Recipe image
+                var imageData = NSData()
+                //imageData = UIImageJPEGRepresentation(self.imgView.image, 0.8)
+                
+                var imageFile = PFFile(data:imageData)
+                user.setObject(imageFile, forKey: "profilePic")
+                //user.saveInBackground()
+                
+            } else {
+                // No, User Doesn't Exist
+            }
+        }
+
+    }
+    
+    func loadIcon()-> Void {
+        
+        // the code load picture/icon from Parse
+        var query = PFQuery(className:"EventCmt")
+        query.getObjectInBackgroundWithId("TuyyHRLHDm") {
+            (obj: PFObject!, error: NSError!) -> Void in
+            if error != nil {
+                NSLog("%@", error)
+            } else {
+                
+                let userImageFile = obj["photo"] as PFFile
+                userImageFile.getDataInBackgroundWithBlock {
+                    (imageData: NSData!, error: NSError!) -> Void in
+                    if error == nil {
+                        //self.imgView2.image = UIImage(data:imageData)
+                        
+                    }
+                }
+            }
+        }
+        
     }
 
     
