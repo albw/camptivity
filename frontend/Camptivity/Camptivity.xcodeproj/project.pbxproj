@@ -51,6 +51,26 @@
 		8A3499811A782048001B5A28 /* map-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A3499801A782048001B5A28 /* map-25.png */; };
 		8A3499831A7820A7001B5A28 /* group-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A3499821A7820A7001B5A28 /* group-25.png */; };
 		8A3499851A782269001B5A28 /* location-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A3499841A782269001B5A28 /* location-25.png */; };
+		8A5E61F41A9FB5A600E418ED /* FUIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61CD1A9FB5A600E418ED /* FUIAlertView.m */; };
+		8A5E61F51A9FB5A600E418ED /* FUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61CF1A9FB5A600E418ED /* FUIButton.m */; };
+		8A5E61F61A9FB5A600E418ED /* FUICellBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61D11A9FB5A600E418ED /* FUICellBackgroundView.m */; };
+		8A5E61F71A9FB5A600E418ED /* FUIPopoverBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61D31A9FB5A600E418ED /* FUIPopoverBackgroundView.m */; };
+		8A5E61F81A9FB5A600E418ED /* FUISegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61D51A9FB5A600E418ED /* FUISegmentedControl.m */; };
+		8A5E61F91A9FB5A600E418ED /* FUISwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61D71A9FB5A600E418ED /* FUISwitch.m */; };
+		8A5E61FA1A9FB5A600E418ED /* FUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61D91A9FB5A600E418ED /* FUITextField.m */; };
+		8A5E61FB1A9FB5A600E418ED /* NSString+Icons.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61DB1A9FB5A600E418ED /* NSString+Icons.m */; };
+		8A5E61FC1A9FB5A600E418ED /* UIBarButtonItem+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61DD1A9FB5A600E418ED /* UIBarButtonItem+FlatUI.m */; };
+		8A5E61FD1A9FB5A600E418ED /* UIColor+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61DF1A9FB5A600E418ED /* UIColor+FlatUI.m */; };
+		8A5E61FE1A9FB5A600E418ED /* UIFont+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61E11A9FB5A600E418ED /* UIFont+FlatUI.m */; };
+		8A5E61FF1A9FB5A600E418ED /* UIImage+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61E31A9FB5A600E418ED /* UIImage+FlatUI.m */; };
+		8A5E62001A9FB5A600E418ED /* UINavigationBar+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61E51A9FB5A600E418ED /* UINavigationBar+FlatUI.m */; };
+		8A5E62011A9FB5A600E418ED /* UIPopoverController+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61E71A9FB5A600E418ED /* UIPopoverController+FlatUI.m */; };
+		8A5E62021A9FB5A600E418ED /* UIProgressView+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61E91A9FB5A600E418ED /* UIProgressView+FlatUI.m */; };
+		8A5E62031A9FB5A600E418ED /* UISlider+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61EB1A9FB5A600E418ED /* UISlider+FlatUI.m */; };
+		8A5E62041A9FB5A600E418ED /* UIStepper+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61ED1A9FB5A600E418ED /* UIStepper+FlatUI.m */; };
+		8A5E62051A9FB5A600E418ED /* UITabBar+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61EF1A9FB5A600E418ED /* UITabBar+FlatUI.m */; };
+		8A5E62061A9FB5A600E418ED /* UITableViewCell+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61F11A9FB5A600E418ED /* UITableViewCell+FlatUI.m */; };
+		8A5E62071A9FB5A600E418ED /* UIToolbar+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61F31A9FB5A600E418ED /* UIToolbar+FlatUI.m */; };
 		8ABDB9DD1A92E29C00A0D6CB /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABDB9DC1A92E29C00A0D6CB /* FeedTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +134,47 @@
 		8A3499801A782048001B5A28 /* map-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-25.png"; sourceTree = "<group>"; };
 		8A3499821A7820A7001B5A28 /* group-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "group-25.png"; sourceTree = "<group>"; };
 		8A3499841A782269001B5A28 /* location-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location-25.png"; sourceTree = "<group>"; };
+		8A5E61CB1A9FB5A600E418ED /* FlatUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatUIKit.h; sourceTree = "<group>"; };
+		8A5E61CC1A9FB5A600E418ED /* FUIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUIAlertView.h; sourceTree = "<group>"; };
+		8A5E61CD1A9FB5A600E418ED /* FUIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUIAlertView.m; sourceTree = "<group>"; };
+		8A5E61CE1A9FB5A600E418ED /* FUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUIButton.h; sourceTree = "<group>"; };
+		8A5E61CF1A9FB5A600E418ED /* FUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUIButton.m; sourceTree = "<group>"; };
+		8A5E61D01A9FB5A600E418ED /* FUICellBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUICellBackgroundView.h; sourceTree = "<group>"; };
+		8A5E61D11A9FB5A600E418ED /* FUICellBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUICellBackgroundView.m; sourceTree = "<group>"; };
+		8A5E61D21A9FB5A600E418ED /* FUIPopoverBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUIPopoverBackgroundView.h; sourceTree = "<group>"; };
+		8A5E61D31A9FB5A600E418ED /* FUIPopoverBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUIPopoverBackgroundView.m; sourceTree = "<group>"; };
+		8A5E61D41A9FB5A600E418ED /* FUISegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUISegmentedControl.h; sourceTree = "<group>"; };
+		8A5E61D51A9FB5A600E418ED /* FUISegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUISegmentedControl.m; sourceTree = "<group>"; };
+		8A5E61D61A9FB5A600E418ED /* FUISwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUISwitch.h; sourceTree = "<group>"; };
+		8A5E61D71A9FB5A600E418ED /* FUISwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUISwitch.m; sourceTree = "<group>"; };
+		8A5E61D81A9FB5A600E418ED /* FUITextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUITextField.h; sourceTree = "<group>"; };
+		8A5E61D91A9FB5A600E418ED /* FUITextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUITextField.m; sourceTree = "<group>"; };
+		8A5E61DA1A9FB5A600E418ED /* NSString+Icons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Icons.h"; sourceTree = "<group>"; };
+		8A5E61DB1A9FB5A600E418ED /* NSString+Icons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Icons.m"; sourceTree = "<group>"; };
+		8A5E61DC1A9FB5A600E418ED /* UIBarButtonItem+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+FlatUI.h"; sourceTree = "<group>"; };
+		8A5E61DD1A9FB5A600E418ED /* UIBarButtonItem+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+FlatUI.m"; sourceTree = "<group>"; };
+		8A5E61DE1A9FB5A600E418ED /* UIColor+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FlatUI.h"; sourceTree = "<group>"; };
+		8A5E61DF1A9FB5A600E418ED /* UIColor+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FlatUI.m"; sourceTree = "<group>"; };
+		8A5E61E01A9FB5A600E418ED /* UIFont+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+FlatUI.h"; sourceTree = "<group>"; };
+		8A5E61E11A9FB5A600E418ED /* UIFont+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+FlatUI.m"; sourceTree = "<group>"; };
+		8A5E61E21A9FB5A600E418ED /* UIImage+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FlatUI.h"; sourceTree = "<group>"; };
+		8A5E61E31A9FB5A600E418ED /* UIImage+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FlatUI.m"; sourceTree = "<group>"; };
+		8A5E61E41A9FB5A600E418ED /* UINavigationBar+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+FlatUI.h"; sourceTree = "<group>"; };
+		8A5E61E51A9FB5A600E418ED /* UINavigationBar+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+FlatUI.m"; sourceTree = "<group>"; };
+		8A5E61E61A9FB5A600E418ED /* UIPopoverController+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIPopoverController+FlatUI.h"; sourceTree = "<group>"; };
+		8A5E61E71A9FB5A600E418ED /* UIPopoverController+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIPopoverController+FlatUI.m"; sourceTree = "<group>"; };
+		8A5E61E81A9FB5A600E418ED /* UIProgressView+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIProgressView+FlatUI.h"; sourceTree = "<group>"; };
+		8A5E61E91A9FB5A600E418ED /* UIProgressView+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIProgressView+FlatUI.m"; sourceTree = "<group>"; };
+		8A5E61EA1A9FB5A600E418ED /* UISlider+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISlider+FlatUI.h"; sourceTree = "<group>"; };
+		8A5E61EB1A9FB5A600E418ED /* UISlider+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISlider+FlatUI.m"; sourceTree = "<group>"; };
+		8A5E61EC1A9FB5A600E418ED /* UIStepper+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIStepper+FlatUI.h"; sourceTree = "<group>"; };
+		8A5E61ED1A9FB5A600E418ED /* UIStepper+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIStepper+FlatUI.m"; sourceTree = "<group>"; };
+		8A5E61EE1A9FB5A600E418ED /* UITabBar+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBar+FlatUI.h"; sourceTree = "<group>"; };
+		8A5E61EF1A9FB5A600E418ED /* UITabBar+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+FlatUI.m"; sourceTree = "<group>"; };
+		8A5E61F01A9FB5A600E418ED /* UITableViewCell+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+FlatUI.h"; sourceTree = "<group>"; };
+		8A5E61F11A9FB5A600E418ED /* UITableViewCell+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+FlatUI.m"; sourceTree = "<group>"; };
+		8A5E61F21A9FB5A600E418ED /* UIToolbar+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIToolbar+FlatUI.h"; sourceTree = "<group>"; };
+		8A5E61F31A9FB5A600E418ED /* UIToolbar+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIToolbar+FlatUI.m"; sourceTree = "<group>"; };
 		8ABDB9DC1A92E29C00A0D6CB /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -256,6 +317,7 @@
 				8A3499621A75871E001B5A28 /* Main.storyboard */,
 				13CE1DF61A815DD200957EB9 /* Images.xcassets */,
 				8A3499671A75871E001B5A28 /* LaunchScreen.xib */,
+				8A5E61CA1A9FB5A600E418ED /* FlatUIKit */,
 				8A34995C1A75871E001B5A28 /* Supporting Files */,
 				6EA4A6A31A7DAD2400B625ED /* Camptivity-Bridging-Header.h */,
 			);
@@ -288,6 +350,54 @@
 				8A3499731A75871E001B5A28 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8A5E61CA1A9FB5A600E418ED /* FlatUIKit */ = {
+			isa = PBXGroup;
+			children = (
+				8A5E61CB1A9FB5A600E418ED /* FlatUIKit.h */,
+				8A5E61CC1A9FB5A600E418ED /* FUIAlertView.h */,
+				8A5E61CD1A9FB5A600E418ED /* FUIAlertView.m */,
+				8A5E61CE1A9FB5A600E418ED /* FUIButton.h */,
+				8A5E61CF1A9FB5A600E418ED /* FUIButton.m */,
+				8A5E61D01A9FB5A600E418ED /* FUICellBackgroundView.h */,
+				8A5E61D11A9FB5A600E418ED /* FUICellBackgroundView.m */,
+				8A5E61D21A9FB5A600E418ED /* FUIPopoverBackgroundView.h */,
+				8A5E61D31A9FB5A600E418ED /* FUIPopoverBackgroundView.m */,
+				8A5E61D41A9FB5A600E418ED /* FUISegmentedControl.h */,
+				8A5E61D51A9FB5A600E418ED /* FUISegmentedControl.m */,
+				8A5E61D61A9FB5A600E418ED /* FUISwitch.h */,
+				8A5E61D71A9FB5A600E418ED /* FUISwitch.m */,
+				8A5E61D81A9FB5A600E418ED /* FUITextField.h */,
+				8A5E61D91A9FB5A600E418ED /* FUITextField.m */,
+				8A5E61DA1A9FB5A600E418ED /* NSString+Icons.h */,
+				8A5E61DB1A9FB5A600E418ED /* NSString+Icons.m */,
+				8A5E61DC1A9FB5A600E418ED /* UIBarButtonItem+FlatUI.h */,
+				8A5E61DD1A9FB5A600E418ED /* UIBarButtonItem+FlatUI.m */,
+				8A5E61DE1A9FB5A600E418ED /* UIColor+FlatUI.h */,
+				8A5E61DF1A9FB5A600E418ED /* UIColor+FlatUI.m */,
+				8A5E61E01A9FB5A600E418ED /* UIFont+FlatUI.h */,
+				8A5E61E11A9FB5A600E418ED /* UIFont+FlatUI.m */,
+				8A5E61E21A9FB5A600E418ED /* UIImage+FlatUI.h */,
+				8A5E61E31A9FB5A600E418ED /* UIImage+FlatUI.m */,
+				8A5E61E41A9FB5A600E418ED /* UINavigationBar+FlatUI.h */,
+				8A5E61E51A9FB5A600E418ED /* UINavigationBar+FlatUI.m */,
+				8A5E61E61A9FB5A600E418ED /* UIPopoverController+FlatUI.h */,
+				8A5E61E71A9FB5A600E418ED /* UIPopoverController+FlatUI.m */,
+				8A5E61E81A9FB5A600E418ED /* UIProgressView+FlatUI.h */,
+				8A5E61E91A9FB5A600E418ED /* UIProgressView+FlatUI.m */,
+				8A5E61EA1A9FB5A600E418ED /* UISlider+FlatUI.h */,
+				8A5E61EB1A9FB5A600E418ED /* UISlider+FlatUI.m */,
+				8A5E61EC1A9FB5A600E418ED /* UIStepper+FlatUI.h */,
+				8A5E61ED1A9FB5A600E418ED /* UIStepper+FlatUI.m */,
+				8A5E61EE1A9FB5A600E418ED /* UITabBar+FlatUI.h */,
+				8A5E61EF1A9FB5A600E418ED /* UITabBar+FlatUI.m */,
+				8A5E61F01A9FB5A600E418ED /* UITableViewCell+FlatUI.h */,
+				8A5E61F11A9FB5A600E418ED /* UITableViewCell+FlatUI.m */,
+				8A5E61F21A9FB5A600E418ED /* UIToolbar+FlatUI.h */,
+				8A5E61F31A9FB5A600E418ED /* UIToolbar+FlatUI.m */,
+			);
+			path = FlatUIKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -396,15 +506,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A5E62061A9FB5A600E418ED /* UITableViewCell+FlatUI.m in Sources */,
+				8A5E61FB1A9FB5A600E418ED /* NSString+Icons.m in Sources */,
+				8A5E61F41A9FB5A600E418ED /* FUIAlertView.m in Sources */,
 				8A3499611A75871E001B5A28 /* ViewController.swift in Sources */,
+				8A5E61FD1A9FB5A600E418ED /* UIColor+FlatUI.m in Sources */,
 				13CFE2BA1A8DD12C00F64DDC /* MapViewController.swift in Sources */,
+				8A5E61F81A9FB5A600E418ED /* FUISegmentedControl.m in Sources */,
 				6E8E95381A92D4730055A60C /* FacebookLoginViewController.swift in Sources */,
+				8A5E61F91A9FB5A600E418ED /* FUISwitch.m in Sources */,
+				8A5E62021A9FB5A600E418ED /* UIProgressView+FlatUI.m in Sources */,
+				8A5E61FA1A9FB5A600E418ED /* FUITextField.m in Sources */,
 				13CE1DED1A815B0400957EB9 /* MarkerInfoView.swift in Sources */,
+				8A5E62051A9FB5A600E418ED /* UITabBar+FlatUI.m in Sources */,
+				8A5E61F71A9FB5A600E418ED /* FUIPopoverBackgroundView.m in Sources */,
+				8A5E62041A9FB5A600E418ED /* UIStepper+FlatUI.m in Sources */,
 				8ABDB9DD1A92E29C00A0D6CB /* FeedTableViewController.swift in Sources */,
 				13CE1DEF1A815B0400957EB9 /* UIViewExtension.swift in Sources */,
 				13CFE2BD1A8DD17F00F64DDC /* AppDelegate.swift in Sources */,
+				8A5E62011A9FB5A600E418ED /* UIPopoverController+FlatUI.m in Sources */,
 				13CFE2BB1A8DD12C00F64DDC /* TypesTableViewController.swift in Sources */,
+				8A5E61FF1A9FB5A600E418ED /* UIImage+FlatUI.m in Sources */,
+				8A5E61F61A9FB5A600E418ED /* FUICellBackgroundView.m in Sources */,
+				8A5E62031A9FB5A600E418ED /* UISlider+FlatUI.m in Sources */,
 				13CFE2B71A8DD11700F64DDC /* ParseDataProvider.swift in Sources */,
+				8A5E62001A9FB5A600E418ED /* UINavigationBar+FlatUI.m in Sources */,
+				8A5E61F51A9FB5A600E418ED /* FUIButton.m in Sources */,
+				8A5E61FC1A9FB5A600E418ED /* UIBarButtonItem+FlatUI.m in Sources */,
+				8A5E62071A9FB5A600E418ED /* UIToolbar+FlatUI.m in Sources */,
+				8A5E61FE1A9FB5A600E418ED /* UIFont+FlatUI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
