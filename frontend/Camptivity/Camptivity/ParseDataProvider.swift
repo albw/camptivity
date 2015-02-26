@@ -62,13 +62,13 @@ class ParseDataProvider {
     func fetchLocationsNearMe(completion: (returnValue: [AnyObject])->Void) {
         PFCloud.callFunctionInBackground("locationsNearMe", withParameters: ["category":"restroom","lat":32.88293263160078,"lon":-117.2109485336882,"radius":40]) {
             (objects: AnyObject!, error: NSError!) -> Void in
-            var results = []
+            var result = []
             if (error != nil) {
                 // Your error handling here
             }
             else {
-                results = objects as NSArray
-                completion(returnValue:results)
+                result = objects as NSArray
+                completion(returnValue:result)
                 /*
                 //NSLog("Result: \(result) ")
                 println("===================")
@@ -106,6 +106,23 @@ class ParseDataProvider {
         return s
     }
 
+    func fbSignup()-> String {
+        var s = String()
+        PFCloud.callFunctionInBackground("fbSignup", withParameters: ["fbID":"392874928", "email":"fastily@yahoo.com", "name":"Fastily"]) {
+            (objects: AnyObject!, error: NSError!) -> Void in
+            var results = []
+            if (error != nil) {
+                // Your error handling here
+            }
+            else {
+                
+                s = objects as String
+                
+            }
+        }
+        return s
+    }
+    
     func emailRegistered()-> Bool {
         var s = Bool()
         PFCloud.callFunctionInBackground("emailRegistered", withParameters: ["email":"fastily@yahoo.com"]) {
@@ -157,6 +174,52 @@ class ParseDataProvider {
         }
         return s
     }
+    
+    func getUserScore()-> Float {
+        var s = Float()
+        PFCloud.callFunctionInBackground("getUserScore", withParameters: ["username":"Admin"]) {
+            (objects: AnyObject!, error: NSError!) -> Void in
+            var results = []
+            if (error != nil) {
+                // Your error handling here
+            }
+            else {
+                s = objects as Float
+            }
+        }
+        return s
+    }
+    
+    func getEvents(completion: (returnValue: [AnyObject])->Void) {
+        PFCloud.callFunctionInBackground("getEvents", withParameters: ["limit":3, "skip":1]) {
+            (objects: AnyObject!, error: NSError!) -> Void in
+            var result = []
+            if (error != nil) {
+                // Your error handling here
+            }
+            else {
+                result = objects as NSArray
+                completion(returnValue:result)
+                /*
+                //NSLog("Result: \(result) ")
+                println("===================")
+                
+                for (var i=0; i<result.count; i++)
+                {
+                println(result[i]["avgRank"] as Int)
+                println(result[i]["category"] as String)
+                println(result[i]["description"] as String)
+                println(result[i]["location"] as PFGeoPoint)
+                println(result[i]["name"] as String)
+                println(result[i]["numRankings"] as Int)
+                println(result[i]["userID"] as PFUser)
+                }
+                */
+                
+            }
+        }
+    }
+
     
     // need #import <Bolts/Bolts.h> in Bridging Header
     func saveIcon()-> Void {
