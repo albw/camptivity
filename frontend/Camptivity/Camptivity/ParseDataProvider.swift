@@ -59,8 +59,8 @@ class ParseDataProvider {
     
 
     
-    func fetchLocationsNearMe(completion: (returnValue: [AnyObject])->Void) {
-        PFCloud.callFunctionInBackground("locationsNearMe", withParameters: ["category":"restroom","lat":32.88293263160078,"lon":-117.2109485336882,"radius":40]) {
+    func fetchLocationsNearMe(categories:[String], completion: (returnValue: [AnyObject])->Void) {
+        PFCloud.callFunctionInBackground("locationsNearMe", withParameters: ["category":["restroom"],"lat":32.88293263160078,"lon":-117.2109485336882,"radius":40]) {
             (objects: AnyObject!, error: NSError!) -> Void in
             var result = []
             if (error != nil) {
