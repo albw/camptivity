@@ -189,6 +189,21 @@ class ParseDataProvider {
         }
         return s
     }
+
+    func countEventVotes()-> Int {
+        var s = Int()
+        PFCloud.callFunctionInBackground("countEventVotes", withParameters: ["obj":"CWwv1FzgPh"]) {
+            (objects: AnyObject!, error: NSError!) -> Void in
+            var results = []
+            if (error != nil) {
+                // Your error handling here
+            }
+            else {
+                s = objects as Int
+            }
+        }
+        return s
+    }
     
     func getEvents(completion: (returnValue: [AnyObject])->Void) {
         PFCloud.callFunctionInBackground("getEvents", withParameters: ["limit":3, "skip":1]) {
@@ -220,6 +235,21 @@ class ParseDataProvider {
         }
     }
 
+    func getEventComments(completion: (returnValue: [AnyObject])->Void) {
+        PFCloud.callFunctionInBackground("getEventComments", withParameters: ["limit":3, "skip":1, "obj":"CWwv1FzgPh"]) {
+            (objects: AnyObject!, error: NSError!) -> Void in
+            var result = []
+            if (error != nil) {
+                // Your error handling here
+            }
+            else {
+                result = objects as NSArray
+                completion(returnValue:result)
+                
+            }
+        }
+    }
+    
     
     // need #import <Bolts/Bolts.h> in Bridging Header
     func saveIcon()-> Void {
