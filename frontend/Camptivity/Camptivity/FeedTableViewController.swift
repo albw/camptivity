@@ -19,9 +19,18 @@ class FeedTableViewController: UITableViewController {
     var email_login_action: UIAlertAction!
     var signup_action: UIAlertAction!
     var input_action: UIAlertAction!
+    
+    //Reference to feedtableviewcell
+    let feedCellIdentifier = "FeedTableViewCell"
+   
+    //TODO Having problems with FUIUIKit atm
+    //var alertView : FUIAlertView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 160.0
         
         //Initialize AlertController
         alertController = UIAlertController(title: "Default Style", message: "A standard alert.", preferredStyle: .Alert)
@@ -48,7 +57,7 @@ class FeedTableViewController: UITableViewController {
         //Closure function for sign up login action on alert view
         signup_action = UIAlertAction(title: "Sign Up", style: .Default){
             action in
-            self.performSegueWithIdentifier("login_segue", sender: nil)
+            //self.performSegueWithIdentifier("login_segue", sender: nil)
         }
         
         //Add all actions to the alertviewcontroller
@@ -56,6 +65,13 @@ class FeedTableViewController: UITableViewController {
         alertController.addAction(fb_login_action)
         alertController.addAction(email_login_action)
         alertController.addAction(signup_action)
+        
+        //getEvents()
+        
+        //TODO Fix FUIUIKit Functionality Later
+        //alertView = FUIAlertView()
+        //alertView.titleLabel.textColor = UIColor.cloudsColor()
+        //alertView.show()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -63,6 +79,19 @@ class FeedTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    /*override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        deselectAllRows()
+    }
+    
+    func deselectAllRows() {
+        if let selectedRows = tableView.indexPathsForSelectedRows() as? [NSIndexPath] {
+            for indexPath in selectedRows {
+                tableView.deselectRowAtIndexPath(indexPath, animated: false)
+            }
+        }
+    }*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -74,13 +103,13 @@ class FeedTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 0
+        return 3
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 0
+        return 1
     }
     
     /*
@@ -91,16 +120,27 @@ class FeedTableViewController: UITableViewController {
         self.presentViewController(alertController, animated: true) {}
         
     }
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-
-        // Configure the cell...
-
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        return feedCellAtIndexPath(indexPath)
+    }
+    
+    func feedCellAtIndexPath(indexPath:NSIndexPath) -> FeedTableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("feedCell") as FeedTableViewCell
+        setTitleForCell(cell, indexPath: indexPath)
+        setDescriptionForCell(cell, indexPath: indexPath)
         return cell
     }
-    */
+    
+    func setTitleForCell(cell:FeedTableViewCell, indexPath:NSIndexPath) {
+        cell.title_label.text = "[No Title]"
+    }
+    
+    func setDescriptionForCell(cell:FeedTableViewCell, indexPath:NSIndexPath) {
+        cell.description_label.text = "[No Description]"
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.
