@@ -285,7 +285,7 @@ class ParseDataProvider {
                 obj["photo"] = imageFile
                 */
                 obj[colName] = img
-                //obj.saveInBackground()
+                obj.saveInBackground()
             }
         }
     }
@@ -303,7 +303,7 @@ class ParseDataProvider {
                 
                 //var imageFile = PFFile(data:imageData)
                 user.setObject(imageFile, forKey: "profilePic")
-                //user.saveInBackground()
+                user.saveInBackground()
                 
             } else {
                 // No, User Doesn't Exist
