@@ -91,9 +91,11 @@ class ParseDataProvider {
         }
     }
 
-    func newUserSignup()-> String {
+    func newUserSignup(username:String, password:String, email: String, fullname: String)-> String {
         var s = String()
-        PFCloud.callFunctionInBackground("newUserSignup", withParameters: ["user":"Username", "pass":"password", "email":"Username@gmail.com", "name":"fullname"]) {
+
+        //PFCloud.callFunctionInBackground("newUserSignup", withParameters: ["user":"Username", "pass":"password", "email":"Username@gmail.com", "name":"fullname"]) {
+        PFCloud.callFunctionInBackground("newUserSignup", withParameters: ["user":username, "pass":password, "email":email, "name":fullname]) {
             (objects: AnyObject!, error: NSError!) -> Void in
             var results = []
             if (error != nil) {
@@ -108,9 +110,10 @@ class ParseDataProvider {
         return s
     }
 
-    func fbSignup()-> String {
+    func fbSignup(fbID:String, email:String, fullname:String)-> String {
         var s = String()
-        PFCloud.callFunctionInBackground("fbSignup", withParameters: ["fbID":"392874928", "email":"fastily@yahoo.com", "name":"Fastily"]) {
+        //PFCloud.callFunctionInBackground("fbSignup", withParameters: ["fbID":"392874928", "email":"fastily@yahoo.com", "name":"Fastily"]) {
+        PFCloud.callFunctionInBackground("fbSignup", withParameters: ["fbID":fbID, "email":email, "name":fullname]) {
             (objects: AnyObject!, error: NSError!) -> Void in
             var results = []
             if (error != nil) {
@@ -125,9 +128,10 @@ class ParseDataProvider {
         return s
     }
     
-    func emailRegistered()-> Bool {
+    func emailRegistered(email:String)-> Bool {
         var s = Bool()
-        PFCloud.callFunctionInBackground("emailRegistered", withParameters: ["email":"fastily@yahoo.com"]) {
+        //PFCloud.callFunctionInBackground("emailRegistered", withParameters: ["email":"fastily@yahoo.com"]) {
+        PFCloud.callFunctionInBackground("emailRegistered", withParameters: ["email":email]) {
             (objects: AnyObject!, error: NSError!) -> Void in
             var results = []
             if (error != nil) {
@@ -143,9 +147,10 @@ class ParseDataProvider {
     }
 
 
-    func usernameTaken()-> Bool {
+    func usernameTaken(username:String)-> Bool {
         var s = Bool()
-        PFCloud.callFunctionInBackground("usernameTaken", withParameters: ["username":"Admin"]) {
+        //PFCloud.callFunctionInBackground("usernameTaken", withParameters: ["username":"Admin"]) {
+        PFCloud.callFunctionInBackground("usernameTaken", withParameters: ["username":username]) {
             (objects: AnyObject!, error: NSError!) -> Void in
             var results = []
             if (error != nil) {
@@ -160,9 +165,10 @@ class ParseDataProvider {
         return s
     }
 
-    func resetPasswordRequest()-> String {
+    func resetPasswordRequest(email:String)-> String {
         var s = String()
-        PFCloud.callFunctionInBackground("resetPasswordRequest", withParameters: ["email":"fastily@yahoo.com"]) {
+        //PFCloud.callFunctionInBackground("resetPasswordRequest", withParameters: ["email":"fastily@yahoo.com"]) {
+        PFCloud.callFunctionInBackground("resetPasswordRequest", withParameters: ["email":email]) {
             (objects: AnyObject!, error: NSError!) -> Void in
             var results = []
             if (error != nil) {
@@ -177,9 +183,10 @@ class ParseDataProvider {
         return s
     }
     
-    func getUserScore()-> Float {
+    func getUserScore(username:String)-> Float {
         var s = Float()
-        PFCloud.callFunctionInBackground("getUserScore", withParameters: ["username":"Admin"]) {
+        //PFCloud.callFunctionInBackground("getUserScore", withParameters: ["username":"Admin"]) {
+        PFCloud.callFunctionInBackground("getUserScore", withParameters: ["username":username]) {
             (objects: AnyObject!, error: NSError!) -> Void in
             var results = []
             if (error != nil) {
@@ -192,9 +199,10 @@ class ParseDataProvider {
         return s
     }
 
-    func countEventVotes()-> Int {
+    func countEventVotes(objID:String)-> Int {
         var s = Int()
-        PFCloud.callFunctionInBackground("countEventVotes", withParameters: ["obj":"CWwv1FzgPh"]) {
+        //PFCloud.callFunctionInBackground("countEventVotes", withParameters: ["obj":"CWwv1FzgPh"]) {
+        PFCloud.callFunctionInBackground("countEventVotes", withParameters: ["obj":objID]) {
             (objects: AnyObject!, error: NSError!) -> Void in
             var results = []
             if (error != nil) {
@@ -206,9 +214,11 @@ class ParseDataProvider {
         }
         return s
     }
-    
-    func getEvents(completion: (returnValue: [AnyObject])->Void) {
-        PFCloud.callFunctionInBackground("getEvents", withParameters: ["limit":3, "skip":1]) {
+
+
+    func getEvents(limit:Int, skip:Int, completion: (returnValue: [AnyObject])->Void) {
+        //PFCloud.callFunctionInBackground("getEvents", withParameters: ["limit":3, "skip":1]) {
+        PFCloud.callFunctionInBackground("getEvents", withParameters: ["limit":limit, "skip":skip]) {
             (objects: AnyObject!, error: NSError!) -> Void in
             var result = []
             if (error != nil) {
@@ -216,7 +226,8 @@ class ParseDataProvider {
             }
             else {
                 result = objects as NSArray
-                completion(returnValue:result)
+
+                //completion(returnValue:result)
                 /*
                 //NSLog("Result: \(result) ")
                 println("===================")
@@ -237,8 +248,9 @@ class ParseDataProvider {
         }
     }
 
-    func getEventComments(completion: (returnValue: [AnyObject])->Void) {
-        PFCloud.callFunctionInBackground("getEventComments", withParameters: ["limit":3, "skip":1, "obj":"CWwv1FzgPh"]) {
+    func getEventComments(objID:String, limit:Int, skip:Int, completion: (returnValue: [AnyObject])->Void) {
+        //PFCloud.callFunctionInBackground("getEventComments", withParameters: ["limit":3, "skip":1, "obj":"CWwv1FzgPh"]) {
+        PFCloud.callFunctionInBackground("getEventComments", withParameters: ["limit":limit, "skip":skip, "obj":objID]) {
             (objects: AnyObject!, error: NSError!) -> Void in
             var result = []
             if (error != nil) {
@@ -254,32 +266,34 @@ class ParseDataProvider {
     
     
     // need #import <Bolts/Bolts.h> in Bridging Header
-    func saveIcon()-> Void {
+    func saveIcon(className:String, objID:String, colName:String, img:PFFile)-> Void {
         
         // the code upload picture/icon to Parse
-        var query = PFQuery(className:"EventCmt")
-        query.getObjectInBackgroundWithId("TuyyHRLHDm") {
+        var query = PFQuery(className: className)
+        query.getObjectInBackgroundWithId(objID) {
             (obj: PFObject!, error: NSError!) -> Void in
             if error != nil {
                 NSLog("%@", error)
             } else {
                 
+                /*
                 // Recipe image
                 var imageData = NSData()
                 //imageData = UIImageJPEGRepresentation(self.imgView.image, 0.8)
                 
                 var imageFile = PFFile(data:imageData)
                 obj["photo"] = imageFile
-                
+                */
+                obj[colName] = img
                 //obj.saveInBackground()
             }
         }
     }
     
-    func saveImageToPictureProfile()-> Void {
+    func saveImageToPictureProfile(username:String, password:String, imageFile:PFFile)-> Void {
         
         // the code upload picture/icon to Parse
-        PFUser.logInWithUsernameInBackground("phuong", password: "phuong") {
+        PFUser.logInWithUsernameInBackground(username, password: password) {
             (user: PFUser!, error: NSError!) -> Void in
             if user != nil {
                 // Yes, User Exists
@@ -287,7 +301,7 @@ class ParseDataProvider {
                 var imageData = NSData()
                 //imageData = UIImageJPEGRepresentation(self.imgView.image, 0.8)
                 
-                var imageFile = PFFile(data:imageData)
+                //var imageFile = PFFile(data:imageData)
                 user.setObject(imageFile, forKey: "profilePic")
                 //user.saveInBackground()
                 
@@ -295,12 +309,12 @@ class ParseDataProvider {
                 // No, User Doesn't Exist
             }
         }
-
     }
     
-    func loadIcon()-> Void {
+    func loadIcon(className:String, objID:String, colName:String)-> NSData {
         
         // the code load picture/icon from Parse
+        var r = NSData()
         var query = PFQuery(className:"EventCmt")
         query.getObjectInBackgroundWithId("TuyyHRLHDm") {
             (obj: PFObject!, error: NSError!) -> Void in
@@ -308,18 +322,17 @@ class ParseDataProvider {
                 NSLog("%@", error)
             } else {
                 
-                let userImageFile = obj["photo"] as PFFile
+                let userImageFile = obj[colName] as PFFile
                 userImageFile.getDataInBackgroundWithBlock {
                     (imageData: NSData!, error: NSError!) -> Void in
                     if error == nil {
                         //self.imgView2.image = UIImage(data:imageData)
+                        r = imageData
                         
                     }
                 }
             }
         }
-        
+        return r
     }
-
-    
 }
