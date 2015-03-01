@@ -51,6 +51,7 @@
 		8A3499811A782048001B5A28 /* map-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A3499801A782048001B5A28 /* map-25.png */; };
 		8A3499831A7820A7001B5A28 /* group-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A3499821A7820A7001B5A28 /* group-25.png */; };
 		8A3499851A782269001B5A28 /* location-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A3499841A782269001B5A28 /* location-25.png */; };
+		8A3A75A71AA25746006A1EB8 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3A75A61AA25746006A1EB8 /* FeedTableViewCell.swift */; };
 		8A5E61F41A9FB5A600E418ED /* FUIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61CD1A9FB5A600E418ED /* FUIAlertView.m */; };
 		8A5E61F51A9FB5A600E418ED /* FUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61CF1A9FB5A600E418ED /* FUIButton.m */; };
 		8A5E61F61A9FB5A600E418ED /* FUICellBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61D11A9FB5A600E418ED /* FUICellBackgroundView.m */; };
@@ -134,6 +135,7 @@
 		8A3499801A782048001B5A28 /* map-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-25.png"; sourceTree = "<group>"; };
 		8A3499821A7820A7001B5A28 /* group-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "group-25.png"; sourceTree = "<group>"; };
 		8A3499841A782269001B5A28 /* location-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location-25.png"; sourceTree = "<group>"; };
+		8A3A75A61AA25746006A1EB8 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		8A5E61CB1A9FB5A600E418ED /* FlatUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatUIKit.h; sourceTree = "<group>"; };
 		8A5E61CC1A9FB5A600E418ED /* FUIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUIAlertView.h; sourceTree = "<group>"; };
 		8A5E61CD1A9FB5A600E418ED /* FUIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUIAlertView.m; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				8A3499601A75871E001B5A28 /* ViewController.swift */,
 				6E8E95371A92D4730055A60C /* FacebookLoginViewController.swift */,
 				8ABDB9DC1A92E29C00A0D6CB /* FeedTableViewController.swift */,
+				8A3A75A61AA25746006A1EB8 /* FeedTableViewCell.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				13CE1DEF1A815B0400957EB9 /* UIViewExtension.swift in Sources */,
 				13CFE2BD1A8DD17F00F64DDC /* AppDelegate.swift in Sources */,
 				8A5E62011A9FB5A600E418ED /* UIPopoverController+FlatUI.m in Sources */,
+				8A3A75A71AA25746006A1EB8 /* FeedTableViewCell.swift in Sources */,
 				13CFE2BB1A8DD12C00F64DDC /* TypesTableViewController.swift in Sources */,
 				8A5E61FF1A9FB5A600E418ED /* UIImage+FlatUI.m in Sources */,
 				8A5E61F61A9FB5A600E418ED /* FUICellBackgroundView.m in Sources */,
