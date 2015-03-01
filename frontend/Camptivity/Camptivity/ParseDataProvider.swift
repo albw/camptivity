@@ -57,34 +57,36 @@ class ParseDataProvider {
             }.resume()
     }
     
-
-    
-    func fetchLocationsNearMe(completion: (returnValue: [AnyObject])->Void) {
-        PFCloud.callFunctionInBackground("locationsNearMe", withParameters: ["category":"restroom","lat":32.88293263160078,"lon":-117.2109485336882,"radius":40]) {
+    func fetchLocationsNearMe(categories:[String], completion: (returnValue: [AnyObject])->Void) {
+        for search in categories {
+            NSLog(search as NSString)
+        }
+        
+        PFCloud.callFunctionInBackground("locationsNearMe", withParameters: ["category":categories, "lat":32.88293263160078, "lon":-117.2109485336882, "radius":400]) {
             (objects: AnyObject!, error: NSError!) -> Void in
-            var result = []
+            var results = []
             if (error != nil) {
                 // Your error handling here
             }
             else {
-                result = objects as NSArray
-                completion(returnValue:result)
-                /*
+                results = objects as NSArray
+                completion(returnValue:results)
+                
                 //NSLog("Result: \(result) ")
                 println("===================")
-
-                for (var i=0; i<result.count; i++)
+                
+                for (var i=0; i<results.count; i++)
                 {
-                    println(result[i]["avgRank"] as Int)
-                    println(result[i]["category"] as String)
-                    println(result[i]["description"] as String)
-                    println(result[i]["location"] as PFGeoPoint)
-                    println(result[i]["name"] as String)
-                    println(result[i]["numRankings"] as Int)
-                    println(result[i]["userID"] as PFUser)
+                    //println(results[i]["avgRank"] as Int)
+                    println(results[i]["category"] as String)
+                    //println(results[i]["description"] as String)
+                    //println(results[i]["location"] as PFGeoPoint)
+                    //println(results[i]["name"] as String)
+                    //println(results[i]["numRankings"] as Int)
+                    //println(results[i]["userID"] as PFUser)
                 }
-                */
-
+                
+                
             }
         }
     }

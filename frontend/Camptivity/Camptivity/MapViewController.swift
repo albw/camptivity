@@ -8,13 +8,13 @@
 
 import UIKit
 
-class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLLocationManagerDelegate, GMSMapViewDelegate {
+class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLLocationManagerDelegate, GMSMapViewDelegate, NewEventViewControllerDelegate {
     
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var stopNavigationButton: UIButton!
     
-    var searchedTypes = ["bakery", "bar", "cafe", "grocery_or_supermarket", "restaurant", "restroom"]
+    var searchedTypes = ["bar", "grocery_or_supermarket", "restaurant", "restroom"]
     let dataProvider = ParseDataProvider()
     var polylineArray : NSMutableArray = []
     
@@ -64,20 +64,28 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
             controller.selectedTypes = searchedTypes
             controller.delegate = self
         }
+        
+        if segue.identifier == "goToCreateNewEvent"
+        {
+            let coordinate = sender as [String:Double]
+            let controller = segue.destinationViewController as NewEventViewController
+            controller.delegate = self
+            controller.location = CLLocationCoordinate2DMake(coordinate["latitude"]!, coordinate["longitude"]!)
+        }
     }
     
     func fetchNearbyLocations() {
+        //NSLog("here is the fetchnearbylocations")
         mapView.clear()
         
-        dataProvider.fetchLocationsBaseOnCategories(searchedTypes) { locations in
-            for location in locations {
-                //NSLog("%@\n", (location["name"] as NSString))
-                
+        dataProvider.fetchLocationsNearMe(searchedTypes) { results in
+            for result in results {
                 var marker = GMSMarker()
-                marker.position = CLLocationCoordinate2DMake((location["location"] as PFGeoPoint).latitude, (location["location"] as PFGeoPoint).longitude)
-                marker.title = (location["name"] as NSString)
-                //marker.snippet = location["description"] as NSString
-                marker.icon = UIImage(named: "restroom")
+                marker.position = CLLocationCoordinate2DMake((result["location"] as PFGeoPoint).latitude, (result["location"] as PFGeoPoint).longitude)
+                marker.title = (result["name"] as NSString)
+                marker.snippet = result["description"] as NSString
+                marker.userData = result["category"] as NSString
+                marker.icon = UIImage(named: result["category"] as NSString)
                 marker.map = self.mapView
             }
         }
@@ -111,18 +119,23 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
         stopNavigationButton.hidden = false
     }
     
-    
-    func mapView(mapView: GMSMapView!, didLongPressAtCoordinate coordinate: CLLocationCoordinate2D) {
+    func didCreateEventAtCoordinate( name: NSString, Description: NSString, coordinate: CLLocationCoordinate2D ) {
         var marker = GMSMarker()
+        
         marker.position = coordinate
-        marker.title = "sdsadas"
-        marker.snippet = "sdfs"
-        marker.icon = UIImage(named: "restroom")
+        marker.title = name
+        marker.snippet = Description
         marker.map = self.mapView
         
         //pop out the info window
-        self.mapView.selectedMarker = marker
+        //self.mapView.selectedMarker = marker
         self.mapView.animateToLocation(coordinate)
+    }
+    
+    
+    func mapView(mapView: GMSMapView!, didLongPressAtCoordinate coordinate: CLLocationCoordinate2D) {
+        var coor = [ "longitude" : coordinate.longitude, "latitude" : coordinate.latitude ]
+        performSegueWithIdentifier("goToCreateNewEvent", sender: coor)
     }
     
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
@@ -134,8 +147,9 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
     func mapView(mapView: GMSMapView!, markerInfoContents marker: GMSMarker!) -> UIView! {
         
         if let infoView = UIView.viewFromNibName("MarkerInfoView") as? MarkerInfoView {
-            infoView.nameLabel.text = "ssssssssss"
-            infoView.placePhoto.image = UIImage(named: "restroom")
+            infoView.nameLabel.text = marker.title
+            infoView.placePhoto.image = UIImage(named: marker.userData as NSString)
+            infoView.descriptionLabel.text = marker.snippet
             return infoView
         }
         else {

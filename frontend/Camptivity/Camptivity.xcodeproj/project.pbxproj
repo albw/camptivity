@@ -10,6 +10,7 @@
 		13636FE11A816B8100CF1613 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13636FE01A816B8100CF1613 /* Social.framework */; };
 		13636FE31A816B8600CF1613 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13636FE21A816B8600CF1613 /* Accounts.framework */; };
 		136439011A816DF9005AE6F0 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 136439001A816DF9005AE6F0 /* libstdc++.6.dylib */; };
+		13C1E8241AA2F80C008A2E60 /* NewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C1E8231AA2F80C008A2E60 /* NewEventViewController.swift */; };
 		13CE1DD01A81576B00957EB9 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13CE1DCE1A81576B00957EB9 /* Parse.framework */; };
 		13CE1DD21A81577800957EB9 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 13CE1DD11A81577800957EB9 /* GoogleMaps.bundle */; };
 		13CE1DD41A81581700957EB9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13CE1DD31A81581700957EB9 /* OpenGLES.framework */; };
@@ -89,6 +90,7 @@
 		13636FE01A816B8100CF1613 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		13636FE21A816B8600CF1613 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		136439001A816DF9005AE6F0 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
+		13C1E8231AA2F80C008A2E60 /* NewEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewEventViewController.swift; sourceTree = "<group>"; };
 		13CE1DCE1A81576B00957EB9 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		13CE1DD11A81577800957EB9 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		13CE1DD31A81581700957EB9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -234,6 +236,7 @@
 				6E8E95371A92D4730055A60C /* FacebookLoginViewController.swift */,
 				8ABDB9DC1A92E29C00A0D6CB /* FeedTableViewController.swift */,
 				8A3A75A61AA25746006A1EB8 /* FeedTableViewCell.swift */,
+				13C1E8231AA2F80C008A2E60 /* NewEventViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -533,6 +536,7 @@
 				8A5E61FF1A9FB5A600E418ED /* UIImage+FlatUI.m in Sources */,
 				8A5E61F61A9FB5A600E418ED /* FUICellBackgroundView.m in Sources */,
 				8A5E62031A9FB5A600E418ED /* UISlider+FlatUI.m in Sources */,
+				13C1E8241AA2F80C008A2E60 /* NewEventViewController.swift in Sources */,
 				13CFE2B71A8DD11700F64DDC /* ParseDataProvider.swift in Sources */,
 				8A5E62001A9FB5A600E418ED /* UINavigationBar+FlatUI.m in Sources */,
 				8A5E61F51A9FB5A600E418ED /* FUIButton.m in Sources */,

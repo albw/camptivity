@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Xuu-BD-s0u">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Xuu-BD-s0u">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -86,11 +86,12 @@
                         <outlet property="addressLabel" destination="5PA-LK-lb9" id="21a-VT-kdD"/>
                         <outlet property="mapView" destination="bFQ-N7-Wv0" id="ycZ-Ab-yb5"/>
                         <outlet property="stopNavigationButton" destination="TZm-d0-eAP" id="gDa-1E-0vf"/>
+                        <segue destination="78J-IT-sH4" kind="show" identifier="goToCreateNewEvent" id="fMT-a3-vQc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="876" y="-335"/>
+            <point key="canvasLocation" x="826" y="-359"/>
         </scene>
         <!--What's nearby?-->
         <scene sceneID="eDV-Le-HQ1">
@@ -316,6 +317,137 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tsM-sF-NzC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1740" y="389"/>
+        </scene>
+        <!--New Event-->
+        <scene sceneID="znE-3U-ogA">
+            <objects>
+                <viewController id="78J-IT-sH4" customClass="NewEventViewController" customModule="Camptivity" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QEp-DU-dOI"/>
+                        <viewControllerLayoutGuide type="bottom" id="l0x-38-IEP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8Ts-c4-3v8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W5c-sE-Nt6">
+                                <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RWZ-i1-bjG">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="691"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="What is your event name?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iFq-wB-0QM">
+                                                <rect key="frame" x="0.0" y="32" width="600" height="33"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="33" id="Bvv-K2-aeq"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Input your event description here!" translatesAutoresizingMaskIntoConstraints="NO" id="vym-jK-JOF">
+                                                <rect key="frame" x="0.0" y="91" width="600" height="78"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="78" id="a9g-3C-KdH"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When does the event start?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dso-py-LnA">
+                                                <rect key="frame" x="0.0" y="201" width="600" height="26"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="26" id="LRJ-zT-zGK"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="63A-iI-Alu">
+                                                <rect key="frame" x="0.0" y="235" width="600" height="162"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="162" id="vO8-Fg-cRb"/>
+                                                </constraints>
+                                                <date key="date" timeIntervalSinceReferenceDate="446851876.97840798">
+                                                    <!--2015-02-28 21:31:16 +0000-->
+                                                </date>
+                                            </datePicker>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When does the event end?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToV-iP-Lhe">
+                                                <rect key="frame" x="0.0" y="426" width="600" height="26"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="26" id="qDM-wu-t42"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="D8n-sP-kkf">
+                                                <rect key="frame" x="0.0" y="460" width="600" height="162"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="162" id="RNz-ZD-tRN"/>
+                                                </constraints>
+                                                <date key="date" timeIntervalSinceReferenceDate="446851876.97840798">
+                                                    <!--2015-02-28 21:31:16 +0000-->
+                                                </date>
+                                            </datePicker>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="63A-iI-Alu" secondAttribute="trailing" id="2IZ-8z-iIw"/>
+                                            <constraint firstAttribute="trailing" secondItem="Dso-py-LnA" secondAttribute="trailing" id="8hM-Ei-iJ4"/>
+                                            <constraint firstItem="D8n-sP-kkf" firstAttribute="leading" secondItem="RWZ-i1-bjG" secondAttribute="leading" id="9BT-xv-TUF"/>
+                                            <constraint firstItem="vym-jK-JOF" firstAttribute="top" secondItem="iFq-wB-0QM" secondAttribute="bottom" constant="26" id="CmN-k9-zAy"/>
+                                            <constraint firstAttribute="trailing" secondItem="vym-jK-JOF" secondAttribute="trailing" id="DyL-PN-Mbt"/>
+                                            <constraint firstAttribute="height" constant="691" id="N2D-gM-5ES"/>
+                                            <constraint firstItem="63A-iI-Alu" firstAttribute="leading" secondItem="RWZ-i1-bjG" secondAttribute="leading" id="N6z-rC-GzX"/>
+                                            <constraint firstItem="Dso-py-LnA" firstAttribute="leading" secondItem="RWZ-i1-bjG" secondAttribute="leading" id="NW4-6I-8ZK"/>
+                                            <constraint firstItem="vym-jK-JOF" firstAttribute="leading" secondItem="RWZ-i1-bjG" secondAttribute="leading" id="PKB-PY-l0D"/>
+                                            <constraint firstItem="ToV-iP-Lhe" firstAttribute="leading" secondItem="RWZ-i1-bjG" secondAttribute="leading" id="WXg-9a-v3d"/>
+                                            <constraint firstItem="ToV-iP-Lhe" firstAttribute="top" secondItem="63A-iI-Alu" secondAttribute="bottom" constant="29" id="XTm-U2-79e"/>
+                                            <constraint firstItem="Dso-py-LnA" firstAttribute="top" secondItem="vym-jK-JOF" secondAttribute="bottom" constant="32" id="bqb-6r-8ax"/>
+                                            <constraint firstItem="iFq-wB-0QM" firstAttribute="top" secondItem="RWZ-i1-bjG" secondAttribute="top" constant="32" id="cbx-9r-FbP"/>
+                                            <constraint firstAttribute="trailing" secondItem="ToV-iP-Lhe" secondAttribute="trailing" id="dzE-mX-MAw"/>
+                                            <constraint firstAttribute="trailing" secondItem="D8n-sP-kkf" secondAttribute="trailing" id="lcr-IK-g06"/>
+                                            <constraint firstItem="iFq-wB-0QM" firstAttribute="leading" secondItem="RWZ-i1-bjG" secondAttribute="leading" id="n1U-3I-4g7"/>
+                                            <constraint firstItem="63A-iI-Alu" firstAttribute="top" secondItem="Dso-py-LnA" secondAttribute="bottom" constant="8" id="tE8-sQ-s7e"/>
+                                            <constraint firstAttribute="trailing" secondItem="iFq-wB-0QM" secondAttribute="trailing" id="uVz-lf-WrU"/>
+                                            <constraint firstItem="D8n-sP-kkf" firstAttribute="top" secondItem="ToV-iP-Lhe" secondAttribute="bottom" constant="8" id="uo5-21-uck"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="RWZ-i1-bjG" firstAttribute="centerX" secondItem="W5c-sE-Nt6" secondAttribute="centerX" id="8K5-HO-dRw"/>
+                                    <constraint firstAttribute="trailing" secondItem="RWZ-i1-bjG" secondAttribute="trailing" id="Dxm-UM-2wX"/>
+                                    <constraint firstAttribute="bottom" secondItem="RWZ-i1-bjG" secondAttribute="bottom" constant="-91" id="GdS-WX-c5P"/>
+                                    <constraint firstItem="RWZ-i1-bjG" firstAttribute="leading" secondItem="W5c-sE-Nt6" secondAttribute="leading" id="KKW-Sq-Fx9"/>
+                                    <constraint firstItem="RWZ-i1-bjG" firstAttribute="top" secondItem="W5c-sE-Nt6" secondAttribute="top" id="ciZ-cT-IFF"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="W5c-sE-Nt6" secondAttribute="trailing" id="Fwi-a3-bof"/>
+                            <constraint firstItem="W5c-sE-Nt6" firstAttribute="top" secondItem="QEp-DU-dOI" secondAttribute="bottom" id="bBh-bF-ofn"/>
+                            <constraint firstItem="W5c-sE-Nt6" firstAttribute="leading" secondItem="8Ts-c4-3v8" secondAttribute="leading" id="df3-fO-opV"/>
+                            <constraint firstAttribute="bottom" secondItem="W5c-sE-Nt6" secondAttribute="bottom" constant="-64" id="wey-2p-k6E"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Event" id="ruT-uX-B5x">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Yj7-gr-DdY">
+                            <connections>
+                                <action selector="addButtonClicked:" destination="78J-IT-sH4" id="X0v-5Z-b0r"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="endDatePicker" destination="D8n-sP-kkf" id="RzA-VA-Opz"/>
+                        <outlet property="eventDescriptionTextView" destination="vym-jK-JOF" id="paO-hC-6yW"/>
+                        <outlet property="eventNameTextField" destination="iFq-wB-0QM" id="CXx-Gq-pQv"/>
+                        <outlet property="startDatePicker" destination="63A-iI-Alu" id="K0O-zd-TYo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6an-Zi-wBb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1740" y="-1115"/>
         </scene>
     </scenes>
     <resources>
