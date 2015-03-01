@@ -73,6 +73,7 @@
 		8A5E62051A9FB5A600E418ED /* UITabBar+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61EF1A9FB5A600E418ED /* UITabBar+FlatUI.m */; };
 		8A5E62061A9FB5A600E418ED /* UITableViewCell+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61F11A9FB5A600E418ED /* UITableViewCell+FlatUI.m */; };
 		8A5E62071A9FB5A600E418ED /* UIToolbar+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61F31A9FB5A600E418ED /* UIToolbar+FlatUI.m */; };
+		8A7A3F0C1AA3BF7F00854B8F /* UCSD_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A7A3F0B1AA3BF7F00854B8F /* UCSD_Logo.png */; };
 		8ABDB9DD1A92E29C00A0D6CB /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABDB9DC1A92E29C00A0D6CB /* FeedTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -179,6 +180,7 @@
 		8A5E61F11A9FB5A600E418ED /* UITableViewCell+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+FlatUI.m"; sourceTree = "<group>"; };
 		8A5E61F21A9FB5A600E418ED /* UIToolbar+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIToolbar+FlatUI.h"; sourceTree = "<group>"; };
 		8A5E61F31A9FB5A600E418ED /* UIToolbar+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIToolbar+FlatUI.m"; sourceTree = "<group>"; };
+		8A7A3F0B1AA3BF7F00854B8F /* UCSD_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UCSD_Logo.png; sourceTree = "<group>"; };
 		8ABDB9DC1A92E29C00A0D6CB /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -333,6 +335,7 @@
 		8A34995C1A75871E001B5A28 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8A7A3F0B1AA3BF7F00854B8F /* UCSD_Logo.png */,
 				8A3499841A782269001B5A28 /* location-25.png */,
 				8A3499821A7820A7001B5A28 /* group-25.png */,
 				8A3499801A782048001B5A28 /* map-25.png */,
@@ -490,6 +493,7 @@
 				8A3499641A75871E001B5A28 /* Main.storyboard in Resources */,
 				13CE1DF71A815DD200957EB9 /* Images.xcassets in Resources */,
 				8A3499851A782269001B5A28 /* location-25.png in Resources */,
+				8A7A3F0C1AA3BF7F00854B8F /* UCSD_Logo.png in Resources */,
 				8A3499691A75871E001B5A28 /* LaunchScreen.xib in Resources */,
 				13CE1DEE1A815B0400957EB9 /* MarkerInfoView.xib in Resources */,
 				8A3499831A7820A7001B5A28 /* group-25.png in Resources */,
