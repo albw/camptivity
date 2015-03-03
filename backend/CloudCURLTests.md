@@ -15,7 +15,6 @@ https://api.parse.com/1/classes/LocationRank
 ```
 
 
-
 ##### afterSave (EventVotes)
 
 Adds a new EventVote row.  This will trigger the following events:
@@ -30,8 +29,6 @@ curl -X POST \
 -d '{"target":{"__type": "Pointer", "className": "Events", "objectId": "CWwv1FzgPh"}, "userID":{"__type": "Pointer", "className": "_User", "objectId": "DQioyBlFOJ"}}' \
 https://api.parse.com/1/classes/EventVotes
 ```
-
-
 
 ## Clound Functions
 
@@ -57,7 +54,7 @@ curl -X POST \
 -H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
 -H "X-Parse-REST-API-Key: 8DzbViZ3uzuZVp9bZ9rztDQEKG0Tx9fP1HLPsx5U" \
 -H "Content-Type: application/json" \
--d '{"category":"restroom", "lat":32.88293263160078, "lon":-117.2109485336882, "radius":40}' \
+-d '{"category":["restaurant", "bar"], "lat":32.88293263160078, "lon":-117.2109485336882, "radius":40}' \
 https://api.parse.com/1/functions/locationsNearMe
 ```
 
@@ -70,7 +67,7 @@ curl -X POST \
 -H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
 -H "X-Parse-REST-API-Key: 8DzbViZ3uzuZVp9bZ9rztDQEKG0Tx9fP1HLPsx5U" \
 -H "Content-Type: application/json" \
--d '{"user":"Foo", "pass":"pw", "email":"thisisalecwu@gmail.com", "name":"ALEC"}' \
+-d '{"user":"TESTUSER2", "pass":"pw", "email":"abw004@ucsd.edu", "name":"ALEC"}' \
 https://api.parse.com/1/functions/newUserSignup
 ```
 
@@ -153,4 +150,19 @@ curl -X POST \
 -H "Content-Type: application/json" \
 -d '{"obj":"CWwv1FzgPh", "limit":1, "skip":1}' \
 https://api.parse.com/1/functions/getEventComments
+```
+
+
+
+##### postEventCmt
+
+Create a new EventCmt
+
+```bash
+curl -X POST \
+-H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
+-H "X-Parse-REST-API-Key: 8DzbViZ3uzuZVp9bZ9rztDQEKG0Tx9fP1HLPsx5U" \
+-H "Content-Type: application/json" \
+-d '{"comment":"yolo", "user":"Admin", "objectId": "CWwv1FzgPh"}' \
+https://api.parse.com/1/functions/postEventCmt
 ```

@@ -1,3 +1,8 @@
+var Events = require("cloud/Events.js");
+var Locations = require("cloud/Locations.js");
+var Score = require("cloud/Score.js");
+var Users = require("cloud/Users.js");
+
 /* //////////////////////////////////////////////////////////////////////////////// */
 /* /////////////////////////// INTERNAL STANDBY /////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////////////////// */
@@ -87,7 +92,7 @@ Parse.Cloud.afterSave("EventVotes", function(request) {
 					});
 				},
 				error: function(err) {
-					console.log("Error running afterSave on EventVotes: " + JSON.stringify(ex, null, 4 ));
+					console.log("Error running afterSave on EventVotes: " + JSON.stringify(err, null, 4 ));
 				}
 			});
 		});
@@ -95,14 +100,9 @@ Parse.Cloud.afterSave("EventVotes", function(request) {
 
 
 /**
- * Increments the event comment score for a user when they create a comment.
+ * Increment the event comment score for a user when they create a comment.
  */
-Parse.Cloud.afterSave("EventCmt", function(request) {
-	if(request.object && !request.object.existed())
- 		incScoreField(request.object.get("userID"), "eventComments").then(function(asdf){
- 			console.log("Incremented event comment score for: " + asdf.get("userID").id);
- 		});
-});
+Parse.Cloud.afterSave("EventCmt", Score.incEventCmtScore);
 
 
 /* //////////////////////////////////////////////////////////////////////////////// */
@@ -110,170 +110,70 @@ Parse.Cloud.afterSave("EventCmt", function(request) {
 /* //////////////////////////////////////////////////////////////////////////////// */
 
 /**
- * Internal job that goes through Events table and deletes all expired events.
+ * Goes through the Events table and drops rows with expired events.
  */
- Parse.Cloud.job("nukeDeadEvents", function(request, status) {
- 	Parse.Cloud.useMasterKey();
- 	new Parse.Query(Parse.Object.extend("Events")).lessThan("expires", new Date()).find({
- 		success: function(results) {
- 			Parse.Object.destroyAll(results).then(function(meh) {
- 				status.success("Job completed: " + results.length + " old event(s) pruned");
- 			});
- 		},
- 		error: function(error) {
- 			status.error("Failed to nuke old events: " + error.message);	
- 		}
- 	});
- });
+ Parse.Cloud.job("nukeDeadEvents", Events.nukeDeadEvents);
 
 
  /* //////////////////////////////////////////////////////////////////////////////// */
  /* /////////////////////////// CLOUD FUNCTIONS //////////////////////////////////// */
  /* //////////////////////////////////////////////////////////////////////////////// */
 
-
 /**
- * Attempts to register a new user.  This method shall be applied in the use case where the user does not wish to link
- * his/her facebook profile. 
- * Takes the following four String parameters: user, pass, email, name.
+ * Attempts to register a new user.  To be used when user does not wish to link his/her facebook profile. 
+ * Takes 4 parameters:
+ *		user - A username to register with.  This MUST be unique.
+ *		pass - A password the user creates.
+ *		email - The user's email.  This MUST be unique.
+ *		name - The user's name.
  * Example: {"user":"Foo", "pass":"pw", "email":"thisisalecwu@gmail.com", "name":"ALEC"}
  */
- Parse.Cloud.define("newUserSignup", function(request, response) {
- 	Parse.Query.or(new Parse.Query("_User").equalTo("username", request.params.user), 
- 		new Parse.Query("_User").equalTo("email", request.params.email)).first().then(function(result) {
- 			if(!result) 
- 				Parse.User.signUp(request.params.user, request.params.pass, {email: request.params.email, name: request.params.name}, {
- 					success: function(ux) {
- 						response.success("Signed up a new user: " + ux.get("username"));
- 					},
- 					error: function(meh) {
- 						response.error("Failed to run newUserSignup task: " + JSON.stringify(meh, null, 4));
- 					}
- 				});
- 			else
- 				response.error("Username/Email has already been taken!")
- 		});
- 	});
-
+ Parse.Cloud.define("newUserSignup", Users.newUserSignup);
 
 /**
- * Attempts to register a new user via Facebook.  The user shall login in the app, which will then pass the results of a successful login.
- * Takes the following 3 params: fbID, email, and name.
+ * Attempts to register a new user via Facebook.  The user logs in via the app, which will then save the results of a successful login to Parse.
+ * Takes 3 params:
+ *		fbID - User's Facebook Id.
+ *		email - User's Email
+ *		name - User's name
  * Example: {"fbID":"392874928", "email":"fastily@yahoo.com", "name":"Fastily"}
  */
-Parse.Cloud.define("fbSignup", function(request, response) {
-	new Parse.Query("_User").equalTo("fbID", request.params.fbID).first().then(function(result){
-		if(!result)
-			Parse.User.signUp(request.params.email, "" + Math.random(), {email: request.params.email, name: request.params.name, fbID: request.params.fbID}, {
-				success: function(ux) {
-					response.success("Registered a new user via FB: " + ux.get("name") + " @ " + ux.get("fbID"));
-				},
-				error: function(meh) {
- 					response.error("Failed to run fbSignup task: " + JSON.stringify(meh, null, 4));
-				}
-			});
-		else
-			response.error("FB user has already been signed up!");
-	});
-});
-
+Parse.Cloud.define("fbSignup", Users.fbSignup);
 
 /**
- * Attempts to send a password reset email.  Takes one param, the email to send the password reset.
- * Takes one param, email, in the following format: '{"email":"fastily@yahoo.com"}'
+ * Attempts to send a password reset email.
+ * Takes one param:
+ * 		email - the email to send the password reset.
+ * Example: '{"email":"fastily@yahoo.com"}'
  */
- Parse.Cloud.define("resetPasswordRequest", function(request, response) {
- 	Parse.User.requestPasswordReset(request.params.email, {
- 		success: function(meh){
- 			console.log("Sent password reset to " + request.params.email);
- 			response.success();
- 		},
- 		error: function(err){
- 			console.log("Error sending password reset to " + request.params.email);
- 			response.error();
- 		}
- 	});
- });
-
+ Parse.Cloud.define("resetPasswordRequest", Users.resetPasswordRequest);
 
 /**
  * Identifies locations near a GeoPoint in a specific category. Restricted by radius (miles). 
- * Takes params: category, lat, long, radius.  Example:
- * {"category":"restroom", "lat":30, "lon:"30, "radius":40}
+ * Takes 4 params: 
+ *		category - The String category/categories to select.  This is a String array.
+ *		lat - The latitude of the GeoPoint to select.
+ *		long - The longditude of the GeoPoint to select.
+ * 		radius - The radius to search from the specified GeoPoint, in Miles.
+ * Example: {"category":["restroom", "bar"], "lat":30, "lon:"30, "radius":40}
  */
- Parse.Cloud.define("locationsNearMe", function(request, response) {
- 	new Parse.Query("Locations").withinMiles("location", 
- 		new Parse.GeoPoint(request.params.lat, request.params.lon), request.params.radius).equalTo("category", request.params.category).find({
- 			success: function(result) {
- 				response.success(result);
- 			},
- 			error: function(meh){
- 				console.log("Error in locationsNearMe: " + JSON.stringify(meh, null, 4));
- 				response.error(meh);
- 			}
- 		});
- 	});
-
-
-
-/**
- * Grabs first row of a table where a given column is equal to a specific value.
- * Takes 3 params:
- * 		table - String - the table to query
- *		col - String - the column to search
- *		value - Object - the object to look for.
- */
-function entryWhere(table, col, value)
-{
-	return new Parse.Query(table).equalTo(col, value).first().then(function(obj) {
-		return obj;
-	});
-}
-
+ Parse.Cloud.define("locationsNearMe", Locations.locationsNearMe);
 
 /**
  * Gets a user's Score entry.
- * Takes one param: user
+ * Takes one param:
+ * 		user - The unique username of the user to get Score entries for.
  * Example: {"user":"Admin"}
  */
- Parse.Cloud.define("getUserScore", function(request, response) {
- 	entryWhere("_User", "username", request.params.user).then(function(obj){
- 		new Parse.Query("Score").equalTo("userID", obj).first().then(function(entry){
- 			response.success(entry);
- 		}, function(err){
- 			response.error(err);
- 		});
- 	});
- });
-
-/**
- *  Creates a pointer for the specified table and objectid
- *  Takes 2 params:
- * 		table - String - The table object
- *		objid - String - the objectId of the object to get.
- */
-function makePointer(table, objid)
-{
-	return {__type: "Pointer", className: table, objectId: objid};
-}
-
+ Parse.Cloud.define("getUserScore", Score.getUserScore);
 
 /**
  * Gets LocationRanks for the specified Locations object.
- * Takes one param: objid
+ * Takes one param:
+ *		objid - The unique objectId of the Location we're trying to get locationRanks for.
  * Example: {"objid":"d70IYXni4G"}
  */
- Parse.Cloud.define("getLocationRanks", function(request, response){
- 	new Parse.Query("LocationRank").equalTo("target", makePointer("Locations", request.params.objid)).find({
- 		success:function(asdf) {
- 			response.success(asdf);
- 		},
- 		error:function(err) {
- 			response.error(err);
- 		}
- 	});
- });
-
+ Parse.Cloud.define("getLocationRanks", Locations.getLocationRanks);
 
 /**
  * Get the number of event votes for a given event.
@@ -281,17 +181,7 @@ function makePointer(table, objid)
  * 		obj - The unique objectId of the Event object we're trying to get votes for.
  * Example: {"obj":"CWwv1FzgPh"}
  */
-Parse.Cloud.define("countEventVotes", function(request, response) {
-	new Parse.Query("EventVotes").equalTo("target", makePointer("Events", request.params.obj)).limit(1000).count({
-		success: function(asdf) {
-			response.success(asdf);
-		},
-		error: function(err){
-			response.error(err);
-		}
-	});
-});
-
+Parse.Cloud.define("countEventVotes", Events.countEventVotes);
 
 /**
  * Gets Events in descending (most recent first).  
@@ -300,22 +190,7 @@ Parse.Cloud.define("countEventVotes", function(request, response) {
  *		skip - Skip this many items before returning items.  Useful for pagination.
  * Example: {"limit":3, "skip":1}
  */
-Parse.Cloud.define("getEvents", function(request, response){
-	var q = new Parse.Query("Events").descending("start");
-	if(request.params.limit)
-		q.limit(request.params.limit);
-	if(request.params.skip)
-		q.skip(request.params.skip);
-
-	q.find({
-		success:function(obj) {
-			response.success(obj);
-		},
-		error: function(err) {
-			response.error(err)
-		}
-	});
-});
+Parse.Cloud.define("getEvents", Events.getEvents);
 
 /**
  * Get event comments for an event.
@@ -324,19 +199,14 @@ Parse.Cloud.define("getEvents", function(request, response){
  *		skip (OPTIONAL) - Skip this many items before returning items.  Useful for pagination.
  * Example: {"limit":3, "skip":1, "obj":"CWwv1FzgPh"}
  */
-Parse.Cloud.define("getEventComments", function(request, response){
-	var q = new Parse.Query("EventCmt").equalTo("target", makePointer("Events", request.params.obj));
-	if(request.params.limit)
-		q.limit(request.params.limit);
-	if(request.params.skip)
-		q.skip(request.params.skip);
+Parse.Cloud.define("getEventComments", Events.getEventComments);
 
-	q.find({
-		success:function(obj) {
-			response.success(obj);
-		},
-		error: function(err) {
-			response.error(err)
-		}
-	});
-});
+/**
+ * Posts a new EventCmt.
+ * Takes 3 params:
+ *		comment - The comment
+ *		user - The user's username
+ *		target - The objectId of the event to post for.
+ *	Example: {"comment":"yolo", "user":"Admin", "objectId": "CWwv1FzgPh"}
+ */
+Parse.Cloud.define("postEventCmt", Events.postEventCmt);
