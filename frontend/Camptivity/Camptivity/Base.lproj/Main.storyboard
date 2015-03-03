@@ -357,7 +357,7 @@
                                     <rect key="frame" x="28" y="101" width="320" height="30"/>
                                 </variation>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QqD-NT-nD4">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UCSD_Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="QqD-NT-nD4">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <variation key="heightClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="28" y="336" width="240" height="128"/>
