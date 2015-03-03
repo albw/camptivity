@@ -171,7 +171,21 @@ class FeedTableViewController: UITableViewController {
         
         //Can go to comment view, Then can click over to map.
         
-        performSegueWithIdentifier("Event_Select", sender: nil)
+        performSegueWithIdentifier("Event_Segue", sender: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        
+        if( segue.identifier == "Event_Segue")
+        {
+            // Create a variable that you want to send
+            var name = "Test"
+        
+            // Create a new variable to store the instance of PlayerTableViewController
+            let destinationVC = segue.destinationViewController as EventViewController
+            destinationVC.name = name
+        }
+        
     }
     
 

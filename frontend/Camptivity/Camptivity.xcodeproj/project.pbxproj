@@ -53,6 +53,7 @@
 		8A3499831A7820A7001B5A28 /* group-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A3499821A7820A7001B5A28 /* group-25.png */; };
 		8A3499851A782269001B5A28 /* location-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A3499841A782269001B5A28 /* location-25.png */; };
 		8A3A75A71AA25746006A1EB8 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3A75A61AA25746006A1EB8 /* FeedTableViewCell.swift */; };
+		8A5834291AA648DF005A6577 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5834281AA648DF005A6577 /* EventViewController.swift */; };
 		8A5E61F41A9FB5A600E418ED /* FUIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61CD1A9FB5A600E418ED /* FUIAlertView.m */; };
 		8A5E61F51A9FB5A600E418ED /* FUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61CF1A9FB5A600E418ED /* FUIButton.m */; };
 		8A5E61F61A9FB5A600E418ED /* FUICellBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61D11A9FB5A600E418ED /* FUICellBackgroundView.m */; };
@@ -139,6 +140,7 @@
 		8A3499821A7820A7001B5A28 /* group-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "group-25.png"; sourceTree = "<group>"; };
 		8A3499841A782269001B5A28 /* location-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location-25.png"; sourceTree = "<group>"; };
 		8A3A75A61AA25746006A1EB8 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
+		8A5834281AA648DF005A6577 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		8A5E61CB1A9FB5A600E418ED /* FlatUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlatUIKit.h; sourceTree = "<group>"; };
 		8A5E61CC1A9FB5A600E418ED /* FUIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUIAlertView.h; sourceTree = "<group>"; };
 		8A5E61CD1A9FB5A600E418ED /* FUIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUIAlertView.m; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				8ABDB9DC1A92E29C00A0D6CB /* FeedTableViewController.swift */,
 				8A3A75A61AA25746006A1EB8 /* FeedTableViewCell.swift */,
 				13C1E8231AA2F80C008A2E60 /* NewEventViewController.swift */,
+				8A5834281AA648DF005A6577 /* EventViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -537,6 +540,7 @@
 				8A5E62011A9FB5A600E418ED /* UIPopoverController+FlatUI.m in Sources */,
 				8A3A75A71AA25746006A1EB8 /* FeedTableViewCell.swift in Sources */,
 				13CFE2BB1A8DD12C00F64DDC /* TypesTableViewController.swift in Sources */,
+				8A5834291AA648DF005A6577 /* EventViewController.swift in Sources */,
 				8A5E61FF1A9FB5A600E418ED /* UIImage+FlatUI.m in Sources */,
 				8A5E61F61A9FB5A600E418ED /* FUICellBackgroundView.m in Sources */,
 				8A5E62031A9FB5A600E418ED /* UISlider+FlatUI.m in Sources */,

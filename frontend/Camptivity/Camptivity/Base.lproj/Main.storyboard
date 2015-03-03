@@ -163,7 +163,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="rzm-Qa-d0B" kind="show" identifier="FB_Login" id="JkM-ys-2WW"/>
-                        <segue destination="kpR-aP-fzz" kind="show" identifier="Event_Select" id="lfh-zM-u3r"/>
+                        <segue destination="kpR-aP-fzz" kind="show" identifier="Event_Segue" id="lfh-zM-u3r"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="79v-ZT-LhJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -313,10 +313,10 @@
             </objects>
             <point key="canvasLocation" x="1740" y="389"/>
         </scene>
-        <!--View Controller-->
+        <!--EventViewController-->
         <scene sceneID="8d6-zm-XLI">
             <objects>
-                <viewController id="kpR-aP-fzz" sceneMemberID="viewController">
+                <viewController title="EventViewController" id="kpR-aP-fzz" customClass="EventViewController" customModule="Camptivity" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BNh-xb-HhW"/>
                         <viewControllerLayoutGuide type="bottom" id="mMU-70-aMy"/>
