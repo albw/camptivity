@@ -83,7 +83,7 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
                 var marker = GMSMarker()
                 marker.position = CLLocationCoordinate2DMake((result["location"] as PFGeoPoint).latitude, (result["location"] as PFGeoPoint).longitude)
                 marker.title = (result["name"] as NSString)
-                marker.snippet = result["description"] as NSString
+                marker.snippet = result["description"] as NSString?
                 marker.userData = result["category"] as NSString
                 marker.icon = UIImage(named: result["category"] as NSString)
                 marker.map = self.mapView
