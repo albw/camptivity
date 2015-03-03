@@ -8,6 +8,16 @@
 
 import UIKit
 
+struct EventDataInstance{
+    static var avgRank : Int? = nil
+    static var category : String? = nil
+    static var description : String? = nil
+    static var location : PFGeoPoint? = nil
+    static var name : String? = nil
+    static var numRankings : Int? = nil
+    static var userId : PFUser? = nil
+}
+
 class FeedTableViewController: UITableViewController {
     
     //Reference to alertviewcontroller
@@ -22,6 +32,9 @@ class FeedTableViewController: UITableViewController {
     
     //Reference to feedtableviewcell
     let feedCellIdentifier = "FeedTableViewCell"
+    
+    //Reference to middleware function calls
+    var data_provider: ParseDataProvider!
    
     //TODO Having problems with FUIUIKit atm
     //var alertView : FUIAlertView!
@@ -66,8 +79,15 @@ class FeedTableViewController: UITableViewController {
         alertController.addAction(email_login_action)
         alertController.addAction(signup_action)
         
-        //getEvents()
-        
+        //Get events from backend
+        data_provider = ParseDataProvider()
+        data_provider.getEvents(3, skip:1) { results in
+            for result in results {
+                EventDataInstance.avgRank = result["avgRank"] as Int!
+                println(EventDataInstance.avgRank)
+            }
+        }
+
         //TODO Fix FUIUIKit Functionality Later
         //alertView = FUIAlertView()
         //alertView.titleLabel.textColor = UIColor.cloudsColor()
@@ -139,6 +159,19 @@ class FeedTableViewController: UITableViewController {
     
     func setDescriptionForCell(cell:FeedTableViewCell, indexPath:NSIndexPath) {
         cell.description_label.text = "[No Description]"
+    }
+    
+    //Override function for table cell clicks
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        println("Row \(indexPath.row)" )
+        
+        //Precondition: Global struct array to hold all event data will be populated after call for getEvents
+        
+        //Match Row to event
+        
+        //Can go to comment view, Then can click over to map.
+        
+        performSegueWithIdentifier("Event_Select", sender: nil)
     }
     
 
