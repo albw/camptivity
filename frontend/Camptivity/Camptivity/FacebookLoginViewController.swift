@@ -41,6 +41,8 @@ class FacebookLoginViewController: UIViewController, FBLoginViewDelegate {
                 self.performSegueWithIdentifier("showView", sender: self)
             }
         }
+        
+
     }
     
     
