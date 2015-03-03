@@ -70,7 +70,7 @@ class FeedTableViewController: UITableViewController {
         //Closure function for sign up login action on alert view
         signup_action = UIAlertAction(title: "Sign Up", style: .Default){
             action in
-            //self.performSegueWithIdentifier("login_segue", sender: nil)
+            self.performSegueWithIdentifier("Sign_Up", sender: nil)
         }
         
         //Add all actions to the alertviewcontroller

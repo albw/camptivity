@@ -45,6 +45,7 @@
 		6EA4A6921A7AC4B400B625ED /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA4A6911A7AC4B400B625ED /* FacebookSDK.framework */; };
 		6EA4A6A61A7DB61F00B625ED /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA4A6A41A7DB61F00B625ED /* ParseCrashReporting.framework */; };
 		6EA4A6A71A7DB61F00B625ED /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA4A6A51A7DB61F00B625ED /* ParseFacebookUtils.framework */; };
+		6EE7A9C91AA64C9E00699978 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7A9C81AA64C9E00699978 /* SignUpViewController.swift */; };
 		8A3499611A75871E001B5A28 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3499601A75871E001B5A28 /* ViewController.swift */; };
 		8A3499641A75871E001B5A28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A3499621A75871E001B5A28 /* Main.storyboard */; };
 		8A3499691A75871E001B5A28 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A3499671A75871E001B5A28 /* LaunchScreen.xib */; };
@@ -128,6 +129,7 @@
 		6EA4A6A31A7DAD2400B625ED /* Camptivity-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Camptivity-Bridging-Header.h"; sourceTree = "<group>"; };
 		6EA4A6A41A7DB61F00B625ED /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
 		6EA4A6A51A7DB61F00B625ED /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		6EE7A9C81AA64C9E00699978 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		8A3499591A75871E001B5A28 /* Camptivity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Camptivity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A34995D1A75871E001B5A28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A3499601A75871E001B5A28 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 				8A3A75A61AA25746006A1EB8 /* FeedTableViewCell.swift */,
 				13C1E8231AA2F80C008A2E60 /* NewEventViewController.swift */,
 				8A5834281AA648DF005A6577 /* EventViewController.swift */,
+				6EE7A9C81AA64C9E00699978 /* SignUpViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -519,6 +522,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EE7A9C91AA64C9E00699978 /* SignUpViewController.swift in Sources */,
 				8A5E62061A9FB5A600E418ED /* UITableViewCell+FlatUI.m in Sources */,
 				8A5E61FB1A9FB5A600E418ED /* NSString+Icons.m in Sources */,
 				8A5E61F41A9FB5A600E418ED /* FUIAlertView.m in Sources */,
