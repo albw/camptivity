@@ -264,6 +264,95 @@ class ParseDataProvider {
         }
     }
     
+    func postEventCmt(comment:String, user:String, objectId:String)-> String {
+        var s = String()
+        //PFCloud.callFunctionInBackground("postEventCmt", withParameters: ["comment":"yolo", "user":"Admin", "objectId": "CWwv1FzgPh"]) {
+        PFCloud.callFunctionInBackground("postEventCmt", withParameters: ["comment":comment, "user":user, "objectId": objectId]) {
+            (objects: AnyObject!, error: NSError!) -> Void in
+            var results = []
+            if (error != nil) {
+                // Your error handling here
+            }
+            else {
+                
+                s = objects as String
+                
+            }
+        }
+        return s
+    }
+
+    func postEvent(name:String, user:String, desc:String, start:String, expires:String)-> String {
+        var s = String()
+        //PFCloud.callFunctionInBackground("postEvent", withParameters: ["name":"Ratchet Party", "user":"Admin", "desc": "lets get down n dirty", "lat":32, "lon":-117,"start":"2015-03-21T18:02:52.249Z","expires":"2015-03-22T18:02:52.249Z"]) {
+        PFCloud.callFunctionInBackground("postEvent", withParameters: ["name":name, "user":user, "desc": desc, "lat":32, "lon":-117,"start":start,"expires":expires]) {
+            (objects: AnyObject!, error: NSError!) -> Void in
+            var results = []
+            if (error != nil) {
+                // Your error handling here
+            }
+            else {
+                
+                s = objects as String
+                
+            }
+        }
+        return s
+    }
+
+    func postEventVote(user:String, objectId:String)-> String {
+        var s = String()
+        //PFCloud.callFunctionInBackground("postEventVote", withParameters: ["user":"Admin", "objectId": "CWwv1FzgPh"]) {
+        PFCloud.callFunctionInBackground("postEventVote", withParameters: ["user":user, "objectId": objectId]) {
+            (objects: AnyObject!, error: NSError!) -> Void in
+            var results = []
+            if (error != nil) {
+                // Your error handling here
+            }
+            else {
+                
+                s = objects as String
+                
+            }
+        }
+        return s
+    }
+
+    func postLocationRank(user:String, rating:String, review:String, target:String)-> String {
+        var s = String()
+        //PFCloud.callFunctionInBackground("postLocationRank", withParameters: ["user":"Admin", "rating": 4, "review":"This place is rad", "target":"gM2X4HWgXe"]) {
+        PFCloud.callFunctionInBackground("postLocationRank", withParameters: ["user":user, "rating": rating, "review":review, "target":target]) {
+            (objects: AnyObject!, error: NSError!) -> Void in
+            var results = []
+            if (error != nil) {
+                // Your error handling here
+            }
+            else {
+                
+                s = objects as String
+                
+            }
+        }
+        return s
+    }
+
+    func postLocation(user:String, name:String, desc:String, category:String)-> String {
+        var s = String()
+        //PFCloud.callFunctionInBackground("postLocation", withParameters: ["user":"Admin", "name": "TESTLOCATION", "desc":"Some test location", "lat":32, "lon":-117, "cat":"bar"]) {
+        PFCloud.callFunctionInBackground("postLocation", withParameters: ["user":user, "name": name, "desc":desc, "lat":32, "lon":-117, "cat":category]) {
+            (objects: AnyObject!, error: NSError!) -> Void in
+            var results = []
+            if (error != nil) {
+                // Your error handling here
+            }
+            else {
+                
+                s = objects as String
+                
+            }
+        }
+        return s
+    }
     
     // need #import <Bolts/Bolts.h> in Bridging Header
     func saveIcon(className:String, objID:String, colName:String, img:PFFile)-> Void {
