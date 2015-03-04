@@ -298,7 +298,7 @@ class ParseDataProvider {
             if user != nil {
                 // Yes, User Exists
                 // Recipe image
-                var imageData = NSData()
+                //var imageData = NSData()
                 //imageData = UIImageJPEGRepresentation(self.imgView.image, 0.8)
                 
                 //var imageFile = PFFile(data:imageData)
