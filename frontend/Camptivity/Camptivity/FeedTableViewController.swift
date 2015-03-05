@@ -81,12 +81,10 @@ class FeedTableViewController: UITableViewController {
         
         //Get events from backend
         data_provider = ParseDataProvider()
-        data_provider.getEvents(3, skip:1) { results in
-            for result in results {
-                EventDataInstance.avgRank = result["avgRank"] as Int!
-                println(EventDataInstance.avgRank)
-            }
-        }
+        let result = data_provider.getEvents(3, skip:1)
+        
+        EventDataInstance.description = result[0]["description"] as String!
+        println(EventDataInstance.description)
 
         //TODO Fix FUIUIKit Functionality Later
         //alertView = FUIAlertView()

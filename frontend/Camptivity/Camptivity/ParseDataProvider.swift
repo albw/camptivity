@@ -266,9 +266,10 @@ class ParseDataProvider {
     *      skip - Skip this many items before returning items.  Useful for pagination.
     * Example: {"limit":3, "skip":1}
     */
-    func getEvents(limit:Int, skip:Int, completion: (returnValue: [AnyObject])->Void) {
-        //PFCloud.callFunctionInBackground("getEvents", withParameters: ["limit":3, "skip":1]) {
-        PFCloud.callFunctionInBackground("getEvents", withParameters: ["limit":limit, "skip":skip]) {
+    func getEvents(limit:Int, skip:Int)->AnyObject {
+        
+        //For a Non-Blocking Call Comment out below
+        /*PFCloud.callFunctionInBackground("getEvents", withParameters: ["limit":limit, "skip":skip]) {
             (objects: AnyObject!, error: NSError!) -> Void in
             var result = []
             if (error != nil) {
@@ -295,7 +296,12 @@ class ParseDataProvider {
                 */
                 
             }
-        }
+        }*/
+        
+        //This is a blocking call, will stall the main thread
+        let result = PFCloud.callFunction("getEvents", withParameters: ["limit":limit, "skip":skip])
+        return result;
+        
     }
 
     /**

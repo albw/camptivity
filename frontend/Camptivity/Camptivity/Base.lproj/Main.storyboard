@@ -77,6 +77,7 @@
                     <connections>
                         <segue destination="rzm-Qa-d0B" kind="show" identifier="FB_Login" id="JkM-ys-2WW"/>
                         <segue destination="Zvt-r8-O4l" kind="show" identifier="Sign_Up" id="jiA-40-rLL"/>
+                        <segue destination="kpR-aP-fzz" kind="show" identifier="Event_Segue" id="tiV-74-bBe"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="79v-ZT-LhJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
