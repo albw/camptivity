@@ -185,7 +185,8 @@ class FeedTableViewController: UITableViewController {
         
             // Create a new variable to store the instance of PlayerTableViewController
             let destinationVC = segue.destinationViewController as EventViewController
-            destinationVC.name = name
+            destinationVC.name = EventDataInstance.name
+            destinationVC.details = EventDataInstance.description
         }
         
     }

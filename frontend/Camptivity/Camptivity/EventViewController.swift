@@ -10,13 +10,21 @@ import UIKit
 
 class EventViewController: UIViewController {
 
+    @IBOutlet weak var description_label: UILabel!
+    @IBOutlet weak var title_label: UILabel!
+    
     var name: String!
+    var details: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         println("In Event View")
         println(name)
+        println(details)
+        
+        title_label.text = name
+        description_label.text = details
 
         // Do any additional setup after loading the view.
     }
