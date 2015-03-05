@@ -8,12 +8,17 @@
 
 import UIKit
 
-class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLLocationManagerDelegate, GMSMapViewDelegate, NewEventViewControllerDelegate {
+class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLLocationManagerDelegate, GMSMapViewDelegate, NewEventViewControllerDelegate, FloatRatingViewDelegate {
     
-    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var rateView: UIView!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var stopNavigationButton: UIButton!
+    @IBOutlet weak var currentRatingScore: UILabel!
+    @IBOutlet weak var yourRatingScore: UILabel!
+    @IBOutlet weak var floatRatingView: FloatRatingView!
+    @IBOutlet weak var rateSubmitButton: UIButton!
     
+    var markerCoordinate = CLLocationCoordinate2DMake(0, 0)
     var searchedTypes = ["bar", "grocery_or_supermarket", "restaurant", "restroom"]
     let dataProvider = ParseDataProvider()
     var polylineArray : NSMutableArray = []
@@ -35,8 +40,28 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
         mapView.settings.myLocationButton = true
         mapView.delegate = self
         stopNavigationButton.hidden = true
+        rateView.hidden = true
         
         fetchNearbyLocations()
+        
+        /********************************************************************/
+        rateSubmitButton.hidden = true
+        // Required float rating view params
+        self.floatRatingView.emptyImage = UIImage(named: "StarEmpty")
+        self.floatRatingView.fullImage = UIImage(named: "StarFull")
+        // Optional params
+        self.floatRatingView.delegate = self
+        self.floatRatingView.contentMode = UIViewContentMode.ScaleAspectFit
+        self.floatRatingView.maxRating = 5
+        self.floatRatingView.minRating = 1
+        self.floatRatingView.rating = 5
+        self.floatRatingView.editable = true
+        self.floatRatingView.halfRatings = true
+        
+        // Labels init
+        self.yourRatingScore.text = NSString(format: "%.2f", self.floatRatingView.rating)
+        self.currentRatingScore.text = NSString(format: "%.2f", self.floatRatingView.rating)
+        /*********************************************************************/
     }
     
     
@@ -53,9 +78,6 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
             mapView.mapType = mapView.mapType
         }
     }
-    
-    
-    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "Types Segue" {
@@ -145,6 +167,8 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
     }
     
     func mapView(mapView: GMSMapView!, markerInfoContents marker: GMSMarker!) -> UIView! {
+        rateView.hidden = false
+        markerCoordinate = marker.position
         
         if let infoView = UIView.viewFromNibName("MarkerInfoView") as? MarkerInfoView {
             infoView.nameLabel.text = marker.title
@@ -157,6 +181,9 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
         }
     }
     
+    func mapView(mapView: GMSMapView!, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
+        rateView.hidden = true
+    }
     
     @IBAction func refreshPlaces(sender: AnyObject) {
         fetchNearbyLocations()
@@ -174,4 +201,29 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
         dismissViewControllerAnimated(true, completion: nil)
         fetchNearbyLocations()
     }
+    
+    // MARK: FloatRatingViewDelegate
+    func floatRatingView(ratingView: FloatRatingView, isUpdating rating:Float) {
+        self.yourRatingScore.text = NSString(format: "%.2f", self.floatRatingView.rating)
+        rateSubmitButton.hidden = false
+        
+    }
+    
+    func floatRatingView(ratingView: FloatRatingView, didUpdate rating: Float) {
+        self.currentRatingScore.text = NSString(format: "%.2f", self.floatRatingView.rating)
+    }
+    
+    @IBAction func ratingTypeChanged(sender: UISegmentedControl) {
+        self.floatRatingView.halfRatings = sender.selectedSegmentIndex==1
+    }
+    
+    @IBAction func rateButtonClicked(sender: UIButton) {
+        NSLog("%f", markerCoordinate.latitude)
+        //postLocationRank
+        //user name
+        //rating number
+        //review string/
+        //location
+    }
+    
 }

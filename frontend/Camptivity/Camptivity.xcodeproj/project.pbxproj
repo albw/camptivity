@@ -10,6 +10,7 @@
 		13636FE11A816B8100CF1613 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13636FE01A816B8100CF1613 /* Social.framework */; };
 		13636FE31A816B8600CF1613 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13636FE21A816B8600CF1613 /* Accounts.framework */; };
 		136439011A816DF9005AE6F0 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 136439001A816DF9005AE6F0 /* libstdc++.6.dylib */; };
+		139B901E1AA7E5F5006255F4 /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139B901D1AA7E5F5006255F4 /* FloatRatingView.swift */; };
 		13C1E8241AA2F80C008A2E60 /* NewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C1E8231AA2F80C008A2E60 /* NewEventViewController.swift */; };
 		13CE1DD01A81576B00957EB9 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13CE1DCE1A81576B00957EB9 /* Parse.framework */; };
 		13CE1DD21A81577800957EB9 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 13CE1DD11A81577800957EB9 /* GoogleMaps.bundle */; };
@@ -93,6 +94,7 @@
 		13636FE01A816B8100CF1613 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		13636FE21A816B8600CF1613 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		136439001A816DF9005AE6F0 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
+		139B901D1AA7E5F5006255F4 /* FloatRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatRatingView.swift; sourceTree = "<group>"; };
 		13C1E8231AA2F80C008A2E60 /* NewEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewEventViewController.swift; sourceTree = "<group>"; };
 		13CE1DCE1A81576B00957EB9 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		13CE1DD11A81577800957EB9 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 		13CE1DE41A815A6200957EB9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				139B901D1AA7E5F5006255F4 /* FloatRatingView.swift */,
 				13CE1DEA1A815B0400957EB9 /* MarkerInfoView.swift */,
 				13CE1DEB1A815B0400957EB9 /* MarkerInfoView.xib */,
 				13CE1DEC1A815B0400957EB9 /* UIViewExtension.swift */,
@@ -546,6 +549,7 @@
 				13CFE2BB1A8DD12C00F64DDC /* TypesTableViewController.swift in Sources */,
 				8A5834291AA648DF005A6577 /* EventViewController.swift in Sources */,
 				8A5E61FF1A9FB5A600E418ED /* UIImage+FlatUI.m in Sources */,
+				139B901E1AA7E5F5006255F4 /* FloatRatingView.swift in Sources */,
 				8A5E61F61A9FB5A600E418ED /* FUICellBackgroundView.m in Sources */,
 				8A5E62031A9FB5A600E418ED /* UISlider+FlatUI.m in Sources */,
 				13C1E8241AA2F80C008A2E60 /* NewEventViewController.swift in Sources */,
