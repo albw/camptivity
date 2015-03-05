@@ -83,8 +83,12 @@ class FeedTableViewController: UITableViewController {
         data_provider = ParseDataProvider()
         let result = data_provider.getEvents(3, skip:1)
         
+        EventDataInstance.name = result[0]["name"] as String!
         EventDataInstance.description = result[0]["description"] as String!
         println(EventDataInstance.description)
+        
+        //Need to format data to fit needs for display
+        println(result[0])
 
         //TODO Fix FUIUIKit Functionality Later
         //alertView = FUIAlertView()
@@ -152,11 +156,11 @@ class FeedTableViewController: UITableViewController {
     }
     
     func setTitleForCell(cell:FeedTableViewCell, indexPath:NSIndexPath) {
-        cell.title_label.text = "[No Title]"
+        cell.title_label.text = EventDataInstance.name
     }
     
     func setDescriptionForCell(cell:FeedTableViewCell, indexPath:NSIndexPath) {
-        cell.description_label.text = "[No Description]"
+        cell.description_label.text = EventDataInstance.description
     }
     
     //Override function for table cell clicks
