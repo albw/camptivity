@@ -46,6 +46,7 @@
 		6EA4A6921A7AC4B400B625ED /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA4A6911A7AC4B400B625ED /* FacebookSDK.framework */; };
 		6EA4A6A61A7DB61F00B625ED /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA4A6A41A7DB61F00B625ED /* ParseCrashReporting.framework */; };
 		6EA4A6A71A7DB61F00B625ED /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA4A6A51A7DB61F00B625ED /* ParseFacebookUtils.framework */; };
+		6EE1AA981AA83698003C6853 /* FBSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE1AA971AA83698003C6853 /* FBSignUpViewController.swift */; };
 		6EE7A9C91AA64C9E00699978 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7A9C81AA64C9E00699978 /* SignUpViewController.swift */; };
 		8A3499611A75871E001B5A28 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3499601A75871E001B5A28 /* ViewController.swift */; };
 		8A3499641A75871E001B5A28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A3499621A75871E001B5A28 /* Main.storyboard */; };
@@ -131,6 +132,7 @@
 		6EA4A6A31A7DAD2400B625ED /* Camptivity-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Camptivity-Bridging-Header.h"; sourceTree = "<group>"; };
 		6EA4A6A41A7DB61F00B625ED /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
 		6EA4A6A51A7DB61F00B625ED /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		6EE1AA971AA83698003C6853 /* FBSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBSignUpViewController.swift; sourceTree = "<group>"; };
 		6EE7A9C81AA64C9E00699978 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		8A3499591A75871E001B5A28 /* Camptivity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Camptivity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A34995D1A75871E001B5A28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				13C1E8231AA2F80C008A2E60 /* NewEventViewController.swift */,
 				8A5834281AA648DF005A6577 /* EventViewController.swift */,
 				6EE7A9C81AA64C9E00699978 /* SignUpViewController.swift */,
+				6EE1AA971AA83698003C6853 /* FBSignUpViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -538,6 +541,7 @@
 				8A5E62021A9FB5A600E418ED /* UIProgressView+FlatUI.m in Sources */,
 				8A5E61FA1A9FB5A600E418ED /* FUITextField.m in Sources */,
 				13CE1DED1A815B0400957EB9 /* MarkerInfoView.swift in Sources */,
+				6EE1AA981AA83698003C6853 /* FBSignUpViewController.swift in Sources */,
 				8A5E62051A9FB5A600E418ED /* UITabBar+FlatUI.m in Sources */,
 				8A5E61F71A9FB5A600E418ED /* FUIPopoverBackgroundView.m in Sources */,
 				8A5E62041A9FB5A600E418ED /* UIStepper+FlatUI.m in Sources */,

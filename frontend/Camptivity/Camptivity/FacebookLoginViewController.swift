@@ -38,17 +38,14 @@ class FacebookLoginViewController: UIViewController, FBLoginViewDelegate {
             if (error == nil)
             {
                 self.email = user.objectForKey("email") as String
+                self.performSegueWithIdentifier("showView", sender: self)
+
             }
         }
         
-        println(fullName)
-        
-        let provider = ParseDataProvider()
-        if (self.email != nil && self.fullName != nil && self.userID != nil){
-            var s = provider.fbSignup(userID, email: email, fullname: fullName)
-        }
-        
 
+        
+        
     }
     
     
@@ -64,6 +61,20 @@ class FacebookLoginViewController: UIViewController, FBLoginViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if (segue.identifier == "showView"){
+            var vc: FBSignUpViewController = segue.destinationViewController as FBSignUpViewController
+            vc.fullName = self.fullName
+            vc.email = self.email
+            vc.userID = self.userID
+
+            
+        }
+        
+    }
+
     
 }
 
