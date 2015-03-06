@@ -1,35 +1,3 @@
-## Standby Routines
-##### afterSave (LocationRank)
-
-Adds a test LocationRank object which will trigger following afterSave events: 
-* Re-compute rankAvg and save result in the Locations table
-* Increment user's locationReviews by one.
-
-```bash
-curl -X POST \
--H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
--H "X-Parse-REST-API-Key: 8DzbViZ3uzuZVp9bZ9rztDQEKG0Tx9fP1HLPsx5U" \
--H "Content-Type: application/json" \
--d '{"rating":7,"review":"hehe3", "target":{"__type": "Pointer", "className": "Locations", "objectId": "d70IYXni4G"}, "userID":{"__type": "Pointer", "className": "_User", "objectId": "DQioyBlFOJ"}}' \
-https://api.parse.com/1/classes/LocationRank
-```
-
-
-##### afterSave (EventVotes)
-
-Adds a new EventVote row.  This will trigger the following events:
-* Increment number of votesGiven for user who voted.
-* Increment number of votesRecieved for user who recieved the vote.
-
-```bash
-curl -X POST \
--H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
--H "X-Parse-REST-API-Key: 8DzbViZ3uzuZVp9bZ9rztDQEKG0Tx9fP1HLPsx5U" \
--H "Content-Type: application/json" \
--d '{"target":{"__type": "Pointer", "className": "Events", "objectId": "CWwv1FzgPh"}, "userID":{"__type": "Pointer", "className": "_User", "objectId": "DQioyBlFOJ"}}' \
-https://api.parse.com/1/classes/EventVotes
-```
-
 ## Clound Functions
 
 ##### resetPasswordRequest
@@ -67,7 +35,7 @@ curl -X POST \
 -H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
 -H "X-Parse-REST-API-Key: 8DzbViZ3uzuZVp9bZ9rztDQEKG0Tx9fP1HLPsx5U" \
 -H "Content-Type: application/json" \
--d '{"user":"TESTUSER2", "pass":"pw", "email":"abw004@ucsd.edu", "name":"ALEC"}' \
+-d '{"user":"TESTUSER2", "pass":"pw", "email":"fastily@yahoo.com", "name":"ALEC"}' \
 https://api.parse.com/1/functions/newUserSignup
 ```
 
@@ -152,8 +120,6 @@ curl -X POST \
 https://api.parse.com/1/functions/getEventComments
 ```
 
-
-
 ##### postEventCmt
 
 Create a new EventCmt
@@ -163,6 +129,72 @@ curl -X POST \
 -H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
 -H "X-Parse-REST-API-Key: 8DzbViZ3uzuZVp9bZ9rztDQEKG0Tx9fP1HLPsx5U" \
 -H "Content-Type: application/json" \
--d '{"comment":"yolo", "user":"Admin", "objectId": "CWwv1FzgPh"}' \
+-d '{"comment":"supdawgs", "user":"Admin", "objectId": "CWwv1FzgPh"}' \
 https://api.parse.com/1/functions/postEventCmt
+```
+
+##### postEvent
+
+Create a new Event
+
+```bash
+curl -X POST \
+-H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
+-H "X-Parse-REST-API-Key: 8DzbViZ3uzuZVp9bZ9rztDQEKG0Tx9fP1HLPsx5U" \
+-H "Content-Type: application/json" \
+-d '{"name":"Ratchet Party 87", "user":"Admin", "desc": "lets get down n dirty", "lat":32, "lon":-117, "start":"2015-03-21T18:02:52.249Z", "expires":"2015-03-22T18:02:52.249Z"}' \
+https://api.parse.com/1/functions/postEvent
+```
+
+##### postEventVote
+
+Create a new EventVote
+
+```bash
+curl -X POST \
+-H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
+-H "X-Parse-REST-API-Key: 8DzbViZ3uzuZVp9bZ9rztDQEKG0Tx9fP1HLPsx5U" \
+-H "Content-Type: application/json" \
+-d '{"user":"Admin", "objectId": "CWwv1FzgPh"}' \
+https://api.parse.com/1/functions/postEventVote
+```
+
+##### postLocationRank
+
+Create a new LocationRank
+
+```bash
+curl -X POST \
+-H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
+-H "X-Parse-REST-API-Key: 8DzbViZ3uzuZVp9bZ9rztDQEKG0Tx9fP1HLPsx5U" \
+-H "Content-Type: application/json" \
+-d '{"user":"Admin", "rating": 2, "review":"This place is derped", "target":"gM2X4HWgXe"}' \
+https://api.parse.com/1/functions/postLocationRank
+```
+
+
+##### postLocation
+
+Create a new LocationRank
+
+```bash
+curl -X POST \
+-H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
+-H "X-Parse-REST-API-Key: 8DzbViZ3uzuZVp9bZ9rztDQEKG0Tx9fP1HLPsx5U" \
+-H "Content-Type: application/json" \
+-d '{"user":"Admin", "name": "TESTLOCATION", "desc":"Some test location", "lat":32, "lon":-117, "cat":"bar"}' \
+https://api.parse.com/1/functions/postLocation
+```
+
+##### lookupEventByCoord
+
+Lookup an event by coordinate
+
+```bash
+curl -X POST \
+-H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
+-H "X-Parse-REST-API-Key: 8DzbViZ3uzuZVp9bZ9rztDQEKG0Tx9fP1HLPsx5U" \
+-H "Content-Type: application/json" \
+-d '{"lat":32.883192, "lon":-117.240933}' \
+https://api.parse.com/1/functions/lookupEventByCoord
 ```

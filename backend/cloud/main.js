@@ -1,6 +1,7 @@
 var Events = require("cloud/Events.js");
 var Locations = require("cloud/Locations.js");
 var Score = require("cloud/Score.js");
+var Standby = require("cloud/Standby.js");
 var Users = require("cloud/Users.js");
 
 /* //////////////////////////////////////////////////////////////////////////////// */
@@ -8,102 +9,50 @@ var Users = require("cloud/Users.js");
 /* //////////////////////////////////////////////////////////////////////////////// */
 
 /**
- * Performs initialization tasks for a new user:
- * 1) Create a blank score row for user
-*/
-Parse.Cloud.afterSave("_User", function(request) {
-	if(!request.object)
-		console.log("Looks like we had an issue: " + JSON.stringify(request, null, 4));
-	else if(!request.object.existed()) {
-		var Score = Parse.Object.extend("Score");
-		var sc = new Score();
-		sc.save({userID: request.object, votesGiven: 0, votesReceived: 0, eventComments: 0, locationTags: 0}).then(function(meh) {
-			console.log("Set-up score row for a new user!");
-		});
-	} 
-});
-
-/**
- * Auto-sets numRankings and avgRank to 0 when new Locations object is created.
+ * On creation of a new _User:
+ * 
+ * 1) Initialize a new Score entry for the user.
  */
- Parse.Cloud.afterSave("Locations", function(request) {
- 	if(!request.object)
- 		console.log("Looks like we had an issue: " + JSON.stringify(request, null, 4));
- 	else if(!request.object.existed())
- 		request.object.save({numRankings: 0, avgRank: 0}).then(function(meh) {
- 			console.log("Logged creation of new location object: " + request.object.get("name"));
- 		});
- });
-
+Parse.Cloud.afterSave("_User", Standby.initUserScore);
 
 /**
- * Increments a field in the Score table for a given user.
- * Takes two params - userId: pointer to the user's whos entry we'll be incrementing
- * 				      item: a string naming the column to increment.
+ * On creation of a new Location:
+ * 
+ * 1) Set the Location's numRankings and avgRank to 0.
  */
- function incScoreField(userId, item) {
- 	return new Parse.Query("Score").equalTo("userID", userId).first().then(function(obj) {
- 		obj.increment(item);
- 		return obj.save();
- 	});
- }
-
+Parse.Cloud.afterSave("Locations", Standby.initLocationAvgRank);
 
 /**
- * Performs following functions: 
+ * On creation of a new LocationRank:
+ * 
  * 1) Re-computes the average for the Locations object referenced by this LocationRank. 
- * 2) Increment user's locationTags in Score table by one.
-*/ 
-Parse.Cloud.afterSave("LocationRank", function(request) {
-	if(request.object && !request.object.existed())
-		new Parse.Query("Locations").get(request.object.get("target").id, {
-			success: function(meh) {
-				meh.set("avgRank", (meh.get("numRankings") * meh.get("avgRank") + request.object.get("rating"))/(meh.get("numRankings") + 1));
-				meh.increment("numRankings");
-				meh.save().then(function(blah) {
-					console.log("Updated average of " + meh.get("name"));
-
-					incScoreField(meh.get("userID"), "locationTags").then(function(asdf) {
-						console.log("Incremented location review score for " + asdf.get("userID").id);
-					});
-				});
-			},
-			error: function(ex) {
-				console.log("Error running afterSave on LocationRank: " + JSON.stringify(ex, null, 4 ));
-			}
-		});
-});
-
+ * 2) Increment user's locationsRanked in Score table by one.
+ */ 
+Parse.Cloud.afterSave("LocationRank", Standby.calcLocationRank);
 
 /**
- * When an EventVotes is cast:
- * 1) Increment the likesReceived score for user who created the event.
- * 2) Increment the likesGiven score for the user who voted.
-*/
-Parse.Cloud.afterSave("EventVotes", function(request) {
-	if(request.object && !request.object.existed())
-		incScoreField(request.object.get("userID"), "votesGiven").then(function(asdf){
-			console.log("Incremented votesGiven score for " + asdf.get("userID").id);
-
-			new Parse.Query("Events").get(request.object.get("target").id, {
-				success: function(obj) {
-					incScoreField(obj.get("userID"), "votesReceived").then(function(meh) {
-						console.log("Incremented votesReceived score for " + obj.get("userID").id);
-					});
-				},
-				error: function(err) {
-					console.log("Error running afterSave on EventVotes: " + JSON.stringify(err, null, 4 ));
-				}
-			});
-		});
-});
-
-
-/**
- * Increment the event comment score for a user when they create a comment.
+ * On creation of a new EventVote:
+ * 
+ * 1) Increment the upVotes for the Event.
+ * 2) Increment the votesGiven for the user who voted.
+ * 3) Increment the votesReceieved for the user who created the Event.
  */
-Parse.Cloud.afterSave("EventCmt", Score.incEventCmtScore);
 
+Parse.Cloud.afterSave("EventVotes", Standby.handleEventVote);
+
+/**
+ * On creation of a new EventCmt:
+ *
+ * 1) Increment the eventComments score for a user when they create a comment.
+ */
+Parse.Cloud.afterSave("EventCmt", Standby.incEventCmtScore);
+
+/**
+ * On creation of a new Event:
+ * 
+ * 1) Set the Event's upVotes to 0.
+ */
+Parse.Cloud.afterSave("Events", Standby.initEvent);
 
 /* //////////////////////////////////////////////////////////////////////////////// */
 /* /////////////////////////////////// JOBS /////////////////////////////////////// */
@@ -138,7 +87,7 @@ Parse.Cloud.afterSave("EventCmt", Score.incEventCmtScore);
  *		name - User's name
  * Example: {"fbID":"392874928", "email":"fastily@yahoo.com", "name":"Fastily"}
  */
-Parse.Cloud.define("fbSignup", Users.fbSignup);
+ Parse.Cloud.define("fbSignup", Users.fbSignup);
 
 /**
  * Attempts to send a password reset email.
@@ -181,7 +130,7 @@ Parse.Cloud.define("fbSignup", Users.fbSignup);
  * 		obj - The unique objectId of the Event object we're trying to get votes for.
  * Example: {"obj":"CWwv1FzgPh"}
  */
-Parse.Cloud.define("countEventVotes", Events.countEventVotes);
+ Parse.Cloud.define("countEventVotes", Events.countEventVotes);
 
 /**
  * Gets Events in descending (most recent first).  
@@ -190,16 +139,17 @@ Parse.Cloud.define("countEventVotes", Events.countEventVotes);
  *		skip - Skip this many items before returning items.  Useful for pagination.
  * Example: {"limit":3, "skip":1}
  */
-Parse.Cloud.define("getEvents", Events.getEvents);
+ Parse.Cloud.define("getEvents", Events.getEvents);
 
 /**
- * Get event comments for an event.
+ * Get event comments for an event.  EventCmts are returned from Parse in sequential, ascending order.
  * Takes 3 params: 
- * 		limit (OPTIONAL) - limit the maximum number of items returned
- *		skip (OPTIONAL) - Skip this many items before returning items.  Useful for pagination.
+ * 		limit - Number (OPTIONAL) - how many items to return (max=1000)
+ *		skip - Number (OPTIONAL) - Skip this many items before returning more items.  Useful for pagination.
+ *		obj - String - The objectId of the Event to get EventCmts for.
  * Example: {"limit":3, "skip":1, "obj":"CWwv1FzgPh"}
  */
-Parse.Cloud.define("getEventComments", Events.getEventComments);
+ Parse.Cloud.define("getEventComments", Events.getEventComments);
 
 /**
  * Posts a new EventCmt.
@@ -209,4 +159,61 @@ Parse.Cloud.define("getEventComments", Events.getEventComments);
  *		target - The objectId of the event to post for.
  *	Example: {"comment":"yolo", "user":"Admin", "objectId": "CWwv1FzgPh"}
  */
-Parse.Cloud.define("postEventCmt", Events.postEventCmt);
+ Parse.Cloud.define("postEventCmt", Events.postEventCmt);
+
+/**
+ * Posts a new Event object.
+ * Takes 7 params:
+ * 		name - String - the name of the event.
+ *		desc - Stirng - The event description.
+ * 		lat - Number - The event's latitude.
+ *		lon - Number - The event's longitude.
+ *		user - String - The creator's username.
+ * 		start - String - The start date. A date/time in ISO 8601, UTC (e.g. "2011-08-21T18:02:52.249Z")
+ *		expires - String - The end date. A date/time in ISO 8601, UTC (e.g. "2011-08-21T18:02:52.249Z")
+ * Example: {"name":"Ratchet Party", "user":"Admin", "desc": "lets get down n dirty", "lat":32, "lon":-117, "start":"2015-03-21T18:02:52.249Z", "expires":"2015-03-22T18:02:52.249Z"}
+ */
+ Parse.Cloud.define("postEvent", Events.postEvent);
+
+/**
+ * Posts a new EventVote.
+ * Takes 2 params:
+ *		user - The user's username
+ *		target - The objectId of the Event to post for.
+ *	Example: {"user":"Admin", "objectId": "CWwv1FzgPh"}
+ */
+ Parse.Cloud.define("postEventVote", Events.postEventVote);
+
+/**
+ * Post a new LocationRank.
+ * Takes 4 params:
+ *		user - String - the creator's username
+ *		rating - Number - The user's rating of the location, out of 5.
+ *		review - String - The The user's review of the location.
+ *		target - String - The unique objectId of the Location object this LocationRank is referencing.
+ *	Example: {"user":"Admin", "rating": 4, "review":"This place is rad", "target":"gM2X4HWgXe"}
+ */
+ Parse.Cloud.define("postLocationRank", Locations.postLocationRank);
+
+/**
+ * Post a new Location.
+ * Takes 6 params:
+ *		user - String - the creator's username
+ *		name - String - The name of the location.
+ *		desc - String - A description of the location
+ * 		lat - Number - The event's latitude.
+ *		lon - Number - The event's longitude.
+ *		cat - String - This item's category.
+ *	Example: {"user":"Admin", "name": "TESTLOCATION", "desc":"Some test location", "lat":32, "lon":-117, "cat":"bar"}
+ */
+ Parse.Cloud.define("postLocation", Locations.postLocation);
+
+/**
+ * Lookup an event by coordinate.
+ * Takes 2 params:
+ *		lat - Number - The latitude of the coordinate.
+ *		long - Number - The longitude of the coordinate.
+ * Example: {"lat":32.883192, "lon":-117.240933}
+ */
+ Parse.Cloud.define("lookupEventByCoord", Events.lookupEventByCoord);
+

@@ -10,3 +10,5 @@
 ## Parse Notes
 
 * In the Users table: `username` and `email` fields _MUST_ be unique.
+* In the Events table: `location` _MUST_ be unique.
+* In the Locations table: `location` _MUST_ be unique.

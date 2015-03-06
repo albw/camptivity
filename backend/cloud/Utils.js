@@ -16,7 +16,7 @@
 /**
  * Creates a JSON object with simple success and error methods.
  * Takes 1 param:
- * 		response - The response object.
+ * 		response - Object - The response object.
  * 	Returns a JSON object with success and error params.
  */
  exports.simpleSucErr = function(response) {
@@ -59,4 +59,15 @@ exports.entryWhere = function (table, col, value) {
 	return new Parse.Query(table).equalTo(col, value).first().then(function(obj) {
 		return obj;
 	});
+};
+
+
+/**
+ * Makes a date object using a String in the ISO 8601 format.  Dates *must* be in UTC timezone.
+ * Takes one param:
+ *		d - String - A string representation of the date in ISO 8601, UTC (e.g. "2011-08-21T18:02:52.249Z")
+ * Returns a Parse-legal date representation of d.
+ */
+exports.makeDate = function(d) {
+	return {"__type": "Date", "iso": d};
 };

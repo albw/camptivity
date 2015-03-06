@@ -5,15 +5,16 @@ var Utils = require("cloud/Utils.js");
  /* //////////////////////////////////////////////////////////////////////////////// */
 
 /**
- * Get event comments for an event.
+ * Get event comments for an event.  EventCmts are returned from Parse in sequential, ascending order.
  * Takes 3 params: 
- * 		limit (OPTIONAL) - limit the maximum number of items returned
- *		skip (OPTIONAL) - Skip this many items before returning items.  Useful for pagination.
+ * 		limit - Number (OPTIONAL) - how many items to return (max=1000)
+ *		skip - Number (OPTIONAL) - Skip this many items before returning more items.  Useful for pagination.
+ *		obj - String - The objectId of the Event to get EventCmts for.
  * Example: {"limit":3, "skip":1, "obj":"CWwv1FzgPh"}
  */
 exports.getEventComments = function(request, response) {
 	Utils.querySkipAndLimit(new Parse.Query("EventCmt").equalTo("target", Utils.makePointer("Events", request.params.obj)), 
-		request.params.skip, request.params.limit).find(Utils.simpleSucErr(response));
+		request.params.skip, request.params.limit).ascending("createdAt").find(Utils.simpleSucErr(response));
 };
 
 
@@ -57,6 +58,60 @@ exports.countEventVotes = function(request, response) {
  		}, Utils.simpleSucErr(response));
  	});
  };
+
+/**
+ * Posts a new Event object.
+ * Takes 7 params:
+ * 		name - String - the name of the event.
+ *		desc - Stirng - The event description.
+ * 		lat - Number - The event's latitude.
+ *		lon - Number - The event's longitude.
+ *		user - String - The creator's username.
+ * 		start - String - The start date. A date/time in ISO 8601, UTC (e.g. "2011-08-21T18:02:52.249Z")
+ *		expires - String - The end date. A date/time in ISO 8601, UTC (e.g. "2011-08-21T18:02:52.249Z")
+ * Example: {"name":"Ratchet Party", "user":"Admin", "desc": "lets get down n dirty", "lat":32, "lon":-117, "start":"2015-03-21T18:02:52.249Z", "expires":"2015-03-22T18:02:52.249Z"}
+ */
+exports.postEvent = function(request, response) {
+ 	Utils.entryWhere("_User", "username", request.params.user).then(function(obj) {
+ 		new Parse.Object("Events").save({
+ 			name : request.params.name,
+ 			description: request.params.desc,
+ 			location: new Parse.GeoPoint(request.params.lat, request.params.lon),
+ 			userID: obj,
+ 			start: Utils.makeDate(request.params.start),
+ 			expires: Utils.makeDate(request.params.expires)
+ 		}, Utils.simpleSucErr(response));
+ 	});
+ };
+
+/**
+ * Posts a new EventVote.
+ * Takes 2 params:
+ *		user - String - The user's username
+ *		target - String - The objectId of the Event to post for.
+ *	Example: {"user":"Admin", "objectId": "CWwv1FzgPh"}
+ */
+exports.postEventVote = function(request, response) {
+ 	Utils.entryWhere("_User", "username", request.params.user).then(function(obj) {
+ 		new Parse.Object("EventVotes").save({
+ 			userID: obj,
+ 			target: Utils.makePointer("Events", request.params.objectId)
+ 		}, Utils.simpleSucErr(response));
+ 	});
+ };
+
+
+/**
+ * Lookup an event by coordinate.
+ * Takes 2 params:
+ *		lat - Number - The latitude of the coordinate.
+ *		long - Number - The longitude of the coordinate.
+ * Example: {"lat":32.883192, "lon":-117.240933}
+ */
+exports.lookupEventByCoord = function(request, response){
+	 new Parse.Query("Events").equalTo("location", new Parse.GeoPoint(request.params.lat, request.params.lon)).find(Utils.simpleSucErr(response));
+};
+
 
 /* //////////////////////////////////////////////////////////////////////////////// */
 /* /////////////////////////////////// JOBS /////////////////////////////////////// */
