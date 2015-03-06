@@ -299,11 +299,24 @@ class ParseDataProvider {
         }*/
         
         //This is a blocking call, will stall the main thread
-        let result = PFCloud.callFunction("getEvents", withParameters: ["limit":limit, "skip":skip])
+        let result: AnyObject! = PFCloud.callFunction("getEvents", withParameters: ["limit":limit, "skip":skip])
         return result;
         
     }
 
+    /**
+    * Lookup an event by coordinate.
+    * Takes 2 params:
+    *      lat - Number - The latitude of the coordinate.
+    *      long - Number - The longitude of the coordinate.
+    * Example: {"lat":32.883192, "lon":-117.240933}
+    */
+    func lookupEventByCoord(limit:Int, skip:Int)->AnyObject {
+        
+        let result: AnyObject! = PFCloud.callFunction("lookupEventByCoord", withParameters: ["limit":limit, "skip":skip])
+        return result;
+    }
+    
     /**
     * Get event comments for an event.
     * Takes 3 params:
@@ -311,7 +324,8 @@ class ParseDataProvider {
     *      skip (OPTIONAL) - Skip this many items before returning items.  Useful for pagination.
     * Example: {"limit":3, "skip":1, "obj":"CWwv1FzgPh"}
     */
-    func getEventComments(objID:String, limit:Int, skip:Int, completion: (returnValue: [AnyObject])->Void) {
+    func getEventComments(objID:String, limit:Int, skip:Int)->AnyObject {
+        /*
         PFCloud.callFunctionInBackground("getEventComments", withParameters: ["limit":limit, "skip":skip, "obj":objID]) {
             (objects: AnyObject!, error: NSError!) -> Void in
             var result = []
@@ -324,6 +338,9 @@ class ParseDataProvider {
                 
             }
         }
+        */
+        let result: AnyObject! = PFCloud.callFunction("getEventComments", withParameters: ["limit":limit, "skip":skip, "obj":objID])
+        return result;
     }
     
     /**
@@ -464,6 +481,15 @@ class ParseDataProvider {
     }
     
     // need #import <Bolts/Bolts.h> in Bridging Header
+    /**
+    * Save Icon to Parse.
+    * Takes 4 params:
+    *      className - String - The table name
+    *      objID - String - The object ID.
+    *      colName - String - the column name
+    *      img - PFFile - The image.
+    *  Example: {"className":"Events", "objID": "uqBzdjmha1", "colName":"icon", PFFile(data:imageData)}
+    */
     func saveIcon(className:String, objID:String, colName:String, img:PFFile)-> Void {
         
         // the code upload picture/icon to Parse
@@ -508,7 +534,16 @@ class ParseDataProvider {
             }
         }
     }
-    
+
+    /**
+    * Load Icon from Parse.
+    * Takes 3 params:
+    *      className - String - The table name
+    *      objID - String - The object ID.
+    *      colName - String - the column name
+    * return NSData is binary of image
+    *  Example: {"className":"Events", "objID": "uqBzdjmha1", "colName":"icon"}
+    */
     func loadIcon(className:String, objID:String, colName:String)-> NSData {
         
         // the code load picture/icon from Parse
