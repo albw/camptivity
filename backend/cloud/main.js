@@ -109,10 +109,9 @@ Parse.Cloud.afterSave("Events", Standby.initEvent);
  Parse.Cloud.define("locationsNearMe", Locations.locationsNearMe);
 
 /**
- * Gets a user's Score entry.
- * Takes one param:
- * 		user - The unique username of the user to get Score entries for.
- * Example: {"user":"Admin"}
+ * Gets a user's Score entry. Example: {"user":"Admin"}
+ * @method getUserScore
+ * @param {String} user The unique username of the user to get Score entries for.
  */
  Parse.Cloud.define("getUserScore", Score.getUserScore);
 
@@ -217,3 +216,12 @@ Parse.Cloud.afterSave("Events", Standby.initEvent);
  */
  Parse.Cloud.define("lookupEventByCoord", Events.lookupEventByCoord);
 
+
+/**
+ * Lookup event by coordinate.
+ * Takes 2 params:
+ *		lat - Number - The latitude of the coordinate.
+ *		long - Number - The longitude of the coordinate.
+ * Example: {"lat":32.883192, "lon":-117.240934}
+ */
+Parse.Cloud.define("lookupLocationByCoord", Locations.lookupLocationByCoord);
