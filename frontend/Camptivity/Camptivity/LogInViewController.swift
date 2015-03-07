@@ -21,11 +21,11 @@ class LogInViewController: UIViewController {
         var userID : String!
         if usrEntered != "" && pwdEntered != "" {
             let provider = ParseDataProvider()
-             userID  = provider.login(usrEntered, password: pwdEntered)
+             userID  = provider.login(usrEntered, password: pwdEntered).objectId
             
             let alert = UIAlertView()
             alert.title = "Logged in"
-            alert.message =   "  "
+            alert.message =   userID
             alert.delegate = self
             alert.addButtonWithTitle("#Truuuuuuu")
             alert.show()
