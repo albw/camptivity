@@ -307,11 +307,11 @@ class ParseDataProvider {
     /**
     * Lookup an event by coordinate.
     * Takes 2 params:
-    *      lat - Number - The latitude of the coordinate.
-    *      long - Number - The longitude of the coordinate.
+    *      lat - Double - The latitude of the coordinate.
+    *      long - Double - The longitude of the coordinate.
     * Example: {"lat":32.883192, "lon":-117.240933}
     */
-    func lookupEventByCoord(lat:Int, long:Int)->AnyObject {
+    func lookupEventByCoord(lat:Double, long:Double)->AnyObject {
         
         let result: AnyObject! = PFCloud.callFunction("lookupEventByCoord", withParameters: ["lat":lat, "long":long])
         return result;
@@ -320,11 +320,11 @@ class ParseDataProvider {
     /**
     * Lookup a Location by coordinate.
     * Takes 2 params:
-    *      lat - Number - The latitude of the coordinate.
-    *      long - Number - The longitude of the coordinate.
+    *      lat - Double - The latitude of the coordinate.
+    *      long - Double - The longitude of the coordinate.
     * Example: {"lat":32.883192, "lon":-117.240933}
     */
-    func lookupLocationByCoord(lat:Int, long:Int)->AnyObject {
+    func lookupLocationByCoord(lat:Double, long:Double)->AnyObject {
         
         let result: AnyObject! = PFCloud.callFunction("lookupLocationByCoord", withParameters: ["lat":lat, "long":long])
         return result;
