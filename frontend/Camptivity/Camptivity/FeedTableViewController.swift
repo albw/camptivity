@@ -8,17 +8,9 @@
 
 import UIKit
 
-struct EventDataInstance{
-    static var avgRank : Int? = nil
-    static var category : String? = nil
-    static var description : String? = nil
-    static var location : PFGeoPoint? = nil
-    static var name : String? = nil
-    static var numRankings : Int? = nil
-    static var userId : PFUser? = nil
-}
-
 class FeedTableViewController: UITableViewController {
+
+    var eventData: NSArray!
     
     //Reference to alertviewcontroller
     var alertController: UIAlertController!
@@ -81,14 +73,15 @@ class FeedTableViewController: UITableViewController {
         
         //Get events from backend
         data_provider = ParseDataProvider()
-        let result = data_provider.getEvents(3, skip:1)
+        eventData = data_provider.getEvents(3, skip:1) as NSArray
+        //eventData = result
         
-        EventDataInstance.name = result[0]["name"] as String!
-        EventDataInstance.description = result[0]["description"] as String!
-        println(EventDataInstance.description)
+        //EventDataInstance.name = result[0]["name"] as String!
+        //EventDataInstance.description = result[0]["description"] as String!
+        println(eventData[0])
         
         //Need to format data to fit needs for display
-        println(result[0])
+        //println(result[0])
 
         //TODO Fix FUIUIKit Functionality Later
         //alertView = FUIAlertView()
@@ -156,11 +149,11 @@ class FeedTableViewController: UITableViewController {
     }
     
     func setTitleForCell(cell:FeedTableViewCell, indexPath:NSIndexPath) {
-        cell.title_label.text = EventDataInstance.name
+        cell.title_label.text = eventData[0]["name"] as String
     }
     
     func setDescriptionForCell(cell:FeedTableViewCell, indexPath:NSIndexPath) {
-        cell.description_label.text = EventDataInstance.description
+        cell.description_label.text = eventData[0]["description"] as String
     }
     
     //Override function for table cell clicks
@@ -185,8 +178,8 @@ class FeedTableViewController: UITableViewController {
         
             // Create a new variable to store the instance of PlayerTableViewController
             let destinationVC = segue.destinationViewController as EventViewController
-            destinationVC.name = EventDataInstance.name
-            destinationVC.details = EventDataInstance.description
+            destinationVC.name = eventData[0]["name"] as String
+            destinationVC.details = eventData[0]["description"] as String
         }
         
     }
