@@ -311,9 +311,9 @@ class ParseDataProvider {
     *      long - Number - The longitude of the coordinate.
     * Example: {"lat":32.883192, "lon":-117.240933}
     */
-    func lookupEventByCoord(limit:Int, skip:Int)->AnyObject {
+    func lookupEventByCoord(lat:Int, long:Int)->AnyObject {
         
-        let result: AnyObject! = PFCloud.callFunction("lookupEventByCoord", withParameters: ["limit":limit, "skip":skip])
+        let result: AnyObject! = PFCloud.callFunction("lookupEventByCoord", withParameters: ["lat":lat, "long":long])
         return result;
     }
 
@@ -324,9 +324,9 @@ class ParseDataProvider {
     *      long - Number - The longitude of the coordinate.
     * Example: {"lat":32.883192, "lon":-117.240933}
     */
-    func lookupLocationByCoord(limit:Int, skip:Int)->AnyObject {
+    func lookupLocationByCoord(lat:Int, long:Int)->AnyObject {
         
-        let result: AnyObject! = PFCloud.callFunction("lookupLocationByCoord", withParameters: ["limit":limit, "skip":skip])
+        let result: AnyObject! = PFCloud.callFunction("lookupLocationByCoord", withParameters: ["lat":lat, "long":long])
         return result;
     }
     
