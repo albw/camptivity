@@ -538,8 +538,8 @@ class ParseDataProvider {
         var ObjID = String()
         PFUser.logInWithUsernameInBackground(username, password: password) {
             (user: PFUser!, error: NSError!) -> Void in
-            if user != nil {
-                ObjID = user.objectId
+            if user.username != nil {
+                ObjID = user.username
     
             } else {
             // No, User Doesn't Exist

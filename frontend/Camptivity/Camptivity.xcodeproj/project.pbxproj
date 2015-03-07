@@ -31,6 +31,7 @@
 		13CFE2BB1A8DD12C00F64DDC /* TypesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFE2B91A8DD12C00F64DDC /* TypesTableViewController.swift */; };
 		13CFE2BD1A8DD17F00F64DDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFE2BC1A8DD17F00F64DDC /* AppDelegate.swift */; };
 		13CFE2BF1A8DD27700F64DDC /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13CFE2BE1A8DD27700F64DDC /* GoogleMaps.framework */; };
+		6E14EB861AAAB09900FD1F4D /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E14EB851AAAB09900FD1F4D /* LogInViewController.swift */; };
 		6E8E95381A92D4730055A60C /* FacebookLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8E95371A92D4730055A60C /* FacebookLoginViewController.swift */; };
 		6EA4A67A1A7ABF2E00B625ED /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA4A6791A7ABF2E00B625ED /* AudioToolbox.framework */; };
 		6EA4A67C1A7ABF4D00B625ED /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA4A67B1A7ABF4D00B625ED /* CFNetwork.framework */; };
@@ -116,6 +117,7 @@
 		13CFE2B91A8DD12C00F64DDC /* TypesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypesTableViewController.swift; sourceTree = "<group>"; };
 		13CFE2BC1A8DD17F00F64DDC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13CFE2BE1A8DD27700F64DDC /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		6E14EB851AAAB09900FD1F4D /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		6E8E95371A92D4730055A60C /* FacebookLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookLoginViewController.swift; sourceTree = "<group>"; };
 		6EA4A6791A7ABF2E00B625ED /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		6EA4A67B1A7ABF4D00B625ED /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -250,6 +252,7 @@
 				8A5834281AA648DF005A6577 /* EventViewController.swift */,
 				6EE7A9C81AA64C9E00699978 /* SignUpViewController.swift */,
 				6EE1AA971AA83698003C6853 /* FBSignUpViewController.swift */,
+				6E14EB851AAAB09900FD1F4D /* LogInViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -548,6 +551,7 @@
 				8ABDB9DD1A92E29C00A0D6CB /* FeedTableViewController.swift in Sources */,
 				13CE1DEF1A815B0400957EB9 /* UIViewExtension.swift in Sources */,
 				13CFE2BD1A8DD17F00F64DDC /* AppDelegate.swift in Sources */,
+				6E14EB861AAAB09900FD1F4D /* LogInViewController.swift in Sources */,
 				8A5E62011A9FB5A600E418ED /* UIPopoverController+FlatUI.m in Sources */,
 				8A3A75A71AA25746006A1EB8 /* FeedTableViewCell.swift in Sources */,
 				13CFE2BB1A8DD12C00F64DDC /* TypesTableViewController.swift in Sources */,

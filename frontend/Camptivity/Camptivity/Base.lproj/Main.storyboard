@@ -78,6 +78,7 @@
                         <segue destination="rzm-Qa-d0B" kind="show" identifier="FB_Login" id="JkM-ys-2WW"/>
                         <segue destination="Zvt-r8-O4l" kind="show" identifier="Sign_Up" id="jiA-40-rLL"/>
                         <segue destination="kpR-aP-fzz" kind="show" identifier="Event_Segue" id="tiV-74-bBe"/>
+                        <segue destination="goA-nE-KdL" kind="show" identifier="Log_In" id="fE3-7I-BYX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="79v-ZT-LhJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -202,92 +203,11 @@
                     </view>
                     <connections>
                         <outlet property="fbLoginView" destination="ScQ-HS-GA4" id="o2F-4q-HKX"/>
-                        <segue destination="wYR-aW-c38" kind="show" identifier="showView" id="Zjc-Wp-fHC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tsM-sF-NzC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1876" y="384.75"/>
-        </scene>
-        <!--Sign Up View Controller-->
-        <scene sceneID="0MP-mr-9sQ">
-            <objects>
-                <viewController id="wYR-aW-c38" customClass="FBSignUpViewController" customModule="Camptivity" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="2R8-xy-LB4"/>
-                        <viewControllerLayoutGuide type="bottom" id="s4G-g3-kec"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="pta-9T-RqN">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7b6-ch-g72">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="highlightedColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <variation key="heightClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="84" y="95" width="203" height="21"/>
-                                </variation>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUk-60-Ir8">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="highlightedColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <variation key="heightClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="84" y="155" width="203" height="21"/>
-                                </variation>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="userid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0P-Wl-K51">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="84" y="225" width="203" height="21"/>
-                                </variation>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VX6-Jb-p8Z">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Camp it with FB !">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="heightClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="84" y="318" width="203" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="loginVerifyButton:" destination="wYR-aW-c38" eventType="touchUpInside" id="5Ar-Fv-b5v"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="7b6-ch-g72"/>
-                                <exclude reference="fUk-60-Ir8"/>
-                                <exclude reference="h0P-Wl-K51"/>
-                                <exclude reference="VX6-Jb-p8Z"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular">
-                            <mask key="subviews">
-                                <include reference="7b6-ch-g72"/>
-                                <include reference="fUk-60-Ir8"/>
-                                <include reference="h0P-Wl-K51"/>
-                                <include reference="VX6-Jb-p8Z"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <connections>
-                        <outlet property="displayEmail" destination="fUk-60-Ir8" id="cG2-DE-xo8"/>
-                        <outlet property="displayName" destination="7b6-ch-g72" id="sLh-l8-gvK"/>
-                        <outlet property="displayUserID" destination="h0P-Wl-K51" id="hcH-DW-mIb"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WqH-D5-Ia2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2564" y="384.75"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="fiy-if-Rd0">
@@ -347,6 +267,9 @@
                                 <variation key="heightClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="273" y="348" width="75" height="30"/>
                                 </variation>
+                                <connections>
+                                    <action selector="btnAddImage:" destination="Zvt-r8-O4l" eventType="touchUpInside" id="uYC-oV-zBf"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d47-3b-IaX">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -387,6 +310,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ffe-x5-WGN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="969" y="1143"/>
+        </scene>
+        <!--Log In View Controller-->
+        <scene sceneID="QBZ-mG-3Eo">
+            <objects>
+                <viewController id="goA-nE-KdL" customClass="LogInViewController" customModule="Camptivity" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zzT-tZ-zdU"/>
+                        <viewControllerLayoutGuide type="bottom" id="uzC-gy-xRp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yoZ-Um-SYZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="01c-Qc-Ts9">
+                                <rect key="frame" x="67" y="123" width="209" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fKz-OF-03n">
+                                <rect key="frame" x="67" y="177" width="209" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8hV-Ik-yxp">
+                                <rect key="frame" x="67" y="225" width="209" height="30"/>
+                                <state key="normal" title="Get me in homie !">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginVerifyButton:" destination="goA-nE-KdL" eventType="touchUpInside" id="qj7-eH-Z4G"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="userName" destination="01c-Qc-Ts9" id="cpS-1G-7ku"/>
+                        <outlet property="userPassword" destination="fKz-OF-03n" id="rRa-oB-6ys"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ju7-qa-ysZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="969" y="1843"/>
         </scene>
         <!--EventViewController-->
         <scene sceneID="8d6-zm-XLI">
