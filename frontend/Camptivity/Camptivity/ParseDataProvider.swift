@@ -316,6 +316,19 @@ class ParseDataProvider {
         let result: AnyObject! = PFCloud.callFunction("lookupEventByCoord", withParameters: ["limit":limit, "skip":skip])
         return result;
     }
+
+    /**
+    * Lookup a Location by coordinate.
+    * Takes 2 params:
+    *      lat - Number - The latitude of the coordinate.
+    *      long - Number - The longitude of the coordinate.
+    * Example: {"lat":32.883192, "lon":-117.240933}
+    */
+    func lookupLocationByCoord(limit:Int, skip:Int)->AnyObject {
+        
+        let result: AnyObject! = PFCloud.callFunction("lookupLocationByCoord", withParameters: ["limit":limit, "skip":skip])
+        return result;
+    }
     
     /**
     * Get event comments for an event.
