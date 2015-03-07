@@ -524,6 +524,29 @@ class ParseDataProvider {
             }
         }
     }
+
+    /**
+    * Login.
+    * Takes 2 params:
+    *      username - String - User name
+    *      password - String - Password
+    *  Example: {"username":"username", "password": "password"}
+    */
+    func login(username:String, password:String)->String {
+    
+        // the code upload picture/icon to Parse
+        var ObjID = String()
+        PFUser.logInWithUsernameInBackground(username, password: password) {
+            (user: PFUser!, error: NSError!) -> Void in
+            if user != nil {
+                ObjID = user.objectId
+    
+            } else {
+            // No, User Doesn't Exist
+            }
+        }
+        return ObjID
+    }
     
     func saveImageToPictureProfile(username:String, password:String, imageFile:PFFile)-> Void {
         
