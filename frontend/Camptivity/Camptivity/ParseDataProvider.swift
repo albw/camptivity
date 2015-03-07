@@ -423,6 +423,17 @@ class ParseDataProvider {
         }
         return s
     }
+    
+    /**
+    * Gets LocationRanks for the specified Locations object.
+    * Takes one param:
+    *      objid - The unique objectId of the Location we're trying to get locationRanks for.
+    * Example: {"objid":"d70IYXni4G"}
+    */
+    func getLocationRanks(objid:String)-> AnyObject {
+        let result: AnyObject! = PFCloud.callFunction("getLocationRanks", withParameters: ["objid": objid])
+        return result;
+    }
 
     /**
     * Post a new LocationRank.
