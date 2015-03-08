@@ -7,15 +7,12 @@
 //  Copyright (c) 2015 Camptivity INC. All rights reserved.
 //
 
-import Foundation
-import Parse
 
-public class ParseDataProvider {
+class ParseDataProvider {
     let apiKey = "AIzaSyCNjX-9jxGqB9BcMeCx6tPJR1l0WU58LSA"
     var session: NSURLSession {
         return NSURLSession.sharedSession()
     }
-    
     
     func fetchLocationsBaseOnCategories(categories:[String], completion: (result: [AnyObject])->Void) {
         var results = []
@@ -30,8 +27,8 @@ public class ParseDataProvider {
                 NSLog("%@", error)
             }
             completion(result:results)
-            
-            
+
+
         }
     }
     
@@ -102,32 +99,63 @@ public class ParseDataProvider {
             }
         }
     }
-    
-    /// Register a new user. To be used when user does not wish to link his/her facebook profile.
-    ///
-    /// :param: username The username to create this account with.  This *MUST* be unique.
-    /// :param: password The user's password
-    /// :param: email The unique email to register this account with
-    /// :param: fullname The user's name
-    /// :returns: A reply from the server
-    public func newUserSignup(username:String, password:String, email: String, fullname: String)-> AnyObject {
-        let result: AnyObject! = PFCloud.callFunction("newUserSignup", withParameters: ["user":username, "pass":password, "email":email, "name":fullname])
-        return result
+
+    /**
+    * Attempts to register a new user.  To be used when user does not wish to link his/her facebook profile.
+    * Takes 4 parameters:
+    *      user - A username to register with.  This MUST be unique.
+    *      pass - A password the user creates.
+    *      email - The user's email.  This MUST be unique.
+    *      name - The user's name.
+    * Example: {"user":"Foo", "pass":"pw", "email":"thisisalecwu@gmail.com", "name":"ALEC"}
+    */
+    func newUserSignup(username:String, password:String, email: String, fullname: String)-> String {
+        var s = String()
+
+        //PFCloud.callFunctionInBackground("newUserSignup", withParameters: ["user":"Username", "pass":"password", "email":"Username@gmail.com", "name":"fullname"]) {
+        PFCloud.callFunctionInBackground("newUserSignup", withParameters: ["user":username, "pass":password, "email":email, "name":fullname]) {
+            (objects: AnyObject!, error: NSError!) -> Void in
+            var results = []
+            if (error != nil) {
+                // Your error handling here
+            }
+            else {
+
+                s = objects as String
+
+            }
+        }
+        return s
+    }
+
+    /**
+    * Attempts to register a new user via Facebook.  The user logs in via the app, which will then save the results of a successful login to Parse.
+    * Takes 3 params:
+    *      fbID - User's Facebook Id.
+    *      email - User's Email
+    *      name - User's name
+    * Example: {"fbID":"392874928", "email":"fastily@yahoo.com", "name":"Fastily"}
+    */
+    func fbSignup(fbID:String, email:String, fullname:String)-> String {
+        var s = String()
+        //PFCloud.callFunctionInBackground("fbSignup", withParameters: ["fbID":"392874928", "email":"fastily@yahoo.com", "name":"Fastily"]) {
+        PFCloud.callFunctionInBackground("fbSignup", withParameters: ["fbID":fbID, "email":email, "name":fullname]) {
+            (objects: AnyObject!, error: NSError!) -> Void in
+            var results = []
+            if (error != nil) {
+                // Your error handling here
+            }
+            else {
+                
+                s = objects as String
+                
+            }
+        }
+        return s
     }
     
     
-    /// Attempts to register a new user via Facebook.  The user logs in via the app, which will then save the results of a successful login to Parse.
-    ///
-    ///:param: fbID The user's facebook id
-    ///:param: email The user's email, retrieved from Facebook
-    ///:param: fullname The user's full name, retrieved from Facebook.
-    ///:returns: An AnyObject containing the reply from Parse.
-    public func fbSignup(fbID:String, email:String, fullname:String)-> AnyObject {
-        let result : AnyObject! = PFCloud.callFunction("fbSignup", withParameters: ["fbID":fbID, "email":email, "name":fullname])
-        return result;
-    }
-    
-   // Function return true if an email already used. False Other wise.
+    // Function return true if an email already used. False Other wise.
     func emailRegistered(email:String)-> Bool {
         var s = Bool()
         var query = PFUser.query()
@@ -142,8 +170,7 @@ public class ParseDataProvider {
         }
         return s
     }
-    
-    
+
     func fbRegistered(facebookID:String)-> String! {
         var s : String!
         var query = PFUser.query()
@@ -152,11 +179,23 @@ public class ParseDataProvider {
         if let obj = obj as?  [PFObject]{
             s = obj.first?.objectId
         }
-        
+
+//        query.findObjectsInBackgroundWithBlock {
+//            (objects: [AnyObject]!, error: NSError!) -> Void in
+//            if error == nil {
+//                // The find succeeded.
+//                if let objects = objects as? [PFObject] {
+//                    s  = objects.first?.objectId
+//                }
+//            } else {
+//                // Log details of the failure
+//                println("Error: \(error) \(error.userInfo!)")
+//            }
+//        }
         return s
-        
+
     }
-    
+
     func usernameTaken(username:String)-> Bool {
         var s = Bool()
         //PFCloud.callFunctionInBackground("usernameTaken", withParameters: ["username":"Admin"]) {
@@ -174,7 +213,7 @@ public class ParseDataProvider {
         }
         return s
     }
-    
+
     /**
     * Attempts to send a password reset email.
     * Takes one param:
@@ -220,7 +259,7 @@ public class ParseDataProvider {
         }
         return s
     }
-    
+
     /**
     * Get the number of event votes for a given event.
     * Takes one param:
@@ -242,7 +281,7 @@ public class ParseDataProvider {
         }
         return s
     }
-    
+
     /**
     * Gets Events in descending (most recent first).
     * Takes 2 OPTIONAL params:
@@ -251,16 +290,48 @@ public class ParseDataProvider {
     * Example: {"limit":3, "skip":1}
     */
     func getEvents(limit:Int, skip:Int)->AnyObject {
+        
+        //For a Non-Blocking Call Comment out below
+        /*PFCloud.callFunctionInBackground("getEvents", withParameters: ["limit":limit, "skip":skip]) {
+            (objects: AnyObject!, error: NSError!) -> Void in
+            var result = []
+            if (error != nil) {
+                // Your error handling here
+            }
+            else {
+                result = objects as NSArray
+
+                completion(returnValue:result)
+                /*
+                //NSLog("Result: \(result) ")
+                println("===================")
+                
+                for (var i=0; i<result.count; i++)
+                {
+                println(result[i]["avgRank"] as Int)
+                println(result[i]["category"] as String)
+                println(result[i]["description"] as String)
+                println(result[i]["location"] as PFGeoPoint)
+                println(result[i]["name"] as String)
+                println(result[i]["numRankings"] as Int)
+                println(result[i]["userID"] as PFUser)
+                }
+                */
+                
+            }
+        }*/
+        
+        //This is a blocking call, will stall the main thread
         let result: AnyObject! = PFCloud.callFunction("getEvents", withParameters: ["limit":limit, "skip":skip])
         return result;
         
     }
-    
+
     /**
     * Lookup an event by coordinate.
     * Takes 2 params:
     *      lat - Double - The latitude of the coordinate.
-    *      long - Double - The longitude of the coordinate.
+    *      lon - Double - The longitude of the coordinate.
     * Example: {"lat":32.883192, "lon":-117.240933}
     */
     func lookupEventByCoord(lat:Double, long:Double)->AnyObject {
@@ -268,40 +339,26 @@ public class ParseDataProvider {
         let result: AnyObject! = PFCloud.callFunction("lookupEventByCoord", withParameters: ["lat":lat, "long":long])
         return result;
     }
-    
+
     /**
     * Lookup a Location by coordinate.
     * Takes 2 params:
     *      lat - Double - The latitude of the coordinate.
-    *      long - Double - The longitude of the coordinate.
+    *      lon - Double - The longitude of the coordinate.
     * Example: {"lat":32.883192, "lon":-117.240933}
     */
-    func lookupLocationByCoord(lat: Float, long: Float)->AnyObject {
+    func lookupLocationByCoord(lat: Double, lon: Double)->AnyObject {
         
         
         //var query = PFQuery(className:"Locations")
         //query.whereKey("location", equalTo: PFGeoPoint(latitude: d1, longitude: d2))
         //var result = query.findObjects()
         
+
+        let result: AnyObject! = PFCloud.callFunction("lookupLocationByCoord", withParameters: ["lat":lat, "lon":lon])
         
-        //let result: AnyObject! = PFCloud.callFunction("lookupLocationByCoord", withParameters: ["lat":lat, "long":long])
-        
-        var result = []
-        PFCloud.callFunctionInBackground("lookupLocationByCoord", withParameters: ["lat":lat, "long":long]) {
-            (objects: AnyObject!, error: NSError!) -> Void in
-            
-            if (error != nil) {
-                // Your error handling here
-            }
-            else {
-                result = objects as NSArray
-                
-            }
-        }
-        
-        
-        println(result.count)
-        println(result)
+        //println(result.count)
+        //println(result)
         return result;
     }
     
@@ -315,16 +372,16 @@ public class ParseDataProvider {
     func getEventComments(objID:String, limit:Int, skip:Int)->AnyObject {
         /*
         PFCloud.callFunctionInBackground("getEventComments", withParameters: ["limit":limit, "skip":skip, "obj":objID]) {
-        (objects: AnyObject!, error: NSError!) -> Void in
-        var result = []
-        if (error != nil) {
-        // Your error handling here
-        }
-        else {
-        result = objects as NSArray
-        completion(returnValue:result)
-        
-        }
+            (objects: AnyObject!, error: NSError!) -> Void in
+            var result = []
+            if (error != nil) {
+                // Your error handling here
+            }
+            else {
+                result = objects as NSArray
+                completion(returnValue:result)
+                
+            }
         }
         */
         let result: AnyObject! = PFCloud.callFunction("getEventComments", withParameters: ["limit":limit, "skip":skip, "obj":objID])
@@ -356,7 +413,7 @@ public class ParseDataProvider {
         }
         return s
     }
-    
+
     /**
     * Posts a new Event object.
     * Takes 7 params:
@@ -386,7 +443,7 @@ public class ParseDataProvider {
         }
         return s
     }
-    
+
     /**
     * Posts a new EventVote.
     * Takes 2 params:
@@ -422,7 +479,7 @@ public class ParseDataProvider {
         let result: AnyObject! = PFCloud.callFunction("getLocationRanks", withParameters: ["objid": objid])
         return result;
     }
-    
+
     /**
     * Post a new LocationRank.
     * Takes 4 params:
@@ -449,7 +506,7 @@ public class ParseDataProvider {
         }
         return s
     }
-    
+
     /**
     * Post a new Location.
     * Takes 6 params:
@@ -508,11 +565,11 @@ public class ParseDataProvider {
                 obj["photo"] = imageFile
                 */
                 obj[colName] = img
-                obj.saveInBackgroundWithTarget(nil, selector: nil)
+                obj.saveInBackground()
             }
         }
     }
-    
+
     /**
     * Login.
     * Takes 2 params:
@@ -521,11 +578,11 @@ public class ParseDataProvider {
     *  Example: {"username":"username", "password": "password"}
     */
     func login(username:String, password:String)-> PFUser {
-        
+    
         // the code upload picture/icon to Parse
-        return PFUser.logInWithUsername(username, password: password);
-        
-        
+        var user = PFUser.logInWithUsername(username, password: password);
+
+        return user
     }
     
     func saveImageToPictureProfile(username:String, password:String, imageFile:PFFile)-> Void {
@@ -541,14 +598,14 @@ public class ParseDataProvider {
                 
                 //var imageFile = PFFile(data:imageData)
                 user.setObject(imageFile, forKey: "profilePic")
-                user.saveInBackgroundWithTarget(nil, selector: nil)
+                user.saveInBackground()
                 
             } else {
                 // No, User Doesn't Exist
             }
         }
     }
-    
+
     /**
     * Load Icon from Parse.
     * Takes 3 params:
@@ -588,7 +645,7 @@ public class ParseDataProvider {
 Unit Test code
 
 let provider = ParseDataProvider()
-let result: AnyObject! = provider.lookupLocationByCoord(32.880586, long: -117.231874)
+let result: AnyObject! = provider.lookupLocationByCoord(32.880586, lon: -117.231874)
 println(result.count)
 println(result as PFGeoPoint)
 
