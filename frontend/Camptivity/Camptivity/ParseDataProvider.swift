@@ -327,7 +327,13 @@ class ParseDataProvider {
     */
     func lookupLocationByCoord(lat:Double, long:Double)->AnyObject {
         
-        let result: AnyObject! = PFCloud.callFunction("lookupLocationByCoord", withParameters: ["lat":lat, "long":long])
+
+        var query = PFQuery(className:"Locations")
+        query.whereKey("location", equalTo: PFGeoPoint(latitude: lat, longitude: long))
+        var result = query.findObjects()
+        
+        //let result: AnyObject! = PFCloud.callFunction("lookupLocationByCoord", withParameters: ["lat":lat, "long":long])
+
         return result;
     }
     
@@ -609,3 +615,13 @@ class ParseDataProvider {
         return r
     }
 }
+
+/*
+Unit Test code
+
+let provider = ParseDataProvider()
+let result: AnyObject! = provider.lookupLocationByCoord(32.880586, long: -117.231874)
+println(result.count)
+println(result as PFGeoPoint)
+
+*/
