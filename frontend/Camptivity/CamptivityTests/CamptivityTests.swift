@@ -13,6 +13,7 @@ class CamptivityTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
+    
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
@@ -21,10 +22,16 @@ class CamptivityTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
+    func testNewUserSignup() {
+        ParseDataProvider().newUserSignup("TESTUSER", password: "BLAH", email: "fastily@yahoo.com", fullname: "AWU")
         XCTAssert(true, "Pass")
     }
+    
+    func testFBSignup() {
+        ParseDataProvider().fbSignup("69696969696", email: "fastily@yahoo.com", fullname: "AWU")
+        XCTAssert(true, "Pass")
+    }
+    
     
     func testPerformanceExample() {
         // This is an example of a performance test case.

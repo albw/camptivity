@@ -208,6 +208,6 @@ curl -X POST \
 -H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
 -H "X-Parse-REST-API-Key: 8DzbViZ3uzuZVp9bZ9rztDQEKG0Tx9fP1HLPsx5U" \
 -H "Content-Type: application/json" \
--d '{"lat":32.883192, "lon":-117.240934}' \
+-d '{"lat":32.880586, "lon":-117.231874}' \
 https://api.parse.com/1/functions/lookupLocationByCoord
 ```
