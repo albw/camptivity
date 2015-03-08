@@ -162,10 +162,11 @@ class ParseDataProvider {
             var results = []
             if (error != nil) {
                 // Your error handling here
+                s = true
             }
             else {
                 
-                s = objects as Bool
+                s = false
                 
             }
         }
