@@ -109,9 +109,9 @@ exports.postEventVote = function(request, response) {
  * Example: {"lat":32.883192, "lon":-117.240933}
  */
 exports.lookupEventByCoord = function(request, response){
-	 new Parse.Query("Events").equalTo("location", new Parse.GeoPoint(request.params.lat, request.params.lon)).find(Utils.simpleSucErr(response));
+	 //new Parse.Query("Events").equalTo("location", new Parse.GeoPoint(request.params.lat, request.params.lon)).find(Utils.simpleSucErr(response));
+	 Utils.lookupByLocation("Events", request.params.lat, request.params.lon, response);
 };
-
 
 /* //////////////////////////////////////////////////////////////////////////////// */
 /* /////////////////////////////////// JOBS /////////////////////////////////////// */
