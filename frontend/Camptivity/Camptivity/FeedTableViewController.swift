@@ -120,6 +120,14 @@ class FeedTableViewController: UITableViewController {
         
     }
     
+    @IBAction func upVote(sender: UIButton) {
+        println(sender.tag)
+    }
+    
+    @IBAction func downVote(sender: UIButton) {
+        println(sender.tag)
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         return feedCellAtIndexPath(indexPath)
@@ -127,6 +135,8 @@ class FeedTableViewController: UITableViewController {
     
     func feedCellAtIndexPath(indexPath:NSIndexPath) -> FeedTableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("feedCell") as FeedTableViewCell
+        cell.up_button.tag = indexPath.row
+        cell.down_button.tag = indexPath.row
         if(indexPath.row < 2){ //Currently hardcoded, need a way to determine the amount of events
           setCellDisplay(cell, indexPath: indexPath)
         }
