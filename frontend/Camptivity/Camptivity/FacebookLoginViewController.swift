@@ -34,17 +34,31 @@ class FacebookLoginViewController: UIViewController, FBLoginViewDelegate {
         self.userID =  user.objectID
         self.userName = user.username
         
-        FBRequestConnection.startForMeWithCompletionHandler { (connection, user, error) -> Void in
-            if (error == nil)
-            {
-                self.email = user.objectForKey("email") as String
-                self.performSegueWithIdentifier("showView", sender: self)
-
+        if (self.userID != nil)
+        {
+            
+            let provider = ParseDataProvider()
+            var s = provider.fbRegistered(self.userID)
+            if (s != nil){
+                println(s)
             }
-        }
-        
+      
 
-        
+            
+            
+            else{
+                //No User, send to signup
+                FBRequestConnection.startForMeWithCompletionHandler { (connection, user, error) -> Void in
+                    if (error == nil)
+                    {
+                        self.email = user.objectForKey("email") as String
+                        self.performSegueWithIdentifier("showView", sender: self)
+                        
+                    }
+                }
+            }
+            
+        }
         
     }
     

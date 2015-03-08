@@ -48,8 +48,12 @@ class FBSignUpViewController: UIViewController{
         }
         if (self.email != nil){
             
-            var s = self.provider.emailRegistered(self.email)
+            var s  = self.provider.emailRegistered(self.email)
+            println(s)
             self.displayEmail.text = self.email
+            
+
+            
         }
         
     }

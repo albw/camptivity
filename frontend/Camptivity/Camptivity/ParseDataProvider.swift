@@ -154,25 +154,47 @@ class ParseDataProvider {
         return s
     }
     
+    
+    // Function return true if an email already used. False Other wise.
     func emailRegistered(email:String)-> Bool {
         var s = Bool()
-        //PFCloud.callFunctionInBackground("emailRegistered", withParameters: ["email":"fastily@yahoo.com"]) {
-        PFCloud.callFunctionInBackground("emailRegistered", withParameters: ["email":email]) {
-            (objects: AnyObject!, error: NSError!) -> Void in
-            var results = []
-            if (error != nil) {
-                // Your error handling here
-                s = true
-            }
-            else {
-                
-                s = false
-                
-            }
+        var query = PFUser.query()
+        query.whereKey("email", equalTo:email)
+        var obj = query.findObjects()
+        
+        if (obj.count != 0){
+            s = true
+        }
+        else {
+            s = false
         }
         return s
     }
 
+    func fbRegistered(facebookID:String)-> String! {
+        var s : String!
+        var query = PFUser.query()
+        query.whereKey("fbID", equalTo:facebookID)
+        var obj = query.findObjects()
+        if let obj = obj as?  [PFObject]{
+            s = obj.first?.objectId
+        }
+
+//        query.findObjectsInBackgroundWithBlock {
+//            (objects: [AnyObject]!, error: NSError!) -> Void in
+//            if error == nil {
+//                // The find succeeded.
+//                if let objects = objects as? [PFObject] {
+//                    s  = objects.first?.objectId
+//                }
+//            } else {
+//                // Log details of the failure
+//                println("Error: \(error) \(error.userInfo!)")
+//            }
+//        }
+        return s
+
+    }
 
     func usernameTaken(username:String)-> Bool {
         var s = Bool()
