@@ -331,7 +331,7 @@ class ParseDataProvider {
     * Lookup an event by coordinate.
     * Takes 2 params:
     *      lat - Double - The latitude of the coordinate.
-    *      long - Double - The longitude of the coordinate.
+    *      lon - Double - The longitude of the coordinate.
     * Example: {"lat":32.883192, "lon":-117.240933}
     */
     func lookupEventByCoord(lat:Double, long:Double)->AnyObject {
@@ -344,10 +344,10 @@ class ParseDataProvider {
     * Lookup a Location by coordinate.
     * Takes 2 params:
     *      lat - Double - The latitude of the coordinate.
-    *      long - Double - The longitude of the coordinate.
+    *      lon - Double - The longitude of the coordinate.
     * Example: {"lat":32.883192, "lon":-117.240933}
     */
-    func lookupLocationByCoord(lat: Float, long: Float)->AnyObject {
+    func lookupLocationByCoord(lat: Double, lon: Double)->AnyObject {
         
         
         //var query = PFQuery(className:"Locations")
@@ -355,24 +355,10 @@ class ParseDataProvider {
         //var result = query.findObjects()
         
 
-        //let result: AnyObject! = PFCloud.callFunction("lookupLocationByCoord", withParameters: ["lat":lat, "long":long])
+        let result: AnyObject! = PFCloud.callFunction("lookupLocationByCoord", withParameters: ["lat":lat, "lon":lon])
         
-        var result = []
-        PFCloud.callFunctionInBackground("lookupLocationByCoord", withParameters: ["lat":lat, "long":long]) {
-            (objects: AnyObject!, error: NSError!) -> Void in
-
-            if (error != nil) {
-                // Your error handling here
-            }
-            else {
-                result = objects as NSArray
-                
-            }
-        }
-        
-
-        println(result.count)
-        println(result)
+        //println(result.count)
+        //println(result)
         return result;
     }
     
@@ -659,7 +645,7 @@ class ParseDataProvider {
 Unit Test code
 
 let provider = ParseDataProvider()
-let result: AnyObject! = provider.lookupLocationByCoord(32.880586, long: -117.231874)
+let result: AnyObject! = provider.lookupLocationByCoord(32.880586, lon: -117.231874)
 println(result.count)
 println(result as PFGeoPoint)
 
