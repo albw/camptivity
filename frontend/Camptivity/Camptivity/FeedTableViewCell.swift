@@ -14,6 +14,9 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet var title_label: UILabel!
     @IBOutlet var profile_image: UIImageView!
     
+    @IBOutlet weak var count: UILabel!
+    @IBOutlet weak var up_button: UIButton!
+    @IBOutlet weak var down_button: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

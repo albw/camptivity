@@ -124,7 +124,7 @@ class FeedTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 3
+        return 3 //Currently hardcoded, need a way to determine the amount of events
     }
     
     /*
@@ -142,18 +142,20 @@ class FeedTableViewController: UITableViewController {
     }
     
     func feedCellAtIndexPath(indexPath:NSIndexPath) -> FeedTableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("feedCell") as FeedTableViewCell
-        setTitleForCell(cell, indexPath: indexPath)
-        setDescriptionForCell(cell, indexPath: indexPath)
+          let cell = tableView.dequeueReusableCellWithIdentifier("feedCell") as FeedTableViewCell
+        if(indexPath.row < 2){ //Currently hardcoded, need a way to determine the amount of events
+          setTitleForCell(cell, indexPath: indexPath)
+          setDescriptionForCell(cell, indexPath: indexPath)
+        }
         return cell
     }
     
     func setTitleForCell(cell:FeedTableViewCell, indexPath:NSIndexPath) {
-        cell.title_label.text = eventData[0]["name"] as String
+        cell.title_label.text = eventData[indexPath.row]["name"] as String
     }
     
     func setDescriptionForCell(cell:FeedTableViewCell, indexPath:NSIndexPath) {
-        cell.description_label.text = eventData[0]["description"] as String
+        cell.description_label.text = eventData[indexPath.row]["description"] as String
     }
     
     //Override function for table cell clicks

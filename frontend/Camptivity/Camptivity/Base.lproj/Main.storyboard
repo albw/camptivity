@@ -53,12 +53,39 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsD-7i-0JW">
+                                            <rect key="frame" x="13" y="114" width="79" height="21"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vp7-mA-MVS">
+                                            <rect key="frame" x="319" y="50" width="30" height="30"/>
+                                            <state key="normal" title="Up">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GPM-05-U25">
+                                            <rect key="frame" x="314" y="88" width="40" height="30"/>
+                                            <state key="normal" title="Down">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nj6-rw-Ik5">
+                                            <rect key="frame" x="323" y="21" width="22" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="count" destination="Nj6-rw-Ik5" id="VVx-zG-4Ol"/>
                                     <outlet property="description_label" destination="XVL-WN-ZUz" id="0yP-vZ-5fV"/>
+                                    <outlet property="down_button" destination="GPM-05-U25" id="ag9-FV-3oe"/>
                                     <outlet property="profile_image" destination="grf-f3-2eM" id="BCa-s8-iOz"/>
                                     <outlet property="title_label" destination="a57-jN-xUH" id="5z4-XY-2Nt"/>
+                                    <outlet property="up_button" destination="vp7-mA-MVS" id="Exx-sE-5qL"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -83,7 +110,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="79v-ZT-LhJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1036" y="382"/>
+            <point key="canvasLocation" x="1036" y="379"/>
         </scene>
         <!--Social Feed-->
         <scene sceneID="Yp5-sd-raZ">
