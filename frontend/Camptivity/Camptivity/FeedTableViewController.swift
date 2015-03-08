@@ -11,6 +11,7 @@ import UIKit
 class FeedTableViewController: UITableViewController {
 
     var eventData: NSArray!
+    var event_index: Int!
     
     //Reference to alertviewcontroller
     var alertController: UIAlertController!
@@ -80,6 +81,10 @@ class FeedTableViewController: UITableViewController {
         //EventDataInstance.description = result[0]["description"] as String!
         println(eventData[0])
         
+        //Temporary need to look up add image.
+        //var post_button = UIBarButtonItem(title: "Add Post", style: .Done, target: self, action: nil)
+        //self.navigationItem.leftBarButtonItem = post_button
+        
         //Need to format data to fit needs for display
         //println(result[0])
 
@@ -142,32 +147,26 @@ class FeedTableViewController: UITableViewController {
     }
     
     func feedCellAtIndexPath(indexPath:NSIndexPath) -> FeedTableViewCell {
-          let cell = tableView.dequeueReusableCellWithIdentifier("feedCell") as FeedTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("feedCell") as FeedTableViewCell
         if(indexPath.row < 2){ //Currently hardcoded, need a way to determine the amount of events
-          setTitleForCell(cell, indexPath: indexPath)
-          setDescriptionForCell(cell, indexPath: indexPath)
+          setCellDisplay(cell, indexPath: indexPath)
         }
         return cell
     }
     
-    func setTitleForCell(cell:FeedTableViewCell, indexPath:NSIndexPath) {
+    //Helper Function for setting all relevent cell displays
+    func setCellDisplay(cell:FeedTableViewCell, indexPath:NSIndexPath) {
         cell.title_label.text = eventData[indexPath.row]["name"] as String
-    }
-    
-    func setDescriptionForCell(cell:FeedTableViewCell, indexPath:NSIndexPath) {
         cell.description_label.text = eventData[indexPath.row]["description"] as String
+        let count = eventData[indexPath.row]["upVotes"] as Int
+        cell.count.text = String(count)
     }
     
     //Override function for table cell clicks
+    //Precondition: Global struct array to hold all event data will be populated after call for getEvents
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("Row \(indexPath.row)" )
-        
-        //Precondition: Global struct array to hold all event data will be populated after call for getEvents
-        
-        //Match Row to event
-        
-        //Can go to comment view, Then can click over to map.
-        
+        event_index = indexPath.row
         performSegueWithIdentifier("Event_Segue", sender: nil)
     }
     
@@ -180,8 +179,8 @@ class FeedTableViewController: UITableViewController {
         
             // Create a new variable to store the instance of PlayerTableViewController
             let destinationVC = segue.destinationViewController as EventViewController
-            destinationVC.name = eventData[0]["name"] as String
-            destinationVC.details = eventData[0]["description"] as String
+            destinationVC.name = eventData[event_index]["name"] as String
+            destinationVC.details = eventData[event_index]["description"] as String
         }
         
     }
