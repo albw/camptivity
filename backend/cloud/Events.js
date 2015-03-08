@@ -26,7 +26,8 @@ exports.getEventComments = function(request, response) {
  * Example: {"limit":3, "skip":1}
  */
 exports.getEvents = function(request, response){
-	Utils.querySkipAndLimit(new Parse.Query("Events").descending("start"), request.params.skip, request.params.limit).find(Utils.simpleSucErr(response));
+	Utils.querySkipAndLimit(new Parse.Query("Events").descending("start"), request.params.skip, 
+		request.params.limit).include("userID").find(Utils.simpleSucErr(response));
 };
 
 
