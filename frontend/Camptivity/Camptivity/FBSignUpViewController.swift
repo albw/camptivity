@@ -14,16 +14,19 @@ class FBSignUpViewController: UIViewController{
 
     @IBOutlet weak var displayName: UILabel!
     @IBOutlet weak var displayEmail: UILabel!
-    @IBOutlet weak var displayUserID: UILabel!
+
     
     var fullName : String!
     var email : String!
     var userID : String!
+    let provider = ParseDataProvider()
+    
+    
     
     @IBAction func loginVerifyButton(sender: AnyObject) {
         if (self.fullName != nil && self.email != nil  && self.userID != nil) {
-            let provider = ParseDataProvider()
-            var s = provider.fbSignup(userID, email: email, fullname: fullName)
+            
+                var s = self.provider.fbSignup(userID, email: email, fullname: fullName)
             
                 let alert = UIAlertView()
                 alert.title = "Signed Up"
@@ -44,10 +47,9 @@ class FBSignUpViewController: UIViewController{
             self.displayName.text = self.fullName
         }
         if (self.email != nil){
+            
+            var s = self.provider.emailRegistered(self.email)
             self.displayEmail.text = self.email
-        }
-        if(self.userID != nil){
-            self.displayUserID.text = self.userID
         }
         
     }

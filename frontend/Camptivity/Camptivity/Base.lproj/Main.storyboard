@@ -191,6 +191,51 @@
             </objects>
             <point key="canvasLocation" x="2546" y="-357"/>
         </scene>
+        <!--FB Sign Up View Controller-->
+        <scene sceneID="pqo-oM-l3f">
+            <objects>
+                <viewController id="8Vp-Ib-PP2" userLabel="FB Sign Up View Controller" customClass="FBSignUpViewController" customModule="Camptivity" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="J4l-3b-lHY"/>
+                        <viewControllerLayoutGuide type="bottom" id="eq4-AR-4qD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LsR-5K-gcg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Full Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wke-qi-Nzd">
+                                <rect key="frame" x="0.0" y="126" width="277" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5A-OU-cx9">
+                                <rect key="frame" x="38" y="175" width="205" height="30"/>
+                                <state key="normal" title="Camp it up with FB">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginVerifyButton:" destination="8Vp-Ib-PP2" eventType="touchUpInside" id="gMf-hg-VGZ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l2r-YM-6UT">
+                                <rect key="frame" x="0.0" y="77" width="277" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="displayEmail" destination="l2r-YM-6UT" id="5yH-Pe-d5A"/>
+                        <outlet property="displayName" destination="wke-qi-Nzd" id="0PI-AB-r4Z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="787-Hu-EDo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2792" y="384"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Eqe-k8-IDK">
             <objects>
@@ -230,6 +275,7 @@
                     </view>
                     <connections>
                         <outlet property="fbLoginView" destination="ScQ-HS-GA4" id="o2F-4q-HKX"/>
+                        <segue destination="8Vp-Ib-PP2" kind="show" identifier="showView" id="Avi-sF-ezr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tsM-sF-NzC" userLabel="First Responder" sceneMemberID="firstResponder"/>
