@@ -7,6 +7,7 @@
 //  Copyright (c) 2015 Camptivity INC. All rights reserved.
 //
 
+import Parse
 
 class ParseDataProvider {
     let apiKey = "AIzaSyCNjX-9jxGqB9BcMeCx6tPJR1l0WU58LSA"
@@ -62,7 +63,7 @@ class ParseDataProvider {
     * Takes 4 params:
     *      category - The String category/categories to select.  This is a String array.
     *      lat - The latitude of the GeoPoint to select.
-    *      long - The longditude of the GeoPoint to select.
+    *      lon - The longditude of the GeoPoint to select.
     *      radius - The radius to search from the specified GeoPoint, in Miles.
     * Example: {"category":["restroom", "bar"], "lat":30, "lon:"30, "radius":40}
     */
@@ -334,9 +335,9 @@ class ParseDataProvider {
     *      lon - Double - The longitude of the coordinate.
     * Example: {"lat":32.883192, "lon":-117.240933}
     */
-    func lookupEventByCoord(lat:Double, long:Double)->AnyObject {
+    func lookupEventByCoord(lat:Double, lon:Double)->AnyObject {
         
-        let result: AnyObject! = PFCloud.callFunction("lookupEventByCoord", withParameters: ["lat":lat, "long":long])
+        let result: AnyObject! = PFCloud.callFunction("lookupEventByCoord", withParameters: ["lat":lat, "lon":lon])
         return result;
     }
 
@@ -565,7 +566,8 @@ class ParseDataProvider {
                 obj["photo"] = imageFile
                 */
                 obj[colName] = img
-                obj.saveInBackground()
+                //obj.saveInBackground()
+                obj.saveInBackgroundWithTarget(nil, selector: nil)
             }
         }
     }
@@ -598,7 +600,8 @@ class ParseDataProvider {
                 
                 //var imageFile = PFFile(data:imageData)
                 user.setObject(imageFile, forKey: "profilePic")
-                user.saveInBackground()
+                //user.saveInBackground()
+                user.saveInBackgroundWithTarget(nil, selector: nil)
                 
             } else {
                 // No, User Doesn't Exist
