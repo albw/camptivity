@@ -35,9 +35,6 @@ class FeedTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //tableView.rowHeight = UITableViewAutomaticDimension
-        //tableView.estimatedRowHeight = 160.0
-        
         //Initialize AlertController
         alertController = UIAlertController(title: "Default Style", message: "A standard alert.", preferredStyle: .Alert)
         
@@ -72,22 +69,17 @@ class FeedTableViewController: UITableViewController {
         alertController.addAction(email_login_action)
         alertController.addAction(signup_action)
         
-        //Get events from backend
+        //Getting Event Data from Parse Database
         data_provider = ParseDataProvider()
         eventData = data_provider.getEvents(3, skip:1) as NSArray
-        //eventData = result
         
-        //EventDataInstance.name = result[0]["name"] as String!
-        //EventDataInstance.description = result[0]["description"] as String!
+        //Print debug data of first event gathered
         println(eventData[0])
         
-        //Temporary need to look up add image.
+        //Nav bar adjusting based on login state will go here
         //var post_button = UIBarButtonItem(title: "Add Post", style: .Done, target: self, action: nil)
         //self.navigationItem.leftBarButtonItem = post_button
         
-        //Need to format data to fit needs for display
-        //println(result[0])
-
         //TODO Fix FUIUIKit Functionality Later
         //alertView = FUIAlertView()
         //alertView.titleLabel.textColor = UIColor.cloudsColor()
@@ -100,19 +92,6 @@ class FeedTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    /*override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        deselectAllRows()
-    }
-    
-    func deselectAllRows() {
-        if let selectedRows = tableView.indexPathsForSelectedRows() as? [NSIndexPath] {
-            for indexPath in selectedRows {
-                tableView.deselectRowAtIndexPath(indexPath, animated: false)
-            }
-        }
-    }*/
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -181,54 +160,9 @@ class FeedTableViewController: UITableViewController {
             let destinationVC = segue.destinationViewController as EventViewController
             destinationVC.name = eventData[event_index]["name"] as String
             destinationVC.details = eventData[event_index]["description"] as String
+            destinationVC.username = "John Doe"
         }
         
     }
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -10,6 +10,7 @@ import UIKit
 
 class EventViewController: UIViewController {
 
+    @IBOutlet weak var username_label: UILabel!
     @IBOutlet weak var description_label: UILabel!
     @IBOutlet weak var title_label: UILabel!
     
@@ -17,6 +18,7 @@ class EventViewController: UIViewController {
     
     var name: String!
     var details: String!
+    var username: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +29,7 @@ class EventViewController: UIViewController {
         
         title_label.text = name
         description_label.text = details
+        username_label.text = username
         
         pin_button.frame = CGRectMake(100, 100, 100, 50)
         pin_button.setTitle("Pin to Map", forState: UIControlState.Normal)
