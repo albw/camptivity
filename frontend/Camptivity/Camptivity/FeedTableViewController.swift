@@ -81,6 +81,10 @@ class FeedTableViewController: UITableViewController {
         //EventDataInstance.description = result[0]["description"] as String!
         println(eventData[0])
         
+        //Temporary need to look up add image.
+        //var post_button = UIBarButtonItem(title: "Add Post", style: .Done, target: self, action: nil)
+        //self.navigationItem.leftBarButtonItem = post_button
+        
         //Need to format data to fit needs for display
         //println(result[0])
 
