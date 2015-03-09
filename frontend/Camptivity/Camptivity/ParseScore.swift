@@ -7,3 +7,19 @@
 //
 
 import Foundation
+import Parse
+
+public class ParseScore
+{
+    public func getUserScore(username:String) -> [PFObject]
+    {
+        var e: NSError?
+        //println("BOO")
+        var x: [PFObject]! = PFCloud.callFunction("getUserScore", withParameters: ["username":username], error:&e) as [PFObject]
+       // println(x)
+        
+        return x
+        
+    }
+
+}
