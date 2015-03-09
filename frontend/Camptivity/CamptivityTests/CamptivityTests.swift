@@ -22,22 +22,49 @@ class CamptivityTests: XCTestCase {
         super.tearDown()
     }
     
-    func testNewUserSignup() {
-        ParseDataProvider().newUserSignup("TESTUSER", password: "BLAH", email: "fastily@yahoo.com", fullname: "AWU")
+    func testNewUserSignup()
+    {
+        var p = ParseUser().newUserSignup("TESTUSER", password: "BLAH", email: "fastily@yahoo.com", fullname: "AWU")
+        println(p.0)
+        println(p.1)
+        
+        XCTAssert(p.0, "Pass")
+    }
+    
+    func testFBSignup()
+    {
+        var p = ParseUser().fbSignup("69696969696", email: "fastily@yahoo.com", fullname: "AWU")
+        println(p.0)
+        println(p.1)
+        XCTAssert(p.0, "Pass")
+    }
+    
+    func testResetPasswordRequest()
+    {
+        var p = ParseUser().resetPasswordRequest("fastily@yahoo.com")
+        XCTAssert(p, "Pass")
+    }
+    
+    
+    func testGetUserScore()
+    {
+        var p = ParseScore().getUserScore("fastily@yahoo.com")
+        
+        //for z in p
+         // println(z)
+        
+        //println(p)
+        //println(p.dynamicType)
         XCTAssert(true, "Pass")
     }
     
-    func testFBSignup() {
-        ParseDataProvider().fbSignup("69696969696", email: "fastily@yahoo.com", fullname: "AWU")
-        XCTAssert(true, "Pass")
-    }
     
-    
+    /*
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measureBlock() {
             // Put the code you want to measure the time of here.
         }
-    }
+    }*/
     
 }
