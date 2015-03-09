@@ -14,13 +14,22 @@ protocol TypesTableViewControllerDelegate: class {
 
 class TypesTableViewController: UITableViewController {
     
-    let possibleTypesDictionary = ["bar":"Bar", "grocery_or_supermarket":"Supermarket", "restaurant":"Restaurant", "restroom":"Restroom"]
+    let possibleTypesDictionary = ["atm":"atm", "bar":"bar", "building":"building", "gym":"gym", "landmark":"landmark", "library":"library", "parking":"parking", "restaurant":"restaurant", "restroom":"restroom", "supermarket":"supermarket", "water":"water"]
     var selectedTypes: [String]!
     weak var delegate: TypesTableViewControllerDelegate!
     var sortedKeys: [String] {
         get {
             return sorted(possibleTypesDictionary.keys)
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        var tblView =  UIView(frame: CGRectZero)
+        self.tableView.tableFooterView = tblView
+        //self.tableView.tableFooterView.hidden = true
+        self.tableView.backgroundColor = UIColor.whiteColor()
     }
     
     // MARK: - Actions

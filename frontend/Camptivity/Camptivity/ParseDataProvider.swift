@@ -68,9 +68,9 @@ class ParseDataProvider {
     * Example: {"category":["restroom", "bar"], "lat":30, "lon:"30, "radius":40}
     */
     func fetchLocationsNearMe(categories:[String], completion: (returnValue: [AnyObject])->Void) {
-        for search in categories {
-            NSLog(search as NSString)
-        }
+//        for search in categories {
+//            NSLog(search as NSString)
+//        }
         
         PFCloud.callFunctionInBackground("locationsNearMe", withParameters: ["category":categories, "lat":32.88293263160078, "lon":-117.2109485336882, "radius":400]) {
             (objects: AnyObject!, error: NSError!) -> Void in
@@ -82,19 +82,19 @@ class ParseDataProvider {
                 results = objects as NSArray
                 completion(returnValue:results)
                 
-                //NSLog("Result: \(result) ")
-                println("===================")
-                
-                for (var i=0; i<results.count; i++)
-                {
-                    //println(results[i]["avgRank"] as Int)
-                    println(results[i]["category"] as String)
-                    //println(results[i]["description"] as String)
-                    //println(results[i]["location"] as PFGeoPoint)
-                    //println(results[i]["name"] as String)
-                    //println(results[i]["numRankings"] as Int)
-                    //println(results[i]["userID"] as PFUser)
-                }
+//                //NSLog("Result: \(result) ")
+//                println("===================")
+//                
+//                for (var i=0; i<results.count; i++)
+//                {
+//                    //println(results[i]["avgRank"] as Int)
+//                    println(results[i]["category"] as String)
+//                    //println(results[i]["description"] as String)
+//                    //println(results[i]["location"] as PFGeoPoint)
+//                    //println(results[i]["name"] as String)
+//                    //println(results[i]["numRankings"] as Int)
+//                    //println(results[i]["userID"] as PFUser)
+//                }
                 
                 
             }

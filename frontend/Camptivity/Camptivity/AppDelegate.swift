@@ -16,6 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        application.statusBarStyle = .LightContent
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+        
+        UITabBar.appearance().backgroundColor = UIColor.blackColor()
+        //UITabBar.appearance().tintColor = UIColor.blackColor()
+        UITabBar.appearance().selectedImageTintColor = UIColor.blueColor()
+
         
         Fabric.with([Crashlytics()])
         // Enable storing and querying data from Local Datastore.
@@ -77,6 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey("AIzaSyBBEyxz0IIJTiB9a6cyqMXdY_zIBiYUQcM")
         return true
     }
+    
 
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: NSString?, annotation: AnyObject) -> Bool {
         

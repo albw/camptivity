@@ -35,6 +35,10 @@ class FeedTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //set navigation bar
+        var image: UIImage = UIImage(named: "purplesky")!
+        self.navigationController?.navigationBar.setBackgroundImage(image, forBarMetrics: .Default)
+        
         //Initialize AlertController
         alertController = UIAlertController(title: "Default Style", message: "A standard alert.", preferredStyle: .Alert)
         

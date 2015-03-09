@@ -17,9 +17,10 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
     @IBOutlet weak var yourRatingScore: UILabel!
     @IBOutlet weak var floatRatingView: FloatRatingView!
     @IBOutlet weak var rateSubmitButton: UIButton!
+    //@property (nonatomic, strong) MBProgressHUD *hud;
     
     var markerCoordinate = CLLocationCoordinate2DMake(0, 0)
-    var searchedTypes = ["bar", "grocery_or_supermarket", "restaurant", "restroom"]
+    var searchedTypes = ["atm", "bar", "building", "gym", "landmark", "library", "parking", "restaurant", "restroom", "supermarket", "water"]
     let dataProvider = ParseDataProvider()
     var polylineArray : NSMutableArray = []
     
@@ -32,17 +33,23 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
         }
     }
     
+    @IBAction func categoryButtonClicked(sender: AnyObject) {
+        performSegueWithIdentifier("Types Segue", sender: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var image: UIImage = UIImage(named: "purplesky")!
+        self.navigationController?.navigationBar.setBackgroundImage(image, forBarMetrics: .Default)
         mapView.camera = GMSCameraPosition.cameraWithLatitude(32.87993263160078, longitude: -117.2309485336882, zoom: 14)
+        
         mapView.myLocationEnabled = true
         mapView.settings.myLocationButton = true
+        self.mapView.padding = UIEdgeInsets(top: self.topLayoutGuide.length, left: 0, bottom: 45, right: 0)
         mapView.delegate = self
         stopNavigationButton.hidden = true
         rateView.hidden = true
-        
-        fetchNearbyLocations()
         
         /********************************************************************/
         rateSubmitButton.hidden = true
@@ -62,7 +69,17 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
         self.yourRatingScore.text = NSString(format: "%.2f", self.floatRatingView.rating)
         self.currentRatingScore.text = NSString(format: "%.2f", self.floatRatingView.rating)
         /*********************************************************************/
+        
+       // var score:int = (dataProvider.lookupLocationByCoord(32.87993263160078, lon: -117.2309485336882)["avgRank"])
+        //println(score)
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(false);
+        
+        fetchNearbyLocations()
+    }
+    
     
     
     @IBAction func mapTypeSegmentPressed(sender: AnyObject) {
@@ -185,9 +202,9 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
         rateView.hidden = true
     }
     
-    @IBAction func refreshPlaces(sender: AnyObject) {
-        fetchNearbyLocations()
-    }
+//    @IBAction func refreshPlaces(sender: AnyObject) {
+//        fetchNearbyLocations()
+//    }
     
     @IBAction func stopButtonClicked(sender: AnyObject) {
         stopNavigationButton.hidden = true
@@ -218,7 +235,7 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
     }
     
     @IBAction func rateButtonClicked(sender: UIButton) {
-        NSLog("%f", markerCoordinate.latitude)
+        //NSLog("%f", markerCoordinate.latitude)
         //postLocationRank
         //user name
         //rating number

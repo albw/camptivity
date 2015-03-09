@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		130B67B41AAD1F5D000C0988 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 130B67B31AAD1F5D000C0988 /* MBProgressHUD.m */; };
+		133236931AAD354400F714BF /* purpleSky@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 133236921AAD354400F714BF /* purpleSky@2x.png */; };
 		13636FE11A816B8100CF1613 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13636FE01A816B8100CF1613 /* Social.framework */; };
 		13636FE31A816B8600CF1613 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13636FE21A816B8600CF1613 /* Accounts.framework */; };
 		136439011A816DF9005AE6F0 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 136439001A816DF9005AE6F0 /* libstdc++.6.dylib */; };
@@ -130,6 +132,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		130B67B21AAD1F5D000C0988 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		130B67B31AAD1F5D000C0988 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		133236921AAD354400F714BF /* purpleSky@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "purpleSky@2x.png"; sourceTree = "<group>"; };
 		13636FE01A816B8100CF1613 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		13636FE21A816B8600CF1613 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		136439001A816DF9005AE6F0 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
@@ -313,6 +318,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		130B67B11AAD1F08000C0988 /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+				130B67B61AAD1F75000C0988 /* MBProgressHUD */,
+			);
+			name = Vendors;
+			sourceTree = "<group>";
+		};
+		130B67B61AAD1F75000C0988 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				130B67B21AAD1F5D000C0988 /* MBProgressHUD.h */,
+				130B67B31AAD1F5D000C0988 /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		13CE1DE31A815A5300957EB9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -413,6 +435,8 @@
 		8A34995B1A75871E001B5A28 /* Camptivity */ = {
 			isa = PBXGroup;
 			children = (
+				133236921AAD354400F714BF /* purpleSky@2x.png */,
+				130B67B11AAD1F08000C0988 /* Vendors */,
 				13CE1DE51A815A6800957EB9 /* Model */,
 				13CE1DE41A815A6200957EB9 /* View */,
 				13CE1DE31A815A5300957EB9 /* Controller */,
@@ -515,6 +539,7 @@
 				8A3499561A75871E001B5A28 /* Frameworks */,
 				8A3499571A75871E001B5A28 /* Resources */,
 				70E22B5A1AAB9A00000597F9 /* ShellScript */,
+				131052E51AAD01DD00D9F1EF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -592,6 +617,7 @@
 				8A7A3F0C1AA3BF7F00854B8F /* UCSD_Logo.png in Resources */,
 				8A3499691A75871E001B5A28 /* LaunchScreen.xib in Resources */,
 				13CE1DEE1A815B0400957EB9 /* MarkerInfoView.xib in Resources */,
+				133236931AAD354400F714BF /* purpleSky@2x.png in Resources */,
 				8A3499831A7820A7001B5A28 /* group-25.png in Resources */,
 				8A3499811A782048001B5A28 /* map-25.png in Resources */,
 				13CE1DD21A81577800957EB9 /* GoogleMaps.bundle in Resources */,
@@ -609,6 +635,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		131052E51AAD01DD00D9F1EF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 1f63561c89c75b0ceb76ee9fffc147f0ff1851c6 b4ab43da8c0779f4b4e6ba24bde59d5c0782064866e784e5f21f1c6da5374acc";
+		};
 		70E22B5A1AAB9A00000597F9 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -665,6 +704,7 @@
 				13C1E8241AA2F80C008A2E60 /* NewEventViewController.swift in Sources */,
 				13CFE2B71A8DD11700F64DDC /* ParseDataProvider.swift in Sources */,
 				8A5E62001A9FB5A600E418ED /* UINavigationBar+FlatUI.m in Sources */,
+				130B67B41AAD1F5D000C0988 /* MBProgressHUD.m in Sources */,
 				8A5E61F51A9FB5A600E418ED /* FUIButton.m in Sources */,
 				8A5E61FC1A9FB5A600E418ED /* UIBarButtonItem+FlatUI.m in Sources */,
 				8A5E62071A9FB5A600E418ED /* UIToolbar+FlatUI.m in Sources */,
