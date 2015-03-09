@@ -86,6 +86,8 @@
 		7050DDBB1AABBFE2002C4E45 /* ParseLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7050DDBA1AABBFE2002C4E45 /* ParseLocations.swift */; };
 		7050DDBD1AABBFF1002C4E45 /* ParseScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7050DDBC1AABBFF1002C4E45 /* ParseScore.swift */; };
 		7050DDBF1AABBFF8002C4E45 /* ParseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7050DDBE1AABBFF8002C4E45 /* ParseUser.swift */; };
+		7062A8A71AAD7B68003A0628 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7062A8A61AAD7B68003A0628 /* Utils.swift */; };
+		7062A8A81AAD7B7E003A0628 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7062A8A61AAD7B68003A0628 /* Utils.swift */; };
 		70B8D2D21AAD03C900244435 /* ParseEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7050DDB81AABBFD0002C4E45 /* ParseEvents.swift */; };
 		70B8D2D31AAD03CC00244435 /* ParseLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7050DDBA1AABBFE2002C4E45 /* ParseLocations.swift */; };
 		70B8D2D51AAD03D000244435 /* ParseScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7050DDBC1AABBFF1002C4E45 /* ParseScore.swift */; };
@@ -186,6 +188,7 @@
 		7050DDBA1AABBFE2002C4E45 /* ParseLocations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseLocations.swift; sourceTree = "<group>"; };
 		7050DDBC1AABBFF1002C4E45 /* ParseScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseScore.swift; sourceTree = "<group>"; };
 		7050DDBE1AABBFF8002C4E45 /* ParseUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseUser.swift; sourceTree = "<group>"; };
+		7062A8A61AAD7B68003A0628 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		70E22B5B1AAB9A31000597F9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		70E22B5C1AAB9A31000597F9 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		8A3499591A75871E001B5A28 /* Camptivity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Camptivity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -375,6 +378,7 @@
 				7050DDBA1AABBFE2002C4E45 /* ParseLocations.swift */,
 				7050DDBC1AABBFF1002C4E45 /* ParseScore.swift */,
 				7050DDBE1AABBFF8002C4E45 /* ParseUser.swift */,
+				7062A8A61AAD7B68003A0628 /* Utils.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -689,6 +693,7 @@
 				8A5E61FA1A9FB5A600E418ED /* FUITextField.m in Sources */,
 				13CE1DED1A815B0400957EB9 /* MarkerInfoView.swift in Sources */,
 				8A5E62051A9FB5A600E418ED /* UITabBar+FlatUI.m in Sources */,
+				7062A8A71AAD7B68003A0628 /* Utils.swift in Sources */,
 				8A5E61F71A9FB5A600E418ED /* FUIPopoverBackgroundView.m in Sources */,
 				8A5E62041A9FB5A600E418ED /* UIStepper+FlatUI.m in Sources */,
 				8ABDB9DD1A92E29C00A0D6CB /* FeedTableViewController.swift in Sources */,
@@ -723,6 +728,7 @@
 				70B8D2D61AAD03D300244435 /* ParseUser.swift in Sources */,
 				70B8D2D21AAD03C900244435 /* ParseEvents.swift in Sources */,
 				7037B6291AAC2891007FE6AF /* ParseDataProvider.swift in Sources */,
+				7062A8A81AAD7B7E003A0628 /* Utils.swift in Sources */,
 				70B8D2D31AAD03CC00244435 /* ParseLocations.swift in Sources */,
 				70B8D2D51AAD03D000244435 /* ParseScore.swift in Sources */,
 				8A3499751A75871E001B5A28 /* CamptivityTests.swift in Sources */,

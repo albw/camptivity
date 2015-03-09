@@ -35,10 +35,10 @@ var Utils = require("cloud/Utils.js");
 
 
 /**
- * Lookup event by coordinate.
+ * Lookup Location by coordinate.
  * Takes 2 params:
  *		lat - Number - The latitude of the coordinate.
- *		long - Number - The longitude of the coordinate.
+ *		lon - Number - The longitude of the coordinate.
  * Example: {"lat":32.883192, "lon":-117.240934}
  */
  exports.lookupLocationByCoord = function(request, response) {

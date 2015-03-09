@@ -155,162 +155,19 @@ public class ParseDataProvider {
     
     
     public func newUserSignup(username:String, password:String, email: String, fullname: String)-> (Bool, String) {
-        return ParseUser().newUserSignup(username, password: password, email: email, fullname: fullname)
+        return ParseUser.newUserSignup(username, password: password, email: email, fullname: fullname)
     }
 
     public func fbSignup(fbID:String, email:String, fullname:String)-> (Bool, String) {
-        return ParseUser().fbSignup(fbID, email:email, fullname:fullname)
+        return ParseUser.fbSignup(fbID, email:email, fullname:fullname)
     }
-   
 
-    
-    /**
-    * Gets a user's Score entry.
-    * Takes one param:
-    *      user - The unique username of the user to get Score entries for.
-    * Example: {"user":"Admin"}
-    */
-    func getUserScore(username:String)-> AnyObject {
-        
-        return (PFCloud.callFunction("getUserScore", withParameters: ["username":username]))!
-        
-        
-        var s = Float()
-        //PFCloud.callFunctionInBackground("getUserScore", withParameters: ["username":"Admin"]) {
-        PFCloud.callFunctionInBackground("getUserScore", withParameters: ["username":username]) {
-            (objects: AnyObject!, error: NSError!) -> Void in
-            var results = []
-            if (error != nil) {
-                // Your error handling here
-            }
-            else {
-                s = objects as Float
-            }
-        }
-        return s
-    }
-    
-    /**
-    * Get the number of event votes for a given event.
-    * Takes one param:
-    *      obj - The unique objectId of the Event object we're trying to get votes for.
-    * Example: {"obj":"CWwv1FzgPh"}
-    */
-    func countEventVotes(objID:String)-> Int {
-        var s = Int()
-        //PFCloud.callFunctionInBackground("countEventVotes", withParameters: ["obj":"CWwv1FzgPh"]) {
-        PFCloud.callFunctionInBackground("countEventVotes", withParameters: ["obj":objID]) {
-            (objects: AnyObject!, error: NSError!) -> Void in
-            var results = []
-            if (error != nil) {
-                // Your error handling here
-            }
-            else {
-                s = objects as Int
-            }
-        }
-        return s
-    }
-    
-    /**
-    * Gets Events in descending (most recent first).
-    * Takes 2 OPTIONAL params:
-    *      limit - limit the maximum number of items returned
-    *      skip - Skip this many items before returning items.  Useful for pagination.
-    * Example: {"limit":3, "skip":1}
-    */
     func getEvents(limit:Int, skip:Int)->AnyObject {
         let result: AnyObject! = PFCloud.callFunction("getEvents", withParameters: ["limit":limit, "skip":skip])
         return result;
         
     }
-    
-    /**
-    * Lookup an event by coordinate.
-    * Takes 2 params:
-    *      lat - Double - The latitude of the coordinate.
-    *      long - Double - The longitude of the coordinate.
-    * Example: {"lat":32.883192, "lon":-117.240933}
-    */
-    func lookupEventByCoord(lat:Double, long:Double)->AnyObject {
-        
-        let result: AnyObject! = PFCloud.callFunction("lookupEventByCoord", withParameters: ["lat":lat, "long":long])
-        return result;
-    }
-    
-    /**
-    * Lookup a Location by coordinate.
-    * Takes 2 params:
-    *      lat - Double - The latitude of the coordinate.
-    *      long - Double - The longitude of the coordinate.
-    * Example: {"lat":32.883192, "lon":-117.240933}
-    */
-    func lookupLocationByCoord(lat: Float, long: Float)->AnyObject {
-        
-        
-        //var query = PFQuery(className:"Locations")
-        //query.whereKey("location", equalTo: PFGeoPoint(latitude: d1, longitude: d2))
-        //var result = query.findObjects()
-        
-        
-        //let result: AnyObject! = PFCloud.callFunction("lookupLocationByCoord", withParameters: ["lat":lat, "long":long])
-        
-        var result = []
-        PFCloud.callFunctionInBackground("lookupLocationByCoord", withParameters: ["lat":lat, "long":long]) {
-            (objects: AnyObject!, error: NSError!) -> Void in
-            
-            if (error != nil) {
-                // Your error handling here
-            }
-            else {
-                result = objects as NSArray
-                
-            }
-        }
-        
-        
-        println(result.count)
-        println(result)
-        return result;
-    }
-    
-    /**
-    * Get event comments for an event.
-    * Takes 3 params:
-    *      limit (OPTIONAL) - limit the maximum number of items returned
-    *      skip (OPTIONAL) - Skip this many items before returning items.  Useful for pagination.
-    * Example: {"limit":3, "skip":1, "obj":"CWwv1FzgPh"}
-    */
-    func getEventComments(objID:String, limit:Int, skip:Int)->AnyObject {
-        let result: AnyObject! = PFCloud.callFunction("getEventComments", withParameters: ["limit":limit, "skip":skip, "obj":objID])
-        return result;
-    }
-    
-    /**
-    * Posts a new EventCmt.
-    * Takes 3 params:
-    *      comment - The comment
-    *      user - The user's username
-    *      target - The objectId of the event to post for.
-    *  Example: {"comment":"yolo", "user":"Admin", "objectId": "CWwv1FzgPh"}
-    */
-    func postEventCmt(comment:String, user:String, objectId:String)-> String {
-        var s = String()
-        //PFCloud.callFunctionInBackground("postEventCmt", withParameters: ["comment":"yolo", "user":"Admin", "objectId": "CWwv1FzgPh"]) {
-        PFCloud.callFunctionInBackground("postEventCmt", withParameters: ["comment":comment, "user":user, "objectId": objectId]) {
-            (objects: AnyObject!, error: NSError!) -> Void in
-            var results = []
-            if (error != nil) {
-                // Your error handling here
-            }
-            else {
-                
-                s = objects as String
-                
-            }
-        }
-        return s
-    }
+
     
     /**
     * Posts a new Event object.
@@ -378,61 +235,8 @@ public class ParseDataProvider {
         return result;
     }
     
-    /**
-    * Post a new LocationRank.
-    * Takes 4 params:
-    *      user - String - the creator's username
-    *      rating - Integer - The user's rating of the location, out of 5.
-    *      review - String - The The user's review of the location.
-    *      target - String - The unique objectId of the Location object this LocationRank is referencing.
-    *  Example: {"user":"Admin", "rating": 4, "review":"This place is rad", "target":"gM2X4HWgXe"}
-    */
-    func postLocationRank(user:String, rating:String, review:String, target:String)-> String {
-        var s = String()
-        //PFCloud.callFunctionInBackground("postLocationRank", withParameters: ["user":"Admin", "rating": 4, "review":"This place is rad", "target":"gM2X4HWgXe"]) {
-        PFCloud.callFunctionInBackground("postLocationRank", withParameters: ["user":user, "rating": rating, "review":review, "target":target]) {
-            (objects: AnyObject!, error: NSError!) -> Void in
-            var results = []
-            if (error != nil) {
-                // Your error handling here
-            }
-            else {
-                
-                s = objects as String
-                
-            }
-        }
-        return s
-    }
     
-    /**
-    * Post a new Location.
-    * Takes 6 params:
-    *      user - String - the creator's username
-    *      name - String - The name of the location.
-    *      desc - String - A description of the location
-    *      lat - Number - The event's latitude.
-    *      lon - Number - The event's longitude.
-    *      cat - String - This item's category.
-    *  Example: {"user":"Admin", "name": "TESTLOCATION", "desc":"Some test location", "lat":32, "lon":-117, "cat":"bar"}
-    */
-    func postLocation(user:String, name:String, desc:String, category:String)-> String {
-        var s = String()
-        //PFCloud.callFunctionInBackground("postLocation", withParameters: ["user":"Admin", "name": "TESTLOCATION", "desc":"Some test location", "lat":32, "lon":-117, "cat":"bar"]) {
-        PFCloud.callFunctionInBackground("postLocation", withParameters: ["user":user, "name": name, "desc":desc, "lat":32, "lon":-117, "cat":category]) {
-            (objects: AnyObject!, error: NSError!) -> Void in
-            var results = []
-            if (error != nil) {
-                // Your error handling here
-            }
-            else {
-                
-                s = objects as String
-                
-            }
-        }
-        return s
-    }
+
     
     // need #import <Bolts/Bolts.h> in Bridging Header
     /**
