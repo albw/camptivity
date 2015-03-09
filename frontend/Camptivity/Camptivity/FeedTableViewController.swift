@@ -49,11 +49,11 @@ class FeedTableViewController: UITableViewController {
         }
         
         //Closure function for facebook login action on alert view
-        fb_login_action = UIAlertAction(title: "Facebook Login", style: .Default) {
-            action in
-            self.performSegueWithIdentifier("FB_Login", sender: nil)
-            // ...
-        }
+//        fb_login_action = UIAlertAction(title: "Facebook Login", style: .Default) {
+//            action in
+//            self.performSegueWithIdentifier("FB_Login", sender: nil)
+//            // ...
+//        }
         
         //Closure function for email login action on alert view
         email_login_action = UIAlertAction(title: "Login", style: .Default){
@@ -69,7 +69,7 @@ class FeedTableViewController: UITableViewController {
         
         //Add all actions to the alertviewcontroller
         alertController.addAction(cancel_action)
-        alertController.addAction(fb_login_action)
+        //alertController.addAction(fb_login_action)
         alertController.addAction(email_login_action)
         alertController.addAction(signup_action)
         

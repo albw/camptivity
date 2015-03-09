@@ -15,9 +15,6 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "FlatUIKit.h"
 #import "MBProgressHUD.h"
-
-
-// If you are using Facebook, uncomment this line to get automatic import of the header inside your project.
-//#import <ParseFacebookUtils/PFFacebookUtils.h>
+#import <ParseFacebookUtils/PFFacebookUtils.h>
 
 #endif
