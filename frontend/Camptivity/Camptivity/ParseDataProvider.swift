@@ -114,45 +114,20 @@ public class ParseDataProvider {
         
     }
     
-    ///WARNING: BROKEN DOES NOT RETURN CORRECT RESULT.  Left this here to shut up compiler, but if you're getting crashes, here you need to reference the updated method in ParseUser.swift
+    ///WARNING: BROKEN, DOES NOT RETURN CORRECT RESULT.  Left this here to shut up compiler, but if you're getting crashes, here you need to reference the updated method in ParseUser.swift
     public func newUserSignup(username:String, password:String, email: String, fullname: String)-> (Bool, String) {
         return ParseUser.newUserSignup(username, password: password, email: email, fullname: fullname)
     }
-    ///WARNING: BROKEN DOES NOT RETURN CORRECT RESULT.  Left this here to shut up compiler, but if you're getting crashes, here you need to reference the updated method in ParseUser.swift
+    ///WARNING: BROKEN, DOES NOT RETURN CORRECT RESULT.  Left this here to shut up compiler, but if you're getting crashes, here you need to reference the updated method in ParseUser.swift
     public func fbSignup(fbID:String, email:String, fullname:String)-> (Bool, String) {
         return ParseUser.fbSignup(fbID, email:email, fullname:fullname)
     }
-    ///WARNING: BROKEN DOES NOT RETURN CORRECT RESULT.  Left this here to shut up compiler, but if you're getting crashes, here you need to reference the updated method in ParseEvents.swift
+    ///WARNING: BROKEN, DOES NOT RETURN CORRECT RESULT.  Left this here to shut up compiler, but if you're getting crashes, here you need to reference the updated method in ParseEvents.swift
     func getEvents(limit:Int, skip:Int)->AnyObject {
         let result: AnyObject! = PFCloud.callFunction("getEvents", withParameters: ["limit":limit, "skip":skip])
         return result;
-        
     }
     
-    /**
-    * Posts a new EventVote.
-    * Takes 2 params:
-    *      user - The user's username
-    *      target - The objectId of the Event to post for.
-    *  Example: {"user":"Admin", "objectId": "CWwv1FzgPh"}
-    */
-    func postEventVote(user:String, objectId:String)-> String {
-        var s = String()
-        //PFCloud.callFunctionInBackground("postEventVote", withParameters: ["user":"Admin", "objectId": "CWwv1FzgPh"]) {
-        PFCloud.callFunctionInBackground("postEventVote", withParameters: ["user":user, "objectId": objectId]) {
-            (objects: AnyObject!, error: NSError!) -> Void in
-            var results = []
-            if (error != nil) {
-                // Your error handling here
-            }
-            else {
-                
-                s = objects as String
-                
-            }
-        }
-        return s
-    }
     
     // need #import <Bolts/Bolts.h> in Bridging Header
     /**

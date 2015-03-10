@@ -12,15 +12,6 @@ import Parse
 /// This class contains methods which can get/set data for Location and LocationRank objects
 public class ParseLocations
 {
-    /// Lookup a Location by its coordinates.  WARNING: THIS IS SEVERELY BROKEN BECAUSE OF THE WAY FLOATING POINT ARITHMETIC WORKS.  WE NEED TO REDESIGN LOCATION LOOKUP.
-    ///
-    ///:param: lat The latitude
-    ///:param: lon The longitude
-    ///:returns: The Location we found as a PFObject
-    public class func lookupLocationByCoord(lat:String, lon:String)->PFObject {
-        return (PFCloud.callFunction("lookupLocationByCoord", withParameters: ["lat":lat, "lon":lon]))! as PFObject
-    }
-    
     /// Post a LocationRank for a Location
     ///
     ///:param: user The username performing the post

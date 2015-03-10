@@ -30,15 +30,6 @@ public class ParseEvents
         return (PFCloud.callFunction("countEventVotes", withParameters: ["obj": objId]))! as Int
     }
     
-    /// Lookup an event by its coordinates.  WARNING: THIS IS SEVERELY BROKEN BECAUSE OF THE WAY FLOATING POINT ARITHMETIC WORKS.  WE NEED TO REDESIGN OUR INTERFACE
-    ///
-    ///:param: lat The latitude
-    ///:param: lon The longitude
-    ///:returns: The Event we found as a PFObject
-    public class func lookupEventByCoord(lat:Double, lon:Double)->PFObject {
-        return (PFCloud.callFunction("lookupEventByCoord", withParameters: ["lat":lat, "lon":lon]))! as PFObject
-    }
-    
 
     /// Get EventCmts for an Event
     ///
@@ -62,19 +53,6 @@ public class ParseEvents
         return e != nil ? false : true
     }
     
-    /**
-    * Posts a new Event object.
-    * Takes 7 params:
-    *      name - String - the name of the event.
-    *      desc - Stirng - The event description.
-    *      lat - Number - The event's latitude.
-    *      lon - Number - The event's longitude.
-    *      user - String - The creator's username.
-    *      start - String - The start date. A date/time in ISO 8601, UTC (e.g. "2011-08-21T18:02:52.249Z")
-    *      expires - String - The end date. A date/time in ISO 8601, UTC (e.g. "2011-08-21T18:02:52.249Z")
-    * Example: {"name":"Ratchet Party", "user":"Admin", "desc": "lets get down n dirty", "lat":32, "lon":-117, "start":"2015-03-21T18:02:52.249Z", "expires":"2015-03-22T18:02:52.249Z"}
-    */
-    
     ///Post a new Event object
     ///
     ///:param: name The name of the event
@@ -97,5 +75,17 @@ public class ParseEvents
     ///:returns: The Event as a PFObject.
     public class func getEventByName(name:String) -> PFObject {
         return Utils.entryWhere("Events", col: "name", value: name)
+    }
+    
+    /// Post an EventVote for an Event
+    ///
+    ///:param: user The user performing the post
+    ///:param: objId The unique objectId of the Event we're performing the vote action on
+    ///:param: isUpVote Set to true to perform up-vote, else down-vote.
+    ///:returns: True if we were successful.
+    public class func postEventVote(user:String, objId:String, isUpVote:Bool) -> Bool {
+        var e: NSError?
+        PFCloud.callFunction("postEventVote", withParameters: ["user":user, "objectId":objId, "isUpVote": isUpVote], error: &e)
+        return e != nil ? false : true
     }
 }

@@ -72,16 +72,3 @@ exports.entryWhere = function (table, col, value) {
 exports.makeDate = function(d) {
 	return {"__type": "Date", "iso": d};
 };
-
-
-/**
- * Lookup an item in either Events or Location table using its coordinates.  Send this out via the response object.
- * Takes 4 params:
- *		table - String - The table to lookup
- *		lat - Number - The latitude
- *		lon - Number - The longitude
- *		response - Object - The response object.
- */
-exports.lookupByLocation = function(table, lat, lon, response) {
- 	new Parse.Query(table).equalTo("location", new Parse.GeoPoint(lat, lon)).find(exports.simpleSucErr(response));
-};
