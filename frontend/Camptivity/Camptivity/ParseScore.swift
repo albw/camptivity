@@ -9,6 +9,7 @@
 import Foundation
 import Parse
 
+/// This class contains methods which can get/set data for Score objects.
 public class ParseScore
 {
     /// Get user score fields.

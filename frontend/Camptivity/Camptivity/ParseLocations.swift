@@ -9,6 +9,7 @@
 import Foundation
 import Parse
 
+/// This class contains methods which can get/set data for Location and LocationRank objects
 public class ParseLocations
 {
     /// Lookup a Location by its coordinates.  WARNING: THIS IS SEVERELY BROKEN BECAUSE OF THE WAY FLOATING POINT ARITHMETIC WORKS.  WE NEED TO REDESIGN LOCATION LOOKUP.
@@ -31,7 +32,22 @@ public class ParseLocations
         var e :NSError?
         PFCloud.callFunction("postLocationRank", withParameters: ["user":user, "review":review, "rating":rating, "target": objId], error: &e)
         return e != nil ? false : true
-        
-        
+    }
+    
+    
+    /// Get a Location by name
+    ///
+    ///:param: name The unique name of the location (case-sensitive)
+    ///:returns: The Location as a PFObject.
+    public class func getLocationByName(name:String) -> PFObject {
+        return Utils.entryWhere("Locations", col: "name", value: name)
+    }
+    
+    /// Get LocationRanks for a Location
+    ///
+    ///:param: objectId The unique objectId of the Location to fetch LocationRanks for
+    ///:returns: The LocationRanks for this Location.
+    public class func getLocationRankForLocation(objectId:String) -> [PFObject] {
+        return (PFCloud.callFunction("getLocationRanks", withParameters: ["objid":objectId]))! as [PFObject]
     }
 }
