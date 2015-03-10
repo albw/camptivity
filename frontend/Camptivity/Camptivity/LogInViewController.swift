@@ -76,8 +76,14 @@ class LogInViewController: UIViewController, PFLogInViewControllerDelegate, PFSi
             | PFLogInFields.DismissButton
             | PFLogInFields.Facebook)
         
+        self.logInController.logInView.dismissButton.addTarget(self, action: "dismissAction:", forControlEvents: UIControlEvents.TouchUpInside)
         self.logInController.logInView.logInButton.setTitle("Camp'in !", forState: UIControlState.Normal)
         
+    }
+    
+    func dismissAction(sender:UIButton!){
+        self.navigationController!.navigationBar.hidden = false
+        self.navigationController?.popViewControllerAnimated(false)
     }
     
     override func viewDidAppear(animated: Bool){
