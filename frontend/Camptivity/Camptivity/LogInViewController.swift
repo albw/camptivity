@@ -43,7 +43,9 @@ class LogInViewController: UIViewController, PFLogInViewControllerDelegate{
         super.viewDidAppear(animated)
         
         if (PFUser.currentUser() != nil){
-            //User logged
+            //PFUser.logOut()
+            self.navigationController!.navigationBar.hidden = false
+            self.navigationController?.popViewControllerAnimated(false)
         }
         else{
             self.presentViewController(self.logInController, animated:true, completion: nil)
@@ -53,12 +55,19 @@ class LogInViewController: UIViewController, PFLogInViewControllerDelegate{
     }
     
     func logInViewController(logInController: PFLogInViewController!, didLogInUser user: PFUser!) {
+
+        user.fetchIfNeededInBackground()
+        var name  = user.objectForKey("name") as String
+        
+        
         let alert = UIAlertView()
-        alert.title = "Success Log In"
-        alert.message = user.objectId as String
+        alert.title = "Hello, " + name
+        alert.message = "You've been missed"
         alert.delegate = self
         alert.addButtonWithTitle("Ok")
-        self.performSegueWithIdentifier("ShowRoot", sender: nil)
+        alert.show()
+
+        self.dismissViewControllerAnimated(false, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

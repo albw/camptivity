@@ -15,13 +15,18 @@ class FeedTableViewController: UITableViewController {
     
     //Reference to alertviewcontroller
     var alertController: UIAlertController!
+    //Reference to userAlertViewController
+    var userAlertController: UIAlertController!
     
     //Reference to alertviewcontroller actions
     var cancel_action: UIAlertAction!
-    var fb_login_action: UIAlertAction!
-    var email_login_action: UIAlertAction!
+    var login_action: UIAlertAction!
     var signup_action: UIAlertAction!
     var input_action: UIAlertAction!
+    //Reference to userAlertViewController actions
+    var logout_action: UIAlertAction!
+    var userSetting_action: UIAlertAction!
+    
     
     //Reference to feedtableviewcell
     let feedCellIdentifier = "FeedTableViewCell"
@@ -39,7 +44,6 @@ class FeedTableViewController: UITableViewController {
         var image: UIImage = UIImage(named: "purplesky")!
         self.navigationController?.navigationBar.setBackgroundImage(image, forBarMetrics: .Default)
         
-        
         //Initialize AlertController
         alertController = UIAlertController(title: "Let's Start Camping!", message: "Log in to see your events", preferredStyle: .Alert)
         
@@ -49,7 +53,7 @@ class FeedTableViewController: UITableViewController {
             // ...
         }
         //Closure function for email login action on alert view
-        email_login_action = UIAlertAction(title: "Log In", style: .Default){
+        login_action = UIAlertAction(title: "Log In", style: .Default){
             action in
             self.performSegueWithIdentifier("Log_In", sender: nil)
         }
@@ -60,12 +64,27 @@ class FeedTableViewController: UITableViewController {
             self.performSegueWithIdentifier("Sign_Up", sender: nil)
         }
         
-        
-        
         //Add all actions to the alertviewcontroller
         alertController.addAction(cancel_action)
-        alertController.addAction(email_login_action)
+        alertController.addAction(login_action)
         alertController.addAction(signup_action)
+        
+        
+        //Initialize userAlertController
+        userAlertController = UIAlertController(title: "User's Setting", message: "Do What you want bae", preferredStyle: .Alert)
+        //CLouser function for log out
+        logout_action = UIAlertAction(title: "Log Out", style: .Default){
+            action in
+            PFUser.logOut()
+        }
+        userSetting_action = UIAlertAction(title: "Settings", style: .Default){
+            action in
+            self.performSegueWithIdentifier("user_setting", sender: nil)
+        }
+        //Add actions to userAlertController
+        userAlertController.addAction(logout_action)
+        userAlertController.addAction(cancel_action)
+        userAlertController.addAction(userSetting_action)
         
         //Getting Event Data from Parse Database
         data_provider = ParseDataProvider()
@@ -114,8 +133,13 @@ class FeedTableViewController: UITableViewController {
     */
     @IBAction func triggerUserLogin(sender: AnyObject) {
         
-        self.presentViewController(alertController, animated: true) {}
-        
+        if (PFUser.currentUser() != nil){
+            
+            self.presentViewController(userAlertController, animated: true) {}
+        }
+        else{
+            self.presentViewController(alertController, animated: true) {}
+        }
     }
     
     @IBAction func upVote(sender: UIButton) {

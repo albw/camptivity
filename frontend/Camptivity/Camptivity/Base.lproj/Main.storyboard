@@ -101,7 +101,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="bbF-Dx-pBy">
-                        <barButtonItem key="rightBarButtonItem" title="Login" id="lC0-Xa-jik">
+                        <barButtonItem key="rightBarButtonItem" image="Power_Button.png" id="lC0-Xa-jik">
                             <connections>
                                 <action selector="triggerUserLogin:" destination="iiy-qm-Kv1" id="jsd-gN-Rco"/>
                             </connections>
@@ -675,6 +675,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Power_Button.png" width="48" height="48"/>
         <image name="StarEmpty" width="22" height="22"/>
         <image name="StarFull" width="22" height="22"/>
         <image name="UCSD_Logo.png" width="105" height="105"/>
@@ -684,6 +685,6 @@
         <image name="map-25.png" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5v9-1l-Jkv"/>
+        <segue reference="dOw-I2-fsB"/>
     </inferredMetricsTieBreakers>
 </document>
