@@ -40,6 +40,8 @@ class EventViewController: UIViewController {
         
         pin_button.frame = CGRectMake(buttonX, buttonY, 100, 50)
         
+        pin_button.addTarget(self, action: "pinAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        
         self.view.addSubview(pin_button)
 
         let comment_button = UIBarButtonItem(title: "Comment", style: .Done, target: self, action: nil)
@@ -47,6 +49,11 @@ class EventViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
+    
+    func pinAction(sender:UIButton!){
+        self.tabBarController?.selectedIndex = 0 //Moves to map view
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
