@@ -82,7 +82,7 @@ exports.initEvent = function(request) {
  exports.handleEventVote = function(request) {
  	if(request.object && !request.object.existed()) 
  		Utils.entryWhere("Events", "objectId", request.object.get("target").id).then(function(ev) {
- 			ev.increment("upVotes");
+ 			ev.increment("upVotes", request.object.get("isUpVote") ? 1 : -1);
  			ev.save().then(function(meh) {
  				console.log("Incrementing votes recieved for " + ev.get("userID").id);
  				return incScoreField(ev.get("userID"), "votesReceived"); 

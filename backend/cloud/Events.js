@@ -87,31 +87,22 @@ exports.postEvent = function(request, response) {
 
 /**
  * Posts a new EventVote.
- * Takes 2 params:
+ * Takes 3 params:
  *		user - String - The user's username
  *		target - String - The objectId of the Event to post for.
+ *		isUpVote - Boolean - Indicates whether this EventVote is an upVote.
  *	Example: {"user":"Admin", "objectId": "CWwv1FzgPh"}
  */
 exports.postEventVote = function(request, response) {
  	Utils.entryWhere("_User", "username", request.params.user).then(function(obj) {
  		new Parse.Object("EventVotes").save({
  			userID: obj,
+ 			isUpVote: request.params.isUpVote,
  			target: Utils.makePointer("Events", request.params.objectId)
  		}, Utils.simpleSucErr(response));
  	});
  };
 
-
-/**
- * Lookup an event by coordinate.
- * Takes 2 params:
- *		lat - Number - The latitude of the coordinate.
- *		long - Number - The longitude of the coordinate.
- * Example: {"lat":32.883192, "lon":-117.240933}
- */
-exports.lookupEventByCoord = function(request, response){
-	 Utils.lookupByLocation("Events", request.params.lat, request.params.lon, response);
-};
 
 /* //////////////////////////////////////////////////////////////////////////////// */
 /* /////////////////////////////////// JOBS /////////////////////////////////////// */

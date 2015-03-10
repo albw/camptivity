@@ -15,19 +15,9 @@ public class ParseScore
     /// Get user score fields.
     ///
     ///:param: username Get score data for this user
-    ///:returns: A dictionary with the following keys: eventComments, eventsCreated, locationsRanked, votesGiven, votesReceived.
-    public class func getUserScore(username:String) -> [String:Int]
+    ///:returns: A Score object with the user's score info as a PFObject.
+    public class func getUserScore(username:String) -> PFObject
     {
-        var o = PFQuery(className: "Score").whereKey("userID", equalTo: Utils.entryWhere("_User", col: "username", value: username)).getFirstObject()
-        
-        var l = [String:Int]()
-        l["eventComments"] = o.objectForKey("eventComments") as? Int
-        l["eventsCreated"] = o.objectForKey("eventsCreated") as? Int
-        l["locationsRanked"] = o.objectForKey("locationsRanked") as? Int
-        l["votesGiven"] = o.objectForKey("votesGiven") as? Int
-        l["votesReceived"] = o.objectForKey("votesReceived") as? Int
-
-        return l
+        return (PFCloud.callFunction("getUserScore", withParameters: ["user":username]))! as PFObject
     }
-
 }

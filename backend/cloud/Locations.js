@@ -33,19 +33,6 @@ var Utils = require("cloud/Utils.js");
  		request.params.category).find(Utils.simpleSucErr(response));
  	};
 
-
-/**
- * Lookup Location by coordinate.
- * Takes 2 params:
- *		lat - Number - The latitude of the coordinate.
- *		lon - Number - The longitude of the coordinate.
- * Example: {"lat":32.883192, "lon":-117.240934}
- */
- exports.lookupLocationByCoord = function(request, response) {
- 	Utils.lookupByLocation("Locations", request.params.lat, request.params.lon, response);
- };
-
-
 /**
  * Post a new LocationRank.
  * Takes 4 params:

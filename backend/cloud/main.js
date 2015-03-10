@@ -176,9 +176,10 @@ Parse.Cloud.afterSave("Events", Standby.initEvent);
 
 /**
  * Posts a new EventVote.
- * Takes 2 params:
- *		user - The user's username
- *		target - The objectId of the Event to post for.
+ * Takes 3 params:
+ *		user - String - The user's username
+ *		target - String - The objectId of the Event to post for.
+ *		isUpVote - Boolean - Indicates whether this EventVote is an upVote.
  *	Example: {"user":"Admin", "objectId": "CWwv1FzgPh"}
  */
  Parse.Cloud.define("postEventVote", Events.postEventVote);
@@ -206,22 +207,3 @@ Parse.Cloud.afterSave("Events", Standby.initEvent);
  *	Example: {"user":"Admin", "name": "TESTLOCATION", "desc":"Some test location", "lat":32, "lon":-117, "cat":"bar"}
  */
  Parse.Cloud.define("postLocation", Locations.postLocation);
-
-/**
- * Lookup an event by coordinate.
- * Takes 2 params:
- *		lat - Number - The latitude of the coordinate.
- *		long - Number - The longitude of the coordinate.
- * Example: {"lat":32.883192, "lon":-117.240933}
- */
- Parse.Cloud.define("lookupEventByCoord", Events.lookupEventByCoord);
-
-
-/**
- * Lookup event by coordinate.
- * Takes 2 params:
- *		lat - Number - The latitude of the coordinate.
- *		long - Number - The longitude of the coordinate.
- * Example: {"lat":32.883192, "lon":-117.240934}
- */
-Parse.Cloud.define("lookupLocationByCoord", Locations.lookupLocationByCoord);
