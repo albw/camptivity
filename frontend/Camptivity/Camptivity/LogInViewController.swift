@@ -7,57 +7,11 @@
 //  Copyright (c) 2015 Camptivity INC. All rights reserved.
 //
 
-//import UIKit
-//
-//class LogInViewController: UIViewController {
-//
-//    @IBOutlet weak var userName: UITextField!
-//    @IBOutlet weak var userPassword: UITextField!
-//
-//
-//       @IBAction func loginVerifyButton(sender: AnyObject) {
-//        var usrEntered = userName.text
-//        var pwdEntered = userPassword.text
-//        var userID : String!
-//        if usrEntered != "" && pwdEntered != "" {
-//            let provider = ParseDataProvider()
-//             userID  = provider.login(usrEntered, password: pwdEntered).objectId
-//
-//
-//
-//            let alert = UIAlertView()
-//            alert.title = "Logged in"
-//            alert.message =   userID
-//            alert.delegate = self
-//            alert.addButtonWithTitle("#Truuuuuuu")
-//            alert.show()
-//
-//            println(userID)
-//
-//        } else {
-//            //self.messageLabel.text = "All Fields Required"
-//        }
-//
-//    }
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//    }
-//
-//
-//    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
-//
-//    }
-//
-//
-//}
 
 import UIKit
 import ParseUI
 
-class LogInViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate{
+class LogInViewController: UIViewController, PFLogInViewControllerDelegate{
     
     
     
@@ -68,10 +22,9 @@ class LogInViewController: UIViewController, PFLogInViewControllerDelegate, PFSi
         super.viewDidLoad()
         self.navigationController!.navigationBar.hidden = true
         
-        
+        self.logInController.delegate = self
         self.logInController.fields = (PFLogInFields.UsernameAndPassword
             | PFLogInFields.LogInButton
-            | PFLogInFields.SignUpButton
             | PFLogInFields.PasswordForgotten
             | PFLogInFields.DismissButton
             | PFLogInFields.Facebook)
@@ -90,18 +43,12 @@ class LogInViewController: UIViewController, PFLogInViewControllerDelegate, PFSi
         super.viewDidAppear(animated)
         
         if (PFUser.currentUser() != nil){
-            //User logged in
+            //User logged
         }
         else{
-            self.logInController.delegate = self
-            
             self.presentViewController(self.logInController, animated:true, completion: nil)
-            
-            
-            
             let logoView = UIImageView(image: UIImage(named:"Camp_Logo.png"))
             logInController.logInView.logo = logoView
-            
         }
     }
     
@@ -111,16 +58,7 @@ class LogInViewController: UIViewController, PFLogInViewControllerDelegate, PFSi
         alert.message = user.objectId as String
         alert.delegate = self
         alert.addButtonWithTitle("Ok")
-        alert.show()
-    }
-    
-    func signUpViewController(signUpController: PFSignUpViewController!, didSignUpUser user: PFUser!) {
-        let alert = UIAlertView()
-        alert.title = "Success Sign Up"
-        alert.message = user.objectId as String
-        alert.delegate = self
-        alert.addButtonWithTitle("Ok")
-        alert.show()
+        self.performSegueWithIdentifier("ShowRoot", sender: nil)
     }
     
     override func didReceiveMemoryWarning() {

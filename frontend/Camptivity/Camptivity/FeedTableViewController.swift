@@ -39,37 +39,31 @@ class FeedTableViewController: UITableViewController {
         var image: UIImage = UIImage(named: "purplesky")!
         self.navigationController?.navigationBar.setBackgroundImage(image, forBarMetrics: .Default)
         
+        
         //Initialize AlertController
-        alertController = UIAlertController(title: "Default Style", message: "A standard alert.", preferredStyle: .Alert)
+        alertController = UIAlertController(title: "Let's Start Camping!", message: "Log in to see your events", preferredStyle: .Alert)
         
         //Closure function for cancel_button action on alert view
         cancel_action = UIAlertAction(title: "Cancel", style: .Cancel) {
             action in
             // ...
         }
-        
-        //Closure function for facebook login action on alert view
-//        fb_login_action = UIAlertAction(title: "Facebook Login", style: .Default) {
-//            action in
-//            self.performSegueWithIdentifier("FB_Login", sender: nil)
-//            // ...
-//        }
-        
         //Closure function for email login action on alert view
-        email_login_action = UIAlertAction(title: "Login", style: .Default){
+        email_login_action = UIAlertAction(title: "Log In", style: .Default){
             action in
             self.performSegueWithIdentifier("Log_In", sender: nil)
         }
         
         //Closure function for sign up login action on alert view
-        signup_action = UIAlertAction(title: "Sign Up", style: .Default){
+        signup_action = UIAlertAction(title: "Join Us!", style: .Default){
             action in
             self.performSegueWithIdentifier("Sign_Up", sender: nil)
         }
         
+        
+        
         //Add all actions to the alertviewcontroller
         alertController.addAction(cancel_action)
-        //alertController.addAction(fb_login_action)
         alertController.addAction(email_login_action)
         alertController.addAction(signup_action)
         
