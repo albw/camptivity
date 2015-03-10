@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import ParseUI
+
 
 protocol NewEventViewControllerDelegate: class
 {
@@ -22,11 +24,12 @@ class NewEventViewController: UIViewController, UIAlertViewDelegate, UINavigatio
     @IBOutlet weak var endDatePicker: UIDatePicker!
     var location = CLLocationCoordinate2DMake(0,0)
     var imagePickerController = UIImagePickerController()
-    let dataProvide = ParseDataProvider()
-    
+    //Reference to middleware function calls
+
     weak var delegate: NewEventViewControllerDelegate?
     
     @IBAction func addButtonClicked(sender: UIBarButtonItem) {
+        var eventImage = imagePicker.image
         var eventName = eventNameTextField.text
         var eventDescription = eventDescriptionTextView.text
         var startDate = startDatePicker.date
@@ -40,7 +43,22 @@ class NewEventViewController: UIViewController, UIAlertViewDelegate, UINavigatio
         
         delegate?.didCreateEventAtCoordinate(eventName, Description: eventDescription, coordinate: location)
         
-        //dataProvide.postEvent(eventName, user: "", desc: eventDescription, start: startDate as NSString, expires: endDate as NSString)
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        var startDateString = dateFormatter.stringFromDate(startDate)
+        var endDateString = dateFormatter.stringFromDate(endDate)
+        
+        
+        ParseEvents.postEvent(eventName, desc: eventDescription, lat: location.latitude, lon: location.longitude, user: "dont care", start: startDateString, expires: startDateString)
+        
+        // load back object to get objectId, because upload icom need objectId
+        var obj = ParseEvents.getEventByName(eventName)
+        
+        var imageData = NSData()
+        imageData = UIImageJPEGRepresentation(self.imagePicker.image, 0.8)
+        var imageFile = PFFile(data:imageData)
+        let dataprovider = ParseDataProvider()
+        dataprovider.saveIcon("Events", objID: obj.objectId, colName: "icon", img: imageFile)
         
         NSLog("%@", eventName)
         NSLog("%@", eventDescription)
@@ -50,6 +68,7 @@ class NewEventViewController: UIViewController, UIAlertViewDelegate, UINavigatio
         //geolocation
         NSLog("%f", location.longitude)
         NSLog("%f", location.latitude)
+        
     }
     
     
