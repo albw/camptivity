@@ -14,6 +14,13 @@ import Crashlytics
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    //Vars used for Data transfer for event pinning from social feed
+    var doPin: Bool! = false
+    var lat: Double!
+    var long: Double!
+    var name: String!
+    var event_description: String!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         application.statusBarStyle = .LightContent

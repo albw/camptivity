@@ -75,7 +75,19 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
     }
     
     override func viewWillAppear(animated: Bool) {
+        println("Debug: Map View is Appearing")
+        
         super.viewWillAppear(false);
+        
+        //Check to see if we should perform an event pinning action
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        if(appDelegate.doPin == true)
+        {
+            appDelegate.doPin = false
+            let coordinate = CLLocationCoordinate2D(latitude: appDelegate.lat, longitude: appDelegate.long)
+            //TODO: Map Does funky stuff when pin event command is invoked
+            didCreateEventAtCoordinate(appDelegate.name, Description: appDelegate.event_description, coordinate: coordinate)
+        }
         
         fetchNearbyLocations()
     }
