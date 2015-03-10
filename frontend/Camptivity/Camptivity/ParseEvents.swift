@@ -9,6 +9,7 @@
 import Foundation
 import Parse
 
+/// This class contains methods which can get/set data for Event, EventCmt, and EventVote objects
 public class ParseEvents
 {
     /// Get Events, ordered by most recent first.
@@ -59,8 +60,42 @@ public class ParseEvents
         var e: NSError?
         PFCloud.callFunction("postEventCmt", withParameters: ["comment":comment, "user":user, "objectId": objId], error: &e)
         return e != nil ? false : true
-        
     }
     
+    /**
+    * Posts a new Event object.
+    * Takes 7 params:
+    *      name - String - the name of the event.
+    *      desc - Stirng - The event description.
+    *      lat - Number - The event's latitude.
+    *      lon - Number - The event's longitude.
+    *      user - String - The creator's username.
+    *      start - String - The start date. A date/time in ISO 8601, UTC (e.g. "2011-08-21T18:02:52.249Z")
+    *      expires - String - The end date. A date/time in ISO 8601, UTC (e.g. "2011-08-21T18:02:52.249Z")
+    * Example: {"name":"Ratchet Party", "user":"Admin", "desc": "lets get down n dirty", "lat":32, "lon":-117, "start":"2015-03-21T18:02:52.249Z", "expires":"2015-03-22T18:02:52.249Z"}
+    */
     
+    ///Post a new Event object
+    ///
+    ///:param: name The name of the event
+    ///:param: desc The Event description
+    ///:param: lat The latitude
+    ///:param: lon The longitude
+    ///:param: user The user performing the create
+    ///:param: start The start date. A date/time in ISO 8601, UTC (e.g. "2011-08-21T18:02:52.249Z")
+    ///:param: end The end date. A date/time in ISO 8601, UTC (e.g. "2011-08-21T18:02:52.249Z")
+    ///:returns: True if we were successful.
+    public class func postEvent(name:String, desc:String, lat:Double, lon:Double, user:String, start:String, expires:String) -> Bool {
+        var e: NSError?
+        PFCloud.callFunction("postEvent", withParameters: ["name":name, "desc":desc, "lat": lat, "lon":lon, "user":user, "start":start, "expires":expires], error: &e)
+        return e != nil ? false : true
+    }
+    
+    /// Get an Event by name
+    ///
+    ///:param: name The unique name of the Event (case-sensitive)
+    ///:returns: The Event as a PFObject.
+    public class func getEventByName(name:String) -> PFObject {
+        return Utils.entryWhere("Events", col: "name", value: name)
+    }
 }

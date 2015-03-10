@@ -110,5 +110,31 @@ class CamptivityTests: XCTestCase {
     {
        XCTAssert( ParseLocations.postLocationRanks("Admin", rating:2, review:"This shit sux", objId:"vWRWYBwnYJ"), "Pass")
     }
-
+    
+    
+    func testPostEvent()
+    {
+        XCTAssert(ParseEvents.postEvent("Some dope event", desc: "totally rad!", lat: 33.0, lon: -117.09, user: "Admin", start: "2015-03-21T18:02:52.249Z", expires: "2015-03-22T18:02:52.249Z"), "Pass")
+    }
+    
+    
+    func testGetLocationByName(){
+        var p = ParseLocations.getLocationByName("P206")
+        println(p)
+        XCTAssert(true, "Pass")
+    }
+    
+    
+    func testGetEventByName(){
+        var p = ParseEvents.getEventByName("Test4")
+        println(p)
+        XCTAssert(true, "Pass")
+    }
+    
+    
+    func testGetLocationRankForLocation() {
+        var p = ParseLocations.getLocationRankForLocation("vWRWYBwnYJ")
+        println(p)
+        XCTAssert(true, "Pass")
+    }
 }

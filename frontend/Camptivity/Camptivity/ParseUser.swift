@@ -9,7 +9,7 @@
 import Foundation
 import Parse
 
-
+/// This class contains methods which can get/set data for _User objects
 public class ParseUser
 {
     /// Register a new user. To be used when user does not wish to link his/her facebook profile.

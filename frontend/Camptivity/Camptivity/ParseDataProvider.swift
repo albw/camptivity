@@ -16,25 +16,6 @@ public class ParseDataProvider {
         return NSURLSession.sharedSession()
     }
     
-    
-    func fetchLocationsBaseOnCategories(categories:[String], completion: (result: [AnyObject])->Void) {
-        var results = []
-        var query = PFQuery(className: "Locations")
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [AnyObject]!, error: NSError!) -> Void in
-            if error == nil {
-                results = objects
-                //NSLog("%@", results)
-            }
-            else {
-                NSLog("%@", error)
-            }
-            completion(result:results)
-            
-            
-        }
-    }
-    
     func fetchDirectionsFrom(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D, completion: ((String?) -> Void)) -> ()
     {
         let urlString = "https://maps.googleapis.com/maps/api/directions/json?key=\(apiKey)&origin=\(from.latitude),\(from.longitude)&destination=\(to.latitude),\(to.longitude)&mode=walking"
@@ -70,10 +51,6 @@ public class ParseDataProvider {
     * Example: {"category":["restroom", "bar"], "lat":30, "lon:"30, "radius":40}
     */
     func fetchLocationsNearMe(categories:[String], completion: (returnValue: [AnyObject])->Void) {
-//        for search in categories {
-//            NSLog(search as NSString)
-//        }
-        
         PFCloud.callFunctionInBackground("locationsNearMe", withParameters: ["category":categories, "lat":32.88293263160078, "lon":-117.2109485336882, "radius":400]) {
             (objects: AnyObject!, error: NSError!) -> Void in
             var results = []
@@ -83,26 +60,28 @@ public class ParseDataProvider {
             else {
                 results = objects as NSArray
                 completion(returnValue:results)
-                
-//                //NSLog("Result: \(result) ")
-//                println("===================")
-//                
-//                for (var i=0; i<results.count; i++)
-//                {
-//                    //println(results[i]["avgRank"] as Int)
-//                    println(results[i]["category"] as String)
-//                    //println(results[i]["description"] as String)
-//                    //println(results[i]["location"] as PFGeoPoint)
-//                    //println(results[i]["name"] as String)
-//                    //println(results[i]["numRankings"] as Int)
-//                    //println(results[i]["userID"] as PFUser)
-//                }
+            }
+        }
+        
+        
+        func fetchLocationsBaseOnCategories(categories:[String], completion: (result: [AnyObject])->Void) {
+            var results = []
+            var query = PFQuery(className: "Locations")
+            query.findObjectsInBackgroundWithBlock {
+                (objects: [AnyObject]!, error: NSError!) -> Void in
+                if error == nil {
+                    results = objects
+                    //NSLog("%@", results)
+                }
+                else {
+                    NSLog("%@", error)
+                }
+                completion(result:results)
                 
                 
             }
         }
     }
-
     
     
     // Function return true if an email already used. False Other wise.
@@ -135,68 +114,19 @@ public class ParseDataProvider {
         
     }
     
-    func usernameTaken(username:String)-> Bool {
-        var s = Bool()
-        //PFCloud.callFunctionInBackground("usernameTaken", withParameters: ["username":"Admin"]) {
-        PFCloud.callFunctionInBackground("usernameTaken", withParameters: ["username":username]) {
-            (objects: AnyObject!, error: NSError!) -> Void in
-            var results = []
-            if (error != nil) {
-                // Your error handling here
-            }
-            else {
-                
-                s = objects as Bool
-                
-            }
-        }
-        return s
-    }
-    
-    
+    ///WARNING: BROKEN DOES NOT RETURN CORRECT RESULT.  Left this here to shut up compiler, but if you're getting crashes, here you need to reference the updated method in ParseUser.swift
     public func newUserSignup(username:String, password:String, email: String, fullname: String)-> (Bool, String) {
         return ParseUser.newUserSignup(username, password: password, email: email, fullname: fullname)
     }
-
+    ///WARNING: BROKEN DOES NOT RETURN CORRECT RESULT.  Left this here to shut up compiler, but if you're getting crashes, here you need to reference the updated method in ParseUser.swift
     public func fbSignup(fbID:String, email:String, fullname:String)-> (Bool, String) {
         return ParseUser.fbSignup(fbID, email:email, fullname:fullname)
     }
-
+    ///WARNING: BROKEN DOES NOT RETURN CORRECT RESULT.  Left this here to shut up compiler, but if you're getting crashes, here you need to reference the updated method in ParseEvents.swift
     func getEvents(limit:Int, skip:Int)->AnyObject {
         let result: AnyObject! = PFCloud.callFunction("getEvents", withParameters: ["limit":limit, "skip":skip])
         return result;
         
-    }
-
-    
-    /**
-    * Posts a new Event object.
-    * Takes 7 params:
-    *      name - String - the name of the event.
-    *      desc - Stirng - The event description.
-    *      lat - Number - The event's latitude.
-    *      lon - Number - The event's longitude.
-    *      user - String - The creator's username.
-    *      start - String - The start date. A date/time in ISO 8601, UTC (e.g. "2011-08-21T18:02:52.249Z")
-    *      expires - String - The end date. A date/time in ISO 8601, UTC (e.g. "2011-08-21T18:02:52.249Z")
-    * Example: {"name":"Ratchet Party", "user":"Admin", "desc": "lets get down n dirty", "lat":32, "lon":-117, "start":"2015-03-21T18:02:52.249Z", "expires":"2015-03-22T18:02:52.249Z"}
-    */
-    func postEvent(name:String, user:String, desc:String, start:String, expires:String)-> String {
-        var s = String()
-        //PFCloud.callFunctionInBackground("postEvent", withParameters: ["name":"Ratchet Party", "user":"Admin", "desc": "lets get down n dirty", "lat":32, "lon":-117,"start":"2015-03-21T18:02:52.249Z","expires":"2015-03-22T18:02:52.249Z"]) {
-        PFCloud.callFunctionInBackground("postEvent", withParameters: ["name":name, "user":user, "desc": desc, "lat":32, "lon":-117,"start":start,"expires":expires]) {
-            (objects: AnyObject!, error: NSError!) -> Void in
-            var results = []
-            if (error != nil) {
-                // Your error handling here
-            }
-            else {
-                
-                s = objects as String
-                
-            }
-        }
-        return s
     }
     
     /**
@@ -223,20 +153,6 @@ public class ParseDataProvider {
         }
         return s
     }
-    
-    /**
-    * Gets LocationRanks for the specified Locations object.
-    * Takes one param:
-    *      objid - The unique objectId of the Location we're trying to get locationRanks for.
-    * Example: {"objid":"d70IYXni4G"}
-    */
-    func getLocationRanks(objid:String)-> AnyObject {
-        let result: AnyObject! = PFCloud.callFunction("getLocationRanks", withParameters: ["objid": objid])
-        return result;
-    }
-    
-    
-
     
     // need #import <Bolts/Bolts.h> in Bridging Header
     /**
@@ -342,13 +258,3 @@ public class ParseDataProvider {
         return r
     }
 }
-
-/*
-Unit Test code
-
-let provider = ParseDataProvider()
-let result: AnyObject! = provider.lookupLocationByCoord(32.880586, long: -117.231874)
-println(result.count)
-println(result as PFGeoPoint)
-
-*/

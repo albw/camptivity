@@ -9,9 +9,9 @@
 import Foundation
 import Parse
 
+/// This class contains methods which contain supporting utility methods for Model.
 public class Utils
 {
-    
     /// Grabs first row of a table where a given column is equal to a specific value.
     ///
     ///:param: table The name of the table to query
