@@ -146,10 +146,24 @@ class FeedTableViewController: UITableViewController {
     
     @IBAction func upVote(sender: UIButton) {
         println(sender.tag)
+        //TODO: Access username if possible, can only vote if logged in
+        //Maybe prompt them if they aren't logged in?
+        /*let success = ParseEvents.postEventVote(<#user: String#>, objId: <#String#>, isUpVote: true)
+        if(success){
+            //TODO: Need to update View and vote count
+        }*/
+        //Else just do nothing
     }
     
     @IBAction func downVote(sender: UIButton) {
         println(sender.tag)
+        //TODO: Access username if possible, can only vote if logged in
+        //Maybe prompt them if they aren't logged in?
+        /*let success = ParseEvents.postEventVote(<#user: String#>, objId: <#String#>, isUpVote: false)
+        if(success){
+            //TODO: Need to update View and vote count
+        }*/
+        //Else just do nothing
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
