@@ -111,6 +111,7 @@
                         <segue destination="Zvt-r8-O4l" kind="show" identifier="Sign_Up" id="jiA-40-rLL"/>
                         <segue destination="kpR-aP-fzz" kind="show" identifier="Event_Segue" id="tiV-74-bBe"/>
                         <segue destination="goA-nE-KdL" kind="show" identifier="Log_In" id="fE3-7I-BYX"/>
+                        <segue destination="Aaj-5x-SSf" kind="show" identifier="User_Setting" id="NRa-R4-Vey"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="79v-ZT-LhJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -234,6 +235,88 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ffe-x5-WGN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1755" y="315"/>
+        </scene>
+        <!--User Setting View Controller-->
+        <scene sceneID="l2s-oN-eFX">
+            <objects>
+                <viewController id="Aaj-5x-SSf" customClass="UserSettingViewController" customModule="Camptivity" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="na2-rM-NW7"/>
+                        <viewControllerLayoutGuide type="bottom" id="VuS-az-agS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7h2-QG-tNc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter new email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zna-Fc-nVT">
+                                <rect key="frame" x="0.0" y="229" width="382" height="40"/>
+                                <color key="backgroundColor" red="0.99215692280000001" green="0.99215692280000001" blue="0.99607849120000003" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter new full name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xDc-py-V6F">
+                                <rect key="frame" x="-2" y="279" width="388" height="40"/>
+                                <color key="backgroundColor" red="0.99215692280000001" green="0.99215692280000001" blue="0.99607849120000003" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Enter new username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yHV-Tr-jfh">
+                                <rect key="frame" x="0.0" y="178" width="384" height="40"/>
+                                <color key="backgroundColor" red="0.99215692280000001" green="0.99215692280000001" blue="0.99607849120000003" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="textColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zcz-Bj-L4c">
+                                <rect key="frame" x="59" y="77" width="262" height="38"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZZ-S3-RYP">
+                                <rect key="frame" x="41" y="113" width="298" height="47"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Please enter any sections you wish to make updates. Thank you!">
+                                        <attributes>
+                                            <color key="NSColor" red="0.22745099663734436" green="0.58039218187332153" blue="0.91372555494308472" alpha="1" colorSpace="deviceRGB"/>
+                                            <font key="NSFont" size="10" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="2"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <color key="highlightedColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
+                            <button contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lgr-dS-SOM">
+                                <rect key="frame" x="0.0" y="344" width="384" height="41"/>
+                                <color key="backgroundColor" red="0.32156863810000003" green="0.61568629740000003" blue="0.90196084980000002" alpha="1" colorSpace="deviceRGB"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Update Settings">
+                                            <attributes>
+                                                <color key="NSColor" red="0.99215692281723022" green="0.9960784912109375" blue="0.99215692281723022" alpha="1" colorSpace="deviceRGB"/>
+                                                <font key="NSFont" size="15" name="Helvetica"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="clipping" baseWritingDirection="natural"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="settingButton:" destination="Aaj-5x-SSf" eventType="touchUpInside" id="Tsd-sn-jxJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.80408575469999999" green="0.92460298839999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="newEmail" destination="zna-Fc-nVT" id="hR8-qH-gfh"/>
+                        <outlet property="newName" destination="xDc-py-V6F" id="Gze-Rp-pba"/>
+                        <outlet property="newUsername" destination="yHV-Tr-jfh" id="WgM-6z-Ba4"/>
+                        <outlet property="userGreetting" destination="zcz-Bj-L4c" id="UUM-WQ-XWg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UEt-Ho-i0P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2546" y="347"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="QBZ-mG-3Eo">

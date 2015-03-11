@@ -27,6 +27,7 @@ class FeedTableViewController: UITableViewController {
     //Reference to userAlertViewController actions
     var logout_action: UIAlertAction!
     var userSetting_action: UIAlertAction!
+     var resetPwd_action: UIAlertAction!
     
     //Reference to feedtableviewcell
     let feedCellIdentifier = "FeedTableViewCell"
@@ -70,7 +71,7 @@ class FeedTableViewController: UITableViewController {
         alertController.addAction(signup_action)
         
         //Initialize userAlertController
-        userAlertController = UIAlertController(title: "User's Setting", message: "Do What you want bae", preferredStyle: .Alert)
+        userAlertController = UIAlertController(title: "User's Setting", message: "Click setting to update profile", preferredStyle: .Alert)
         //CLouser function for log out
         logout_action = UIAlertAction(title: "Log Out", style: .Default){
             action in
@@ -78,13 +79,26 @@ class FeedTableViewController: UITableViewController {
         }
         userSetting_action = UIAlertAction(title: "Settings", style: .Default){
             action in
-            self.performSegueWithIdentifier("user_setting", sender: nil)
+            self.performSegueWithIdentifier("User_Setting", sender: nil)
+        }
+        resetPwd_action = UIAlertAction(title: "Reset Password", style: .Default){
+            action in
+            var email = PFUser.currentUser().email
+            var s = PFUser.requestPasswordResetForEmailInBackground(email)
+            
+            let alert = UIAlertView()
+            alert.title = "Reset Password"
+            alert.message = "An email was sent to " + email + ". Please follow those intructions to reset password. Thank you."
+            alert.delegate = self
+            alert.addButtonWithTitle("Dismiss")
+            alert.show()
+            
         }
         //Add actions to userAlertController
         userAlertController.addAction(logout_action)
         userAlertController.addAction(cancel_action)
         userAlertController.addAction(userSetting_action)
-        
+        userAlertController.addAction(resetPwd_action)
         //Getting Event Data from Parse Database
         eventData = ParseEvents.getEvents(limit: event_count, skip:0)
         

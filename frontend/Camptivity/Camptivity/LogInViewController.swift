@@ -58,10 +58,17 @@ class LogInViewController: UIViewController, PFLogInViewControllerDelegate{
 
         user.fetchIfNeededInBackground()
         var name  = user.objectForKey("name") as String
+        var messageTile : String!
+        if(name != ""){
+            messageTile = "Hello, " + name
+        }
+        else{
+            messageTile = "Hello, There"
+        }
         
         
         let alert = UIAlertView()
-        alert.title = "Hello, " + name
+        alert.title = messageTile
         alert.message = "You've been missed"
         alert.delegate = self
         alert.addButtonWithTitle("Ok")

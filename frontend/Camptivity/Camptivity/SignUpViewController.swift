@@ -51,8 +51,17 @@ class SignUpViewController: UIViewController, PFSignUpViewControllerDelegate{
         user["name"] = fullName
         user.saveInBackground()
         
+        var messageTile : String!
+        if(fullName != ""){
+            messageTile = "Welcome, " + fullName
+        }
+        else{
+            messageTile = "Welcome, New Friend!"
+        }
+        
+        
         let alert = UIAlertView()
-        alert.title = "Welcome, " + fullName 
+        alert.title = messageTile
         alert.message = "Your ID is: " + user.objectId
         alert.delegate = self
         alert.addButtonWithTitle("Ok")
