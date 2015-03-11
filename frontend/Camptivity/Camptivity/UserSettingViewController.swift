@@ -7,6 +7,7 @@
 //
 import UIKit
 
+
 class UserSettingViewController: UIViewController{
     
     
@@ -15,10 +16,14 @@ class UserSettingViewController: UIViewController{
     @IBOutlet weak var newUsername: UITextField!
     @IBOutlet weak var newEmail: UITextField!
     @IBOutlet weak var newName: UITextField!
+    @IBOutlet weak var userScore: UILabel!
+    
     
     var newUserNameEntered: String!
     var newEmailEntered: String!
     var newNameEntered: String!
+    
+    
     
     @IBAction func settingButton(sender: AnyObject){
         
@@ -89,7 +94,18 @@ class UserSettingViewController: UIViewController{
             else{
                 label = "Your Profile Update"
             }
+            
+            var score = ParseScore.getUserScore(user.username)
+            
+            var eventComment = score["eventComments"] as Int
+            var eventCreated = score["eventCreated"] as Int
+            var locationRanked = score["locationRanked"] as Int
+            var votesGiven = score["votesGiven"] as Int
+            var votesRecieved = score["votesRecieved"] as Int
+            
+            self.userScore.text = "Event Comments: " + String(eventComment)
             self.userGreetting.text = label
+            
         }
     }
     
