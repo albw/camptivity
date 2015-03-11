@@ -231,32 +231,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter new email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zna-Fc-nVT">
-                                <rect key="frame" x="0.0" y="229" width="382" height="40"/>
+                                <rect key="frame" x="0.0" y="380" width="386" height="40"/>
                                 <color key="backgroundColor" red="0.99215692280000001" green="0.99215692280000001" blue="0.99607849120000003" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter new full name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xDc-py-V6F">
-                                <rect key="frame" x="-2" y="279" width="388" height="40"/>
+                                <rect key="frame" x="-2" y="430" width="388" height="40"/>
                                 <color key="backgroundColor" red="0.99215692280000001" green="0.99215692280000001" blue="0.99607849120000003" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Enter new username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yHV-Tr-jfh">
-                                <rect key="frame" x="0.0" y="178" width="384" height="40"/>
+                                <rect key="frame" x="0.0" y="329" width="386" height="40"/>
                                 <color key="backgroundColor" red="0.99215692280000001" green="0.99215692280000001" blue="0.99607849120000003" alpha="1" colorSpace="deviceRGB"/>
                                 <color key="textColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zcz-Bj-L4c">
-                                <rect key="frame" x="59" y="77" width="262" height="38"/>
+                                <rect key="frame" x="59" y="62" width="262" height="38"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZZ-S3-RYP">
-                                <rect key="frame" x="41" y="113" width="298" height="47"/>
+                                <rect key="frame" x="44" y="274" width="298" height="47"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Please enter any sections you wish to make updates. Thank you!">
                                         <attributes>
@@ -269,7 +269,7 @@
                                 <color key="highlightedColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                             <button contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lgr-dS-SOM">
-                                <rect key="frame" x="0.0" y="344" width="384" height="41"/>
+                                <rect key="frame" x="0.0" y="495" width="386" height="41"/>
                                 <color key="backgroundColor" red="0.32156863810000003" green="0.61568629740000003" blue="0.90196084980000002" alpha="1" colorSpace="deviceRGB"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
@@ -286,19 +286,59 @@
                                     <action selector="settingButton:" destination="Aaj-5x-SSf" eventType="touchUpInside" id="Tsd-sn-jxJ"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="comment" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vq8-Lb-8x2">
+                                <rect key="frame" x="105" y="109" width="176" height="21"/>
+                                <color key="backgroundColor" red="0.99215692281723022" green="0.97254908084869385" blue="0.97254908084869385" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="created" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4HT-9f-Em8">
+                                <rect key="frame" x="105" y="132" width="176" height="21"/>
+                                <color key="backgroundColor" red="0.99215692281723022" green="0.97254908084869385" blue="0.97254908084869385" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CSX-Et-ajm">
+                                <rect key="frame" x="105" y="154" width="176" height="21"/>
+                                <color key="backgroundColor" red="0.99215692281723022" green="0.97254908084869385" blue="0.97254908084869385" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="voteGiven" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LTv-qJ-0sP">
+                                <rect key="frame" x="105" y="177" width="176" height="21"/>
+                                <color key="backgroundColor" red="0.99215692281723022" green="0.97254908084869385" blue="0.97254908084869385" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="voteRecieved" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4t-LT-SO2">
+                                <rect key="frame" x="105" y="200" width="176" height="21"/>
+                                <color key="backgroundColor" red="0.99215692281723022" green="0.97254908084869385" blue="0.97254908084869385" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.80408575469999999" green="0.92460298839999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
+                        <outlet property="createdEvents" destination="4HT-9f-Em8" id="4Jv-Sq-Gmf"/>
+                        <outlet property="eventComments" destination="vq8-Lb-8x2" id="m8f-nS-Hb3"/>
+                        <outlet property="locationRanked" destination="CSX-Et-ajm" id="LfE-ZL-BTq"/>
                         <outlet property="newEmail" destination="zna-Fc-nVT" id="hR8-qH-gfh"/>
                         <outlet property="newName" destination="xDc-py-V6F" id="Gze-Rp-pba"/>
                         <outlet property="newUsername" destination="yHV-Tr-jfh" id="WgM-6z-Ba4"/>
                         <outlet property="userGreetting" destination="zcz-Bj-L4c" id="UUM-WQ-XWg"/>
+                        <outlet property="votesGiven" destination="LTv-qJ-0sP" id="FNP-Lm-P8A"/>
+                        <outlet property="votesRecieved" destination="b4t-LT-SO2" id="qqk-N6-CK1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UEt-Ho-i0P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2546" y="347"/>
+            <point key="canvasLocation" x="2648" y="345"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="QBZ-mG-3Eo">
@@ -831,6 +871,6 @@
         <image name="up_arrow.png" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dOw-I2-fsB"/>
+        <segue reference="5v9-1l-Jkv"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -16,7 +16,12 @@ class UserSettingViewController: UIViewController{
     @IBOutlet weak var newUsername: UITextField!
     @IBOutlet weak var newEmail: UITextField!
     @IBOutlet weak var newName: UITextField!
-    @IBOutlet weak var userScore: UILabel!
+    @IBOutlet weak var eventComments: UILabel!
+    @IBOutlet weak var createdEvents: UILabel!
+    @IBOutlet weak var locationRanked: UILabel!
+    @IBOutlet weak var votesGiven: UILabel!
+    @IBOutlet weak var votesRecieved: UILabel!
+
     
     
     var newUserNameEntered: String!
@@ -96,14 +101,18 @@ class UserSettingViewController: UIViewController{
             }
             
             var score = ParseScore.getUserScore(user.username)
+            println(score)
+            var eventCommentInt = score["eventComments"] as Int
+            var eventCreatedInt = score["eventsCreated"] as Int
+            var locationRankedInt = score["locationsRanked"] as Int
+            var votesGivenInt = score["votesGiven"] as Int
+            var votesRecievedInt = score["votesReceived"] as Int
             
-            var eventComment = score["eventComments"] as Int
-            var eventCreated = score["eventCreated"] as Int
-            var locationRanked = score["locationRanked"] as Int
-            var votesGiven = score["votesGiven"] as Int
-            var votesRecieved = score["votesRecieved"] as Int
-            
-            self.userScore.text = "Event Comments: " + String(eventComment)
+            self.eventComments.text = "Event Comments: " + String(eventCommentInt)
+            self.createdEvents.text = "Event Created: " + String(eventCommentInt)
+            self.locationRanked.text = "Locations Rank: " + String(locationRankedInt)
+            self.votesGiven.text = "Votes Given: " + String(votesGivenInt)
+            self.votesRecieved.text = "Votes Recieved: " + String(votesRecievedInt)
             self.userGreetting.text = label
             
         }
