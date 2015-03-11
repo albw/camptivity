@@ -148,21 +148,38 @@ class FeedTableViewController: UITableViewController {
         println(sender.tag)
         //TODO: Access username if possible, can only vote if logged in
         //Maybe prompt them if they aren't logged in?
-        /*let success = ParseEvents.postEventVote(<#user: String#>, objId: <#String#>, isUpVote: true)
+        let user = PFUser.currentUser()
+        
+        if(user == nil){
+            return //No user logged in
+        }
+        
+        let success = ParseEvents.postEventVote(user.username, objId: eventData[sender.tag].objectId, isUpVote: true)
+        println("success = \(success)")
         if(success){
             //TODO: Need to update View and vote count
-        }*/
+            println("vote is a success")
+        }
         //Else just do nothing
     }
     
     @IBAction func downVote(sender: UIButton) {
         println(sender.tag)
         //TODO: Access username if possible, can only vote if logged in
+        //TODO: Access username if possible, can only vote if logged in
         //Maybe prompt them if they aren't logged in?
-        /*let success = ParseEvents.postEventVote(<#user: String#>, objId: <#String#>, isUpVote: false)
+        let user = PFUser.currentUser()
+        
+        if(user == nil){
+            return //No user logged in
+        }
+        
+        let success = ParseEvents.postEventVote(user.username, objId: eventData[sender.tag].objectId, isUpVote: false)
+        println("success = \(success)")
         if(success){
             //TODO: Need to update View and vote count
-        }*/
+            println("vote is a success")
+        }
         //Else just do nothing
     }
     
