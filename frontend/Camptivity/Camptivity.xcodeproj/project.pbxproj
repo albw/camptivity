@@ -126,6 +126,8 @@
 		8A5E62071A9FB5A600E418ED /* UIToolbar+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5E61F31A9FB5A600E418ED /* UIToolbar+FlatUI.m */; };
 		8A7A3F0C1AA3BF7F00854B8F /* UCSD_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A7A3F0B1AA3BF7F00854B8F /* UCSD_Logo.png */; };
 		8ABDB9DD1A92E29C00A0D6CB /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABDB9DC1A92E29C00A0D6CB /* FeedTableViewController.swift */; };
+		8AC5B4E11AB0F9270027A7A1 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC5B4DF1AB0F9270027A7A1 /* LocationTableViewCell.swift */; };
+		8AC5B4E21AB0F9270027A7A1 /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC5B4E01AB0F9270027A7A1 /* LocationTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -249,6 +251,8 @@
 		8A5E61F31A9FB5A600E418ED /* UIToolbar+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIToolbar+FlatUI.m"; sourceTree = "<group>"; };
 		8A7A3F0B1AA3BF7F00854B8F /* UCSD_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UCSD_Logo.png; sourceTree = "<group>"; };
 		8ABDB9DC1A92E29C00A0D6CB /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
+		8AC5B4DF1AB0F9270027A7A1 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
+		8AC5B4E01AB0F9270027A7A1 /* LocationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -351,6 +355,8 @@
 				13CFE2B81A8DD12C00F64DDC /* MapViewController.swift */,
 				13CFE2B91A8DD12C00F64DDC /* TypesTableViewController.swift */,
 				8A3499601A75871E001B5A28 /* ViewController.swift */,
+				8AC5B4DF1AB0F9270027A7A1 /* LocationTableViewCell.swift */,
+				8AC5B4E01AB0F9270027A7A1 /* LocationTableViewController.swift */,
 				8ABDB9DC1A92E29C00A0D6CB /* FeedTableViewController.swift */,
 				8A3A75A61AA25746006A1EB8 /* FeedTableViewCell.swift */,
 				13C1E8231AA2F80C008A2E60 /* NewEventViewController.swift */,
@@ -689,6 +695,7 @@
 				8A5E61FD1A9FB5A600E418ED /* UIColor+FlatUI.m in Sources */,
 				7050DDBB1AABBFE2002C4E45 /* ParseLocations.swift in Sources */,
 				13CFE2BA1A8DD12C00F64DDC /* MapViewController.swift in Sources */,
+				8AC5B4E21AB0F9270027A7A1 /* LocationTableViewController.swift in Sources */,
 				8A5E61F81A9FB5A600E418ED /* FUISegmentedControl.m in Sources */,
 				8A5E61F91A9FB5A600E418ED /* FUISwitch.m in Sources */,
 				8A5E62021A9FB5A600E418ED /* UIProgressView+FlatUI.m in Sources */,
@@ -717,6 +724,7 @@
 				13C1E8241AA2F80C008A2E60 /* NewEventViewController.swift in Sources */,
 				13CFE2B71A8DD11700F64DDC /* ParseDataProvider.swift in Sources */,
 				8A5E62001A9FB5A600E418ED /* UINavigationBar+FlatUI.m in Sources */,
+				8AC5B4E11AB0F9270027A7A1 /* LocationTableViewCell.swift in Sources */,
 				130B67B41AAD1F5D000C0988 /* MBProgressHUD.m in Sources */,
 				8A5E61F51A9FB5A600E418ED /* FUIButton.m in Sources */,
 				8A5E61FC1A9FB5A600E418ED /* UIBarButtonItem+FlatUI.m in Sources */,
