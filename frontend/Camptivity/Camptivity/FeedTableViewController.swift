@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import Parse
 
 class FeedTableViewController: UITableViewController {
 
-    var eventData: NSArray!
+    var eventData: [PFObject]!
     var event_index: Int!
     
     //Reference to alertviewcontroller
@@ -27,12 +28,11 @@ class FeedTableViewController: UITableViewController {
     var logout_action: UIAlertAction!
     var userSetting_action: UIAlertAction!
     
-    
     //Reference to feedtableviewcell
     let feedCellIdentifier = "FeedTableViewCell"
     
-    //Reference to middleware function calls
-    var data_provider: ParseDataProvider!
+    //Count for event checking
+    let event_count = 10
    
     //TODO Having problems with FUIUIKit atm
     //var alertView : FUIAlertView!
@@ -69,7 +69,6 @@ class FeedTableViewController: UITableViewController {
         alertController.addAction(login_action)
         alertController.addAction(signup_action)
         
-        
         //Initialize userAlertController
         userAlertController = UIAlertController(title: "User's Setting", message: "Do What you want bae", preferredStyle: .Alert)
         //CLouser function for log out
@@ -87,8 +86,7 @@ class FeedTableViewController: UITableViewController {
         userAlertController.addAction(userSetting_action)
         
         //Getting Event Data from Parse Database
-        data_provider = ParseDataProvider()
-        eventData = data_provider.getEvents(3, skip:1) as NSArray
+        eventData = ParseEvents.getEvents(limit: event_count, skip:0)
         
         //Print debug data of first event gathered
         println(eventData[0])
@@ -125,7 +123,11 @@ class FeedTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 3 //Currently hardcoded, need a way to determine the amount of events
+        
+        //TODO: Scheme, will load 10 elements at a time with a 1 (load more option)
+        //use event_count
+        
+        return event_count + 1
     }
     
     /*
@@ -156,10 +158,14 @@ class FeedTableViewController: UITableViewController {
     }
     
     func feedCellAtIndexPath(indexPath:NSIndexPath) -> FeedTableViewCell {
+        if(indexPath.row >= (event_count)){
+            //TODO: Create Last Cell Type
+            //Return last cell
+        }
         let cell = tableView.dequeueReusableCellWithIdentifier("feedCell") as FeedTableViewCell
         cell.up_button.tag = indexPath.row
         cell.down_button.tag = indexPath.row
-        if(indexPath.row < 2){ //Currently hardcoded, need a way to determine the amount of events
+        if(indexPath.row < event_count){ //Currently hardcoded, need a way to determine the amount of events
           setCellDisplay(cell, indexPath: indexPath)
         }
         return cell
@@ -167,20 +173,41 @@ class FeedTableViewController: UITableViewController {
     
     //Helper Function for setting all relevent cell displays
     func setCellDisplay(cell:FeedTableViewCell, indexPath:NSIndexPath) {
-        cell.title_label.text = eventData[indexPath.row]["name"] as String
-        cell.description_label.text = eventData[indexPath.row]["description"] as String
-        let count = eventData[indexPath.row]["upVotes"] as Int
-        cell.count.text = String(count)
+        
+        if(indexPath.row >= eventData.count){
+            return //Don't need to display cell no more cells to display
+        }
+        
+        let data = eventData[indexPath.row] as AnyObject!
+        if(data != nil){
+          //Update cells to display relevent Event Data
+          cell.title_label.text = eventData[indexPath.row]["name"] as String!
+          cell.description_label.text = eventData[indexPath.row]["description"] as String!
+        
+          //Diplay upvote count for event cell
+          let count = eventData[indexPath.row]["upVotes"] as Int
+          cell.count.text = String(count)
+        
+          //Display username for event cell
+          let user = eventData[indexPath.row]["userID"] as PFUser!
+          //cell.username_label.text = user.objectForKey("username") as String!
+        }
+        
     }
     
     //Override function for table cell clicks
     //Precondition: Global struct array to hold all event data will be populated after call for getEvents
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("Row \(indexPath.row)" )
+        if(indexPath.row >= (event_count + 1)){
+            //This is a load more request
+            //TODO: Trigger load more
+        }
         event_index = indexPath.row
         performSegueWithIdentifier("Event_Segue", sender: nil)
     }
     
+    //This gets called before any segue occurs from this view
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         
         if( segue.identifier == "Event_Segue")
@@ -190,9 +217,20 @@ class FeedTableViewController: UITableViewController {
         
             // Create a new variable to store the instance of PlayerTableViewController
             let destinationVC = segue.destinationViewController as EventViewController
+            
+            //Pass in Event description data
             destinationVC.name = eventData[event_index]["name"] as String
             destinationVC.details = eventData[event_index]["description"] as String
-            destinationVC.username = "John Doe"
+            
+            //Pass in username
+            let user = eventData[event_index]["userID"] as PFUser!
+            destinationVC.username = user.objectForKey("username") as String!
+            //destinationVC.username = "Derp"
+            
+            //Pass Location
+            let geo = eventData[event_index]["location"] as PFGeoPoint!
+            destinationVC.long = geo.longitude
+            destinationVC.lat = geo.latitude
         }
         
     }

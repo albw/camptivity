@@ -19,6 +19,8 @@ class EventViewController: UIViewController {
     var name: String!
     var details: String!
     var username: String!
+    var lat: Double!
+    var long: Double!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,8 +56,8 @@ class EventViewController: UIViewController {
         //TODO pass in actual long and lat values from database
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         appDelegate.doPin = true
-        appDelegate.lat = 32.88293263160078 //Set your latitude here
-        appDelegate.long = -117.2309485336882 //Set your longitude here
+        appDelegate.lat = lat //Set your latitude here
+        appDelegate.long = long //Set your longitude here
         appDelegate.name = name //Set Event Name
         appDelegate.event_description = details //Set Description
         self.tabBarController?.selectedIndex = 0 //Moves to map view
