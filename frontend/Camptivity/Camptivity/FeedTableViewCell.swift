@@ -10,6 +10,7 @@ import UIKit
 
 class FeedTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var username_label: UILabel!
     @IBOutlet var description_label: UILabel!
     @IBOutlet var title_label: UILabel!
     @IBOutlet var profile_image: UIImageView!

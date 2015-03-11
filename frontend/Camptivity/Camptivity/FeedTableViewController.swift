@@ -231,17 +231,19 @@ class FeedTableViewController: UITableViewController {
         
         let data = eventData[indexPath.row] as AnyObject!
         if(data != nil){
-          //Update cells to display relevent Event Data
-          cell.title_label.text = eventData[indexPath.row]["name"] as String!
-          cell.description_label.text = eventData[indexPath.row]["description"] as String!
+            //Update cells to display relevent Event Data
+            cell.title_label.text = eventData[indexPath.row]["name"] as String!
+            cell.description_label.text = eventData[indexPath.row]["description"] as String!
         
-          //Diplay upvote count for event cell
-          let count = eventData[indexPath.row]["upVotes"] as Int
-          cell.count.text = String(count)
+            //Diplay upvote count for event cell
+            let count = eventData[indexPath.row]["upVotes"] as Int
+            cell.count.text = String(count)
         
-          //Display username for event cell
-          let user = eventData[indexPath.row]["userID"] as PFUser!
-          //cell.username_label.text = user.objectForKey("username") as String!
+            //Display username for event cell
+            let user = eventData[indexPath.row]["userID"] as PFUser!
+            if( user != nil){
+                cell.username_label.text = user.objectForKey("username") as String!
+            }
         }
         
     }

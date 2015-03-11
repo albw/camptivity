@@ -5,41 +5,22 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--What's nearby?-->
-        <scene sceneID="eDV-Le-HQ1">
-            <objects>
-                <viewController id="AOz-sD-iC2" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="FOr-kg-NjZ"/>
-                        <viewControllerLayoutGuide type="bottom" id="8OU-2H-CGT"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ejA-OA-Zgc">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="What's nearby?" image="location-25.png" id="deQ-FB-TcH"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QBK-Er-poP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="22" y="1083"/>
-        </scene>
         <!--Root View Controller-->
         <scene sceneID="WCj-og-LVb">
             <objects>
                 <tableViewController id="iiy-qm-Kv1" customClass="FeedTableViewController" customModule="Camptivity" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="148" sectionHeaderHeight="22" sectionFooterHeight="22" id="el7-Kq-ZYs">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="124" sectionHeaderHeight="22" sectionFooterHeight="22" id="el7-Kq-ZYs">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedCell" id="ddq-0h-sl9" customClass="FeedTableViewCell" customModule="Camptivity" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedCell" rowHeight="124" id="ddq-0h-sl9" customClass="FeedTableViewCell" customModule="Camptivity" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ddq-0h-sl9" id="pgS-eP-Y7Z">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="UCSD_Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="grf-f3-2eM">
-                                            <rect key="frame" x="0.0" y="1" width="105" height="105"/>
+                                            <rect key="frame" x="0.0" y="1" width="105" height="93"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVL-WN-ZUz">
                                             <rect key="frame" x="113" y="37" width="443" height="21"/>
@@ -54,23 +35,14 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsD-7i-0JW">
-                                            <rect key="frame" x="13" y="114" width="79" height="21"/>
+                                            <rect key="frame" x="13" y="97" width="79" height="21"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vp7-mA-MVS">
-                                            <rect key="frame" x="314" y="52" width="40" height="30"/>
-                                            <state key="normal" title="Up">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="upVote:" destination="iiy-qm-Kv1" eventType="touchUpInside" id="Ino-Fx-QPw"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GPM-05-U25">
-                                            <rect key="frame" x="314" y="88" width="40" height="30"/>
-                                            <state key="normal" title="Down">
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GPM-05-U25">
+                                            <rect key="frame" x="319" y="92" width="31" height="22"/>
+                                            <state key="normal" image="down_arrow.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -78,11 +50,20 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nj6-rw-Ik5">
-                                            <rect key="frame" x="323" y="21" width="22" height="21"/>
+                                            <rect key="frame" x="323" y="63" width="22" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vp7-mA-MVS">
+                                            <rect key="frame" x="319" y="32" width="31" height="22"/>
+                                            <state key="normal" image="up_arrow.png">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="upVote:" destination="iiy-qm-Kv1" eventType="touchUpInside" id="Ino-Fx-QPw"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
@@ -92,6 +73,7 @@
                                     <outlet property="profile_image" destination="grf-f3-2eM" id="BCa-s8-iOz"/>
                                     <outlet property="title_label" destination="a57-jN-xUH" id="5z4-XY-2Nt"/>
                                     <outlet property="up_button" destination="vp7-mA-MVS" id="Exx-sE-5qL"/>
+                                    <outlet property="username_label" destination="lsD-7i-0JW" id="Yii-rA-7YW"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -116,7 +98,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="79v-ZT-LhJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="854" y="341"/>
+            <point key="canvasLocation" x="854" y="338"/>
         </scene>
         <!--Social Feed-->
         <scene sceneID="Yp5-sd-raZ">
@@ -149,7 +131,7 @@
                     <connections>
                         <segue destination="DIV-DO-6yS" kind="relationship" relationship="viewControllers" id="qMO-cC-ewa"/>
                         <segue destination="yCc-6g-2DQ" kind="relationship" relationship="viewControllers" id="R4f-KH-Xru"/>
-                        <segue destination="AOz-sD-iC2" kind="relationship" relationship="viewControllers" id="naS-KE-BtE"/>
+                        <segue destination="XJ5-yv-DW4" kind="relationship" relationship="viewControllers" id="DGP-fW-sts"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kqj-Uf-IE6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -337,7 +319,67 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ju7-qa-ysZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1755" y="1065"/>
+            <point key="canvasLocation" x="2567" y="1065"/>
+        </scene>
+        <!--Location Table View Controller-->
+        <scene sceneID="HhV-Rw-Pbe">
+            <objects>
+                <tableViewController id="3hK-Mo-qVp" customClass="LocationTableViewController" customModule="Camptivity" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="104" sectionHeaderHeight="22" sectionFooterHeight="22" id="JpF-S0-eNX">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="locationCell" rowHeight="104" id="0LR-PO-Xg2" customClass="LocationTableViewCell" customModule="Camptivity" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0LR-PO-Xg2" id="8Wp-f5-0a0">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oPQ-Yj-BiW">
+                                            <rect key="frame" x="8" y="31" width="202" height="65"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vh3-3J-vr3">
+                                            <rect key="frame" x="176" y="11" width="81" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNU-ap-xQP">
+                                            <rect key="frame" x="226" y="55" width="22" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dt6-pu-6h1">
+                                            <rect key="frame" x="8" y="11" width="160" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="category_label" destination="vh3-3J-vr3" id="Ntw-aN-MhK"/>
+                                    <outlet property="description_label" destination="oPQ-Yj-BiW" id="fGD-zF-n9t"/>
+                                    <outlet property="name_label" destination="Dt6-pu-6h1" id="dxS-l0-4O6"/>
+                                    <outlet property="score_label" destination="ZNU-ap-xQP" id="b2g-ay-74o"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="3hK-Mo-qVp" id="oyK-A8-4b1"/>
+                            <outlet property="delegate" destination="3hK-Mo-qVp" id="Hcn-dW-kHm"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="V4s-jU-wfb"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PRY-hG-Kgb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="737" y="1361"/>
         </scene>
         <!--EventViewController-->
         <scene sceneID="8d6-zm-XLI">
@@ -393,7 +435,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X1U-bj-Nrc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="854" y="1419"/>
+            <point key="canvasLocation" x="1666" y="1419"/>
         </scene>
         <!--New Event-->
         <scene sceneID="znE-3U-ogA">
@@ -756,16 +798,37 @@
             </objects>
             <point key="canvasLocation" x="22" y="-357"/>
         </scene>
+        <!--What's Nearby-->
+        <scene sceneID="g5b-L3-Dec">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XJ5-yv-DW4" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="What's Nearby" image="location-25.png" id="yVt-2g-Pry"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oeN-yB-sSq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3hK-Mo-qVp" kind="relationship" relationship="rootViewController" id="pwz-wR-3Ik"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kjf-Jg-tPq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-75" y="1361"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Power_Button.png" width="48" height="48"/>
         <image name="StarEmpty" width="22" height="22"/>
         <image name="StarFull" width="22" height="22"/>
         <image name="UCSD_Logo.png" width="105" height="105"/>
+        <image name="down_arrow.png" width="16" height="16"/>
         <image name="eventDefault" width="125" height="125"/>
         <image name="group-25.png" width="25" height="25"/>
         <image name="location-25.png" width="25" height="25"/>
         <image name="map-25.png" width="25" height="25"/>
+        <image name="up_arrow.png" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dOw-I2-fsB"/>
