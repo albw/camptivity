@@ -63,6 +63,11 @@ Parse.Cloud.afterSave("Events", Standby.initEvent);
  */
  Parse.Cloud.job("nukeDeadEvents", Events.nukeDeadEvents);
 
+/**
+ * Nerf unreferenced objects.  For internal use only.
+ */
+ Parse.Cloud.job("doGarbageCollect", Standby.doGarbageCollect);
+
 
  /* //////////////////////////////////////////////////////////////////////////////// */
  /* /////////////////////////// CLOUD FUNCTIONS //////////////////////////////////// */
@@ -195,15 +200,11 @@ Parse.Cloud.afterSave("Events", Standby.initEvent);
  */
  Parse.Cloud.define("postLocationRank", Locations.postLocationRank);
 
+
 /**
- * Post a new Location.
- * Takes 6 params:
- *		user - String - the creator's username
- *		name - String - The name of the location.
- *		desc - String - A description of the location
- * 		lat - Number - The event's latitude.
- *		lon - Number - The event's longitude.
- *		cat - String - This item's category.
- *	Example: {"user":"Admin", "name": "TESTLOCATION", "desc":"Some test location", "lat":32, "lon":-117, "cat":"bar"}
+ * Attempts to send a password reset email.  
+ * Takes one param:
+ * 		email - the email to send the password reset.
+ * Example: '{"email":"fastily@yahoo.com"}'
  */
- Parse.Cloud.define("postLocation", Locations.postLocation);
+ Parse.Cloud.define("emailIsRegistered", Users.emailIsRegistered);

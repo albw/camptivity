@@ -157,7 +157,9 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
         //NSLog("here is the fetchnearbylocations")
         mapView.clear()
         
-        dataProvider.fetchLocationsNearMe(searchedTypes) { results in
+        var results = ParseLocations.getLocationsNearMe(searchedTypes)
+            
+        
             for result in results {
                 var marker = GMSMarker()
                 marker.position = CLLocationCoordinate2DMake((result["location"] as PFGeoPoint).latitude, (result["location"] as PFGeoPoint).longitude)
@@ -167,7 +169,6 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
                 marker.icon = UIImage(named: result["category"] as NSString)
                 marker.map = self.mapView
             }
-        }
         
         fetchNearbyEvents()
         //self.hub.show(false)

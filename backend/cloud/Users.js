@@ -67,3 +67,18 @@ exports.newUserSignup = function(request, response) {
  				response.error("Username/Email has already been taken!")
  		});
  	};
+
+
+/**
+ * Determine if an email is registered
+ * Takes one param:
+ * 		email - the email to check
+ * Example: '{"email":"fastily@yahoo.com"}'
+ */
+exports.emailIsRegistered = function(request, response) {
+	new Parse.Query("_User").equalTo("email", request.params.email).first().then(function(meh){
+		response.success(!meh ? false : true);
+	}, function(e){
+		response.error(e);
+	});
+};

@@ -168,46 +168,48 @@ curl -X POST \
 -H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
 -H "X-Parse-REST-API-Key: 8DzbViZ3uzuZVp9bZ9rztDQEKG0Tx9fP1HLPsx5U" \
 -H "Content-Type: application/json" \
--d '{"user":"Admin", "rating": 2, "review":"This place is derped", "target":"gM2X4HWgXe"}' \
+-d '{"user":"Admin", "rating": 2, "review":"This place is derped", "target":"UApqHtVTzY"}' \
 https://api.parse.com/1/functions/postLocationRank
 ```
 
 
-##### postLocation
+##### emailIsRegistered
 
-Create a new LocationRank
+Determine if an email is registered
 
 ```bash
 curl -X POST \
 -H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
 -H "X-Parse-REST-API-Key: 8DzbViZ3uzuZVp9bZ9rztDQEKG0Tx9fP1HLPsx5U" \
 -H "Content-Type: application/json" \
--d '{"user":"Admin", "name": "TESTLOCATION", "desc":"Some test location", "lat":32, "lon":-117, "cat":"bar"}' \
-https://api.parse.com/1/functions/postLocation
+-d '{"email":"fastily@yahoo.com"}' \
+https://api.parse.com/1/functions/emailIsRegistered
 ```
 
-##### lookupEventByCoord
+## Jobs
 
-Lookup an event by coordinate
+##### doGarbageCollect
+
+Delete items without references
 
 ```bash
 curl -X POST \
--H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
--H "X-Parse-REST-API-Key: 8DzbViZ3uzuZVp9bZ9rztDQEKG0Tx9fP1HLPsx5U" \
--H "Content-Type: application/json" \
--d '{"lat":32.883192, "lon":-117.240933}' \
-https://api.parse.com/1/functions/lookupEventByCoord
+ -H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
+ -H "X-Parse-Master-Key: q5Vwqm8giXS6LySmUfsAYVDVV0Gz3MaaNIZWX05R" \
+ -H "Content-Type: application/json" \
+ -d '{}' \
+ https://api.parse.com/1/jobs/doGarbageCollect
 ```
 
-##### lookupLocationByCoord
+##### nukeDeadEvents
 
-Lookup an event by coordinate
+Delete expired events
 
 ```bash
 curl -X POST \
--H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
--H "X-Parse-REST-API-Key: 8DzbViZ3uzuZVp9bZ9rztDQEKG0Tx9fP1HLPsx5U" \
--H "Content-Type: application/json" \
--d '{"lat":32.880586, "lon":-117.231874}' \
-https://api.parse.com/1/functions/lookupLocationByCoord
+ -H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
+ -H "X-Parse-Master-Key: q5Vwqm8giXS6LySmUfsAYVDVV0Gz3MaaNIZWX05R" \
+ -H "Content-Type: application/json" \
+ -d '{}' \
+ https://api.parse.com/1/jobs/nukeDeadEvents
 ```

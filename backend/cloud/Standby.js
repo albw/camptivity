@@ -3,6 +3,7 @@
  */
 
  var Utils = require("cloud/Utils.js");
+ var _ = require("underscore");
 
 /* //////////////////////////////////////////////////////////////////////////////// */
 /* /////////////////////////// INTERNAL STANDBY /////////////////////////////////// */
@@ -124,6 +125,37 @@ exports.calcLocationRank = function(request) {
  	incScoreField(request.object.get("userID"), "eventComments").then(function(asdf){
  		console.log("Incremented event comment score for: " + asdf.get("userID").id);
  	});
+};
+
+/* //////////////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////// JOBS /////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////////// */
+
+/**
+ * Deletes items that are unreachable/no longer have any references to them.
+ */
+exports.doGarbageCollect = function(request, response) {
+
+	var l = [
+	["Score", "userID", "_User"],
+	["EventCmt", "target", "Events"],
+	["LocationRank", "target", "Locations"]
+	["EventVotes", "target", "Events"]
+	];
+
+	var p = Parse.Promise.as();
+	_.each(l, function(x){
+		p = p.then(function(){
+			return Utils.garbageCollect(x[0], x[1], x[2]);
+		});
+	});
+
+	p.then(function(blah){
+		response.success("Garbage Collect complete");
+	},
+	function(blah) {
+		response.error("Uh oh");
+	});
 };
 
 

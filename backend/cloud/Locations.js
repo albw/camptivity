@@ -30,7 +30,7 @@ var Utils = require("cloud/Utils.js");
  exports.locationsNearMe = function(request, response) {
  	new Parse.Query("Locations").withinMiles("location", 
  		new Parse.GeoPoint(request.params.lat, request.params.lon), request.params.radius).containedIn("category", 
- 		request.params.category).find(Utils.simpleSucErr(response));
+ 		request.params.category).limit(1000).find(Utils.simpleSucErr(response));
  	};
 
 /**
@@ -49,29 +49,6 @@ exports.postLocationRank = function(request, response) {
 			rating: request.params.rating,
 			review: request.params.review,
 			target: Utils.makePointer("Locations", request.params.target)
-		}, Utils.simpleSucErr(response));
-	});
-};
-
-/**
- * Post a new Location.
- * Takes 6 params:
- *		user - String - the creator's username
- *		name - String - The name of the location.
- *		desc - String - A description of the location
- * 		lat - Number - The event's latitude.
- *		lon - Number - The event's longitude.
- *		cat - String - This item's category.
- *	Example: {"user":"Admin", "name": "TESTLOCATION", "desc":"Some test location", "lat":32, "lon":-117, "cat":"bar"}
- */
-exports.postLocation = function(request, response) {
-	Utils.entryWhere("_User", "username", request.params.user).then(function(obj) {
-		new Parse.Object("Locations").save({
-			userID: obj,
-			name: request.params.name,
-			description: request.params.desc,
-			location: new Parse.GeoPoint(request.params.lat, request.params.lon),
-			category: request.params.cat
 		}, Utils.simpleSucErr(response));
 	});
 };
