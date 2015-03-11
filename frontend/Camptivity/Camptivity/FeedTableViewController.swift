@@ -145,7 +145,7 @@ class FeedTableViewController: UITableViewController {
     }
     
     @IBAction func upVote(sender: UIButton) {
-        println(sender.tag)
+        println("Debug: Upvote \(sender.tag)")
         //TODO: Access username if possible, can only vote if logged in
         //Maybe prompt them if they aren't logged in?
         let user = PFUser.currentUser()
@@ -159,14 +159,17 @@ class FeedTableViewController: UITableViewController {
         if(success){
             //TODO: Need to update View and vote count
             println("vote is a success")
+            let count = ParseEvents.countEventVotes(eventData[sender.tag].objectId)
+            let indexPath = NSIndexPath(forRow: sender.tag, inSection: 0)
+            let cell = tableView.cellForRowAtIndexPath(indexPath) as FeedTableViewCell!
+            cell.count.text = String(count)
         }
         //Else just do nothing
     }
     
     @IBAction func downVote(sender: UIButton) {
-        println(sender.tag)
-        //TODO: Access username if possible, can only vote if logged in
-        //TODO: Access username if possible, can only vote if logged in
+        println("Debug: Down Vote on \(sender.tag)")
+
         //Maybe prompt them if they aren't logged in?
         let user = PFUser.currentUser()
         
@@ -179,6 +182,10 @@ class FeedTableViewController: UITableViewController {
         if(success){
             //TODO: Need to update View and vote count
             println("vote is a success")
+            let count = ParseEvents.countEventVotes(eventData[sender.tag].objectId)
+            let indexPath = NSIndexPath(forRow: sender.tag, inSection: 0)
+            let cell = tableView.cellForRowAtIndexPath(indexPath) as FeedTableViewCell!
+            cell.count.text = String(count)
         }
         //Else just do nothing
     }
