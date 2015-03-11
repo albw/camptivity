@@ -14,6 +14,10 @@ class LocationTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //set navigation bar
+        var image: UIImage = UIImage(named: "purplesky")!
+        self.navigationController?.navigationBar.setBackgroundImage(image, forBarMetrics: .Default)
 
         //Query and populate locationData
         //ParseLocations.getLocationsNearMe()
@@ -39,20 +43,21 @@ class LocationTableViewController: UITableViewController {
         return 200
     }
     
-    /*override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        return feedCellAtIndexPath(indexPath)
+        return locationCellAtIndexPath(indexPath)
     }
     
     func locationCellAtIndexPath(indexPath: NSIndexPath) -> LocationTableViewCell{
         let cell = tableView.dequeueReusableCellWithIdentifier("locationCell") as LocationTableViewCell
         if(indexPath.row < 200){ //Currently hardcoded, need a way to determine the amount of events
-            setCellDisplay(cell, indexPath: indexPath)
+            //setCellDisplay(cell, indexPath: indexPath)
         }
+        return cell
     }
     
     //Helper Function for setting all relevent cell displays
-    func setCellDisplay(cell:LocationTableViewCell, indexPath:NSIndexPath) {
+    /*func setCellDisplay(cell:LocationTableViewCell, indexPath:NSIndexPath) {
         cell.name_label =
         cell.description_label =
         cell.image_label =

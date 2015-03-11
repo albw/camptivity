@@ -128,6 +128,8 @@
 		8ABDB9DD1A92E29C00A0D6CB /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABDB9DC1A92E29C00A0D6CB /* FeedTableViewController.swift */; };
 		8AC5B4E11AB0F9270027A7A1 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC5B4DF1AB0F9270027A7A1 /* LocationTableViewCell.swift */; };
 		8AC5B4E21AB0F9270027A7A1 /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC5B4E01AB0F9270027A7A1 /* LocationTableViewController.swift */; };
+		8AC5B4E41AB0FD0A0027A7A1 /* down_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AC5B4E31AB0FD0A0027A7A1 /* down_arrow.png */; };
+		8AC5B4E61AB0FD0F0027A7A1 /* up_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AC5B4E51AB0FD0F0027A7A1 /* up_arrow.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -253,6 +255,8 @@
 		8ABDB9DC1A92E29C00A0D6CB /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
 		8AC5B4DF1AB0F9270027A7A1 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		8AC5B4E01AB0F9270027A7A1 /* LocationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableViewController.swift; sourceTree = "<group>"; };
+		8AC5B4E31AB0FD0A0027A7A1 /* down_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down_arrow.png; sourceTree = "<group>"; };
+		8AC5B4E51AB0FD0F0027A7A1 /* up_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up_arrow.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -470,6 +474,8 @@
 		8A34995C1A75871E001B5A28 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8AC5B4E51AB0FD0F0027A7A1 /* up_arrow.png */,
+				8AC5B4E31AB0FD0A0027A7A1 /* down_arrow.png */,
 				6E12568A1AB0F5F9005818BB /* Camp_Logo.png */,
 				6E12567C1AAEE39E005818BB /* Power_Button.png */,
 				8A7A3F0B1AA3BF7F00854B8F /* UCSD_Logo.png */,
@@ -634,12 +640,14 @@
 				8A3499851A782269001B5A28 /* location-25.png in Resources */,
 				8A7A3F0C1AA3BF7F00854B8F /* UCSD_Logo.png in Resources */,
 				6E12568B1AB0F5F9005818BB /* Camp_Logo.png in Resources */,
+				8AC5B4E61AB0FD0F0027A7A1 /* up_arrow.png in Resources */,
 				8A3499691A75871E001B5A28 /* LaunchScreen.xib in Resources */,
 				13CE1DEE1A815B0400957EB9 /* MarkerInfoView.xib in Resources */,
 				6E12567D1AAEE39E005818BB /* Power_Button.png in Resources */,
 				8A3499831A7820A7001B5A28 /* group-25.png in Resources */,
 				8A3499811A782048001B5A28 /* map-25.png in Resources */,
 				13CE1DD21A81577800957EB9 /* GoogleMaps.bundle in Resources */,
+				8AC5B4E41AB0FD0A0027A7A1 /* down_arrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
