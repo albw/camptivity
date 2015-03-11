@@ -3,6 +3,7 @@
  */
 
  var Utils = require("cloud/Utils.js");
+ var _ = require("underscore");
 
 /* //////////////////////////////////////////////////////////////////////////////// */
 /* /////////////////////////// INTERNAL STANDBY /////////////////////////////////// */
@@ -135,8 +136,22 @@ exports.calcLocationRank = function(request) {
  */
 exports.doGarbageCollect = function(request, response) {
 
-	Utils.garbageCollect("Score", "userID", "_User").then(function(blah){
-		response.success("Garbage Collect seems to have worked");
+	var l = [
+	["Score", "userID", "_User"],
+	["EventCmt", "target", "Events"],
+	["LocationRank", "target", "Locations"]
+	["EventVotes", "target", "Events"]
+	];
+
+	var p = Parse.Promise.as();
+	_.each(l, function(x){
+		p = p.then(function(){
+			return Utils.garbageCollect(x[0], x[1], x[2]);
+		});
+	});
+
+	p.then(function(blah){
+		response.success("Garbage Collect complete");
 	},
 	function(blah) {
 		response.error("Uh oh");

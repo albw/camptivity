@@ -25,7 +25,6 @@ public class ParseLocations
         return e != nil ? false : true
     }
     
-    
     /// Get a Location by name
     ///
     ///:param: name The unique name of the location (case-sensitive)

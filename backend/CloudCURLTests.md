@@ -168,8 +168,22 @@ curl -X POST \
 -H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
 -H "X-Parse-REST-API-Key: 8DzbViZ3uzuZVp9bZ9rztDQEKG0Tx9fP1HLPsx5U" \
 -H "Content-Type: application/json" \
--d '{"user":"Admin", "rating": 2, "review":"This place is derped", "target":"gM2X4HWgXe"}' \
+-d '{"user":"Admin", "rating": 2, "review":"This place is derped", "target":"UApqHtVTzY"}' \
 https://api.parse.com/1/functions/postLocationRank
+```
+
+
+##### emailIsRegistered
+
+Determine if an email is registered
+
+```bash
+curl -X POST \
+-H "X-Parse-Application-Id: Y1fvAgliRdvCT1yXZBDNJtPm9QwMArNevFuWcqZm" \
+-H "X-Parse-REST-API-Key: 8DzbViZ3uzuZVp9bZ9rztDQEKG0Tx9fP1HLPsx5U" \
+-H "Content-Type: application/json" \
+-d '{"email":"fastily@yahoo.com"}' \
+https://api.parse.com/1/functions/emailIsRegistered
 ```
 
 ## Jobs

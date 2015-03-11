@@ -49,4 +49,12 @@ public class ParseUser
         var x: AnyObject! = PFCloud.callFunction("resetPasswordRequest", withParameters: ["email":email], error: &e)
         return e != nil ? false : true
     }
+    
+    ///Determine if an email is associated to a user account in the _User account
+    ///
+    ///:param: email The email to check against
+    ///:returns: True if the email is associated with an existing account.
+    public class func emailIsRegistered(email:String) -> Bool {
+        return (PFCloud.callFunction("emailIsRegistered", withParameters: ["email":email]))! as Bool;
+    }
 }

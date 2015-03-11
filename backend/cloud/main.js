@@ -199,3 +199,12 @@ Parse.Cloud.afterSave("Events", Standby.initEvent);
  *	Example: {"user":"Admin", "rating": 4, "review":"This place is rad", "target":"gM2X4HWgXe"}
  */
  Parse.Cloud.define("postLocationRank", Locations.postLocationRank);
+
+
+/**
+ * Attempts to send a password reset email.  
+ * Takes one param:
+ * 		email - the email to send the password reset.
+ * Example: '{"email":"fastily@yahoo.com"}'
+ */
+ Parse.Cloud.define("emailIsRegistered", Users.emailIsRegistered);

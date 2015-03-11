@@ -108,4 +108,9 @@ class CamptivityTests: XCTestCase {
         XCTAssert(true, "Pass")
     }
     
+    
+    func testEmailIsRegistered() {
+        XCTAssert(ParseUser.emailIsRegistered("abw004@ucsd.edu") & !ParseUser.emailIsRegistered("blah@blah.com"), "Pass");
+    }
+    
 }

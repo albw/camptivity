@@ -44,38 +44,7 @@ public class ParseDataProvider {
     
     ///BROKEN SHIT.  Left here to shut up compiler.
     func fetchLocationsNearMe(categories:[String], completion: (returnValue: [AnyObject])->Void) {
-        assert(false, "METHOD IS DEPRECEATED.  Use ParseLocations.getLocationsNearMe()")
-    }
-    
-    
-    // Function return true if an email already used. False Other wise.
-    func emailRegistered(email:String)-> Bool {
-        var s = Bool()
-        var query = PFUser.query()
-        query.whereKey("email", equalTo:email)
-        var obj = query.findObjects()
-        
-        if (obj.count != 0){
-            s = true
-        }
-        else {
-            s = false
-        }
-        return s
-    }
-    
-    
-    func fbRegistered(facebookID:String)-> String! {
-        var s : String!
-        var query = PFUser.query()
-        query.whereKey("fbID", equalTo:facebookID)
-        var obj = query.findObjects()
-        if let obj = obj as?  [PFObject]{
-            s = obj.first?.objectId
-        }
-        
-        return s
-        
+        //assert(false, "METHOD IS DEPRECEATED.  Use ParseLocations.getLocationsNearMe()")
     }
     
     // need #import <Bolts/Bolts.h> in Bridging Header
