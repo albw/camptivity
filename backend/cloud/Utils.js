@@ -3,6 +3,8 @@
  * @class Utils
  */
 
+var _ = require("underscore");
+
 /**
  *  Creates a pointer for the specified table and objectid
  *  @method makePointer
@@ -65,10 +67,40 @@ exports.entryWhere = function (table, col, value) {
 
 /**
  * Makes a date object using a String in the ISO 8601 format.  Dates *must* be in UTC timezone.
- * Takes one param:
- *		d - String - A string representation of the date in ISO 8601, UTC (e.g. "2011-08-21T18:02:52.249Z")
- * Returns a Parse-legal date representation of d.
+ * @method makeDate
+ * @param {String} d A string representation of the date in ISO 8601, UTC (e.g. "2011-08-21T18:02:52.249Z")
+ * @return A Parse-legal date representation of d.
  */
 exports.makeDate = function(d) {
 	return {"__type": "Date", "iso": d};
 };
+
+
+/**
+ * Garbage collect items in a table.  
+ * @method garbageCollect
+ * @param table The table to query
+ * @param col The column to look for pointers in
+ * @param targetTable The table that pointers in col are pointing to.
+ * @return A resolved Parse Promise.
+ */
+exports.garbageCollect = function(table, col, targetTable) {
+	return new Parse.Query(table).exists(col).find().then(function(results){
+		var p = Parse.Promise.as();
+
+		_.each(results, function(obj){
+			p = p.then(function(foo){
+
+			    return new Parse.Query(targetTable).equalTo("objectId", obj.get(col).id).first();
+			}).then(function(meh) {
+				
+			    return !meh ? obj.destroy().then(function(meh){
+			       	   console.log("Deleted item: [" + obj.id + " @ " + table + "]");
+			       	   return Parse.Promise.as();
+			       }) : Parse.Promise.as();
+			    });
+			});
+
+		return p;
+		});
+	};

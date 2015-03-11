@@ -41,46 +41,10 @@ public class ParseDataProvider {
             }.resume()
     }
     
-    /**
-    * Identifies locations near a GeoPoint in a specific category. Restricted by radius (miles).
-    * Takes 4 params:
-    *      category - The String category/categories to select.  This is a String array.
-    *      lat - The latitude of the GeoPoint to select.
-    *      long - The longditude of the GeoPoint to select.
-    *      radius - The radius to search from the specified GeoPoint, in Miles.
-    * Example: {"category":["restroom", "bar"], "lat":30, "lon:"30, "radius":40}
-    */
+    
+    ///BROKEN SHIT.  Left here to shut up compiler.
     func fetchLocationsNearMe(categories:[String], completion: (returnValue: [AnyObject])->Void) {
-        PFCloud.callFunctionInBackground("locationsNearMe", withParameters: ["category":categories, "lat":32.88293263160078, "lon":-117.2109485336882, "radius":400]) {
-            (objects: AnyObject!, error: NSError!) -> Void in
-            var results = []
-            if (error != nil) {
-                // Your error handling here
-            }
-            else {
-                results = objects as NSArray
-                completion(returnValue:results)
-            }
-        }
-        
-        
-        func fetchLocationsBaseOnCategories(categories:[String], completion: (result: [AnyObject])->Void) {
-            var results = []
-            var query = PFQuery(className: "Locations")
-            query.findObjectsInBackgroundWithBlock {
-                (objects: [AnyObject]!, error: NSError!) -> Void in
-                if error == nil {
-                    results = objects
-                    //NSLog("%@", results)
-                }
-                else {
-                    NSLog("%@", error)
-                }
-                completion(result:results)
-                
-                
-            }
-        }
+        assert(false, "METHOD IS DEPRECEATED.  Use ParseLocations.getLocationsNearMe()")
     }
     
     
@@ -113,21 +77,6 @@ public class ParseDataProvider {
         return s
         
     }
-    
-    ///WARNING: BROKEN, DOES NOT RETURN CORRECT RESULT.  Left this here to shut up compiler, but if you're getting crashes, here you need to reference the updated method in ParseUser.swift
-    public func newUserSignup(username:String, password:String, email: String, fullname: String)-> (Bool, String) {
-        return ParseUser.newUserSignup(username, password: password, email: email, fullname: fullname)
-    }
-    ///WARNING: BROKEN, DOES NOT RETURN CORRECT RESULT.  Left this here to shut up compiler, but if you're getting crashes, here you need to reference the updated method in ParseUser.swift
-    public func fbSignup(fbID:String, email:String, fullname:String)-> (Bool, String) {
-        return ParseUser.fbSignup(fbID, email:email, fullname:fullname)
-    }
-    ///WARNING: BROKEN, DOES NOT RETURN CORRECT RESULT.  Left this here to shut up compiler, but if you're getting crashes, here you need to reference the updated method in ParseEvents.swift
-    func getEvents(limit:Int, skip:Int)->AnyObject {
-        let result: AnyObject! = PFCloud.callFunction("getEvents", withParameters: ["limit":limit, "skip":skip])
-        return result;
-    }
-    
     
     // need #import <Bolts/Bolts.h> in Bridging Header
     /**

@@ -41,4 +41,15 @@ public class ParseLocations
     public class func getLocationRankForLocation(objectId:String) -> [PFObject] {
         return (PFCloud.callFunction("getLocationRanks", withParameters: ["objid":objectId]))! as [PFObject]
     }
+    
+    /// Get locations nearby a coordinate
+    ///
+    ///:param: category A list of categories to select.  Any location in this list with the specified category can be returned.
+    ///:param: lat The latitude of the GeoPoint to select
+    ///:param: lon The longitude of the GeoPoint to select
+    ///:param: radius The maximum radius, in miles, to search around the specified GeoPoint.  Default is 5 miles.
+    ///:returns: A list of PFObjects we found.
+    public class func getLocationsNearMe(category:[String], lat:Double, lon:Double, radius:Double=5) -> [PFObject] {
+        return (PFCloud.callFunction("locationsNearMe", withParameters: ["category":category, "lat":lat, "lon":lon, "radius":radius]))! as [PFObject]
+    }
 }

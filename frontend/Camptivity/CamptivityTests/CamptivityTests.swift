@@ -102,4 +102,10 @@ class CamptivityTests: XCTestCase {
         XCTAssert(ParseEvents.postEventVote("Admin", objId: "CWwv1FzgPh", isUpVote: false), "Pass")
         
     }
+    
+    func testGetLocationsNearMe() {
+        println(ParseLocations.getLocationsNearMe(["library", "gym"], lat: 32.874188, lon: -117.235708))
+        XCTAssert(true, "Pass")
+    }
+    
 }
