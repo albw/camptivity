@@ -34,6 +34,7 @@
 		13CFE2BF1A8DD27700F64DDC /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13CFE2BE1A8DD27700F64DDC /* GoogleMaps.framework */; };
 		6E12567D1AAEE39E005818BB /* Power_Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E12567C1AAEE39E005818BB /* Power_Button.png */; };
 		6E1256811AB0EC62005818BB /* UserSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1256801AB0EC62005818BB /* UserSettingViewController.swift */; };
+		6E12568B1AB0F5F9005818BB /* Camp_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E12568A1AB0F5F9005818BB /* Camp_Logo.png */; };
 		6E14EB861AAAB09900FD1F4D /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E14EB851AAAB09900FD1F4D /* LogInViewController.swift */; };
 		6EA4A67A1A7ABF2E00B625ED /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA4A6791A7ABF2E00B625ED /* AudioToolbox.framework */; };
 		6EA4A67C1A7ABF4D00B625ED /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA4A67B1A7ABF4D00B625ED /* CFNetwork.framework */; };
@@ -50,7 +51,6 @@
 		6EA4A6A61A7DB61F00B625ED /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA4A6A41A7DB61F00B625ED /* ParseCrashReporting.framework */; };
 		6EA4A6A71A7DB61F00B625ED /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA4A6A51A7DB61F00B625ED /* ParseFacebookUtils.framework */; };
 		6EC8FF891AAD3AA20084DFFD /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EC8FF881AAD3AA20084DFFD /* ParseUI.framework */; };
-		6EC8FF8B1AAD3AFC0084DFFD /* Camp_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EC8FF8A1AAD3AFC0084DFFD /* Camp_Logo.png */; };
 		6EE7A9C91AA64C9E00699978 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7A9C81AA64C9E00699978 /* SignUpViewController.swift */; };
 		7037B6291AAC2891007FE6AF /* ParseDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFE2B61A8DD11700F64DDC /* ParseDataProvider.swift */; };
 		7037B62A1AAC29B1007FE6AF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70E22B5B1AAB9A31000597F9 /* Crashlytics.framework */; };
@@ -167,6 +167,7 @@
 		13CFE2BE1A8DD27700F64DDC /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		6E12567C1AAEE39E005818BB /* Power_Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Power_Button.png; sourceTree = "<group>"; };
 		6E1256801AB0EC62005818BB /* UserSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettingViewController.swift; sourceTree = "<group>"; };
+		6E12568A1AB0F5F9005818BB /* Camp_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Camp_Logo.png; sourceTree = "<group>"; };
 		6E14EB851AAAB09900FD1F4D /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		6EA4A6791A7ABF2E00B625ED /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		6EA4A67B1A7ABF4D00B625ED /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -184,7 +185,6 @@
 		6EA4A6A41A7DB61F00B625ED /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
 		6EA4A6A51A7DB61F00B625ED /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
 		6EC8FF881AAD3AA20084DFFD /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
-		6EC8FF8A1AAD3AFC0084DFFD /* Camp_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Camp_Logo.png; sourceTree = "<group>"; };
 		6EE7A9C81AA64C9E00699978 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		7050DDB81AABBFD0002C4E45 /* ParseEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseEvents.swift; sourceTree = "<group>"; };
 		7050DDBA1AABBFE2002C4E45 /* ParseLocations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseLocations.swift; sourceTree = "<group>"; };
@@ -464,8 +464,8 @@
 		8A34995C1A75871E001B5A28 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6E12568A1AB0F5F9005818BB /* Camp_Logo.png */,
 				6E12567C1AAEE39E005818BB /* Power_Button.png */,
-				6EC8FF8A1AAD3AFC0084DFFD /* Camp_Logo.png */,
 				8A7A3F0B1AA3BF7F00854B8F /* UCSD_Logo.png */,
 				8A3499841A782269001B5A28 /* location-25.png */,
 				8A3499821A7820A7001B5A28 /* group-25.png */,
@@ -627,7 +627,7 @@
 				13CE1DF71A815DD200957EB9 /* Images.xcassets in Resources */,
 				8A3499851A782269001B5A28 /* location-25.png in Resources */,
 				8A7A3F0C1AA3BF7F00854B8F /* UCSD_Logo.png in Resources */,
-				6EC8FF8B1AAD3AFC0084DFFD /* Camp_Logo.png in Resources */,
+				6E12568B1AB0F5F9005818BB /* Camp_Logo.png in Resources */,
 				8A3499691A75871E001B5A28 /* LaunchScreen.xib in Resources */,
 				13CE1DEE1A815B0400957EB9 /* MarkerInfoView.xib in Resources */,
 				6E12567D1AAEE39E005818BB /* Power_Button.png in Resources */,

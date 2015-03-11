@@ -44,7 +44,7 @@ class FeedTableViewController: UITableViewController {
         //set navigation bar
         var image: UIImage = UIImage(named: "purplesky")!
         self.navigationController?.navigationBar.setBackgroundImage(image, forBarMetrics: .Default)
-        
+
         //Initialize AlertController
         alertController = UIAlertController(title: "Let's Start Camping!", message: "Log in to see your events", preferredStyle: .Alert)
         
@@ -150,7 +150,6 @@ class FeedTableViewController: UITableViewController {
     @IBAction func triggerUserLogin(sender: AnyObject) {
         
         if (PFUser.currentUser() != nil){
-            
             self.presentViewController(userAlertController, animated: true) {}
         }
         else{
