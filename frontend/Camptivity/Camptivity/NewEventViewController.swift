@@ -60,14 +60,14 @@ class NewEventViewController: UIViewController, UIAlertViewDelegate, UINavigatio
         let dataprovider = ParseDataProvider()
         dataprovider.saveIcon("Events", objID: obj.objectId, colName: "icon", img: imageFile)
         
-        NSLog("%@", eventName)
-        NSLog("%@", eventDescription)
-        NSLog("%@", startDate)
-        NSLog("%@", endDate)
-        
-        //geolocation
-        NSLog("%f", location.longitude)
-        NSLog("%f", location.latitude)
+//        NSLog("%@", eventName)
+//        NSLog("%@", eventDescription)
+//        NSLog("%@", startDate)
+//        NSLog("%@", endDate)
+//        
+//        //geolocation
+//        NSLog("%f", location.longitude)
+//        NSLog("%f", location.latitude)
         
     }
     

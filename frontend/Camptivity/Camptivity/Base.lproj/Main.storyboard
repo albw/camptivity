@@ -328,7 +328,7 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RWZ-i1-bjG">
-                                        <rect key="frame" x="140" y="0.0" width="320" height="800"/>
+                                        <rect key="frame" x="140" y="0.0" width="320" height="850"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What is your event name?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iFq-wB-0QM">
                                                 <rect key="frame" x="10" y="186" width="300" height="33"/>
@@ -412,7 +412,7 @@
                                         <constraints>
                                             <constraint firstItem="D8n-sP-kkf" firstAttribute="leading" secondItem="RWZ-i1-bjG" secondAttribute="leading" constant="10" id="1os-aU-xN5"/>
                                             <constraint firstItem="ToV-iP-Lhe" firstAttribute="top" secondItem="63A-iI-Alu" secondAttribute="bottom" constant="29" id="2Mw-ND-eJO"/>
-                                            <constraint firstAttribute="height" constant="800" id="2X7-g3-SEw"/>
+                                            <constraint firstAttribute="height" constant="850" id="2X7-g3-SEw"/>
                                             <constraint firstAttribute="trailing" secondItem="ToV-iP-Lhe" secondAttribute="trailing" id="A49-Jf-TCE"/>
                                             <constraint firstAttribute="trailing" secondItem="iFq-wB-0QM" secondAttribute="trailing" constant="10" id="Cu6-TD-EZU"/>
                                             <constraint firstAttribute="trailing" secondItem="D8n-sP-kkf" secondAttribute="trailing" constant="10" id="DJV-uz-BPY"/>
@@ -439,7 +439,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="RWZ-i1-bjG" firstAttribute="top" secondItem="W5c-sE-Nt6" secondAttribute="top" id="2sS-Zz-OPI"/>
-                                    <constraint firstAttribute="bottom" secondItem="RWZ-i1-bjG" secondAttribute="bottom" constant="-200" id="fjM-Ob-7yA"/>
+                                    <constraint firstAttribute="bottom" secondItem="RWZ-i1-bjG" secondAttribute="bottom" id="fjM-Ob-7yA"/>
                                     <constraint firstAttribute="centerX" secondItem="RWZ-i1-bjG" secondAttribute="centerX" id="jWJ-EO-oyS"/>
                                 </constraints>
                             </scrollView>
@@ -679,7 +679,7 @@
         <image name="StarEmpty" width="22" height="22"/>
         <image name="StarFull" width="22" height="22"/>
         <image name="UCSD_Logo.png" width="105" height="105"/>
-        <image name="eventDefault" width="250" height="250"/>
+        <image name="eventDefault" width="125" height="125"/>
         <image name="group-25.png" width="25" height="25"/>
         <image name="location-25.png" width="25" height="25"/>
         <image name="map-25.png" width="25" height="25"/>

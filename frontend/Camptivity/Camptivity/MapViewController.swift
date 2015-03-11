@@ -10,6 +10,7 @@ import UIKit
 
 class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLLocationManagerDelegate, GMSMapViewDelegate, NewEventViewControllerDelegate, FloatRatingViewDelegate {
     
+    
     @IBOutlet weak var rateView: UIView!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var stopNavigationButton: UIButton!
@@ -19,8 +20,11 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
     @IBOutlet weak var rateSubmitButton: UIButton!
     //@property (nonatomic, strong) MBProgressHUD *hud;
     
+    var hub = MBProgressHUD()
     var markerCoordinate = CLLocationCoordinate2DMake(0, 0)
-    var searchedTypes = ["atm", "bar", "building", "gym", "landmark", "library", "parking", "restaurant", "restroom", "supermarket", "water"]
+    var markerTitle = ""
+    //var searchedTypes = ["atm", "bar", "building", "gym", "housing","landmark", "library", "parking", "restaurant", "restroom", "store", "water"]
+    var searchedTypes = ["restroom"]
     let dataProvider = ParseDataProvider()
     var polylineArray : NSMutableArray = []
     
@@ -39,6 +43,8 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         var image: UIImage = UIImage(named: "purplesky")!
         self.navigationController?.navigationBar.setBackgroundImage(image, forBarMetrics: .Default)
@@ -67,17 +73,18 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
         
         // Labels init
         self.yourRatingScore.text = NSString(format: "%.2f", self.floatRatingView.rating)
-        self.currentRatingScore.text = NSString(format: "%.2f", self.floatRatingView.rating)
+        //self.currentRatingScore.text = NSString(format: "%.2f", self.floatRatingView.rating)
         /*********************************************************************/
         
        // var score:int = (dataProvider.lookupLocationByCoord(32.87993263160078, lon: -117.2309485336882)["avgRank"])
         //println(score)
+        fetchNearbyLocationsAndEvents()
     }
     
     override func viewWillAppear(animated: Bool) {
         println("Debug: Map View is Appearing")
         
-        super.viewWillAppear(false);
+        super.viewWillAppear(false)
         
         //Check to see if we should perform an event pinning action
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
@@ -86,10 +93,8 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
             appDelegate.doPin = false
             let coordinate = CLLocationCoordinate2D(latitude: appDelegate.lat, longitude: appDelegate.long)
             //TODO: Map Does funky stuff when pin event command is invoked
-            didCreateEventAtCoordinate(appDelegate.name, Description: appDelegate.event_description, coordinate: coordinate)
+            //didCreateEventAtCoordinate(appDelegate.name, Description: appDelegate.event_description, coordinate: coordinate)
         }
-        
-        fetchNearbyLocations()
     }
     
     
@@ -125,7 +130,30 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
         }
     }
     
-    func fetchNearbyLocations() {
+    func fetchNearbyEvents() {
+        var eventList = ParseEvents.getEvents()
+        
+        for event in eventList{
+            var marker = GMSMarker()
+            marker.position = CLLocationCoordinate2DMake((event["location"] as PFGeoPoint).latitude, (event["location"] as PFGeoPoint).longitude)
+            marker.title = (event["name"] as NSString)
+            marker.snippet = event["description"] as NSString?
+            marker.userData = "newEvent"
+            marker.icon = UIImage(named: "newEvent")
+            marker.map = self.mapView
+            //println("Hello world" + marker.description)
+        }
+    }
+    
+    func fetchNearbyLocationsAndEvents() {
+//        self.hub.show(true)
+//        self.hub.mode = MBProgressHUDModeIndeterminate
+//        self.hub.labelText = "Loading"
+        let loadingNotification = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        loadingNotification.mode = MBProgressHUDModeIndeterminate
+        loadingNotification.labelText = "Loading"
+        
+        
         //NSLog("here is the fetchnearbylocations")
         mapView.clear()
         
@@ -140,6 +168,10 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
                 marker.map = self.mapView
             }
         }
+        
+        fetchNearbyEvents()
+        //self.hub.show(false)
+        MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
     }
     
     //remove all the polyline on the map
@@ -176,11 +208,13 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
         marker.position = coordinate
         marker.title = name
         marker.snippet = Description
+        marker.icon = UIImage(named: "newEvent")
+        marker.userData = "newEvent"
         marker.map = self.mapView
         
         //pop out the info window
-        //self.mapView.selectedMarker = marker
-        self.mapView.animateToLocation(coordinate)
+        self.mapView.selectedMarker = marker
+        self.mapView.animateToLocation(CLLocationCoordinate2DMake(coordinate.latitude + 0.005, coordinate.longitude))
     }
     
     
@@ -196,8 +230,17 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
     }
     
     func mapView(mapView: GMSMapView!, markerInfoContents marker: GMSMarker!) -> UIView! {
-        rateView.hidden = false
-        markerCoordinate = marker.position
+        if marker.userData as NSString != "newEvent" {
+            rateView.hidden = false
+            markerCoordinate = marker.position
+            markerTitle = marker.title as NSString
+            
+            
+            let x : Float = (ParseLocations.getLocationByName(marker.title).objectForKey("avgRank"))! as Float
+            var myString = String(format:"%.1f", x)
+            self.currentRatingScore.text = myString
+            self.floatRatingView.rating = x
+        }
         
         if let infoView = UIView.viewFromNibName("MarkerInfoView") as? MarkerInfoView {
             infoView.nameLabel.text = marker.title
@@ -220,6 +263,7 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
     
     @IBAction func stopButtonClicked(sender: AnyObject) {
         stopNavigationButton.hidden = true
+        rateView.hidden = true
         removePolyline()
     }
     
@@ -228,7 +272,8 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
     func typesController(controller: TypesTableViewController, didSelectTypes types: [String]) {
         searchedTypes = sorted(controller.selectedTypes)
         dismissViewControllerAnimated(true, completion: nil)
-        fetchNearbyLocations()
+        fetchNearbyLocationsAndEvents()
+        
     }
     
     // MARK: FloatRatingViewDelegate
@@ -239,7 +284,7 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
     }
     
     func floatRatingView(ratingView: FloatRatingView, didUpdate rating: Float) {
-        self.currentRatingScore.text = NSString(format: "%.2f", self.floatRatingView.rating)
+        //self.currentRatingScore.text = NSString(format: "%.2f", self.floatRatingView.rating)
     }
     
     @IBAction func ratingTypeChanged(sender: UISegmentedControl) {
@@ -247,12 +292,24 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
     }
     
     @IBAction func rateButtonClicked(sender: UIButton) {
-        //NSLog("%f", markerCoordinate.latitude)
-        //postLocationRank
-        //user name
-        //rating number
-        //review string/
-        //location
+        //println(ParseLocations.getLocationByName(markerTitle).objectId)
+        
+        var objectId = ParseLocations.getLocationByName(markerTitle).objectId
+        var rating : Int = NSString(format: "%.2f", self.floatRatingView.rating).integerValue
+        
+        ParseLocations.postLocationRanks("Genius", rating:rating, review:"This is a fantastic place", objId:objectId)
+        
+        let x : Float = (ParseLocations.getLocationByName(markerTitle).objectForKey("avgRank"))! as Float
+        var myString = String(format:"%.1f", x)
+        self.currentRatingScore.text = myString
+        self.floatRatingView.rating = x
+        
+        let alert = UIAlertView()
+        alert.title = "Success"
+        alert.message = "Your rating have been saved!"
+        alert.addButtonWithTitle("Got it")
+        alert.delegate = self
+        alert.show()
     }
     
 }
