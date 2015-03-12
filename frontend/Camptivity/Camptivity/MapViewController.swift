@@ -60,7 +60,7 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
         
         //var image: UIImage = UIImage(named: "purplesky")!
         //self.navigationController?.navigationBar.setBackgroundImage(image, forBarMetrics: .Default)
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 1.0)
+        self.navigationController?.navigationBar.backgroundColor = UIColor(red: 22.0/255.0, green: 160.0/255.0, blue: 133.0/255.0, alpha: 1.0)
         mapView.camera = GMSCameraPosition.cameraWithLatitude(32.87993263160078, longitude: -117.2309485336882, zoom: 14)
         
         mapView.myLocationEnabled = true
@@ -203,7 +203,7 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
                 marker.map = self.mapView
             }
         
-        fetchNearbyEvents()
+        //fetchNearbyEvents()
         //self.hub.show(false)
         MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
     }
