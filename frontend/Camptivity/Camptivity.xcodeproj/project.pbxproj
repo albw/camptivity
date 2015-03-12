@@ -32,10 +32,10 @@
 		13CFE2BB1A8DD12C00F64DDC /* TypesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFE2B91A8DD12C00F64DDC /* TypesTableViewController.swift */; };
 		13CFE2BD1A8DD17F00F64DDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CFE2BC1A8DD17F00F64DDC /* AppDelegate.swift */; };
 		13CFE2BF1A8DD27700F64DDC /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13CFE2BE1A8DD27700F64DDC /* GoogleMaps.framework */; };
-		6E12567D1AAEE39E005818BB /* Power_Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E12567C1AAEE39E005818BB /* Power_Button.png */; };
 		6E1256811AB0EC62005818BB /* UserSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1256801AB0EC62005818BB /* UserSettingViewController.swift */; };
 		6E12568B1AB0F5F9005818BB /* Camp_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E12568A1AB0F5F9005818BB /* Camp_Logo.png */; };
 		6E14EB861AAAB09900FD1F4D /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E14EB851AAAB09900FD1F4D /* LogInViewController.swift */; };
+		6E5560A61AB151D20078C83C /* Teepee.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E5560A51AB151D20078C83C /* Teepee.png */; };
 		6EA4A67A1A7ABF2E00B625ED /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA4A6791A7ABF2E00B625ED /* AudioToolbox.framework */; };
 		6EA4A67C1A7ABF4D00B625ED /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA4A67B1A7ABF4D00B625ED /* CFNetwork.framework */; };
 		6EA4A67E1A7ABF6700B625ED /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA4A67D1A7ABF6700B625ED /* CoreGraphics.framework */; };
@@ -169,10 +169,10 @@
 		13CFE2B91A8DD12C00F64DDC /* TypesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypesTableViewController.swift; sourceTree = "<group>"; };
 		13CFE2BC1A8DD17F00F64DDC /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13CFE2BE1A8DD27700F64DDC /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
-		6E12567C1AAEE39E005818BB /* Power_Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Power_Button.png; sourceTree = "<group>"; };
 		6E1256801AB0EC62005818BB /* UserSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettingViewController.swift; sourceTree = "<group>"; };
 		6E12568A1AB0F5F9005818BB /* Camp_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Camp_Logo.png; sourceTree = "<group>"; };
 		6E14EB851AAAB09900FD1F4D /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		6E5560A51AB151D20078C83C /* Teepee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Teepee.png; sourceTree = "<group>"; };
 		6EA4A6791A7ABF2E00B625ED /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		6EA4A67B1A7ABF4D00B625ED /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		6EA4A67D1A7ABF6700B625ED /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -474,10 +474,10 @@
 		8A34995C1A75871E001B5A28 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6E5560A51AB151D20078C83C /* Teepee.png */,
 				8AC5B4E51AB0FD0F0027A7A1 /* up_arrow.png */,
 				8AC5B4E31AB0FD0A0027A7A1 /* down_arrow.png */,
 				6E12568A1AB0F5F9005818BB /* Camp_Logo.png */,
-				6E12567C1AAEE39E005818BB /* Power_Button.png */,
 				8A7A3F0B1AA3BF7F00854B8F /* UCSD_Logo.png */,
 				8A3499841A782269001B5A28 /* location-25.png */,
 				8A3499821A7820A7001B5A28 /* group-25.png */,
@@ -643,9 +643,9 @@
 				8AC5B4E61AB0FD0F0027A7A1 /* up_arrow.png in Resources */,
 				8A3499691A75871E001B5A28 /* LaunchScreen.xib in Resources */,
 				13CE1DEE1A815B0400957EB9 /* MarkerInfoView.xib in Resources */,
-				6E12567D1AAEE39E005818BB /* Power_Button.png in Resources */,
 				8A3499831A7820A7001B5A28 /* group-25.png in Resources */,
 				8A3499811A782048001B5A28 /* map-25.png in Resources */,
+				6E5560A61AB151D20078C83C /* Teepee.png in Resources */,
 				13CE1DD21A81577800957EB9 /* GoogleMaps.bundle in Resources */,
 				8AC5B4E41AB0FD0A0027A7A1 /* down_arrow.png in Resources */,
 			);
