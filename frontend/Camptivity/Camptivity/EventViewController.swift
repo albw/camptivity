@@ -72,8 +72,9 @@ class EventViewController: UIViewController {
         
         self.view.addSubview(pin_button)
 
-        let comment_button = UIBarButtonItem(title: "Comment", style: .Done, target: self, action: nil)
-        self.navigationItem.rightBarButtonItem = comment_button
+        //For when we want to add commenting
+        //let comment_button = UIBarButtonItem(title: "Comment", style: .Done, target: self, action: nil)
+        //self.navigationItem.rightBarButtonItem = comment_button
         
         // Do any additional setup after loading the view.
     }
