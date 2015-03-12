@@ -53,7 +53,7 @@ class LocationTableViewController: UITableViewController {
         super.viewDidLoad()
         
         //set navigation bar
-        self.navigationController?.navigationBar.backgroundColor = UIColor(red: 22.0/255.0, green: 160.0/255.0, blue: 133.0/255.0, alpha: 1.0)
+        self.navigationController?.navigationBar.backgroundColor = UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 1.0)
         
         //Query and populate locationData
         //locationData = ParseLocations.getLocationsNearMe(searchedTypes)

@@ -60,7 +60,8 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
         
         //var image: UIImage = UIImage(named: "purplesky")!
         //self.navigationController?.navigationBar.setBackgroundImage(image, forBarMetrics: .Default)
-        self.navigationController?.navigationBar.backgroundColor = UIColor(red: 22.0/255.0, green: 160.0/255.0, blue: 133.0/255.0, alpha: 1.0)
+        //rgb(52, 152, 219)
+        self.navigationController?.navigationBar.backgroundColor = UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 1.0)
         mapView.camera = GMSCameraPosition.cameraWithLatitude(32.87993263160078, longitude: -117.2309485336882, zoom: 14)
         
         mapView.myLocationEnabled = true
@@ -198,8 +199,8 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
                 marker.title = (result["name"] as NSString)
                 marker.snippet = result["description"] as NSString?
                 marker.userData = result["category"] as NSString
-                var event = imageResize(UIImage(named: result["category"] as NSString)!, sizeChange: CGSizeMake(15, 15))
-                marker.icon = event
+                //var event = imageResize(UIImage(named: result["category"] as NSString)!, sizeChange: CGSizeMake(15, 15))
+                marker.icon = UIImage(named: result["category"] as NSString)!
                 marker.map = self.mapView
             }
         
