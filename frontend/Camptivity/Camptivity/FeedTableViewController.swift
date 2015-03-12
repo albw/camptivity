@@ -106,11 +106,13 @@ class FeedTableViewController: UITableViewController  {
         eventData = ParseEvents.getEvents(limit: event_count, skip:0)
         num_event = eventData.count
         
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "refresh", style: .Plain, target: self, action: "refreshAction:")
+        
         //Nav bar adjusting based on login state will go here
         //var post_button = UIBarButtonItem(title: "Add Post", style: .Done, target: self, action: nil)
         //self.navigationItem.leftBarButtonItem = post_button
         
-        //TODO Fix FUIUIKit Functionality Later
+        //TODO Fix FUIUIKit Functionality ter
         //alertView = FUIAlertView()
         //alertView.titleLabel.textColor = UIColor.cloudsColor()
         //alertView.show()
@@ -120,6 +122,12 @@ class FeedTableViewController: UITableViewController  {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func refreshAction(button:UIBarButtonItem!){
+        eventData = ParseEvents.getEvents(limit: event_count, skip:0)
+        num_event = eventData.count
+        self.tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
