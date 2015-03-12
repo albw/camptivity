@@ -12,7 +12,7 @@ class EventViewController: UIViewController {
 
     @IBOutlet weak var username_label: UILabel!
     @IBOutlet weak var description_label: UILabel!
-    @IBOutlet weak var title_label: UILabel
+    @IBOutlet weak var title_label: UILabel!
     
     @IBOutlet weak var imgVier: UIImageView!
     
@@ -34,6 +34,30 @@ class EventViewController: UIViewController {
         title_label.text = name
         description_label.text = details
         username_label.text = username
+        
+        // this code added by Phuong Mai
+        // load back object to get objectId, because upload icom need objectId
+        var obj = ParseEvents.getEventByName(name)
+        
+        var query = PFQuery(className:"Events")
+        query.getObjectInBackgroundWithId(obj.objectId) {
+            (obj: PFObject!, error: NSError!) -> Void in
+            if error != nil {
+                NSLog("%@", error)
+            } else {
+                
+                if let userImageFile = obj["icon"] as? PFFile {
+                    
+                    userImageFile.getDataInBackgroundWithBlock {
+                        (imageData: NSData!, error: NSError!) -> Void in
+                        if error == nil {
+                            self.imgVier.image = UIImage(data:imageData)
+                        }
+                    }
+                }
+            }
+        }
+        // end code
         
         pin_button.frame = CGRectMake(100, 100, 100, 50)
         pin_button.setTitle("Pin to Map", forState: UIControlState.Normal)

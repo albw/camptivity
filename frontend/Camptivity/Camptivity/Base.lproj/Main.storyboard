@@ -468,7 +468,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hrZ-la-RNL">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="211" y="181" width="173" height="86"/>
+                                    <rect key="frame" x="239" y="162" width="123" height="104"/>
                                 </variation>
                             </imageView>
                         </subviews>
