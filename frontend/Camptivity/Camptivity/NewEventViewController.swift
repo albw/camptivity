@@ -50,7 +50,7 @@ class NewEventViewController: UIViewController, UIAlertViewDelegate, UINavigatio
         let alert = UIAlertView()
         
         
-        eventImage = imageResize(eventImage!, sizeChange: CGSizeMake(11, 11))
+        eventImage = imageResize(eventImage!, sizeChange: CGSizeMake(50, 50))
         
         
         

@@ -37,6 +37,18 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
         }
     }
     
+    func imageResize (imageObj:UIImage, sizeChange:CGSize)-> UIImage{
+        
+        let hasAlpha = false
+        let scale: CGFloat = 0.0 // Automatically use scale factor of main screen
+        
+        UIGraphicsBeginImageContextWithOptions(sizeChange, !hasAlpha, scale)
+        imageObj.drawInRect(CGRect(origin: CGPointZero, size: sizeChange))
+        
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        return scaledImage
+    }
+    
     @IBAction func categoryButtonClicked(sender: AnyObject) {
         performSegueWithIdentifier("Types Segue", sender: nil)
     }
@@ -95,6 +107,22 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
             let coordinate = CLLocationCoordinate2D(latitude: appDelegate.lat, longitude: appDelegate.long)
             //TODO: Map Does funky stuff when pin event command is invoked
             //didCreateEventAtCoordinate(appDelegate.name, Description: appDelegate.event_description, coordinate: coordinate)
+            var event : PFObject = ParseEvents.getEventByName(appDelegate.name)
+            println(event["name"] as NSString)
+            
+            var marker = GMSMarker()
+            marker.position = CLLocationCoordinate2DMake((event["location"] as PFGeoPoint).latitude, (event["location"] as PFGeoPoint).longitude)
+            marker.title = (event["name"] as NSString)
+            marker.snippet = event["description"] as NSString?
+            marker.userData = "newEvent"
+            
+            let userImageFile = event["icon"] as PFFile
+            let image = UIImage(data:userImageFile.getData())
+            marker.icon = imageResize(image!, sizeChange: CGSizeMake(15, 15))
+
+            marker.map = self.mapView
+            
+            self.mapView.selectedMarker = marker
         }
     }
     
@@ -143,7 +171,7 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
             
             let userImageFile = event["icon"] as PFFile
             let image = UIImage(data:userImageFile.getData())
-            marker.icon = image
+            marker.icon = imageResize(image!, sizeChange: CGSizeMake(15, 15))
             marker.map = self.mapView
             //println("Hello world" + marker.description)
         }
@@ -170,7 +198,8 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
                 marker.title = (result["name"] as NSString)
                 marker.snippet = result["description"] as NSString?
                 marker.userData = result["category"] as NSString
-                marker.icon = UIImage(named: result["category"] as NSString)
+                var event = imageResize(UIImage(named: result["category"] as NSString)!, sizeChange: CGSizeMake(15, 15))
+                marker.icon = event
                 marker.map = self.mapView
             }
         
