@@ -49,7 +49,7 @@ class NewEventViewController: UIViewController, UIAlertViewDelegate, UINavigatio
         var endDateString = dateFormatter.stringFromDate(endDate)
         
         
-        ParseEvents.postEvent(eventName, desc: eventDescription, lat: location.latitude, lon: location.longitude, user: "dont care", start: startDateString, expires: startDateString)
+        ParseEvents.postEvent(eventName, desc: eventDescription, lat: location.latitude, lon: location.longitude, user: PFUser.currentUser().username, start: startDateString, expires: startDateString)
         
         // load back object to get objectId, because upload icom need objectId
         var obj = ParseEvents.getEventByName(eventName)
