@@ -139,7 +139,7 @@ exports.doGarbageCollect = function(request, response) {
 	var l = [
 	["Score", "userID", "_User"],
 	["EventCmt", "target", "Events"],
-	["LocationRank", "target", "Locations"]
+	["LocationRank", "target", "Locations"],
 	["EventVotes", "target", "Events"]
 	];
 

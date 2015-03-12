@@ -89,15 +89,11 @@ public class ParseDataProvider {
     *  Example: {"username":"username", "password": "password"}
     */
     func login(username:String, password:String)-> PFUser {
-        
         // the code upload picture/icon to Parse
         return PFUser.logInWithUsername(username, password: password);
-        
-        
     }
     
     func saveImageToPictureProfile(username:String, password:String, imageFile:PFFile)-> Void {
-        
         // the code upload picture/icon to Parse
         PFUser.logInWithUsernameInBackground(username, password: password) {
             (user: PFUser!, error: NSError!) -> Void in

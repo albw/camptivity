@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Camptivity INC. All rights reserved.
 //
 
-import Foundation
 import Parse
 
 /// This class contains methods which can get/set data for Score objects.
