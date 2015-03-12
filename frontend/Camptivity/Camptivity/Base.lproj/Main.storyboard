@@ -84,7 +84,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Social Events" id="bbF-Dx-pBy">
-                        <barButtonItem key="rightBarButtonItem" image="Power_Button.png" id="lC0-Xa-jik">
+                        <barButtonItem key="rightBarButtonItem" image="Teepee.png" id="lC0-Xa-jik">
                             <connections>
                                 <action selector="triggerUserLogin:" destination="iiy-qm-Kv1" id="jsd-gN-Rco"/>
                             </connections>
@@ -867,9 +867,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Power_Button.png" width="48" height="48"/>
         <image name="StarEmpty" width="22" height="22"/>
         <image name="StarFull" width="22" height="22"/>
+        <image name="Teepee.png" width="48" height="47"/>
         <image name="UCSD_Logo.png" width="105" height="105"/>
         <image name="down_arrow.png" width="16" height="16"/>
         <image name="eventDefault" width="125" height="125"/>

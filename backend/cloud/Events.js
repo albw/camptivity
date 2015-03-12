@@ -38,7 +38,14 @@ exports.getEvents = function(request, response){
  * Example: {"obj":"CWwv1FzgPh"}
  */
 exports.countEventVotes = function(request, response) {
-	new Parse.Query("EventVotes").equalTo("target", Utils.makePointer("Events", request.params.obj)).limit(1000).count(Utils.simpleSucErr(response));
+	new Parse.Query("Events").equalTo("objectId", request.params.obj).first({
+		success: function(meh) {
+			response.success(meh.get("upVotes"));
+		},
+		error: function(err) {
+			response.error(err);
+		}
+	});
 };
 
 
@@ -102,6 +109,7 @@ exports.postEventVote = function(request, response) {
  		}, Utils.simpleSucErr(response));
  	});
  };
+
 
 
 /* //////////////////////////////////////////////////////////////////////////////// */

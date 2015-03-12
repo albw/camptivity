@@ -33,9 +33,12 @@ class FeedTableViewController: UITableViewController  {
     //Reference to feedtableviewcell
     let feedCellIdentifier = "FeedTableViewCell"
     
-    //Count for event checking
-    let event_count = 10
-   
+   //For now number of events is hardcoded
+   //Ideally this would be pagenated, however small user base means
+   //we don't need that implementation currently
+   var num_event = 0
+   var event_count = 200
+    
     //TODO Having problems with FUIUIKit atm
     //var alertView : FUIAlertView!
 
@@ -103,9 +106,7 @@ class FeedTableViewController: UITableViewController  {
         userAlertController.addAction(resetPwd_action)
         //Getting Event Data from Parse Database
         eventData = ParseEvents.getEvents(limit: event_count, skip:0)
-        
-        //Print debug data of first event gathered
-        println(eventData[0])
+        num_event = eventData.count
         
         //Nav bar adjusting based on login state will go here
         //var post_button = UIBarButtonItem(title: "Add Post", style: .Done, target: self, action: nil)
@@ -140,10 +141,7 @@ class FeedTableViewController: UITableViewController  {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         
-        //TODO: Scheme, will load 10 elements at a time with a 1 (load more option)
-        //use event_count
-        
-        return event_count + 1
+        return num_event
     }
     
     /*
@@ -211,14 +209,10 @@ class FeedTableViewController: UITableViewController  {
     }
     
     func feedCellAtIndexPath(indexPath:NSIndexPath) -> FeedTableViewCell {
-        if(indexPath.row >= (event_count)){
-            //TODO: Create Last Cell Type
-            //Return last cell
-        }
         let cell = tableView.dequeueReusableCellWithIdentifier("feedCell") as FeedTableViewCell
         cell.up_button.tag = indexPath.row
         cell.down_button.tag = indexPath.row
-        if(indexPath.row < event_count){ //Currently hardcoded, need a way to determine the amount of events
+        if(indexPath.row < num_event){ //Currently hardcoded, need a way to determine the amount of events
           setCellDisplay(cell, indexPath: indexPath)
         }
         return cell
@@ -278,10 +272,6 @@ class FeedTableViewController: UITableViewController  {
     //Precondition: Global struct array to hold all event data will be populated after call for getEvents
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("Row \(indexPath.row)" )
-        if(indexPath.row >= (event_count + 1)){
-            //This is a load more request
-            //TODO: Trigger load more
-        }
         event_index = indexPath.row
         performSegueWithIdentifier("Event_Segue", sender: nil)
     }
