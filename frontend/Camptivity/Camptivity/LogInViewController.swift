@@ -57,7 +57,14 @@ class LogInViewController: UIViewController, PFLogInViewControllerDelegate{
     func logInViewController(logInController: PFLogInViewController!, didLogInUser user: PFUser!) {
 
         user.fetchIfNeededInBackground()
-        var name  = user.objectForKey("name") as String
+        var name = "John"
+        if user.objectForKey("name") == nil {
+            name = "John"
+        }
+        else{
+            name = user.objectForKey("name") as NSString
+        }
+        
         var messageTile : String!
         if(name != ""){
             messageTile = "Hello, " + name
