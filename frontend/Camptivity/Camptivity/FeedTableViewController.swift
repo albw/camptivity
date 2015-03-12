@@ -73,7 +73,7 @@ class FeedTableViewController: UITableViewController  {
         alertController.addAction(signup_action)
         
         //Initialize userAlertController
-        userAlertController = UIAlertController(title: "User's Setting", message: "Click setting to update profileand see your statistics", preferredStyle: .Alert)
+        userAlertController = UIAlertController(title: "User's Setting", message: "Click setting to update profile and see your statistics", preferredStyle: .Alert)
         //CLouser function for log out
         logout_action = UIAlertAction(title: "Log Out", style: .Default){
             action in
