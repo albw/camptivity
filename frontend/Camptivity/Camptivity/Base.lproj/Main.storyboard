@@ -362,7 +362,7 @@
             </objects>
             <point key="canvasLocation" x="2567" y="1065"/>
         </scene>
-        <!--Location Table View Controller-->
+        <!--What's Nearby-->
         <scene sceneID="HhV-Rw-Pbe">
             <objects>
                 <tableViewController id="3hK-Mo-qVp" customClass="LocationTableViewController" customModule="Camptivity" customModuleProvider="target" sceneMemberID="viewController">
@@ -415,7 +415,7 @@
                             <outlet property="delegate" destination="3hK-Mo-qVp" id="Hcn-dW-kHm"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="V4s-jU-wfb"/>
+                    <navigationItem key="navigationItem" title="What's Nearby" id="V4s-jU-wfb"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PRY-hG-Kgb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -502,7 +502,7 @@
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What is your event name?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iFq-wB-0QM">
                                                 <rect key="frame" x="10" y="186" width="300" height="33"/>
-                                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="33" id="RaT-Vr-HKl"/>
                                                 </constraints>
@@ -511,7 +511,7 @@
                                             </textField>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Input your event description here!" translatesAutoresizingMaskIntoConstraints="NO" id="vym-jK-JOF">
                                                 <rect key="frame" x="10" y="232" width="300" height="60"/>
-                                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="JOk-z3-aK4"/>
                                                 </constraints>
@@ -520,6 +520,7 @@
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When does the event start?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dso-py-LnA">
                                                 <rect key="frame" x="10" y="302" width="300" height="26"/>
+                                                <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="26" id="TSX-rO-4gJ"/>
                                                 </constraints>
@@ -563,14 +564,14 @@
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7p-MI-hC2">
                                                 <rect key="frame" x="100" y="138" width="120" height="30"/>
-                                                <color key="backgroundColor" red="0.27654708059999999" green="0.9013671875" blue="0.99167351969999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="A5n-eG-a4b"/>
                                                     <constraint firstAttribute="width" constant="120" id="rrL-uP-ypg"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                                 <state key="normal" title="Select Event Icon">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
@@ -607,6 +608,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="RWZ-i1-bjG" firstAttribute="top" secondItem="W5c-sE-Nt6" secondAttribute="top" id="2sS-Zz-OPI"/>
                                     <constraint firstAttribute="bottom" secondItem="RWZ-i1-bjG" secondAttribute="bottom" id="fjM-Ob-7yA"/>
