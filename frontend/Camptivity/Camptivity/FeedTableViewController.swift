@@ -36,7 +36,8 @@ class FeedTableViewController: UITableViewController  {
    //For now number of events is hardcoded
    //Ideally this would be pagenated, however small user base means
    //we don't need that implementation currently
-   let num_event = 200
+   var num_event = 0
+   var event_count = 200
     
     //TODO Having problems with FUIUIKit atm
     //var alertView : FUIAlertView!
@@ -104,7 +105,8 @@ class FeedTableViewController: UITableViewController  {
         userAlertController.addAction(userSetting_action)
         userAlertController.addAction(resetPwd_action)
         //Getting Event Data from Parse Database
-        eventData = ParseEvents.getEvents(limit: num_event, skip:0)
+        eventData = ParseEvents.getEvents(limit: event_count, skip:0)
+        num_event = eventData.count
         
         //Nav bar adjusting based on login state will go here
         //var post_button = UIBarButtonItem(title: "Add Post", style: .Done, target: self, action: nil)
