@@ -12,7 +12,9 @@ class EventViewController: UIViewController {
 
     @IBOutlet weak var username_label: UILabel!
     @IBOutlet weak var description_label: UILabel!
-    @IBOutlet weak var title_label: UILabel!
+    @IBOutlet weak var title_label: UILabel
+    
+    @IBOutlet weak var imgVier: UIImageView!
     
     let pin_button = UIButton.buttonWithType(UIButtonType.System) as UIButton
     
