@@ -47,7 +47,7 @@ class FeedTableViewController: UITableViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 1.0)
         
         //Initialize AlertController
-        alertController = UIAlertController(title: "Let's Start Camping!", message: "Log in to see your events", preferredStyle: .Alert)
+        alertController = UIAlertController(title: "Let's Start Camping!", message: "Log in to see your profile", preferredStyle: .Alert)
         
         //Closure function for cancel_button action on alert view
         cancel_action = UIAlertAction(title: "Cancel", style: .Cancel) {
@@ -72,7 +72,7 @@ class FeedTableViewController: UITableViewController {
         alertController.addAction(signup_action)
         
         //Initialize userAlertController
-        userAlertController = UIAlertController(title: "User's Setting", message: "Click setting to update profile", preferredStyle: .Alert)
+        userAlertController = UIAlertController(title: "User's Setting", message: "Click setting to update profileand see your statistics", preferredStyle: .Alert)
         //CLouser function for log out
         logout_action = UIAlertAction(title: "Log Out", style: .Default){
             action in

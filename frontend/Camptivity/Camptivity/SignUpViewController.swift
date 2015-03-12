@@ -18,7 +18,7 @@ class SignUpViewController: UIViewController, PFSignUpViewControllerDelegate{
         self.signUpController.delegate = self
         self.signUpController.fields = (PFSignUpFields.Additional|PFSignUpFields.Default)
         self.signUpController.signUpView.signUpButton.setTitle("Camp up!", forState: UIControlState.Normal)
-        self.signUpController.signUpView.additionalField.placeholder = "Name"
+        self.signUpController.signUpView.additionalField.placeholder = "Full Name (Optional)"
         self.signUpController.signUpView.dismissButton.addTarget(self, action: "dismissAction:", forControlEvents: UIControlEvents.TouchUpInside)
         
     }
@@ -62,7 +62,7 @@ class SignUpViewController: UIViewController, PFSignUpViewControllerDelegate{
         
         let alert = UIAlertView()
         alert.title = messageTile
-        alert.message = "Your ID is: " + user.objectId
+        alert.message = "Thank you for joining us! An email was sent to " + user.email + " for comfirmation."
         alert.delegate = self
         alert.addButtonWithTitle("Ok")
         alert.show()

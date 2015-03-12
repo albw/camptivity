@@ -94,10 +94,10 @@ class UserSettingViewController: UIViewController{
             var name  = user.objectForKey("name") as String
             var label: String!
             if(name != ""){
-                label = name + "'s Profile Update"
+                label = name + "'s Profile"
             }
             else{
-                label = "Your Profile Update"
+                label = "Your Profile"
             }
             
             var score = ParseScore.getUserScore(user.username)
