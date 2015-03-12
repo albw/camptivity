@@ -29,6 +29,18 @@ class NewEventViewController: UIViewController, UIAlertViewDelegate, UINavigatio
 
     weak var delegate: NewEventViewControllerDelegate?
     
+    func imageResize (imageObj:UIImage, sizeChange:CGSize)-> UIImage{
+        
+        let hasAlpha = false
+        let scale: CGFloat = 0.0 // Automatically use scale factor of main screen
+        
+        UIGraphicsBeginImageContextWithOptions(sizeChange, !hasAlpha, scale)
+        imageObj.drawInRect(CGRect(origin: CGPointZero, size: sizeChange))
+        
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        return scaledImage
+    }
+    
     @IBAction func addButtonClicked(sender: UIBarButtonItem) {
         var eventImage = imagePicker.image
         var eventName = eventNameTextField.text
@@ -36,6 +48,12 @@ class NewEventViewController: UIViewController, UIAlertViewDelegate, UINavigatio
         var startDate = startDatePicker.date
         var endDate = endDatePicker.date
         let alert = UIAlertView()
+        
+        
+        eventImage = imageResize(eventImage!, sizeChange: CGSizeMake(11, 11))
+        
+        
+        
         alert.title = "Success"
         alert.message = "Your event has been uploaded!"
         alert.addButtonWithTitle("Back to Map")
@@ -56,7 +74,7 @@ class NewEventViewController: UIViewController, UIAlertViewDelegate, UINavigatio
         var obj = ParseEvents.getEventByName(eventName)
         
         var imageData = NSData()
-        imageData = UIImageJPEGRepresentation(self.imagePicker.image, 0.8)
+        imageData = UIImageJPEGRepresentation(eventImage, 0.8)
         var imageFile = PFFile(data:imageData)
         let dataprovider = ParseDataProvider()
         dataprovider.saveIcon("Events", objID: obj.objectId, colName: "icon", img: imageFile)

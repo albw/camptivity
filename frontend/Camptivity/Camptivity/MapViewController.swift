@@ -140,7 +140,10 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
             marker.title = (event["name"] as NSString)
             marker.snippet = event["description"] as NSString?
             marker.userData = "newEvent"
-            marker.icon = UIImage(named: "newEvent")
+            
+            let userImageFile = event["icon"] as PFFile
+            let image = UIImage(data:userImageFile.getData())
+            marker.icon = image
             marker.map = self.mapView
             //println("Hello world" + marker.description)
         }
@@ -210,7 +213,7 @@ class MapViewController: UIViewController, TypesTableViewControllerDelegate, CLL
         marker.position = coordinate
         marker.title = name
         marker.snippet = Description
-        marker.icon = UIImage(named: "newEvent")
+        //marker.icon = UIImage(named: "newEvent")
         marker.userData = "newEvent"
         marker.map = self.mapView
         

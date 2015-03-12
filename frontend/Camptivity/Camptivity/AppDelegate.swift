@@ -28,8 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //rgb(52, 152, 219)
         UITabBar.appearance().backgroundColor = UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 1.0)
-        UITabBar.appearance().barTintColor = UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 1.0)
-        UITabBar.appearance().selectedImageTintColor = UIColor.blackColor()
+        //UITabBar.appearance().barTintColor = UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 1.0)
+        //UITabBar.appearance().selectedImageTintColor = UIColor.blackColor()
 
         
         Fabric.with([Crashlytics()])
