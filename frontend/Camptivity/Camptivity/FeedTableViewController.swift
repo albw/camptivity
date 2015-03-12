@@ -3,13 +3,14 @@
 //  Camptivity
 //
 //  Created by Shayan Mahdavi on 2/16/15.
+//  Update by Phuong Mai on 3/11/15
 //  Copyright (c) 2015 Camptivity INC. All rights reserved.
 //
 
 import UIKit
 import Parse
 
-class FeedTableViewController: UITableViewController {
+class FeedTableViewController: UITableViewController  {
 
     var eventData: [PFObject]!
     var event_index: Int!
@@ -245,6 +246,30 @@ class FeedTableViewController: UITableViewController {
             if( user != nil){
                 cell.username_label.text = user.objectForKey("username") as String!
             }
+            
+            // this code added by Phuong Mai
+            let dataProvider = ParseDataProvider()
+            
+            let ojbID = eventData[indexPath.row].objectId as String
+            var query = PFQuery(className:"Events")
+            query.getObjectInBackgroundWithId(ojbID) {
+                (obj: PFObject!, error: NSError!) -> Void in
+                if error != nil {
+                    NSLog("%@", error)
+                } else {
+
+                    if let userImageFile = obj["icon"] as? PFFile {
+
+                        userImageFile.getDataInBackgroundWithBlock {
+                            (imageData: NSData!, error: NSError!) -> Void in
+                            if error == nil {
+                                cell.profile_image.image = UIImage(data:imageData)
+                            }
+                        }
+                    }
+                }
+            }
+            // end code
         }
         
     }
