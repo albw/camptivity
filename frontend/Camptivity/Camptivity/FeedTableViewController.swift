@@ -42,9 +42,10 @@ class FeedTableViewController: UITableViewController {
         super.viewDidLoad()
         
         //set navigation bar
-        var image: UIImage = UIImage(named: "purplesky")!
-        self.navigationController?.navigationBar.setBackgroundImage(image, forBarMetrics: .Default)
-
+        //var image: UIImage = UIImage(named: "purplesky")!
+        //self.navigationController?.navigationBar.setBackgroundImage(image, forBarMetrics: .Default)
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 52.0/255.0, green: 152.0/255.0, blue: 219.0/255.0, alpha: 1.0)
+        
         //Initialize AlertController
         alertController = UIAlertController(title: "Let's Start Camping!", message: "Log in to see your events", preferredStyle: .Alert)
         
