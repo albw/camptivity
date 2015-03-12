@@ -3,6 +3,7 @@
 //  Camptivity
 //
 //  Created by SI  on 2/24/15.
+//  Update by Phuong Mai on 3/9/15
 //  Copyright (c) 2015 Camptivity INC. All rights reserved.
 //
 
@@ -59,16 +60,7 @@ class NewEventViewController: UIViewController, UIAlertViewDelegate, UINavigatio
         var imageFile = PFFile(data:imageData)
         let dataprovider = ParseDataProvider()
         dataprovider.saveIcon("Events", objID: obj.objectId, colName: "icon", img: imageFile)
-        
-//        NSLog("%@", eventName)
-//        NSLog("%@", eventDescription)
-//        NSLog("%@", startDate)
-//        NSLog("%@", endDate)
-//        
-//        //geolocation
-//        NSLog("%f", location.longitude)
-//        NSLog("%f", location.latitude)
-        
+            
     }
     
     
